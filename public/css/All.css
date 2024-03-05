@@ -11,3 +11,7 @@
    --color-br: #D9AFD9;
    --color-brimg: linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%);
 }
+
+a {
+    text-decoration: none;
+}

@@ -5,90 +5,92 @@
     --font-family-a: "Georgia, 'Times New Roman', Times, serif";
 }
 
-a {
-    text-decoration: none;
-}
 
-ul {
-    list-style: none;
-}
-
-.nav-line {
-    width: 100%;
-    height: 1px;
-    background-color: white;
-}
-
-.App_admin {
+.admin_view {
     position: relative;
-    display: flex;
     width: 100%;
     height: 100vh;
+    display: flex;
+    background-color: #eeeeee;
 }
 
-.nav-left {
-    width: 25%;
-    background-color: var(--color-black);
-}
 
-.nav__left-admin {
-    width: 100%;
-    height: 60px;
+.nav {
     position: relative;
+    width: 25%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.nav__left-admin>a {
-    color: white;
-    line-height: 60px;
-    font-family: var(--font-family);
-    font-size: 1.7rem;
-    font-weight: 550;
+.nav_view {
+    position: relative;
+    width: 90%;
+    height: 95%;
+    background-color: white;
+    border-radius: 15px;
+    overflow: auto;
 }
 
-.nav__left-admintranstion {
-    margin-top: 10px;
-}
-
-.admintranstion-title {
+.nav_view_header {
+    position: relative;
     width: 100%;
+    height: 50px;
     display: flex;
-    font-family: var(--font-family);
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-left: 10%;
-    color: var(--color-title);
+    justify-content: center;
+    align-items: center;
+}
+
+.nav_view_center {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.item_cha {
+    position: relative;
+    width: 85%;
+    height: 45px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    background-color: #eeeeee;
+    border-radius: 5px;
+    
+}
+
+.item_cha:hover a{
     cursor: pointer;
-}
-
-.admintranstion-title i {
-    padding-right: 10px;
-}
-
-.icon-chevron {
-    margin-left: 10px;
-}
-
-.admintranstion-title p {}
-
-.admintranstion-list {
-    padding-left: 22%;
-    line-height: 30px;
-    font-family: var(--font-family-a);
-}
-
-.admintranstion-list>ul>li>a {
+    background-color: var(--color-black);
     color: white;
-    font-size: 1rem;
-    font-weight: 500;
-    font-family: var(--font-family);
 }
 
-/*================ end: nav left =========== */
+.item_cha:hover {
+    cursor: pointer;
+    background-color: var(--color-black);
+    color: white;
+}
 
 
-.nav-right {
-    width: 75%;
+
+
+.item_cha>a{
+    color: #666;
+    font-size: 1.2rem;
+    margin-left: 5%;
+}
+
+.magintop_nav {
+    margin-top: 2%;
+}
+
+.plus_r {
+    position: relative;
+    left: 20%;
 }
