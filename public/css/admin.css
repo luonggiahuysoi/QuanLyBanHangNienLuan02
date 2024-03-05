@@ -59,7 +59,7 @@
     height: 45px;
     display: flex;
     justify-content: left;
-    justify-content: left; 
+    justify-content: left;
     align-items: center;
     background-color: #eeeeee;
     border-radius: 5px;
@@ -111,9 +111,10 @@
     background-color: #eeeeee;
     border-radius: 0 0 5px 5px;
 }
-.item_cha:hover .item-con  {
+
+.item_cha:hover .item-con {
     display: flex;
-   
+
 }
 
 .item-con_list {
@@ -130,12 +131,12 @@
     background-color: var(--color-black);
 }
 
-.item-con_list:hover a{
+.item-con_list:hover a {
     color: white;
     font-weight: 500;
 }
 
-.item-con_list>a{
+.item-con_list>a {
     position: relative;
     color: #666;
     margin-left: 13%;
