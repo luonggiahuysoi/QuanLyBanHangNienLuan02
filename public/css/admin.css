@@ -140,3 +140,21 @@
     color: #666;
     margin-left: 13%;
 }
+
+.item-con_listout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f98590;
+
+
+}
+
+.item-con_listout>a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: -3%;
+    color: white;
+    font-weight: 500;
+}
