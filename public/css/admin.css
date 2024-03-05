@@ -58,15 +58,11 @@
     width: 85%;
     height: 45px;
     display: flex;
-<<<<<<< HEAD
     justify-content: left;
-=======
     justify-content: left; 
->>>>>>> dc6ecbe6884c3fa1ffac56b4b1acc704d8933fe8
     align-items: center;
     background-color: #eeeeee;
     border-radius: 5px;
-
 }
 
 
