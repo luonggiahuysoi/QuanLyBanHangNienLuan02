@@ -1,0 +1,64 @@
+
+:root {
+    --color-black:#1b2742;
+}
+
+a {
+    text-decoration: none;
+}
+
+.App_admin {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    color: white;
+}
+
+.Nav_left {
+    position: relative;
+    width: 25%;
+    background-color: var(--color-black);
+}
+
+.TrangChu {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 80px;
+    background-color: red;
+}
+
+.TrangChu a{
+    position: relative;
+    display: flex;
+}
+
+.TrangChu a i {
+    color: white;
+    font-size: 2rem;
+    
+}
+
+.TrangChu a p {
+    color: white;
+    font-size: 2rem;
+    
+}
+
+.administration_title {
+    position: relative;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 100%;
+    margin-left: 5%;
+    
+}
+
+.administration_title i{
+    position: relative;
+    font-size: 1.5rem;
+}
