@@ -22,6 +22,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 
 .nav_view {
@@ -31,6 +32,7 @@
     background-color: white;
     border-radius: 15px;
     overflow: auto;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
 .nav_view_header {
@@ -166,12 +168,18 @@
 .content {
     position: relative;
     width: 100%;
-    height: 100vh;
+    height: 100%;
+    overflow: auto;
 }
 
 .content_top {
     position: fixed;
-    width: 100%;
-    height: 100px;
-    background-color: red;
+    width: 79%;
+    height: 70px;
+    background-color: white;
+    margin-top: 1%;
+    border-radius: 8px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+
 }
+
