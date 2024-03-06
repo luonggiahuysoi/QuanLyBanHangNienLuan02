@@ -89,7 +89,7 @@
                </div>
                <div class="item-con" id="item-con2">
                   <div class="item-con_list" id="">
-                     <a href=""><i class="bi bi-dot"></i>Quản lý danh mục</a>
+                     <a href="index.php?act=danhmuc"><i class="bi bi-dot"></i>Quản lý danh mục</a>
                   </div>
                   <div class="item-con_list">
                      <a href=""><i class="bi bi-dot"></i>Quản lý sản phẩm</a>
