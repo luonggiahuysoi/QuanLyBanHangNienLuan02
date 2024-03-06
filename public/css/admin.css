@@ -644,6 +644,31 @@
 
 .nav_view::-webkit-scrollbar-track {
     background-color: #f1f1f1;
+    /* Màu nền của vùng bên trong thanh cuộn huy*/
+}
+
+
+
+
+.content::-webkit-scrollbar {
+    width: 5px;
+    /* Chiều rộng của thanh cuộn ngang */
+}
+
+.content::-webkit-scrollbar-thumb {
+    background-color: #f59a9a;
+    /* Màu nền của thanh cuộn */
+    border-radius: 4px;
+    /* Đường viền cong của thanh cuộn */
+}
+
+.content::-webkit-scrollbar-thumb:hover {
+    background-color: #ee4545;
+    /* Màu nền khi rê chuột vào thanh cuộn */
+}
+
+.content::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
     /* Màu nền của vùng bên trong thanh cuộn */
 }
 
