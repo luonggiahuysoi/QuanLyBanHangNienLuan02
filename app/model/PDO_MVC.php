@@ -1,14 +1,20 @@
 <?php
 
    class DungChung {
-      private $dungchung; 
+      private $dungchung;
       function __construct() {
          $this->dungchung=new DatabaseModel;
       }
 
-      function ShowDungChung() {
-         
-      }
+      function ShowDungChung($showall) {
+         $sql = "SELECT * FROM $showall";
+         return $this->dungchung->get_all($sql);
+     }
+
+     function getByIdAll($showallName,$showallId, $getId) {
+      $sql = "SELECT * FROM $showallName WHERE $showallId=".$getId;
+      return $this->dungchung->get_all($sql);
+   }
 
    }
 
