@@ -589,6 +589,10 @@
     width: 20%;
 }
 
+.table_show_setting_clone {
+    position: relative;
+    display: none;
+}
 
 
 

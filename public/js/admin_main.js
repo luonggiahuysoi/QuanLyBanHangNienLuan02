@@ -95,5 +95,24 @@ $(document).ready(function () {
 
 });
 
+//================= note: Item setting ===========================================
 
+// $(document).ready(function () {
+//     $(".table_show_setting").click(function (e) { 
+//         $(this).css("display", "none");
+//         $(".table_show_setting_clone").css("display", "flex");
+//     });
+// });
+
+$(document).ready(function(){
+    // Sử dụng hàm click để xử lý sự kiện khi click vào thẻ có class "show_Setting"
+    $('.table_show_setting').click(function(){
+        // Tìm phần tử cha gần nhất có class "setting"
+        var settingContainer = $(this).closest('.setting');
+
+        // Sử dụng hàm toggle để ẩn/hiện div có class "open_Setting" trong phần tử cha
+        settingContainer.find('.table_show_setting_clone').toggle().css("display", "flex");
+        $(this).toggle();
+    });
+});
 
