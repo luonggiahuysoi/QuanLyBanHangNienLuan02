@@ -1,12 +1,12 @@
 <?php
    class DungChung {
-      private $dungchung;
+      private $dungchung; 
       function __construct() {
          $this->dungchung = new DatabaseModel;
       }
 
       function ShowDungChung() {
-         
+
       }
 
    }
