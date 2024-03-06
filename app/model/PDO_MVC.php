@@ -1,40 +1,59 @@
 <?php
 
-   class DungChung {
-      private $dungchung;
-      function __construct() {
-         $this->dungchung=new DatabaseModel;
-      }
+class DungChung
+{
+   private $dungchung;
+   function __construct()
+   {
+      $this->dungchung = new DatabaseModel;
+   }
 
-      function ShowDungChung($showall) {
-         $sql = "SELECT * FROM $showall";
-         return $this->dungchung->get_all($sql);
-     }
-
-     function getByIdAll($showallName,$showallId, $getId) {
-      $sql = "SELECT * FROM $showallName WHERE $showallId=".$getId;
+   function ShowDungChung($showall)
+   {
+      $sql = "SELECT * FROM $showall";
       return $this->dungchung->get_all($sql);
    }
 
+   function getByIdAll($showallName, $showallId, $getId)
+   {
+      $sql = "SELECT * FROM $showallName WHERE $showallId=" . $getId;
+      return $this->dungchung->get_all($sql);
+   }
+
+   function DeleteAll($showallName, $showallId, $getId)
+   {
+      $sql = "DELETE FROM $showallName WHERE $showallId=" . $getId;
+      $this->dungchung->get_all($sql);
+   }
+
+}
+
+
+// Danh mục
+
+class DanhMuc
+{
+   private $danhmuc;
+   function __construct()
+   {
+      $this->danhmuc = new DatabaseModel;
+   }
+
+   function HienDanhMuc()
+   {
+      $sql = "SELECT * FROM danhmuc";
+      return $this->danhmuc->get_all($sql);
+   }
+
+   function UpdateDanhMucSetBlock($iddanhmuc, $hienthi)
+   {
+      $sql = "UPDATE danhmuc SET hienthi='" . $hienthi . "' WHERE id_danhmuc=" . $iddanhmuc;
+      $this->danhmuc->get_all($sql);
    }
 
 
-   // Danh mục
-
-   class DanhMuc {
-      private $danhmuc;
-      function __construct() {
-         $this->danhmuc=new DatabaseModel;
-      }
-
-      function HienDanhMuc() {
-         $sql = "SELECT * FROM danhmuc";
-         return $this->danhmuc->get_all($sql);
-     }
 
 
-
-
-   }
+}
 
 ?>

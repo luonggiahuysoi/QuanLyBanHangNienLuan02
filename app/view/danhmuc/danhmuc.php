@@ -36,12 +36,12 @@ foreach ($HienDanhMuc as $HienDanhMucc) {
                         </div>
                         <div class="table_show_setting_clone">
                             <p>
-                                <a href="">
+                                <a href="index.php?act=updatedanhmuc">
                                     <i class="bi bi-arrow-counterclockwise"></i>
                                 </a>
                             </p>
                             <p>
-                                <a href="">
+                                <a href="index.php?act=deletedanhmuc&iddanhmuc='.$id_danhmuc.'">
                                     <i class="bi bi-trash-fill"></i>
                                 </a>
                             </p>
