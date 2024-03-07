@@ -14,6 +14,8 @@
    <!-- jquery  -->
    <script src="../public/js/jquery-3.6.3.min.js"></script>
    <script src="../public/js/admin_main.js"></script>
+
+   <script src="../public/js/danhmuc.js" ></script>
    <title>Document</title>
 </head>
 

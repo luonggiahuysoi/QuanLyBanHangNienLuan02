@@ -114,6 +114,10 @@ foreach ($HienDanhMuc as $HienDanhMucc) {
             <a href="" style="color: #464646;">Trang danh mục</a>
         </div>
 
+        <div class="content__bottom-adddm">
+            <input type="button" value="+ Thêm danh mục" placeholder="Thêm danh mục">
+        </div>
+
         <!-- view danh muc -->
 
         <div class="content_bottom_view">
@@ -183,25 +187,19 @@ foreach ($HienDanhMuc as $HienDanhMucc) {
     <div class="updatedm_view">
         <div class="updatedm_h3">
             <p>Update Danh Mục</p>
+
         </div>
         <div class="updatdm_content">
             <input type="text" name="" id="" placeholder="Tên danh mục">
             <div class="updatedm_img">
-                <button class="open-file">
-                    <span class="file-wrapper">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 71 67">
-                            <path stroke-width="5" stroke="black"
-                                d="M41.7322 11.7678L42.4645 12.5H43.5H68.5V64.5H2.5V2.5H32.4645L41.7322 11.7678Z">
-                            </path>
-                        </svg>
-                        <span class="file-front"></span>
-                    </span>
-                    <input style="displa;" type="file" name="" id="">
-                    <input type="hidden">
-                </button>
+                <label for="file">
+                    <img height="80px" width="90px" src="../public/img/folder.png" alt="Add Image">
+                </label>
+                <input style="display:none;" type="file" name="file" id="file" accept=".png, .jpg, .jpeg"
+                    capture="camera" class="hidden-input">
             </div>
             <input type="button" value="Thêm danh mục">
-            <input type="button" value="Đóng">
+            <input type="button" class="danhmnuc_close" value="Đóng" id="closeButton">
         </div>
     </div>
 </div>
@@ -217,6 +215,7 @@ foreach ($HienDanhMuc as $HienDanhMucc) {
         background-color: #a3a3a341;
         z-index: 11;
         top: 0;
+
     }
 
     .updatedm_view {
@@ -263,20 +262,20 @@ foreach ($HienDanhMuc as $HienDanhMucc) {
         width: 115%;
         height: 35px;
         font-size: 1rem;
-        margin-top: 20%;
-        margin-bottom: 10%;
+        margin-top: 15%;
         padding: 6px 12px;
         outline: none;
         caret-color: red;
-        font-weight: 550;
+        font-weight: 500;
     }
 
-    .updatdm_content input:nth-child(2),
+    .updatdm_content input:nth-child(4),
     .updatdm_content input:nth-child(3) {
-        font-family: "Poppins", sans-serif;
-        font-weight: 500;
+        font-family: "Fira Sans";
+        font-weight: 550;
         font-size: 1rem;
-        padding: 4px 10px;
+        padding: 6px 10px;
+        cursor: pointer;
     }
 
     .updatdm_content input:nth-child(3):hover,
@@ -284,63 +283,31 @@ foreach ($HienDanhMuc as $HienDanhMucc) {
         background-color: black;
         color: white;
         font-weight: 600;
-
     }
 
     /* add img  */
-    .open-file {
-        background-color: rgb(255, 255, 255);
-        width: 140px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 20px;
-        border: 1px solid rgb(217, 217, 217);
-        font-size: 15px;
+    .hidden-input {
+        font-size: 0;
+        color: transparent;
+    }
+
+
+    /* add dm  */
+    .content__bottom-adddm {
+        margin: 1% 0 0 10%;
+    }
+
+    .content__bottom-adddm>input {
+        font-size: 0.9rem;
+        font-weight: 550;
+        padding: 5px 10px;
         cursor: pointer;
-        transition: all 0.3s;
-        border-radius: 10px;
+
     }
 
-    .file-wrapper {
-        width: 15px;
-        height: auto;
-        display: flex;
-        align-items: flex-end;
-        justify-content: center;
-        position: relative;
-    }
-
-    .file-wrapper svg {
-        width: 100%;
-    }
-
-    .file-front {
-        position: absolute;
-        width: 100%;
-        height: 70%;
-        border: 2px solid rgb(0, 0, 0);
-        border-bottom: 1px solid black;
-        transform: skewX(-40deg);
-        transform-origin: bottom right;
-        background-color: white;
-        transition: all 0.5s;
-        bottom: 0;
-    }
-
-    .open-file:hover .file-front {
-        height: 50%;
-        transform-origin: bottom right;
-        transform: skewX(-55deg);
-    }
-
-    .open-file:hover {
-        box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.048);
-    }
-
-    .file-wrapper {
-        position: absolute;
-        z-index: 10;
+    .content__bottom-adddm>input:hover {
+        background-color: black;
+        color: white;
+        font-weight: 600;
     }
 </style>
