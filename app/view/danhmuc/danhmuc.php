@@ -185,10 +185,20 @@ foreach ($HienDanhMuc as $HienDanhMucc) {
             <p>Update Danh Mục</p>
         </div>
         <div class="updatdm_content">
-        <div class="input-div">
-  <input class="input" name="file" type="file">
-<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" stroke-linejoin="round" stroke-linecap="round" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="currentColor" class="icon"><polyline points="16 16 12 12 8 16"></polyline><line y2="21" x2="12" y1="12" x1="12"></line><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"></path><polyline points="16 16 12 12 8 16"></polyline></svg>
-</div>
+            <input type="text" name="" id="" placeholder="Tên danh mục">
+            <div class="updatedm_img">
+                <button class="open-file">
+                    <span class="file-wrapper">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 71 67">
+                            <path stroke-width="5" stroke="black"
+                                d="M41.7322 11.7678L42.4645 12.5H43.5H68.5V64.5H2.5V2.5H32.4645L41.7322 11.7678Z">
+                            </path>
+                        </svg>
+                        <span class="file-front"></span>
+                    </span>
+                    <input style="displa;" type="file" name="" id="">
+                    <input type="hidden">
+                </button>
             </div>
             <input type="button" value="Thêm danh mục">
             <input type="button" value="Đóng">
