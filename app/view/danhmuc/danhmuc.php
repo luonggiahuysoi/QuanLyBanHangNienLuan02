@@ -157,12 +157,6 @@ foreach ($HienDanhMuc as $HienDanhMucc) {
 
 
 
-
-
-
-
-
-
             </div>
         </div>
 
@@ -190,6 +184,15 @@ foreach ($HienDanhMuc as $HienDanhMucc) {
         <div class="updatedm_h3">
             <p>Update Danh Mục</p>
         </div>
+        <div class="updatdm_content">
+        <div class="input-div">
+  <input class="input" name="file" type="file">
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" stroke-linejoin="round" stroke-linecap="round" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="currentColor" class="icon"><polyline points="16 16 12 12 8 16"></polyline><line y2="21" x2="12" y1="12" x1="12"></line><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"></path><polyline points="16 16 12 12 8 16"></polyline></svg>
+</div>
+            </div>
+            <input type="button" value="Thêm danh mục">
+            <input type="button" value="Đóng">
+        </div>
     </div>
 </div>
 
@@ -208,8 +211,9 @@ foreach ($HienDanhMuc as $HienDanhMucc) {
 
     .updatedm_view {
         width: 45%;
-        height: 60%;
-        background-color: red;
+        height: 70%;
+        background-color: #fff;
+        box-shadow: rgb(53, 64, 77) 0px 20px 30px -10px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -223,15 +227,110 @@ foreach ($HienDanhMuc as $HienDanhMucc) {
         align-items: center;
         background: #000000;
         color: white;
-        box-shadow: rgb(53, 64, 77) 0px 20px 30px -10px;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        border-radius: 10px;
         top: -6%;
     }
 
     .updatedm_h3 p {
         font-size: 1.2rem;
         font-weight: 650;
+        display: flex;
         position: relative;
+        align-items: center;
+        left: 38%;
+    }
+
+    .updatdm_content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .updatdm_content input:nth-child(1) {
+        width: 115%;
+        height: 35px;
+        font-size: 1rem;
+        margin-top: 20%;
+        margin-bottom: 10%;
+        padding: 6px 12px;
+        outline: none;
+        caret-color: red;
+        font-weight: 550;
+    }
+
+    .updatdm_content input:nth-child(2),
+    .updatdm_content input:nth-child(3) {
+        font-family: "Poppins", sans-serif;
+        font-weight: 500;
+        font-size: 1rem;
+        padding: 4px 10px;
+    }
+
+    .updatdm_content input:nth-child(3):hover,
+    .updatdm_content input:nth-child(4):hover {
+        background-color: black;
+        color: white;
+        font-weight: 600;
+
+    }
+
+    /* add img  */
+    .open-file {
+        background-color: rgb(255, 255, 255);
+        width: 140px;
+        height: 40px;
         display: flex;
         align-items: center;
+        justify-content: center;
+        gap: 20px;
+        border: 1px solid rgb(217, 217, 217);
+        font-size: 15px;
+        cursor: pointer;
+        transition: all 0.3s;
+        border-radius: 10px;
+    }
+
+    .file-wrapper {
+        width: 15px;
+        height: auto;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        position: relative;
+    }
+
+    .file-wrapper svg {
+        width: 100%;
+    }
+
+    .file-front {
+        position: absolute;
+        width: 100%;
+        height: 70%;
+        border: 2px solid rgb(0, 0, 0);
+        border-bottom: 1px solid black;
+        transform: skewX(-40deg);
+        transform-origin: bottom right;
+        background-color: white;
+        transition: all 0.5s;
+        bottom: 0;
+    }
+
+    .open-file:hover .file-front {
+        height: 50%;
+        transform-origin: bottom right;
+        transform: skewX(-55deg);
+    }
+
+    .open-file:hover {
+        box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.048);
+    }
+
+    .file-wrapper {
+        position: absolute;
+        z-index: 10;
     }
 </style>
