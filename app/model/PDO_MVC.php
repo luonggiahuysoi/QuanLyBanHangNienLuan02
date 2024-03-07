@@ -51,7 +51,7 @@ class DanhMuc
       $this->danhmuc->get_all($sql);
    }
 
-
+   
 
 
 }

@@ -57,6 +57,17 @@ if (isset($_GET['act'])) {
             }
             break;
 
+        // case 'updatedanhmuc':
+        //     if (isset($_GET['iddanhmuc'])) {
+        //         $getId = $_GET['iddanhmuc'];
+        //         $iddanhmuc = new DungChung;
+        //         $id_onedanhmuc = $iddanhmuc->getByIdAll('danhmuc', 'id_danhmuc', $getId);
+
+
+        //     }
+        //     break;
+
+
 
 
 

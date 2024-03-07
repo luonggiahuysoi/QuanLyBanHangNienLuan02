@@ -4,7 +4,7 @@ $showdm = '';
 $showhienthi = '';
 foreach ($HienDanhMuc as $HienDanhMucc) {
     extract($HienDanhMucc);
-    if($hienthi == 1) {
+    if ($hienthi == 1) {
 
         $showhienthi = '<i class="bi bi-eye-fill"></i>';
 
@@ -17,18 +17,18 @@ foreach ($HienDanhMuc as $HienDanhMucc) {
     $showdm .= '
         <div class="table_th table_tr">
                     <div class="table_name_image table__bottom_center table_name_imagee">
-                        <img src="data:image/png;base64,' . $hinhanh. '" alt="">
-                        <p>'.$tendanhmuc.'</p>
+                        <img src="data:image/png;base64,' . $hinhanh . '" alt="">
+                        <p>' . $tendanhmuc . '</p>
                     </div>
                     <div class="table_hidden table__bottom_center">
                         <p>
-                            <a href="index.php?act=updatehienthi&iddanhmuc='.$id_danhmuc.'">
-                                '.$showhienthi.'
+                            <a href="index.php?act=updatehienthi&iddanhmuc=' . $id_danhmuc . '">
+                                ' . $showhienthi . '
                             </a>
                         </p>
                     </div>
                     <div class="table_view_category table__bottom_center">
-                        <p>'.$luotxem.'</p>
+                        <p>' . $luotxem . '</p>
                     </div>
                     <div class="table_settin table__bottom_center setting">
                         <div class="table_show_setting">
@@ -36,12 +36,12 @@ foreach ($HienDanhMuc as $HienDanhMucc) {
                         </div>
                         <div class="table_show_setting_clone">
                             <p>
-                                <a href="index.php?act=updatedanhmuc">
+                                <a href="index.php?act=updatedanhmuc&iddanhmuc=' . $id_danhmuc . '">
                                     <i class="bi bi-arrow-counterclockwise"></i>
                                 </a>
                             </p>
                             <p>
-                                <a href="index.php?act=deletedanhmuc&iddanhmuc='.$id_danhmuc.'">
+                                <a href="index.php?act=deletedanhmuc&iddanhmuc=' . $id_danhmuc . '">
                                     <i class="bi bi-trash-fill"></i>
                                 </a>
                             </p>
@@ -65,6 +65,7 @@ foreach ($HienDanhMuc as $HienDanhMucc) {
 
 <!-- center -->
 <div class="content">
+
     <div class="content_top">
 
         <!-- close menu -->
@@ -102,6 +103,7 @@ foreach ($HienDanhMuc as $HienDanhMucc) {
     <!-- bottom -->
 
     <div class="content_bottom">
+
         <div class="hiden_content_bottom"></div>
 
         <!-- link danhmuc  -->
@@ -151,7 +153,7 @@ foreach ($HienDanhMuc as $HienDanhMucc) {
 
 
 
-               <?=$showdm?>
+                <?= $showdm ?>
 
 
 
@@ -166,5 +168,70 @@ foreach ($HienDanhMuc as $HienDanhMucc) {
 
 
     </div>
+
 </div>
+
+
+
+
+
+
+
 </div>
+
+
+
+
+
+<!--================================ Danh muc update ========================== -->
+
+<div class="updatedanhmuc">
+    <div class="updatedm_view">
+        <div class="updatedm_h3">
+            <p>Update Danh Mục</p>
+        </div>
+    </div>
+</div>
+
+<style>
+    .updatedanhmuc {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100vh;
+        background-color: #a3a3a341;
+        z-index: 11;
+        top: 0;
+    }
+
+    .updatedm_view {
+        width: 45%;
+        height: 60%;
+        background-color: red;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .updatedm_h3 {
+        position: relative;
+        width: 110%;
+        height: 20%;
+        display: flex;
+        align-items: center;
+        background: #000000;
+        color: white;
+        box-shadow: rgb(53, 64, 77) 0px 20px 30px -10px;
+        top: -6%;
+    }
+
+    .updatedm_h3 p {
+        font-size: 1.2rem;
+        font-weight: 650;
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+</style>
