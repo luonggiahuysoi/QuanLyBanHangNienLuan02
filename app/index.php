@@ -14,9 +14,9 @@ include "../app/view/view_admin/header.php";
 if (isset($_GET['act'])) {
     switch ($_GET['act']) {
 
-            //danh muc
+        //danh muc
 
-        case "danhmuc":
+        case 'danhmuc':
 
             echo '<script src="../public/js/danhmuc/danhmuc_add.js"></script>';
 
@@ -25,7 +25,7 @@ if (isset($_GET['act'])) {
             require_once "../app/view/danhmuc/danhmuc.php";
             break;
 
-        case "updatehienthi":
+        case 'updatehienthi':
             if (isset($_GET['iddanhmuc'])) {
                 $getId = $_GET['iddanhmuc'];
                 $iddanhmuc = new DungChung;
@@ -101,7 +101,7 @@ if (isset($_GET['act'])) {
         case 'AddDanhMuc':
             if (isset($_POST['add_danhmuc']) && $_POST['add_danhmuc']) {
                 $tendanhmuc = $_POST['tendanhmuc'];
-        
+
                 // Kiểm tra xem file hình ảnh đã được chọn hay chưa
                 if (isset($_FILES['fileimage']) && $_FILES['fileimage']['error'] === UPLOAD_ERR_OK) {
                     $hinhanh1 = $_FILES['fileimage']['tmp_name'];
@@ -110,20 +110,33 @@ if (isset($_GET['act'])) {
                     // Xử lý khi không có hình ảnh được chọn
                     $hinhanh1 = null;
                 }
-        
+
                 //Thực hiện thêm danh mục
                 $AddDanhMuc = new DanhMuc;
                 $AddDanhMuc->AddDanhMuc($tendanhmuc, $hinhanh1);
-        
+
                 // load lại trang
                 echo '<script src="../public/js/danhmuc/danhmuc_add.js"></script>';
                 $danhmuc = new DungChung;
                 $HienDanhMuc = $danhmuc->ShowDungChung('danhmuc');
                 require_once "../app/view/danhmuc/danhmuc.php";
             }
-
-
             break;
+
+        // ============================San pham =============================
+
+        case 'sanpham':
+
+            echo '<script src="../public/js/danhmuc/danhmuc_add.js"></script>';
+
+            $hanghoa = new DungChung;
+            $HienHangHoa = $hanghoa->ShowDungChung('hanghoa');
+
+            require_once "../app/view/sanpham/sanpham.php";
+            break;
+
+
+
     }
 } else {
 

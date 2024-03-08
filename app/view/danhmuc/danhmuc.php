@@ -15,8 +15,8 @@ foreach ($HienDanhMuc as $HienDanhMucc) {
 
 
     $showdm .= '
-        <div class="table_th table_tr">
-                    <div class="table_name_image table__bottom_center table_name_imagee">
+        <div class="table_th table_tr list-item">
+                    <div class="table_name_image table__bottom_center table_name_imagee tendanhmuc">
                         <img src="data:image/png;base64,' . $hinhanh . '" alt="">
                         <p>' . $tendanhmuc . '</p>
                     </div>
@@ -76,7 +76,7 @@ foreach ($HienDanhMuc as $HienDanhMucc) {
         <!-- search -->
         <div class="content_top-search">
             <form action="">
-                <input type="text" class="search-input" placeholder="Tìm kiếm..." />
+                <input type="text" id="searchInput" class="search-input" placeholder="Tìm kiếm...">
                 <input type="submit" value="Search" class="btn_search_header_content">
             </form>
         </div>
@@ -187,12 +187,13 @@ foreach ($HienDanhMuc as $HienDanhMucc) {
     <div class="updatedm_view">
         <div class="updatedm_h3">
             <p>Update Danh Mục</p>
-            
+
         </div>
         <form action="index.php?act=updatedanhmuc" method="post" enctype="multipart/form-data">
-            
+
             <div class="updatdm_content">
-                <input type="text" name="tendanhmuc" id="" placeholder="Tên danh mục" value="<?=$id_onedanhmuc[0]['tendanhmuc']?>">
+                <input type="text" name="tendanhmuc" id="" placeholder="Tên danh mục"
+                    value="<?= $id_onedanhmuc[0]['tendanhmuc'] ?>">
                 <div class="updatedm_img">
                     <label for="file">
                         <img height="80px" width="90px" src="../public/img/folder.png" alt="Add Image">
@@ -202,9 +203,9 @@ foreach ($HienDanhMuc as $HienDanhMucc) {
                 <input type="submit" value="Update danh mục" name="btnUpdateDanhMuc">
                 <input type="button" class="danhmnuc_close" value="Đóng" id="closeButton">
             </div>
-            
-            
-            <input type="hidden" name="iddanhmuc" value="<?=$id_onedanhmuc[0]['id_danhmuc']?>">
+
+
+            <input type="hidden" name="iddanhmuc" value="<?= $id_onedanhmuc[0]['id_danhmuc'] ?>">
         </form>
     </div>
 </div>
@@ -343,3 +344,25 @@ foreach ($HienDanhMuc as $HienDanhMucc) {
         font-weight: 600;
     }
 </style>
+
+
+<!-- -------------------SEARCH---------------------- -->
+
+<script>
+    $(document).ready(function () {
+        // Xử lý sự kiện khi người dùng nhập vào ô tìm kiếm
+        $("#searchInput").on("input", function () {
+            var searchText = $(this).val().toLowerCase();
+
+            // Hiển thị hoặc ẩn các phần tử phù hợp với từ khóa tìm kiếm
+            $(".list-item").each(function () {
+                var itemName = $(this).find(".tendanhmuc p").text().toLowerCase();
+                if (itemName.includes(searchText)) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+        });
+    });
+</script>

@@ -15,7 +15,7 @@
    <script src="../public/js/jquery-3.6.3.min.js"></script>
    <script src="../public/js/admin_main.js"></script>
 
-   <script src="../public/js/danhmuc.js" ></script>
+   <script src="../public/js/danhmuc.js"></script>
    <title>Document</title>
 </head>
 
@@ -94,11 +94,11 @@
                      <a href="index.php?act=danhmuc"><i class="bi bi-dot"></i>Quản lý danh mục</a>
                   </div>
                   <div class="item-con_list">
-                     <a href=""><i class="bi bi-dot"></i>Quản lý sản phẩm</a>
+                     <a href="index.php?act=sanpham"><i class="bi bi-dot"></i>Quản lý sản phẩm</a>
                   </div>
-                  <!-- <div class="item-con_list">
-                     <a href=""><i class="bi bi-dot"></i>Lịch làm</a>
-                  </div> -->
+                  <div class="item-con_list">
+                     <a href=""><i class="bi bi-dot"></i>Quản lý kho</a>
+                  </div>
                   <div class="item-con_list item-con_listout" id="close_nav2">
                      <a href="index.html"><i class="bi bi-box-arrow-in-left"></i>Trở về</a>
                   </div>

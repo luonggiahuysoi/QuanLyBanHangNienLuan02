@@ -65,4 +65,12 @@ class DanhMuc
 
 }
 
+class HangHoa {
+   private $hanghoa;
+   function __construct()
+   {
+      $this->hanghoa = new DatabaseModel;
+   }
+}
+
 ?>
