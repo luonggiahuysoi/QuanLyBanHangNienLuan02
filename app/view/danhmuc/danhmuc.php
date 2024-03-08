@@ -115,7 +115,7 @@ foreach ($HienDanhMuc as $HienDanhMucc) {
         </div>
 
         <div class="content__bottom-adddm">
-            <input type="button" value="+ Thêm danh mục" placeholder="Thêm danh mục">
+            <input type="button" value="+ Thêm danh mục" placeholder="Thêm danh mục" class="btn_show_add_danhmuc">
         </div>
 
         <!-- view danh muc -->
@@ -183,31 +183,63 @@ foreach ($HienDanhMuc as $HienDanhMucc) {
 
 <!--================================ Danh muc update ========================== -->
 
-<div class="updatedanhmuc">
+<div class="updatedanhmuc updatedanhmucjs">
     <div class="updatedm_view">
         <div class="updatedm_h3">
             <p>Update Danh Mục</p>
-
+            
         </div>
-        <div class="updatdm_content">
-            <input type="text" name="" id="" placeholder="Tên danh mục">
-            <div class="updatedm_img">
-                <label for="file">
-                    <img height="80px" width="90px" src="../public/img/folder.png" alt="Add Image">
-                </label>
-                <input style="display:none;" type="file" name="file" id="file" accept=".png, .jpg, .jpeg"
-                    capture="camera" class="hidden-input">
+        <form action="index.php?act=updatedanhmuc" method="post" enctype="multipart/form-data">
+            
+            <div class="updatdm_content">
+                <input type="text" name="tendanhmuc" id="" placeholder="Tên danh mục" value="<?=$id_onedanhmuc[0]['tendanhmuc']?>">
+                <div class="updatedm_img">
+                    <label for="file">
+                        <img height="80px" width="90px" src="../public/img/folder.png" alt="Add Image">
+                    </label>
+                    <input style="display:none;" type="file" name="fileimage" id="file">
+                </div>
+                <input type="submit" value="Update danh mục" name="btnUpdateDanhMuc">
+                <input type="button" class="danhmnuc_close" value="Đóng" id="closeButton">
             </div>
-            <input type="button" value="Thêm danh mục">
-            <input type="button" class="danhmnuc_close" value="Đóng" id="closeButton">
-        </div>
+            
+            
+            <input type="hidden" name="iddanhmuc" value="<?=$id_onedanhmuc[0]['id_danhmuc']?>">
+        </form>
     </div>
 </div>
+
+<!--================================ Thêm danh mục mới ========================== -->
+
+<div class="updatedanhmuc AddDanhMuc">
+    <div class="updatedm_view">
+        <div class="updatedm_h3">
+            <p>Thêm Danh Mục</p>
+
+        </div>
+        <form action="index.php?act=AddDanhMuc" method="post" enctype="multipart/form-data">
+
+            <div class="updatdm_content">
+                <input type="text" name="tendanhmuc" id="" placeholder="Tên danh mục">
+                <div class="updatedm_img">
+                    <label for="fileadd">
+                        <img height="80px" width="90px" src="../public/img/folder.png" alt="Add Image">
+                    </label>
+                    <input style="display:none;" type="file" name="fileimage" id="fileadd">
+                </div>
+                <input type="submit" value="Update danh mục" name="add_danhmuc">
+                <input type="button" class="danhmnuc_close_add" value="Đóng" id="closeButton">
+            </div>
+
+        </form>
+    </div>
+</div>
+
 
 <style>
     .updatedanhmuc {
         position: absolute;
-        display: flex;
+        display: none;
         justify-content: center;
         align-items: center;
         width: 100%;

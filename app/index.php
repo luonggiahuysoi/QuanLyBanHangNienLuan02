@@ -14,9 +14,12 @@ include "../app/view/view_admin/header.php";
 if (isset($_GET['act'])) {
     switch ($_GET['act']) {
 
-        //danh muc
+            //danh muc
 
         case "danhmuc":
+
+            echo '<script src="../public/js/danhmuc/danhmuc_add.js"></script>';
+
             $danhmuc = new DungChung;
             $HienDanhMuc = $danhmuc->ShowDungChung('danhmuc');
             require_once "../app/view/danhmuc/danhmuc.php";
@@ -34,7 +37,6 @@ if (isset($_GET['act'])) {
                 } else {
                     $danhmuc = new DanhMuc;
                     $danhmuc->UpdateDanhMucSetBlock($getId, 1);
-
                 }
 
                 $danhmuc = new DungChung;
@@ -53,40 +55,78 @@ if (isset($_GET['act'])) {
                 $danhmuc = new DungChung;
                 $HienDanhMuc = $danhmuc->ShowDungChung('danhmuc');
                 require_once "../app/view/danhmuc/danhmuc.php";
-
             }
             break;
 
-        // case 'updatedanhmuc':
-        //     if (isset($_GET['iddanhmuc'])) {
-        //         $getId = $_GET['iddanhmuc'];
-        //         $iddanhmuc = new DungChung;
-        //         $id_onedanhmuc = $iddanhmuc->getByIdAll('danhmuc', 'id_danhmuc', $getId);
+        case 'updatedanhmuc':
+            if (isset($_GET['iddanhmuc'])) {
+                $getId = $_GET['iddanhmuc'];
+                $iddanhmuc = new DungChung;
+                $id_onedanhmuc = $iddanhmuc->getByIdAll('danhmuc', 'id_danhmuc', $getId);
+
+                // kèm theo lệnh jquery gọi bản update
+                echo '<script src="../public/js/danhmuc/danhmuc_update.js"></script>';
+
+                $danhmuc = new DungChung;
+                $HienDanhMuc = $danhmuc->ShowDungChung('danhmuc');
+                require_once "../app/view/danhmuc/danhmuc.php";
+            }
+
+            if (isset($_POST['btnUpdateDanhMuc']) && $_POST['btnUpdateDanhMuc']) {
+                $iddanhmuc = $_POST['iddanhmuc'];
+                $tendanhmuc = $_POST['tendanhmuc'];
+
+                // điều kiện để lấy ảnh
+                if (isset($_FILES['fileimage']['tmp_name']) && is_uploaded_file($_FILES['fileimage']['tmp_name'])) {
+                    $hinhanh = $_FILES['fileimage']['tmp_name'];
+                    $hinhanh = base64_encode(file_get_contents($hinhanh));
+                } else {
+                    $hinhanh = 'null';
+                }
+
+                // bắt đầu update
+
+                $updatedm = new DanhMuc;
+                $updatedm->UpdateDanhMucGetbyId($tendanhmuc, $hinhanh, $iddanhmuc);
+
+                // Load lại trang danh mục
+                echo '<script src="../public/js/danhmuc/danhmuc_add.js"></script>';
+
+                $danhmuc = new DungChung;
+                $HienDanhMuc = $danhmuc->ShowDungChung('danhmuc');
+                require_once "../app/view/danhmuc/danhmuc.php";
+            }
+            break;
+
+        case 'AddDanhMuc':
+            if (isset($_POST['add_danhmuc']) && $_POST['add_danhmuc']) {
+                $tendanhmuc = $_POST['tendanhmuc'];
+        
+                // Kiểm tra xem file hình ảnh đã được chọn hay chưa
+                if (isset($_FILES['fileimage']) && $_FILES['fileimage']['error'] === UPLOAD_ERR_OK) {
+                    $hinhanh1 = $_FILES['fileimage']['tmp_name'];
+                    $hinhanh1 = base64_encode(file_get_contents($hinhanh1));
+                } else {
+                    // Xử lý khi không có hình ảnh được chọn
+                    $hinhanh1 = null;
+                }
+        
+                //Thực hiện thêm danh mục
+                $AddDanhMuc = new DanhMuc;
+                $AddDanhMuc->AddDanhMuc($tendanhmuc, $hinhanh1);
+        
+                // load lại trang
+                echo '<script src="../public/js/danhmuc/danhmuc_add.js"></script>';
+                $danhmuc = new DungChung;
+                $HienDanhMuc = $danhmuc->ShowDungChung('danhmuc');
+                require_once "../app/view/danhmuc/danhmuc.php";
+            }
 
 
-        //     }
-        //     break;
-
-
-
-
-
-
+            break;
     }
-
-
-
-
-
 } else {
 
     //    include "../app/view/view_admin/center.php";
 
 }
-
-
-
-
-
-
-?>

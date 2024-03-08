@@ -51,7 +51,16 @@ class DanhMuc
       $this->danhmuc->get_all($sql);
    }
 
+   function UpdateDanhMucGetbyId($tendanhmuc, $hinhanh, $iddanhmuc) {
+      $sql = "UPDATE danhmuc SET tendanhmuc='" . $tendanhmuc . "', hinhanh='" . $hinhanh . "' WHERE id_danhmuc=" . $iddanhmuc;
+      $this->danhmuc->get_all($sql);
+   }
+
    
+   function AddDanhMuc($tendanhmuc, $hinhanh1) {
+      $sql = "INSERT INTO danhmuc (tendanhmuc, hinhanh) VALUES ('".$tendanhmuc."', '".$hinhanh1."')";
+      $this->danhmuc->get_all($sql);
+   }
 
 
 }
