@@ -336,6 +336,7 @@ foreach ($HienHangHoa as $HienHangHoasl) {
         justify-content: center;
         align-items: center;
         gap: 20px;
+        margin-top: 20%;
     }
 
 
