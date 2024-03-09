@@ -14,7 +14,7 @@ include "../app/view/view_admin/header.php";
 if (isset($_GET['act'])) {
     switch ($_GET['act']) {
 
-        //danh muc
+            //danh muc
 
         case 'danhmuc':
 
@@ -123,7 +123,7 @@ if (isset($_GET['act'])) {
             }
             break;
 
-        // ============================San pham =============================
+            // ============================San pham =============================
 
         case 'sanpham':
 
@@ -138,7 +138,7 @@ if (isset($_GET['act'])) {
             break;
 
         case 'AddHangHoa':
-            if(isset($_POST['add_hanghoa']) && $_POST['add_hanghoa']) {
+            if (isset($_POST['add_hanghoa']) && $_POST['add_hanghoa']) {
                 $iddanhmuc = $_POST['danhmuc'];
                 $tenhanghoa = $_POST['tenhanghoa'];
                 $gia = $_POST['gia'];
@@ -155,8 +155,8 @@ if (isset($_GET['act'])) {
                 $danhmuc = new DungChung;
                 $HienDanhMuc = $danhmuc->ShowDungChung('danhmuc');
                 $tendanhmuc = '';
-                foreach($HienDanhMuc as $HienDanhMucc) {
-                    if($HienDanhMucc['id_danhmuc'] == $iddanhmuc) {
+                foreach ($HienDanhMuc as $HienDanhMucc) {
+                    if ($HienDanhMucc['id_danhmuc'] == $iddanhmuc) {
                         $tendanhmuc = $HienDanhMucc['tendanhmuc'];
                         break;
                     }
@@ -169,8 +169,8 @@ if (isset($_GET['act'])) {
 
 
                 $themhanghoa = new HangHoa;
-                $themhanghoa->AddHangHoa($tenhanghoa,$masanpham, $gia, $giasale, $hinhanh, $mota, $tendanhmuc, $iddanhmuc);
-                
+                $themhanghoa->AddHangHoa($tenhanghoa, $masanpham, $gia, $giasale, $hinhanh, $mota, $tendanhmuc, $iddanhmuc);
+
 
                 // ================ load lại trang =================
                 echo '<script src="../public/js/danhmuc/danhmuc_add.js"></script>';
@@ -179,14 +179,32 @@ if (isset($_GET['act'])) {
                 $listdanhmuc = $danhmuc->ShowDungChung('danhmuc');
                 $hanghoa = new DungChung;
                 $HienHangHoa = $hanghoa->ShowDungChung('hanghoa');
-    
-                require_once "../app/view/sanpham/sanpham.php";
 
+                require_once "../app/view/sanpham/sanpham.php";
             }
             break;
 
 
+        case 'updatehanghoaimg':
+            if (isset($_GET['idhanghoa'])) {
+                $getId = $_GET['idhanghoa'];
 
+                $HienMa = new DungChung;
+                $HienMaHangHoa = $HienMa->getByIdAll('hanghoa', 'id_hanghoa', $getId);
+                echo '<script src="../public/js/danhmuc/danhmuc_add.js"></script>';
+                echo '<script src="../public/js/sanpham/sanpham.js"></script>';
+                $danhmuc = new DungChung;
+                $listdanhmuc = $danhmuc->ShowDungChung('danhmuc');
+                $hanghoa = new DungChung;
+                $HienHangHoa = $hanghoa->ShowDungChung('hanghoa');
+
+                require_once "../app/view/sanpham/sanpham.php";
+
+                
+
+            }
+
+            break;
     }
 } else {
 
