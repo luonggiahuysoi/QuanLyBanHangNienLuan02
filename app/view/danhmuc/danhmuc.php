@@ -41,7 +41,7 @@ foreach ($HienDanhMuc as $HienDanhMucc) {
                                 </a>
                             </p>
                             <p>
-                                <a href="index.php?act=deletedanhmuc&iddanhmuc=' . $id_danhmuc . '">
+                                <a style="color:red" href="index.php?act=deletedanhmuc&iddanhmuc=' . $id_danhmuc . '">
                                     <i class="bi bi-trash-fill"></i>
                                 </a>
                             </p>

@@ -1,19 +1,19 @@
 <!-- php database -->
 <!-- <?php
-      $showhh = '';
-      $showhienthi = '';
-      foreach ($HienHangHoa as $HienHangHoaa) {
-         extract($HienHangHoaa);
-         if ($hienthi == 1) {
+$showhh = '';
+$showhienthi = '';
+foreach ($HienHangHoa as $HienHangHoaa) {
+   extract($HienHangHoaa);
+   if ($hienthi == 1) {
 
-            $showhienthi = '<i class="bi bi-eye-fill"></i>';
-         } else {
-            $showhienthi = '<i class="bi bi-eye-slash-fill"></i>';
-         }
+      $showhienthi = '<i class="bi bi-eye-fill"></i>';
+   } else {
+      $showhienthi = '<i class="bi bi-eye-slash-fill"></i>';
+   }
 
 
 
-         $showhh .= '
+   $showhh .= '
         <div class="table_th table_tr list-item producttt" data-price="' . $gia . '">
                     <div class="table_name_image table__bottom_center table_name_imagee tendanhmuc">
                         <img src="data:image/png;base64,' . $anhhanghoa . '" alt="">
@@ -39,13 +39,20 @@
                             <p><i class="bi bi-gear-fill"></i></p>
                         </div>
                         <div class="table_show_setting_clone">
+                           <p>
+                              <a style="color:black" href="index.php?act=updatehanghoa&idhanghoa=' . $id_hanghoa . '">
+                                     <i class="bi bi-images"></i>
+                              </a>
+                          </p>
+
+
                             <p>
                                 <a href="index.php?act=updatehanghoa&idhanghoa=' . $id_hanghoa . '">
                                     <i class="bi bi-arrow-counterclockwise"></i>
                                 </a>
                             </p>
                             <p>
-                                <a href="index.php?act=deletehanghoa&idhanghoa=' . $id_hanghoa . '">
+                                <a  style="color:red"  href="index.php?act=deletehanghoa&idhanghoa=' . $id_hanghoa . '">
                                     <i class="bi bi-trash-fill"></i>
                                 </a>
                             </p>
@@ -54,9 +61,9 @@
                     </div>
         </div>
         ';
-      }
+}
 
-      ?> -->
+?> -->
 
 
 <!-- <======================= Hiện số lượng ========================> -->
@@ -74,13 +81,13 @@ foreach ($HienHangHoa as $HienHangHoasl) {
 <!-- =========== DANH MUC LIST============= -->
 
 <?php
-   $listdanhmucshow = '';
-   foreach ($listdanhmuc as $listdanhmucc) {
-      extract($listdanhmucc);
-      $listdanhmucshow .= '
+$listdanhmucshow = '';
+foreach ($listdanhmuc as $listdanhmucc) {
+   extract($listdanhmucc);
+   $listdanhmucshow .= '
       <option value="' . $id_danhmuc . '">' . $tendanhmuc . '</option>
    ';
-   }
+}
 ?>
 
 
@@ -268,7 +275,7 @@ foreach ($HienHangHoa as $HienHangHoasl) {
                      <?= $listdanhmucshow ?>
                   </select>
                   <script>
-                     $(document).ready(function() {
+                     $(document).ready(function () {
                         // Sử dụng Select2 cho dropdown
                         $('#dropdown').select2();
                      });
@@ -289,7 +296,8 @@ foreach ($HienHangHoa as $HienHangHoasl) {
             <div class="updatedm_img">
                <label class="custum-file-upload" for="imageInput">
                   <div class="icon">
-                     <img src="../public/img/folder.png" fill="" viewBox="0 0 24 24" width="160px" height="115px" id="previewImage" style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
+                     <img src="../public/img/folder.png" fill="" viewBox="0 0 24 24" width="160px" height="115px"
+                        id="previewImage" style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
 
                      </img>
                   </div>
@@ -566,13 +574,13 @@ foreach ($HienHangHoa as $HienHangHoasl) {
 <!-- -------------------SEARCH---------------------- -->
 
 <script>
-   $(document).ready(function() {
+   $(document).ready(function () {
       // Xử lý sự kiện khi người dùng nhập vào ô tìm kiếm
-      $("#searchInput").on("input", function() {
+      $("#searchInput").on("input", function () {
          var searchText = $(this).val().toLowerCase();
 
          // Hiển thị hoặc ẩn các phần tử phù hợp với từ khóa tìm kiếm
-         $(".list-item").each(function() {
+         $(".list-item").each(function () {
             var itemName = $(this).find(".tendanhmuc p").text().toLowerCase();
             if (itemName.includes(searchText)) {
                $(this).show();
@@ -591,18 +599,18 @@ foreach ($HienHangHoa as $HienHangHoasl) {
 
 <!-- Đảm bảo đặt mã JavaScript trong thẻ script -->
 <script>
-   $(document).ready(function() {
-      $(".table_setting").on("click", ".table_show_setting", function() {
+   $(document).ready(function () {
+      $(".table_setting").on("click", ".table_show_setting", function () {
          // Xử lý sự kiện khi nhấn vào biểu tượng bánh răng
          console.log("Đã click vào biểu tượng bánh răng");
       });
 
-      $("#sortButtontang").on("click", function() {
+      $("#sortButtontang").on("click", function () {
          // Lấy danh sách sản phẩm và sắp xếp theo giá
          const $listItems = $(".list-item")
             .detach(); // Sử dụng detach để giữ sự kiện và dữ liệu đính kèm
 
-         $listItems.sort(function(a, b) {
+         $listItems.sort(function (a, b) {
             const priceA = parseFloat($(a).data("price"));
             const priceB = parseFloat($(b).data("price"));
             return priceA - priceB;
@@ -622,18 +630,18 @@ foreach ($HienHangHoa as $HienHangHoasl) {
 
 <!-- Đảm bảo đặt mã JavaScript trong thẻ script -->
 <script>
-   $(document).ready(function() {
-      $(".table_setting").on("click", ".table_show_setting", function() {
+   $(document).ready(function () {
+      $(".table_setting").on("click", ".table_show_setting", function () {
          // Xử lý sự kiện khi nhấn vào biểu tượng bánh răng
          console.log("Đã click vào biểu tượng bánh răng");
       });
 
-      $("#sortButtongiam").on("click", function() {
+      $("#sortButtongiam").on("click", function () {
          // Lấy danh sách sản phẩm và sắp xếp theo giá
          const $listItems = $(".list-item")
             .detach(); // Sử dụng detach để giữ sự kiện và dữ liệu đính kèm
 
-         $listItems.sort(function(a, b) {
+         $listItems.sort(function (a, b) {
             const priceA = parseFloat($(a).data("price"));
             const priceB = parseFloat($(b).data("price"));
             return priceB - priceA;
@@ -651,14 +659,14 @@ foreach ($HienHangHoa as $HienHangHoasl) {
 <!-- ================jsquery hiện ảnh ============ -->
 
 <script>
-   $(document).ready(function() {
-      $("#imageInput").change(function() {
+   $(document).ready(function () {
+      $("#imageInput").change(function () {
          var input = this;
 
          if (input.files && input.files[0]) {
             var reader = new FileReader();
 
-            reader.onload = function(e) {
+            reader.onload = function (e) {
                $("#previewImage").attr("src", e.target.result);
                $("#previewImage").css("display", "flex");
             };
