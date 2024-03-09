@@ -128,11 +128,61 @@ if (isset($_GET['act'])) {
         case 'sanpham':
 
             echo '<script src="../public/js/danhmuc/danhmuc_add.js"></script>';
-
+            echo '<script src="../public/js/sanpham/sanpham.js"></script>';
+            $danhmuc = new DungChung;
+            $listdanhmuc = $danhmuc->ShowDungChung('danhmuc');
             $hanghoa = new DungChung;
             $HienHangHoa = $hanghoa->ShowDungChung('hanghoa');
 
             require_once "../app/view/sanpham/sanpham.php";
+            break;
+
+        case 'AddHangHoa':
+            if(isset($_POST['add_hanghoa']) && $_POST['add_hanghoa']) {
+                $iddanhmuc = $_POST['danhmuc'];
+                $tenhanghoa = $_POST['tenhanghoa'];
+                $gia = $_POST['gia'];
+                $giasale = $_POST['giasale'];
+                $mota = $_POST['mota'];
+                if (isset($_FILES['fileimage']['tmp_name']) && is_uploaded_file($_FILES['fileimage']['tmp_name'])) {
+                    $hinhanh = $_FILES['fileimage']['tmp_name'];
+                    $hinhanh = base64_encode(file_get_contents($hinhanh));
+                } else {
+                    $hinhanh = 'null';
+                }
+
+                // =========== Lấy id kèm tên danh muc ======
+                $danhmuc = new DungChung;
+                $HienDanhMuc = $danhmuc->ShowDungChung('danhmuc');
+                $tendanhmuc = '';
+                foreach($HienDanhMuc as $HienDanhMucc) {
+                    if($HienDanhMucc['id_danhmuc'] == $iddanhmuc) {
+                        $tendanhmuc = $HienDanhMucc['tendanhmuc'];
+                        break;
+                    }
+                }
+
+                // ========= TẠO MÃ SẢN PHẨM =============
+
+                $masp = new HangHoa;
+                $masanpham = $masp->generateProductCode('msp');
+
+
+                $themhanghoa = new HangHoa;
+                $themhanghoa->AddHangHoa($tenhanghoa,$masanpham, $gia, $giasale, $hinhanh, $mota, $tendanhmuc, $iddanhmuc);
+                
+
+                // ================ load lại trang =================
+                echo '<script src="../public/js/danhmuc/danhmuc_add.js"></script>';
+                echo '<script src="../public/js/sanpham/sanpham.js"></script>';
+                $danhmuc = new DungChung;
+                $listdanhmuc = $danhmuc->ShowDungChung('danhmuc');
+                $hanghoa = new DungChung;
+                $HienHangHoa = $hanghoa->ShowDungChung('hanghoa');
+    
+                require_once "../app/view/sanpham/sanpham.php";
+
+            }
             break;
 
 

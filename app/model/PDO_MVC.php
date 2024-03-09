@@ -67,10 +67,38 @@ class DanhMuc
 
 class HangHoa {
    private $hanghoa;
+
    function __construct()
    {
       $this->hanghoa = new DatabaseModel;
    }
+
+
+   function generateProductCode($prefix) {
+       // Tạo một chuỗi duy nhất dựa trên timestamp và các yếu tố ngẫu nhiên
+       $uniqueId = uniqid();
+        
+       // Thêm phần ngẫu nhiên để đảm bảo tính duy nhất
+       $randomPart = bin2hex(random_bytes(4));
+   
+       // Kết hợp với tiền tố (nếu có) và phần ngẫu nhiên
+      //  $productCode = $prefix . '_' . $uniqueId . '_' . $randomPart;
+       $productCode = $prefix . '_' . $uniqueId;
+   
+       return $productCode;
+   }
+
+   function AddHangHoa($tenhanghoa,$masanpham, $gia, $giasale, $hinhanh, $mota, $tendanhmuc, $iddanhmuc) {
+      $sql = "INSERT INTO hanghoa (tenhanghoa,id_mahanghoa, gia, giasale, anhhanghoa, mota, tendanhmuc, id_danhmuc) VALUES ('".$tenhanghoa."', '".$masanpham."' , '".$gia."', '".$giasale."', '".$hinhanh."', '".$mota."', '".$tendanhmuc."', '".$iddanhmuc."')";
+      $this->hanghoa->get_all($sql);
+      $sql = "INSERT INTO hanghoa_img (id_mahanghoa) VALUES ('".$masanpham."')";
+      $this->hanghoa->get_all($sql);
+
+  }
+
+
+
+
 }
 
 ?>
