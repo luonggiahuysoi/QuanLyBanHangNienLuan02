@@ -104,9 +104,9 @@ $(document).ready(function () {
 //     });
 // });
 
-$(document).ready(function(){
+$(document).ready(function () {
     // Sử dụng hàm click để xử lý sự kiện khi click vào thẻ có class "show_Setting"
-    $('.table_show_setting').click(function(){
+    $('.table_show_setting').click(function () {
         // Tìm phần tử cha gần nhất có class "setting"
         var settingContainer = $(this).closest('.setting');
 
@@ -115,4 +115,6 @@ $(document).ready(function(){
         $(this).toggle();
     });
 });
+
+
 

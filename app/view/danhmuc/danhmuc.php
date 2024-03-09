@@ -56,13 +56,6 @@ foreach ($HienDanhMuc as $HienDanhMucc) {
 
 
 
-
-
-
-
-
-
-
 <!-- center -->
 <div class="content">
 
