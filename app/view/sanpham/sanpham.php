@@ -318,7 +318,6 @@ foreach ($listdanhmuc as $listdanhmucc) {
    </div>
 </div>
 
-
 <style>
    .updatedanhmuc {
       position: absolute;
@@ -569,6 +568,126 @@ foreach ($listdanhmuc as $listdanhmucc) {
       display: none;
    }
 </style>
+
+
+<!--==================================== Them anh ============================== -->
+
+
+
+<!-- <div class="">
+      <div class="updatedm_view">
+         <div class="updatedm_h3">
+            <p>Thêm Ảnh Sản Phẩm</p>
+         </div>
+         <form action="index.php?act=AddHangHoa" method="post" enctype="multipart/form-data">
+            <div class="updatdm_content">
+               <div class="updatesp_tensp updatesp_main-img">
+                  <input type="text" name="tenhanghoa" id="" placeholder="Tên sản phẩm">
+                  <input type="text" name="tenhanghoa" id="" placeholder="Mã sản phẩm">
+               </div>
+               <div class="updatesp_image-list">
+                  <div class="updatesp-img">
+                     <label class="custum-file-upload" for="imageInput">
+                        <div class="icon">
+                           <img src="../public/img/folder.png" fill="" viewBox="0 0 24 24" width="160px" height="195px"
+                              id="previewImage" style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
+
+                           </img>
+                        </div>
+                        <input type="file" id="imageInput" name="fileimage">
+                     </label>
+
+                  </div>
+
+                  <div class="updatesp-img">
+                     <label class="custum-file-upload" for="imageInput">
+                        <div class="icon">
+                           <img src="../public/img/folder.png" fill="" viewBox="0 0 24 24" width="160px" height="195px"
+                              id="previewImage" style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
+
+                           </img>
+                        </div>
+                        <input type="file" id="imageInput" name="fileimage">
+                     </label>
+
+                  </div>
+
+                  <div class="updatesp-img">
+                     <label class="custum-file-upload" for="imageInput">
+                        <div class="icon">
+                           <img src="../public/img/folder.png" fill="" viewBox="0 0 24 24" width="160px" height="195px"
+                              id="previewImage" style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
+
+                           </img>
+                        </div>
+                        <input type="file" id="imageInput" name="fileimage">
+                     </label>
+
+                  </div>
+
+                  <div class="updatesp-img">
+                     <label class="custum-file-upload" for="imageInput">
+                        <div class="icon">
+                           <img src="../public/img/folder.png" fill="" viewBox="0 0 24 24" width="160px" height="195px"
+                              id="previewImage" style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
+
+                           </img>
+                        </div>
+                        <input type="file" id="imageInput" name="fileimage">
+                     </label>
+
+                  </div>
+               </div>
+               <div class="updatesp_btn">
+                  <input class="btnsp_them" type="submit" value="Update ảnh " name="add_hanghoa">
+                  <input class="btnsp_huy" type="reset" value="Hủy">
+               </div>
+               <input class="btnsp_close danhmnuc_close_add" type="button" value="Quay lại" id="closeButton">
+            </div>
+
+         </form>
+      </div>
+   </div> -->
+
+
+
+<style>
+   .updatesp_main-img {
+      margin-top: -17%;
+   }
+
+   .updatesp_image-list {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 12%;
+   }
+
+   .updatesp-img {
+      width: 200px;
+      height: 200px;
+      border: 1px solid #222;
+   }
+
+   .updatesp-img label {
+      width: 100%;
+      height: 110%;
+   }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <!-- -------------------SEARCH---------------------- -->
