@@ -11,7 +11,7 @@ foreach ($HienAnhSanPham as $HienHangHoaa) {
    $showhh .= '
         <div class="table_th table_tr list-item producttt" data-price=1>
                     <div class="table_name_image table__bottom_center table_name_imagee tendanhmuc" id="addsp_img">
-                        <img width="400px" height="200px" src="../public/img/folder.png" alt="">
+                        <img width="400px" height="200px" src="data:image/png;base64,' . $hinh . '" alt="">
                         <p>' . $id_mahanghoa . '</p>
                     </div>
                    
@@ -20,20 +20,8 @@ foreach ($HienAnhSanPham as $HienHangHoaa) {
                             <p><i class="bi bi-gear-fill"></i></p>
                         </div>
                         <div class="table_show_setting_clone">
-                           <p>
-                              <a style="color:black" href="index.php?act=updatehanghoaimg&idhanghoa=' . $id_hanghoa . '">
-                                     <i class="bi bi-images"></i>
-                              </a>
-                          </p>
-
-
                             <p>
-                                <a href="index.php?act=updatehanghoa&idhanghoa=' . $id_hanghoa . '">
-                                    <i class="bi bi-arrow-counterclockwise"></i>
-                                </a>
-                            </p>
-                            <p>
-                                <a  style="color:red"  href="index.php?act=deletehanghoa&idhanghoa=' . $id_hanghoa . '">
+                                <a  style="color:red"  href="index.php?act=deletehanghoaimg&idhanghoaimg=' . $id_imghanghoa . '">
                                     <i class="bi bi-trash-fill"></i>
                                 </a>
                             </p>
@@ -212,11 +200,11 @@ foreach ($lishanghoa as $listdanhmucc) {
       <div class="updatedm_h3">
          <p>Thêm Ảnh Sản Phẩm</p>
       </div>
-      <form action="index.php?act=AddHangHoa" method="post" enctype="multipart/form-data">
+      <form action="index.php?act=AddImgHangHoa" method="post" enctype="multipart/form-data">
          <div class="updatdm_content">
             <div class="updatesp_tensp">
                <div class="updateimg_dropdown">
-                  <select name="danhmuc" id="dropdown">
+                  <select name="hanghoaid" id="dropdown">
                      <?= $listhanghoa ?>
                   </select>
                   <script>
@@ -244,7 +232,7 @@ foreach ($lishanghoa as $listdanhmucc) {
 
 
             <div class="updatesp_btn">
-               <input class="btnsp_them" type="submit" value="Update sản phẩm " name="add_hanghoa">
+               <input class="btnsp_them" type="submit" value="Update sản phẩm " name="add_hanghoa_img">
                <input class="btnsp_huy" type="reset" value="Hủy">
             </div>
             <input class="btnsp_close danhmnuc_close_add" type="button" value="Đóng" id="closeButton">

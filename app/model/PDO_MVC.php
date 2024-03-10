@@ -96,10 +96,17 @@ class HangHoa
       $sql = "INSERT INTO hanghoa_img (id_mahanghoa) VALUES ('" . $masanpham . "')";
       $this->hanghoa->get_all($sql);
    }
-
-   function uploadImgHangHoa($hinhanh1, $hinhanh2, $hinhanh3, $hinhanh4, $idimghanghoa)
+   
+   function AddImgHangHoa($masanpham, $hinhanh, $idhanghoa)
    {
-      $sql = "UPDATE hanghoa_img SET hinh1='" . $hinhanh1 . "', hinh2='" . $hinhanh2 . "', hinh3='" . $hinhanh3 . "', hinh4='" . $hinhanh4 . "' WHERE id_imghanghoa=" . $idimghanghoa;
+      $sql = "INSERT INTO hanghoa_img (id_mahanghoa, hinh, id_hanghoa) VALUES ('" . $masanpham . "', '" . $hinhanh . "', '" . $idhanghoa . "')";
       $this->hanghoa->get_all($sql);
    }
+
+   function UpdateHangHoa($tenhanghoa, $gia, $giasale, $hinhanh, $mota, $tendanhmuc, $iddanhmuc, $getId) {
+      $sql = "UPDATE hanghoa SET tenhanghoa='" . $tenhanghoa . "', gia='" . $gia . "', giasale='" . $giasale . "', anhhanghoa='" . $hinhanh . "', mota='" . $mota . "', tendanhmuc='" . $tendanhmuc . "', id_danhmuc='" . $iddanhmuc . "' WHERE id_hanghoa=" . $getId;
+      $this->hanghoa->get_all($sql);
+   }
+
+
 }

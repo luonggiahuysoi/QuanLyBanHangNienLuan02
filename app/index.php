@@ -14,7 +14,7 @@ include "../app/view/view_admin/header.php";
 if (isset($_GET['act'])) {
     switch ($_GET['act']) {
 
-        //danh muc
+            //danh muc
 
         case 'danhmuc':
 
@@ -123,7 +123,7 @@ if (isset($_GET['act'])) {
             }
             break;
 
-        // ============================San pham =============================
+            // ============================San pham =============================
 
         case 'sanpham':
 
@@ -184,87 +184,82 @@ if (isset($_GET['act'])) {
             }
             break;
 
+        case 'deletehanghoa':
+            if (isset($_GET['idhanghoa']) && $_GET['idhanghoa']) {
+                $idhanghoa = $_GET['idhanghoa'];
 
-        case 'updatehanghoaimg':
-            if (isset($_GET['idhanghoa'])) {
-                $getId = $_GET['idhanghoa'];
-
-
-                $HienMa = new DungChung;
-                $HienMaHangHoa = $HienMa->getByIdAll('hanghoa', 'id_hanghoa', $getId);
+                $DeleteHangHoa = new DungChung;
+                $DeleteHangHoa->DeleteAll('hanghoa', 'id_hanghoa', $idhanghoa);
 
 
 
-
-
-
-                $hienimg = new DungChung;
-                $HienImg = $hienimg->getByIdAll('hanghoa_img', 'id_imghanghoa', $idimghanghoa);
-
-
+                // ================ load lại trang =================
                 echo '<script src="../public/js/danhmuc/danhmuc_add.js"></script>';
                 echo '<script src="../public/js/sanpham/sanpham.js"></script>';
-                echo '<script src="../public/js/sanpham/sanpham_updateimg.js"></script>';
                 $danhmuc = new DungChung;
                 $listdanhmuc = $danhmuc->ShowDungChung('danhmuc');
                 $hanghoa = new DungChung;
                 $HienHangHoa = $hanghoa->ShowDungChung('hanghoa');
 
                 require_once "../app/view/sanpham/sanpham.php";
-
             }
 
-            if (isset($_POST['updateImg']) && $_POST['updateImg']) {
-                $getId = $_POST['mahanghoa'];
 
-                if (isset($_FILES['fileimage1']['tmp_name']) && is_uploaded_file($_FILES['fileimage1']['tmp_name'])) {
-                    $hinhanh1 = $_FILES['fileimage1']['tmp_name'];
-                    $hinhanh1 = base64_encode(file_get_contents($hinhanh1));
+            break;
+
+        case 'updatehanghoa':
+            if (isset($_GET['idhanghoa']) && $_GET['idhanghoa']) {
+                $getId = $_GET['idhanghoa'];
+                $getIdHangHoa = new DungChung;
+                $showUpdateHangHoa = $getIdHangHoa->getByIdAll('hanghoa', 'id_hanghoa', $getId);
+
+
+
+                echo '<script src="../public/js/danhmuc/danhmuc_add.js"></script>';
+                echo '<script src="../public/js/sanpham/sanpham.js"></script>';
+                echo '<script src="../public/js/sanpham/sanpham_up.js"></script>';
+                $danhmuc = new DungChung;
+                $listdanhmuc = $danhmuc->ShowDungChung('danhmuc');
+                $hanghoa = new DungChung;
+                $HienHangHoa = $hanghoa->ShowDungChung('hanghoa');
+
+                require_once "../app/view/sanpham/sanpham.php";
+            }
+
+            if (isset($_POST['add_hanghoa_update']) && $_POST['add_hanghoa_update']) {
+                $getId = $_POST['idhanghoaa'];
+                $getIdHangHoa = new DungChung;
+                $showUpdateHangHoa = $getIdHangHoa->getByIdAll('hanghoa', 'id_hanghoa', $getId);
+
+                if (isset($_FILES['fileimage']['tmp_name']) && is_uploaded_file($_FILES['fileimage']['tmp_name'])) {
+                    $hinhanh = $_FILES['fileimage']['tmp_name'];
+                    $hinhanh = base64_encode(file_get_contents($hinhanh));
                 } else {
-                    $hinhanh1 = 'null';
-                }
-                if (isset($_FILES['fileimage2']['tmp_name']) && is_uploaded_file($_FILES['fileimage2']['tmp_name'])) {
-                    $hinhanh2 = $_FILES['fileimage2']['tmp_name'];
-                    $hinhanh2 = base64_encode(file_get_contents($hinhanh2));
-                } else {
-                    $hinhanh2 = 'null';
-                }
-                if (isset($_FILES['fileimage3']['tmp_name']) && is_uploaded_file($_FILES['fileimage3']['tmp_name'])) {
-                    $hinhanh3 = $_FILES['fileimage3']['tmp_name'];
-                    $hinhanh3 = base64_encode(file_get_contents($hinhanh3));
-                } else {
-                    $hinhanh3 = 'null';
-                }
-                if (isset($_FILES['fileimage4']['tmp_name']) && is_uploaded_file($_FILES['fileimage4']['tmp_name'])) {
-                    $hinhanh4 = $_FILES['fileimage4']['tmp_name'];
-                    $hinhanh4 = base64_encode(file_get_contents($hinhanh4));
-                } else {
-                    $hinhanh4 = 'null';
+                    $hinhanh = $showUpdateHangHoa[0]['anhhanghoa'];
                 }
 
+                $tenhanghoa = $_POST['tenhanghoa'];
+                $mota = $_POST['mota'];
+                $gia = $_POST['gia'];
+                $giasale = $_POST['giasale'];
 
-                $fimghanghoa = new DungChung;
-                $forimghanghoa = $fimghanghoa->ShowDungChung('hanghoa_img');
-
-
-
-                $idimghanghoa = '';
-                foreach ($forimghanghoa as $forimghanghoaa) {
-                    if ($forimghanghoaa['id_mahanghoa'] == $getId) {
-                        $idimghanghoa = $forimghanghoaa['id_imghanghoa'];
+                $iddanhmuc = $_POST['danhmuc'];
+                $danhmuc = new DungChung;
+                $HienDanhMuc = $danhmuc->ShowDungChung('danhmuc');
+                $tendanhmuc = '';
+                foreach ($HienDanhMuc as $HienDanhMucc) {
+                    if ($HienDanhMucc['id_danhmuc'] == $iddanhmuc) {
+                        $tendanhmuc = $HienDanhMucc['tendanhmuc'];
                         break;
                     }
                 }
 
-                // bắt đầu up anh
 
 
-                $updateImgHangHoa = new HangHoa;
-                $updateImgHangHoa->uploadImgHangHoa($hinhanh1, $hinhanh2, $hinhanh3, $hinhanh4, $idimghanghoa);
+                $updateHangHoa = new HangHoa;
+                $updateHangHoa->UpdateHangHoa($tenhanghoa, $gia, $giasale, $hinhanh, $mota, $tendanhmuc, $iddanhmuc, $getId);
 
-
-
-                // load lại trang
+                // var_dump($tenhanghoa, $gia, $giasale, $hinhanh, $mota, $getId);
                 echo '<script src="../public/js/danhmuc/danhmuc_add.js"></script>';
                 echo '<script src="../public/js/sanpham/sanpham.js"></script>';
                 $danhmuc = new DungChung;
@@ -274,13 +269,10 @@ if (isset($_GET['act'])) {
 
                 require_once "../app/view/sanpham/sanpham.php";
                 break;
-
-
-
-                // var_dump($idImg, $hinhanh1, $hinhanh2, $hinhanh3, $hinhanh4);
             }
 
             break;
+
 
         case 'sanphamimg':
             $Hien = new DungChung;
@@ -291,7 +283,72 @@ if (isset($_GET['act'])) {
 
             echo '<script src="../public/js/danhmuc/danhmuc_add.js"></script>';
             echo '<script src="../public/js/sanpham/sanpham.js"></script>';
+            echo '<script src="../public/js/sanpham/sanpham_up.js"></script>';
             require_once "../app/view/sanpham/sanpham_img.php";
+            break;
+
+        case 'AddImgHangHoa':
+            if (isset($_POST['add_hanghoa_img']) && $_POST['add_hanghoa_img']) {
+                $idhanghoa = $_POST['hanghoaid'];
+
+                if (isset($_FILES['fileimage']['tmp_name']) && is_uploaded_file($_FILES['fileimage']['tmp_name'])) {
+                    $hinhanh = $_FILES['fileimage']['tmp_name'];
+                    $hinhanh = base64_encode(file_get_contents($hinhanh));
+                } else {
+                    $hinhanh = 'null';
+                }
+
+                $masp = new DungChung;
+                $idMaSanPham = $masp->ShowDungChung('hanghoa');
+
+
+                $masanpham = '';
+                foreach ($idMaSanPham as $idMaSanPhamm) {
+                    if ($idMaSanPhamm['id_hanghoa'] == $idhanghoa) {
+                        $masanpham = $idMaSanPhamm['id_mahanghoa'];
+                    }
+                }
+
+                // thực hiện thêm ảnh
+                // var_dump($masanpham, $hinhanh, $idhanghoa);
+
+                $ThemAnhMoi = new HangHoa;
+                $ThemAnhMoi->AddImgHangHoa($masanpham, $hinhanh, $idhanghoa);
+
+
+                // load trang
+
+                $Hien = new DungChung;
+                $HienAnhSanPham = $Hien->ShowDungChung('hanghoa_img');
+
+                $HienHangHoa = new DungChung;
+                $lishanghoa = $HienHangHoa->ShowDungChung('hanghoa');
+
+                echo '<script src="../public/js/danhmuc/danhmuc_add.js"></script>';
+                echo '<script src="../public/js/sanpham/sanpham.js"></script>';
+                require_once "../app/view/sanpham/sanpham_img.php";
+            }
+            break;
+
+        case 'deletehanghoaimg':
+            if (isset($_GET['idhanghoaimg']) && $_GET['idhanghoaimg']) {
+                $idhanghoaimg = $_GET['idhanghoaimg'];
+
+                $deleteImgHangHoa = new DungChung;
+                $deleteImgHangHoa->DeleteAll('hanghoa_img', 'id_imghanghoa', $idhanghoaimg);
+
+                // load trang
+
+                $Hien = new DungChung;
+                $HienAnhSanPham = $Hien->ShowDungChung('hanghoa_img');
+
+                $HienHangHoa = new DungChung;
+                $lishanghoa = $HienHangHoa->ShowDungChung('hanghoa');
+
+                echo '<script src="../public/js/danhmuc/danhmuc_add.js"></script>';
+                echo '<script src="../public/js/sanpham/sanpham.js"></script>';
+                require_once "../app/view/sanpham/sanpham_img.php";
+            }
             break;
     }
 } else {
