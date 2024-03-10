@@ -143,13 +143,13 @@ foreach ($listdanhmuc as $listdanhmucc) {
       <div class="content_bottom_link">
          <a href="" style="color: #999;">Trang chủ</a>
          <p>/</p>
-         <a href="" style="color: #464646;">Trang sản phẩm</a>
+         <a href="" style="color: #464646;">Trang ảnh sản phẩm</a>
       </div>
 
       <div class="content__bottom-adddm">
-         <input type="button" value="+ Thêm sản phẩm" class="btn_show_add_danhmuc">
-         <button id="sortButtontang"><i class="bi bi-graph-up-arrow"></i> Giá tăng dần</button>
-         <button id="sortButtongiam"><i class="bi bi-graph-down-arrow"></i> Giá giảm dần</button>
+         <input type="button" value="+ Thêm ảnh sản phẩm" class="btn_show_add_danhmuc">
+         <button id="sortButtontang"><i class="bi bi-graph-up-arrow"></i> Ảnh mới nhất</button>
+         <button id="sortButtongiam"><i class="bi bi-graph-down-arrow"></i> Ảnh cũ nhất</button>
       </div>
 
       <!-- view danh muc -->
@@ -227,96 +227,8 @@ foreach ($listdanhmuc as $listdanhmucc) {
 
 
 
-<!--================================ Danh muc update ========================== -->
-
-<!-- <div class="updatedanhmuc updatedanhmucjs">
-    <div class="updatedm_view">
-        <div class="updatedm_h3">
-            <p>Update Danh Mục</p>
-
-        </div>
-        <form action="index.php?act=updatedanhmuc" method="post" enctype="multipart/form-data">
-
-            <div class="updatdm_content">
-                <input type="text" name="tendanhmuc" id="" placeholder="Tên danh mục"
-                    value="<?= $id_onedanhmuc[0]['tendanhmuc'] ?>">
-                <div class="updatedm_img">
-                    <label for="file">
-                        <img height="80px" width="90px" src="../public/img/folder.png" alt="Add Image">
-                    </label>
-                    <input style="display:none;" type="file" name="fileimage" id="file">
-                </div>
-                <input type="submit" value="Update danh mục" name="btnUpdateDanhMuc">
-                <div class="updatesp_btn">
-                    <input type="reset" value="" placeholder="Làm lại">
-                    <input type="submit" class="danhmnuc_close" value="Đóng" id="closeButton">
-                </div>
-            </div>
 
 
-            <input type="hidden" name="iddanhmuc" value="<?= $id_onedanhmuc[0]['id_danhmuc'] ?>">
-        </form>
-    </div>
-</div> -->
-
-<!--================================ Thêm sản phẩm mới ========================== -->
-
-<div class="updatedanhmuc AddDanhMuc">
-   <div class="updatedm_view">
-      <div class="updatedm_h3">
-         <p>Thêm Sản Phẩm</p>
-      </div>
-      <form action="index.php?act=AddHangHoa" method="post" enctype="multipart/form-data">
-         <div class="updatdm_content">
-            <div class="updatesp_tensp">
-               <input type="text" name="tenhanghoa" id="" placeholder="Tên sản phẩm">
-               <div>
-                  <select name="danhmuc" id="dropdown">
-                     <?= $listdanhmucshow ?>
-                  </select>
-                  <script>
-                     $(document).ready(function () {
-                        // Sử dụng Select2 cho dropdown
-                        $('#dropdown').select2();
-                     });
-                  </script>
-               </div>
-            </div>
-
-            <div class="updatesp_price">
-               <input type="text" name="gia" id="" placeholder="Giá sản phẩm">
-               <input type="text" name="giasale" id="" placeholder="Giá sale">
-            </div>
-
-            <div class="update_mota">
-               <textarea name="mota" id="" placeholder="Mô tả sản phẩm"></textarea>
-            </div>
-
-
-            <div class="updatedm_img">
-               <label class="custum-file-upload" for="imageInput">
-                  <div class="icon">
-                     <img src="../public/img/folder.png" fill="" viewBox="0 0 24 24" width="160px" height="115px"
-                        id="previewImage" style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
-
-                     </img>
-                  </div>
-                  <input type="file" id="imageInput" name="fileimage">
-               </label>
-
-            </div>
-
-
-            <div class="updatesp_btn">
-               <input class="btnsp_them" type="submit" value="Update sản phẩm " name="add_hanghoa">
-               <input class="btnsp_huy" type="reset" value="Hủy">
-            </div>
-            <input class="btnsp_close danhmnuc_close_add" type="button" value="Đóng" id="closeButton">
-         </div>
-
-      </form>
-   </div>
-</div>
 
 <style>
    .updatedanhmuc {
@@ -575,79 +487,81 @@ foreach ($listdanhmuc as $listdanhmucc) {
 
 
 <div class="updatedanhmuc updatesanphamimg">
-      <div class="updatedm_view">
-         <div class="updatedm_h3">
-            <p>Thêm Ảnh Sản Phẩm</p>
-         </div>
-         <form action="index.php?act=updatehanghoaimg" method="post" enctype="multipart/form-data">
-            <div class="updatdm_content">
-               <div class="updatesp_tensp updatesp_main-img">
-                  <input type="text" name="tenhanghoa" id="" placeholder="Tên sản phẩm" value="<?=$HienMaHangHoa[0]['tenhanghoa']?>">
-                  <input type="text" name="mahanghoa" id="" placeholder="Mã sản phẩm" value="<?=$HienMaHangHoa[0]['id_mahanghoa']?>">
-               </div>
-               <div class="updatesp_image-list">
-                  <div class="updatesp-img">
-                     <label class="custum-file-upload" for="imageInput1">
-                        <div class="icon">
-                           <img src="../public/img/folder.png" fill="" viewBox="0 0 24 24" width="160px" height="195px"
-                              id="previewImage1" style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
-
-                           </img>
-                        </div>
-                        <input type="file" id="imageInput1" name="fileimage1">
-                     </label>
-
-                  </div>
-
-                  <div class="updatesp-img">
-                     <label class="custum-file-upload" for="imageInput2">
-                        <div class="icon">
-                           <img src="../public/img/folder.png" fill="" viewBox="0 0 24 24" width="160px" height="195px"
-                              id="previewImage2" style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
-
-                           </img>
-                        </div>
-                        <input type="file" id="imageInput2" name="fileimage2">
-                     </label>
-
-                  </div>
-
-                  <div class="updatesp-img">
-                     <label class="custum-file-upload" for="imageInput3">
-                        <div class="icon">
-                           <img src="../public/img/folder.png" fill="" viewBox="0 0 24 24" width="160px" height="195px"
-                              id="previewImage3" style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
-
-                           </img>
-                        </div>
-                        <input type="file" id="imageInput3" name="fileimage3">
-                     </label>
-
-                  </div>
-
-                  <div class="updatesp-img">
-                     <label class="custum-file-upload" for="imageInput4">
-                        <div class="icon">
-                           <img src="../public/img/folder.png" fill="" viewBox="0 0 24 24" width="160px" height="195px"
-                              id="previewImage4" style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
-
-                           </img>
-                        </div>
-                        <input type="file" id="imageInput4" name="fileimage4">
-                     </label>
-
-                  </div>
-               </div>
-               <div class="updatesp_btn">
-                  <input class="btnsp_them" type="submit" value="Update ảnh " name="updateImg">
-                  <input class="btnsp_huy" type="reset" value="Hủy">
-               </div>
-               <input class="btnsp_close sanphamimg" type="button" value="Quay lại" id="closeButton">
-            </div>
-
-         </form>
+   <div class="updatedm_view">
+      <div class="updatedm_h3">
+         <p>Thêm Ảnh Sản Phẩm</p>
       </div>
+      <form action="index.php?act=updatehanghoaimg" method="post" enctype="multipart/form-data">
+         <div class="updatdm_content">
+            <div class="updatesp_tensp updatesp_main-img">
+               <input type="text" name="tenhanghoa" id="" placeholder="Tên sản phẩm"
+                  value="<?= $HienMaHangHoa[0]['tenhanghoa'] ?>">
+               <input type="text" name="mahanghoa" id="" placeholder="Mã sản phẩm"
+                  value="<?= $HienMaHangHoa[0]['id_mahanghoa'] ?>">
+            </div>
+            <div class="updatesp_image-list">
+               <div class="updatesp-img">
+                  <label class="custum-file-upload" for="imageInput1">
+                     <div class="icon">
+                        <img src="../public/img/folder.png" fill="" viewBox="0 0 24 24" width="160px" height="195px"
+                           id="previewImage1" style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
+
+                        </img>
+                     </div>
+                     <input type="file" id="imageInput1" name="fileimage1">
+                  </label>
+
+               </div>
+
+               <div class="updatesp-img">
+                  <label class="custum-file-upload" for="imageInput2">
+                     <div class="icon">
+                        <img src="../public/img/folder.png" fill="" viewBox="0 0 24 24" width="160px" height="195px"
+                           id="previewImage2" style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
+
+                        </img>
+                     </div>
+                     <input type="file" id="imageInput2" name="fileimage2">
+                  </label>
+
+               </div>
+
+               <div class="updatesp-img">
+                  <label class="custum-file-upload" for="imageInput3">
+                     <div class="icon">
+                        <img src="../public/img/folder.png" fill="" viewBox="0 0 24 24" width="160px" height="195px"
+                           id="previewImage3" style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
+
+                        </img>
+                     </div>
+                     <input type="file" id="imageInput3" name="fileimage3">
+                  </label>
+
+               </div>
+
+               <div class="updatesp-img">
+                  <label class="custum-file-upload" for="imageInput4">
+                     <div class="icon">
+                        <img src="../public/img/folder.png" fill="" viewBox="0 0 24 24" width="160px" height="195px"
+                           id="previewImage4" style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
+
+                        </img>
+                     </div>
+                     <input type="file" id="imageInput4" name="fileimage4">
+                  </label>
+
+               </div>
+            </div>
+            <div class="updatesp_btn">
+               <input class="btnsp_them" type="submit" value="Update ảnh " name="updateImg">
+               <input class="btnsp_huy" type="reset" value="Hủy">
+            </div>
+            <input class="btnsp_close sanphamimg" type="button" value="Quay lại" id="closeButton">
+         </div>
+
+      </form>
    </div>
+</div>
 
 
 

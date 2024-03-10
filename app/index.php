@@ -14,7 +14,7 @@ include "../app/view/view_admin/header.php";
 if (isset($_GET['act'])) {
     switch ($_GET['act']) {
 
-            //danh muc
+        //danh muc
 
         case 'danhmuc':
 
@@ -123,7 +123,7 @@ if (isset($_GET['act'])) {
             }
             break;
 
-            // ============================San pham =============================
+        // ============================San pham =============================
 
         case 'sanpham':
 
@@ -200,12 +200,12 @@ if (isset($_GET['act'])) {
 
 
                 $idimghanghoa = '';
-                foreach($forimghanghoa as $forimghanghoaa) {
-                    foreach($HienMaHangHoa as $HienMaHangHoaa)
-                    if($forimghanghoaa['id_mahanghoa'] == $HienHangHoa['id_mahanghoa']) {
-                        $idimghanghoa = $forimghanghoaa['id_imghanghoa'];
-                        break;
-                    }
+                foreach ($forimghanghoa as $forimghanghoaa) {
+                    foreach ($HienMaHangHoa as $HienMaHangHoaa)
+                        if ($forimghanghoaa['id_mahanghoa'] == $HienHangHoa['id_mahanghoa']) {
+                            $idimghanghoa = $forimghanghoaa['id_imghanghoa'];
+                            break;
+                        }
                 }
 
                 $hienimg = new DungChung;
@@ -224,29 +224,29 @@ if (isset($_GET['act'])) {
 
             }
 
-            if(isset($_POST['updateImg']) && $_POST['updateImg']) {
+            if (isset($_POST['updateImg']) && $_POST['updateImg']) {
                 $getId = $_POST['mahanghoa'];
 
                 if (isset($_FILES['fileimage1']['tmp_name']) && is_uploaded_file($_FILES['fileimage1']['tmp_name'])) {
-                    $hinhanh1  = $_FILES['fileimage1']['tmp_name'];
+                    $hinhanh1 = $_FILES['fileimage1']['tmp_name'];
                     $hinhanh1 = base64_encode(file_get_contents($hinhanh1));
                 } else {
                     $hinhanh1 = 'null';
                 }
                 if (isset($_FILES['fileimage2']['tmp_name']) && is_uploaded_file($_FILES['fileimage2']['tmp_name'])) {
-                    $hinhanh2  = $_FILES['fileimage2']['tmp_name'];
+                    $hinhanh2 = $_FILES['fileimage2']['tmp_name'];
                     $hinhanh2 = base64_encode(file_get_contents($hinhanh2));
                 } else {
                     $hinhanh2 = 'null';
                 }
                 if (isset($_FILES['fileimage3']['tmp_name']) && is_uploaded_file($_FILES['fileimage3']['tmp_name'])) {
-                    $hinhanh3  = $_FILES['fileimage3']['tmp_name'];
+                    $hinhanh3 = $_FILES['fileimage3']['tmp_name'];
                     $hinhanh3 = base64_encode(file_get_contents($hinhanh3));
                 } else {
                     $hinhanh3 = 'null';
                 }
                 if (isset($_FILES['fileimage4']['tmp_name']) && is_uploaded_file($_FILES['fileimage4']['tmp_name'])) {
-                    $hinhanh4  = $_FILES['fileimage4']['tmp_name'];
+                    $hinhanh4 = $_FILES['fileimage4']['tmp_name'];
                     $hinhanh4 = base64_encode(file_get_contents($hinhanh4));
                 } else {
                     $hinhanh4 = 'null';
@@ -259,20 +259,20 @@ if (isset($_GET['act'])) {
 
 
                 $idimghanghoa = '';
-                foreach($forimghanghoa as $forimghanghoaa) {
-                    if($forimghanghoaa['id_mahanghoa'] == $getId) {
+                foreach ($forimghanghoa as $forimghanghoaa) {
+                    if ($forimghanghoaa['id_mahanghoa'] == $getId) {
                         $idimghanghoa = $forimghanghoaa['id_imghanghoa'];
                         break;
                     }
                 }
- 
+
                 // bắt đầu up anh
-                
+
 
                 $updateImgHangHoa = new HangHoa;
                 $updateImgHangHoa->uploadImgHangHoa($hinhanh1, $hinhanh2, $hinhanh3, $hinhanh4, $idimghanghoa);
-                
- 
+
+
 
                 // load lại trang
                 echo '<script src="../public/js/danhmuc/danhmuc_add.js"></script>';
@@ -281,15 +281,19 @@ if (isset($_GET['act'])) {
                 $listdanhmuc = $danhmuc->ShowDungChung('danhmuc');
                 $hanghoa = new DungChung;
                 $HienHangHoa = $hanghoa->ShowDungChung('hanghoa');
-    
+
                 require_once "../app/view/sanpham/sanpham.php";
                 break;
-    
+
 
 
                 // var_dump($idImg, $hinhanh1, $hinhanh2, $hinhanh3, $hinhanh4);
             }
 
+            break;
+
+        case 'sanphamimg':
+            require_once "../app/view/sanpham/sanpham_img.php";
             break;
     }
 } else {

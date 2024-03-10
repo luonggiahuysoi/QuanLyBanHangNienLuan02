@@ -97,6 +97,9 @@
                      <a href="index.php?act=sanpham"><i class="bi bi-dot"></i>Quản lý sản phẩm</a>
                   </div>
                   <div class="item-con_list">
+                     <a href="index.php?act=sanphamimg"><i class="bi bi-dot"></i>Quản lý hình ảnh sản phẩm</a>
+                  </div>
+                  <div class="item-con_list">
                      <a href=""><i class="bi bi-dot"></i>Quản lý kho</a>
                   </div>
                   <div class="item-con_list item-con_listout" id="close_nav2">
