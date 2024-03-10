@@ -10,9 +10,9 @@ foreach ($HienAnhSanPham as $HienHangHoaa) {
 
    $showhh .= '
         <div class="table_th table_tr list-item producttt" data-price=1>
-                    <div class="table_name_image table__bottom_center table_name_imagee tendanhmuc">
-                        <img src="data:image/png;base64,' . $hinh . '" alt="">
-                        <p>'.$id_mahanghoa.'</p>
+                    <div class="table_name_image table__bottom_center table_name_imagee tendanhmuc" id="addsp_img">
+                        <img width="400px" height="200px" src="../public/img/folder.png" alt="">
+                        <p>' . $id_mahanghoa . '</p>
                     </div>
                    
                     <div class="table_settin table__bottom_center setting">
@@ -45,7 +45,6 @@ foreach ($HienAnhSanPham as $HienHangHoaa) {
 }
 
 ?> -->
-
 
 <!-- <======================= Hiện số lượng ========================> -->
 
@@ -141,12 +140,12 @@ foreach ($lishanghoa as $listdanhmucc) {
 
          <div class="content_bottom_view_header">
             <div>
-               <p>Table sản phẩm</p>
+               <p>Table ảnh sản phẩm</p>
             </div>
             <br>
             <div>
                <div style="display: flex;  align-items: center;">
-                  <p style="color: #555;">Tổng số sản phẩm:</p>
+                  <p style="color: #555;">Tổng số ảnh sản phẩm:</p>
                   <p style="margin-left: 1%; color: black;">x
                      <?= $i ?>
                   </p>
@@ -162,7 +161,7 @@ foreach ($lishanghoa as $listdanhmucc) {
             <!-- table  -->
             <div class="table_th">
                <div class="table_name_image table__bottom_center">
-                  <p>Thông tin sản phẩm</p>
+                  <p>Hình ảnh sản phẩm</p>
                </div>
                <div class="table_settin table__bottom_center">
                   <p>Cài đặt</p>
@@ -183,15 +182,26 @@ foreach ($lishanghoa as $listdanhmucc) {
    </div>
 
 </div>
-
-
-
-
-
-
-
 </div>
+<style>
+   .table_name_image img {
+      width: 160px;
+      height: 180px;
+      border: 1px solid #333;
+   }
 
+   .table_name_image {
+      width: 70%;
+   }
+
+   .table_settin {
+      width: 30%;
+   }
+
+   .table_tr {
+      height: 200px;
+   }
+</style>
 
 
 
@@ -200,13 +210,12 @@ foreach ($lishanghoa as $listdanhmucc) {
 <div class="updatedanhmuc AddDanhMuc">
    <div class="updatedm_view">
       <div class="updatedm_h3">
-         <p>Thêm Sản Phẩm</p>
+         <p>Thêm Ảnh Sản Phẩm</p>
       </div>
       <form action="index.php?act=AddHangHoa" method="post" enctype="multipart/form-data">
          <div class="updatdm_content">
             <div class="updatesp_tensp">
-               <input type="text" name="tenhanghoa" id="" placeholder="Tên sản phẩm">
-               <div>
+               <div class="updateimg_dropdown">
                   <select name="danhmuc" id="dropdown">
                      <?= $listhanghoa ?>
                   </select>
@@ -219,22 +228,13 @@ foreach ($lishanghoa as $listdanhmucc) {
                </div>
             </div>
 
-            <div class="updatesp_price">
-               <input type="text" name="gia" id="" placeholder="Giá sản phẩm">
-               <input type="text" name="giasale" id="" placeholder="Giá sale">
-            </div>
-
-            <div class="update_mota">
-               <textarea name="mota" id="" placeholder="Mô tả sản phẩm"></textarea>
-            </div>
 
 
             <div class="updatedm_img">
                <label class="custum-file-upload" for="imageInput">
                   <div class="icon">
-                     <img src="../public/img/folder.png" fill="" viewBox="0 0 24 24" width="160px" height="115px"
+                     <img src="../public/img/folder.png" fill="" viewBox="0 0 24 24" width="400px" height="350px"
                         id="previewImage" style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
-
                      </img>
                   </div>
                   <input type="file" id="imageInput" name="fileimage">
@@ -269,8 +269,8 @@ foreach ($lishanghoa as $listdanhmucc) {
    }
 
    .updatedm_view {
-      width: 75%;
-      height: 95%;
+      width: 50%;
+      height: 90%;
       background-color: #fff;
       box-shadow: rgb(53, 64, 77) 0px 20px 30px -10px;
       display: flex;
@@ -308,8 +308,6 @@ foreach ($lishanghoa as $listdanhmucc) {
       gap: 20px;
       margin-top: 20%;
    }
-
-
 
    /* add img  */
    .hidden-input {
@@ -505,7 +503,23 @@ foreach ($lishanghoa as $listdanhmucc) {
    }
 </style>
 
+<style>
+   #dropdown {
+      width: 200px;
+   }
 
+   .updateimg_dropdown {
+      margin-top: -10%;
+   }
+
+   .updatedm_img {
+      margin-top: 40%;
+   }
+
+   .updatesp_btn {
+      margin-top: 30%;
+   }
+</style>
 
 
 

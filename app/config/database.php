@@ -1,9 +1,9 @@
 <?php
-    define('DB_HOST', 'localhost');
-    define('DB_NAME', 'QuanLyBanHang');
-    define('DB_USER', 'root');
-    define('DB_PASS', '');
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'quanlybanhang');
+define('DB_USER', 'root');
+define('DB_PASS', '');
 
-    //QuanLyBanHang
-    //quanlybanhang
+//QuanLyBanHang
+//quanlybanhang
 ?>
