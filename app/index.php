@@ -194,19 +194,9 @@ if (isset($_GET['act'])) {
                 $HienMaHangHoa = $HienMa->getByIdAll('hanghoa', 'id_hanghoa', $getId);
 
 
-                $fimghanghoa = new DungChung;
-                $forimghanghoa = $fimghanghoa->ShowDungChung('hanghoa_img');
 
 
 
-                $idimghanghoa = '';
-                foreach ($forimghanghoa as $forimghanghoaa) {
-                    foreach ($HienMaHangHoa as $HienMaHangHoaa)
-                        if ($forimghanghoaa['id_mahanghoa'] == $HienHangHoa['id_mahanghoa']) {
-                            $idimghanghoa = $forimghanghoaa['id_imghanghoa'];
-                            break;
-                        }
-                }
 
                 $hienimg = new DungChung;
                 $HienImg = $hienimg->getByIdAll('hanghoa_img', 'id_imghanghoa', $idimghanghoa);
@@ -293,6 +283,14 @@ if (isset($_GET['act'])) {
             break;
 
         case 'sanphamimg':
+            $Hien = new DungChung;
+            $HienAnhSanPham = $Hien->ShowDungChung('hanghoa_img');
+
+            $HienHangHoa = new DungChung;
+            $lishanghoa = $HienHangHoa->ShowDungChung('hanghoa');
+
+            echo '<script src="../public/js/danhmuc/danhmuc_add.js"></script>';
+            echo '<script src="../public/js/sanpham/sanpham.js"></script>';
             require_once "../app/view/sanpham/sanpham_img.php";
             break;
     }
