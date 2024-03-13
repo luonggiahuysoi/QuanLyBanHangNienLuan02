@@ -273,6 +273,30 @@ if (isset($_GET['act'])) {
 
             break;
 
+        case 'UpdateHienThiSanPham':
+            if (isset($_GET['idhanghoa']) && $_GET['idhanghoa']) {
+                $getId = $_GET['idhanghoa'];
+                $idhanghoa = new DungChung;
+                $LyaIdHangHoa = $idhanghoa->getByIdAll('hanghoa', 'id_hanghoa', $getId);
+                $setblock = $LyaIdHangHoa[0]['hienthi'];
+                if ($setblock == 1) {
+                    $hanghoa = new HangHoa;
+                    $hanghoa->UpdateHangHoaSetBlock($getId, 0);
+                } else {
+                    $hanghoa = new HangHoa;
+                    $hanghoa->UpdateHangHoaSetBlock($getId, 1);
+                }
+                // ================ load lại trang =================
+                echo '<script src="../public/js/danhmuc/danhmuc_add.js"></script>';
+                echo '<script src="../public/js/sanpham/sanpham.js"></script>';
+                $danhmuc = new DungChung;
+                $listdanhmuc = $danhmuc->ShowDungChung('danhmuc');
+                $hanghoa = new DungChung;
+                $HienHangHoa = $hanghoa->ShowDungChung('hanghoa');
+
+                require_once "../app/view/sanpham/sanpham.php";
+            }
+            break;
 
         case 'sanphamimg':
             $Hien = new DungChung;
@@ -349,6 +373,229 @@ if (isset($_GET['act'])) {
                 echo '<script src="../public/js/sanpham/sanpham.js"></script>';
                 require_once "../app/view/sanpham/sanpham_img.php";
             }
+            break;
+
+            // =================== Nhân Viên ===================
+
+        case 'nhanvien':
+            echo '<script src="../public/js/danhmuc/danhmuc_add.js"></script>';
+            echo '<script src="../public/js/sanpham/sanpham.js"></script>';
+
+            $list = new DungChung;
+            $listchucvu = $list->ShowDungChung('phanquyennhanvien');
+
+            $nhanvien = new DungChung;
+            $HienNhanVien = $nhanvien->ShowDungChung('nhanvien');
+            require_once "./view/nhanvien/nhanvien.php";
+            break;
+
+        case 'AddNhanVien':
+            if (isset($_POST['add_nhanvien']) && $_POST['add_nhanvien']) {
+                $tennhanvien = $_POST['tennhanvien'];
+                $ngaysinh = $_POST['ngaysinh'];
+                $sodienthoai = $_POST['sodienthoai'];
+                $email = $_POST['email'];
+                $diachi = $_POST['diachi'];
+                $taikhoan = $_POST['tentaikhoan'];
+                $matkhau = $_POST['matkhau'];
+                $chucvuId = $_POST['chucvu'];
+
+                //==========lẤY CHỨC VỤ THEO ID ===========
+
+                $idchucvu = new DungChung;
+                $CV = $idchucvu->ShowDungChung('phanquyennhanvien');
+                $tenchucvu = '';
+
+                foreach ($CV as $CVV) {
+                    if ($CVV['id_phanquyen'] == $chucvuId) {
+                        $tenchucvu = $CVV['tenchucvu'];
+                        break;
+                    }
+                }
+
+                if (isset($_FILES['fileimage']['tmp_name']) && is_uploaded_file($_FILES['fileimage']['tmp_name'])) {
+                    $hinhanh = $_FILES['fileimage']['tmp_name'];
+                    $hinhanh = base64_encode(file_get_contents($hinhanh));
+                } else {
+                    $hinhanh = 'null';
+                }
+
+                // =========Insert dữ liệu=====
+
+                $addNhanvien = new NhanVien;
+                $addNhanvien->AddNhanVien($tennhanvien, $ngaysinh, $sodienthoai, $email, $diachi, $hinhanh, $taikhoan, $matkhau, $tenchucvu, $chucvuId);
+
+
+                // ==========load lai trang ===========
+
+                echo '<script src="../public/js/danhmuc/danhmuc_add.js"></script>';
+                echo '<script src="../public/js/sanpham/sanpham.js"></script>';
+
+                $list = new DungChung;
+                $listchucvu = $list->ShowDungChung('phanquyennhanvien');
+
+                $nhanvien = new DungChung;
+                $HienNhanVien = $nhanvien->ShowDungChung('nhanvien');
+                require_once "./view/nhanvien/nhanvien.php";
+            }
+            break;
+
+
+        case 'deletenhanvien':
+            if (isset($_GET['idnhanvien'])) {
+                $getId = $_GET['idnhanvien'];
+                $deletenhanvien = new DungChung;
+                $deletenhanvien->DeleteAll('nhanvien', 'id_nhanvien', $getId);
+
+                // ==========load lai trang ===========
+
+                echo '<script src="../public/js/danhmuc/danhmuc_add.js"></script>';
+                echo '<script src="../public/js/sanpham/sanpham.js"></script>';
+
+                $list = new DungChung;
+                $listchucvu = $list->ShowDungChung('phanquyennhanvien');
+
+                $nhanvien = new DungChung;
+                $HienNhanVien = $nhanvien->ShowDungChung('nhanvien');
+                require_once "./view/nhanvien/nhanvien.php";
+            }
+            break;
+
+        case 'updatenhanvien':
+            if (isset($_GET['idnhanvien'])) {
+
+                $getId = $_GET['idnhanvien'];
+                $NhanVienGetById = new DungChung;
+                $howNhanVienGetById = $NhanVienGetById->getByIdAll('nhanvien', 'id_nhanvien', $getId);
+
+
+
+                echo '<script src="../public/js/sanpham/sanpham_up.js"></script>';
+                // ==========load lai trang ===========
+
+                echo '<script src="../public/js/danhmuc/danhmuc_add.js"></script>';
+                echo '<script src="../public/js/sanpham/sanpham.js"></script>';
+
+                $list = new DungChung;
+                $listchucvu = $list->ShowDungChung('phanquyennhanvien');
+
+                $nhanvien = new DungChung;
+                $HienNhanVien = $nhanvien->ShowDungChung('nhanvien');
+                require_once "./view/nhanvien/nhanvien.php";
+            }
+
+            if (isset($_POST['idnhanvien']) && $_POST['idnhanvien']) {
+                $getId = $_POST['idnhanvien'];
+                $tennhanvien = $_POST['tennhanvien'];
+                $ngaysinh = $_POST['ngaysinh'];
+                $sodienthoai = $_POST['sodienthoai'];
+                $email = $_POST['email'];
+                $diachi = $_POST['diachi'];
+                $taikhoan = $_POST['tentaikhoan'];
+                $matkhau = $_POST['matkhau'];
+                $chucvuId = $_POST['chucvu'];
+
+                //==========lẤY CHỨC VỤ THEO ID ===========
+
+                $idchucvu = new DungChung;
+                $CV = $idchucvu->ShowDungChung('phanquyennhanvien');
+                $tenchucvu = '';
+
+                foreach ($CV as $CVV) {
+                    if ($CVV['id_phanquyen'] == $chucvuId) {
+                        $tenchucvu = $CVV['tenchucvu'];
+                        break;
+                    }
+                }
+
+                if (isset($_FILES['fileimage']['tmp_name']) && is_uploaded_file($_FILES['fileimage']['tmp_name'])) {
+                    $hinhanh = $_FILES['fileimage']['tmp_name'];
+                    $hinhanh = base64_encode(file_get_contents($hinhanh));
+                } else {
+                    $hinhanh = 'null';
+                }
+
+
+                // var_dump($tennhanvien, $ngaysinh, $sodienthoai, $email, $diachi, $hinhanh, $taikhoan, $matkhau, $tenchucvu, $chucvuId, $getId);
+                // =========update dữ liệu=====
+
+                $UpdateNhanVien = new NhanVien;
+                $UpdateNhanVien->UpdateNhanVien($tennhanvien, $ngaysinh, $sodienthoai, $email, $diachi, $hinhanh, $taikhoan, $matkhau, $tenchucvu, $chucvuId, $getId);
+
+
+                // ==========load lai trang ===========
+
+                echo '<script src="../public/js/danhmuc/danhmuc_add.js"></script>';
+                echo '<script src="../public/js/sanpham/sanpham.js"></script>';
+
+                $list = new DungChung;
+                $listchucvu = $list->ShowDungChung('phanquyennhanvien');
+
+                $nhanvien = new DungChung;
+                $HienNhanVien = $nhanvien->ShowDungChung('nhanvien');
+                require_once "./view/nhanvien/nhanvien.php";
+            }
+            break;
+
+
+
+
+
+
+
+            //============ Chức vụ nhân viên ================
+        case 'chucvunhanvien':
+            // ==========load lai trang ===========
+
+            echo '<script src="../public/js/danhmuc/danhmuc_add.js"></script>';
+            echo '<script src="../public/js/sanpham/sanpham.js"></script>';
+
+
+            $list = new DungChung;
+            $listchucvu = $list->ShowDungChung('phanquyennhanvien');
+
+            $nhanvien = new DungChung;
+            $HienNhanVien = $nhanvien->ShowDungChung('nhanvien');
+            require_once "./view/nhanvien/phanquyen_nhanvien.php";
+
+            break;
+
+        case 'AddChucVuVaoNhanVien':
+            if (isset($_POST['add_chucvuvaonhanvien'])) {
+                $nhanvienId = $_POST['nhanvien'];
+                $chucvuId = $_POST['chucvu'];
+
+                //==========lẤY CHỨC VỤ THEO ID ===========
+
+                $idchucvu = new DungChung;
+                $CV = $idchucvu->ShowDungChung('phanquyennhanvien');
+                $tenchucvu = '';
+
+                foreach ($CV as $CVV) {
+                    if ($CVV['id_phanquyen'] == $chucvuId) {
+                        $tenchucvu = $CVV['tenchucvu'];
+                        break;
+                    }
+                }
+
+                $UpdateNhanVienChucVu = new NhanVien;
+                $UpdateNhanVienChucVu->UpdateNhanVienChucVu($nhanvienId, $chucvuId, $tenchucvu);
+
+                // ==========load lai trang ===========
+
+                echo '<script src="../public/js/danhmuc/danhmuc_add.js"></script>';
+                echo '<script src="../public/js/sanpham/sanpham.js"></script>';
+
+
+                $list = new DungChung;
+                $listchucvu = $list->ShowDungChung('phanquyennhanvien');
+
+                $nhanvien = new DungChung;
+                $HienNhanVien = $nhanvien->ShowDungChung('nhanvien');
+                require_once "./view/nhanvien/phanquyen_nhanvien.php";
+
+            }
+
             break;
     }
 } else {

@@ -21,7 +21,7 @@
                     </div>
                     <div class="table_hidden table__bottom_center">
                         <p>
-                            <a href="index.php?act=updatehienthi&iddanhmuc=' . $id_hanghoa . '">
+                            <a href="index.php?act=UpdateHienThiSanPham&idhanghoa=' . $id_hanghoa . '">
                                 ' . $showhienthi . '
                             </a>
                         </p>

@@ -108,5 +108,37 @@ class HangHoa
       $this->hanghoa->get_all($sql);
    }
 
+   function UpdateHangHoaSetBlock($idhanghoa, $hienthi)
+   {
+      $sql = "UPDATE hanghoa SET hienthi='" . $hienthi . "' WHERE id_hanghoa=" . $idhanghoa;
+      $this->hanghoa->get_all($sql);
+   }
+
+
+}
+
+
+class NhanVien {
+   private $nhanvien;
+
+   function __construct()
+   {
+      $this->nhanvien = new DatabaseModel;
+   }
+
+   function AddNhanVien($tennhanvien, $ngaysinh, $sodienthoai, $email, $diachi, $hinhanh, $taikhoan, $matkhau, $tenchucvu, $chucvuId) {
+      $sql = "INSERT INTO nhanvien (tennhanvien, ngaysinh, sodienthoai, email, diachi, hinhanh, taikhoan, matkhau, chucvu, id_phanquyen) VALUES ('" . $tennhanvien . "', '" . $ngaysinh . "', '" . $sodienthoai . "', '" . $email . "', '" . $diachi . "', '" . $hinhanh . "', '" . $taikhoan . "', '" . $matkhau . "', '" . $tenchucvu . "', '" . $chucvuId . "')";
+      $this->nhanvien->get_all($sql);
+   }
+
+   function UpdateNhanVien($tennhanvien, $ngaysinh, $sodienthoai, $email, $diachi, $hinhanh, $taikhoan, $matkhau, $tenchucvu, $chucvuId, $getId) {
+      $sql = "UPDATE nhanvien SET tennhanvien='" . $tennhanvien . "', ngaysinh='" . $ngaysinh . "', sodienthoai='" . $sodienthoai . "', email='" . $email . "', diachi='" . $diachi . "', hinhanh='" . $hinhanh . "', taikhoan='" . $taikhoan . "', matkhau='" . $matkhau . "', chucvu='" . $tenchucvu . "', id_phanquyen='" . $chucvuId . "' WHERE id_nhanvien=" . $getId;
+      $this->nhanvien->get_all($sql);
+   }
+
+   function UpdateNhanVienChucVu($nhanvienId, $chucvuId, $tenchucvu) {
+      $sql = "UPDATE nhanvien SET chucvu='" . $tenchucvu . "', id_phanquyen ='" . $chucvuId . "'  WHERE id_nhanvien=" . $nhanvienId;
+      $this->nhanvien->get_all($sql);
+   }
 
 }
