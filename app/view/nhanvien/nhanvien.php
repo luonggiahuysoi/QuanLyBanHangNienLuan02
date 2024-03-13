@@ -1,19 +1,19 @@
 <!-- php database -->
 <!-- <?php
-        $shownhanvien = '';
-        $showhienthi = '';
-        foreach ($HienNhanVien as $HienNhanVienn) {
-            extract($HienNhanVienn);
-            if ($ability == 1) {
+$shownhanvien = '';
+$showhienthi = '';
+foreach ($HienNhanVien as $HienNhanVienn) {
+    extract($HienNhanVienn);
+    if ($ability == 1) {
 
-                $showhienthi = '<i class="bi bi-eye-fill"></i>';
-            } else {
-                $showhienthi = '<i class="bi bi-eye-slash-fill"></i>';
-            }
+        $showhienthi = '<i class="bi bi-eye-fill"></i>';
+    } else {
+        $showhienthi = '<i class="bi bi-eye-slash-fill"></i>';
+    }
 
 
 
-            $shownhanvien .= '
+    $shownhanvien .= '
         <div class="table_th table_tr list-item producttt" data-price="">
                     <div class="table_name_image table__bottom_center table_name_imagee tendanhmuc">
                         <img src="data:image/png;base64,' . $hinhanh . '" alt="">
@@ -62,9 +62,9 @@
                     </div>
         </div>
         ';
-        }
+}
 
-        ?> -->
+?> -->
 
 
 <!-- <======================= Hiện số lượng ========================> -->
@@ -161,7 +161,7 @@ foreach ($listchucvu as $listchucvuu) {
 
             <div class="content_bottom_view_header">
                 <div>
-                    <p>Table sản phẩm</p>
+                    <p>Table nhân viên</p>
                 </div>
                 <br>
                 <div>
@@ -246,33 +246,39 @@ foreach ($listchucvu as $listchucvuu) {
             <p>Thêm nhân viên</p>
         </div>
         <form action="index.php?act=updatenhanvien" method="post" enctype="multipart/form-data">
-            <input type="hidden" name="idnhanvien" value="<?=$howNhanVienGetById[0]['id_nhanvien']?>">
-            
+            <input type="hidden" name="idnhanvien" value="<?= $howNhanVienGetById[0]['id_nhanvien'] ?>">
+
             <div class="updatdm_content">
                 <div class="updatesp_tensp">
-                    <input type="text" name="tennhanvien" id="" placeholder="Tên nhân viên" value="<?= $howNhanVienGetById[0]['tennhanvien'] ?>">
+                    <input type="text" name="tennhanvien" id="" placeholder="Tên nhân viên"
+                        value="<?= $howNhanVienGetById[0]['tennhanvien'] ?>">
                     <div>
                         <input type="date" name="ngaysinh" id="" value="<?= $howNhanVienGetById[0]['ngaysinh'] ?>">
                     </div>
                 </div>
 
                 <div class="updatesp_price">
-                    <input type="number" name="sodienthoai" id="" placeholder="Số điện thoại" value="<?= $howNhanVienGetById[0]['sodienthoai'] ?>">
-                    <input type="email" name="email" id="" placeholder="Địa chỉ email" value="<?= $howNhanVienGetById[0]['email'] ?>">
+                    <input type="number" name="sodienthoai" id="" placeholder="Số điện thoại"
+                        value="<?= $howNhanVienGetById[0]['sodienthoai'] ?>">
+                    <input type="email" name="email" id="" placeholder="Địa chỉ email"
+                        value="<?= $howNhanVienGetById[0]['email'] ?>">
                 </div>
 
                 <div class="update_mota">
-                    <textarea name="diachi" id="" placeholder="Nhập địa chỉ"><?= $howNhanVienGetById[0]['diachi'] ?></textarea>
+                    <textarea name="diachi" id=""
+                        placeholder="Nhập địa chỉ"><?= $howNhanVienGetById[0]['diachi'] ?></textarea>
                 </div>
 
                 <div class="updatesp_price">
-                    <input type="text" name="tentaikhoan" id="" placeholder="Tên tài khoản" value="<?= $howNhanVienGetById[0]['taikhoan'] ?>">
-                    <input type="text" name="matkhau" id="" placeholder="Mật khẩu" value="<?= $howNhanVienGetById[0]['matkhau'] ?>">
+                    <input type="text" name="tentaikhoan" id="" placeholder="Tên tài khoản"
+                        value="<?= $howNhanVienGetById[0]['taikhoan'] ?>">
+                    <input type="text" name="matkhau" id="" placeholder="Mật khẩu"
+                        value="<?= $howNhanVienGetById[0]['matkhau'] ?>">
                     <div>
                         <?php
                         $listchucvushowup = '';
                         $defaultSelectedId = $howNhanVienGetById[0]['id_phanquyen']; // ID của option mà bạn muốn chọn mặc định
-
+                        
                         foreach ($listchucvu as $listchucvuu) {
                             extract($listchucvuu);
 
@@ -288,7 +294,7 @@ foreach ($listchucvu as $listchucvuu) {
                         </select>
 
                         <script>
-                            $(document).ready(function() {
+                            $(document).ready(function () {
                                 // Sử dụng Select2 cho dropdown
                                 $('#dropdownn').select2();
                             });
@@ -300,7 +306,10 @@ foreach ($listchucvu as $listchucvuu) {
                 <div class="updatedm_img">
                     <label class="custum-file-upload" for="imaAddnputAdd">
                         <div class="icon">
-                            <img id="previewImageAdd" src="data:image/png;base64, <?= $howNhanVienGetById[0]['hinhanh'] ?>" fill="" viewBox="0 0 24 24" width="160px" height="115px" id="previewImage" style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
+                            <img id="previewImageAdd"
+                                src="data:image/png;base64, <?= $howNhanVienGetById[0]['hinhanh'] ?>" fill=""
+                                viewBox="0 0 24 24" width="160px" height="115px" id="previewImage"
+                                style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
 
                             </img>
                         </div>
@@ -309,14 +318,14 @@ foreach ($listchucvu as $listchucvuu) {
 
                 </div>
                 <script>
-                    $(document).ready(function() {
-                        $("#imaAddnputAdd").change(function() {
+                    $(document).ready(function () {
+                        $("#imaAddnputAdd").change(function () {
                             var input = this;
 
                             if (input.files && input.files[0]) {
                                 var reader = new FileReader();
 
-                                reader.onload = function(e) {
+                                reader.onload = function (e) {
                                     $("#previewImageAdd").attr("src", e.target.result);
                                     $("#previewImageAdd").css("display", "flex");
                                 };
@@ -335,8 +344,8 @@ foreach ($listchucvu as $listchucvuu) {
                 <input class="btnsp_close danhmnuc_close_add" type="button" value="Đóng" id="closeButtonUpdate">
             </div>
             <script>
-                document.addEventListener("DOMContentLoaded", function() {
-                    document.querySelector("#closeButton").addEventListener("click", function() {
+                document.addEventListener("DOMContentLoaded", function () {
+                    document.querySelector("#closeButton").addEventListener("click", function () {
                         // Lấy phần tử cha và ẩn nó đi
                         document.querySelector(".AddDanhMuc").style.display = "none";
                     });
@@ -381,7 +390,7 @@ foreach ($listchucvu as $listchucvuu) {
                             <?= $listchucvushow ?>
                         </select>
                         <script>
-                            $(document).ready(function() {
+                            $(document).ready(function () {
                                 // Sử dụng Select2 cho dropdown
                                 $('#dropdownn').select2();
                             });
@@ -392,7 +401,9 @@ foreach ($listchucvu as $listchucvuu) {
                 <div class="updatedm_img">
                     <label class="custum-file-upload" for="imaAddnputAdd">
                         <div class="icon">
-                            <img id="previewImageAdd" src="../public/img/folder.png" fill="" viewBox="0 0 24 24" width="160px" height="115px" id="previewImage" style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
+                            <img id="previewImageAdd" src="../public/img/folder.png" fill="" viewBox="0 0 24 24"
+                                width="160px" height="115px" id="previewImage"
+                                style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
 
                             </img>
                         </div>
@@ -401,14 +412,14 @@ foreach ($listchucvu as $listchucvuu) {
 
                 </div>
                 <script>
-                    $(document).ready(function() {
-                        $("#imaAddnputAdd").change(function() {
+                    $(document).ready(function () {
+                        $("#imaAddnputAdd").change(function () {
                             var input = this;
 
                             if (input.files && input.files[0]) {
                                 var reader = new FileReader();
 
-                                reader.onload = function(e) {
+                                reader.onload = function (e) {
                                     $("#previewImageAdd").attr("src", e.target.result);
                                     $("#previewImageAdd").css("display", "flex");
                                 };
@@ -427,8 +438,8 @@ foreach ($listchucvu as $listchucvuu) {
                 <input class="btnsp_close danhmnuc_close_add" type="button" value="Đóng" id="closeButton">
             </div>
             <script>
-                document.addEventListener("DOMContentLoaded", function() {
-                    document.querySelector("#closeButton").addEventListener("click", function() {
+                document.addEventListener("DOMContentLoaded", function () {
+                    document.querySelector("#closeButton").addEventListener("click", function () {
                         // Lấy phần tử cha và ẩn nó đi
                         document.querySelector(".AddDanhMuc").style.display = "none";
                     });
@@ -703,14 +714,18 @@ foreach ($listchucvu as $listchucvuu) {
         <form action="index.php?act=updatehanghoaimg" method="post" enctype="multipart/form-data">
             <div class="updatdm_content">
                 <div class="updatesp_tensp updatesp_main-img">
-                    <input type="text" name="tenhanghoa" id="" placeholder="Tên sản phẩm" value="<?= $HienMaHangHoa[0]['tenhanghoa'] ?>">
-                    <input type="text" name="mahanghoa" id="" placeholder="Mã sản phẩm" value="<?= $HienMaHangHoa[0]['id_mahanghoa'] ?>">
+                    <input type="text" name="tenhanghoa" id="" placeholder="Tên sản phẩm"
+                        value="<?= $HienMaHangHoa[0]['tenhanghoa'] ?>">
+                    <input type="text" name="mahanghoa" id="" placeholder="Mã sản phẩm"
+                        value="<?= $HienMaHangHoa[0]['id_mahanghoa'] ?>">
                 </div>
                 <div class="updatesp_image-list">
                     <div class="updatesp-img">
                         <label class="custum-file-upload" for="imageInput1">
                             <div class="icon">
-                                <img src="../public/img/folder.png" fill="" viewBox="0 0 24 24" width="160px" height="195px" id="previewImage1" style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
+                                <img src="../public/img/folder.png" fill="" viewBox="0 0 24 24" width="160px"
+                                    height="195px" id="previewImage1"
+                                    style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
 
                                 </img>
                             </div>
@@ -722,7 +737,9 @@ foreach ($listchucvu as $listchucvuu) {
                     <div class="updatesp-img">
                         <label class="custum-file-upload" for="imageInput2">
                             <div class="icon">
-                                <img src="../public/img/folder.png" fill="" viewBox="0 0 24 24" width="160px" height="195px" id="previewImage2" style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
+                                <img src="../public/img/folder.png" fill="" viewBox="0 0 24 24" width="160px"
+                                    height="195px" id="previewImage2"
+                                    style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
 
                                 </img>
                             </div>
@@ -734,7 +751,9 @@ foreach ($listchucvu as $listchucvuu) {
                     <div class="updatesp-img">
                         <label class="custum-file-upload" for="imageInput3">
                             <div class="icon">
-                                <img src="../public/img/folder.png" fill="" viewBox="0 0 24 24" width="160px" height="195px" id="previewImage3" style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
+                                <img src="../public/img/folder.png" fill="" viewBox="0 0 24 24" width="160px"
+                                    height="195px" id="previewImage3"
+                                    style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
 
                                 </img>
                             </div>
@@ -746,7 +765,9 @@ foreach ($listchucvu as $listchucvuu) {
                     <div class="updatesp-img">
                         <label class="custum-file-upload" for="imageInput4">
                             <div class="icon">
-                                <img src="../public/img/folder.png" fill="" viewBox="0 0 24 24" width="160px" height="195px" id="previewImage4" style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
+                                <img src="../public/img/folder.png" fill="" viewBox="0 0 24 24" width="160px"
+                                    height="195px" id="previewImage4"
+                                    style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
 
                                 </img>
                             </div>
@@ -810,13 +831,13 @@ foreach ($listchucvu as $listchucvuu) {
 <!-- -------------------SEARCH---------------------- -->
 
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         // Xử lý sự kiện khi người dùng nhập vào ô tìm kiếm
-        $("#searchInput").on("input", function() {
+        $("#searchInput").on("input", function () {
             var searchText = $(this).val().toLowerCase();
 
             // Hiển thị hoặc ẩn các phần tử phù hợp với từ khóa tìm kiếm
-            $(".list-item").each(function() {
+            $(".list-item").each(function () {
                 var itemName = $(this).find(".tendanhmuc p").text().toLowerCase();
                 if (itemName.includes(searchText)) {
                     $(this).show();
@@ -835,18 +856,18 @@ foreach ($listchucvu as $listchucvuu) {
 
 <!-- Đảm bảo đặt mã JavaScript trong thẻ script -->
 <script>
-    $(document).ready(function() {
-        $(".table_setting").on("click", ".table_show_setting", function() {
+    $(document).ready(function () {
+        $(".table_setting").on("click", ".table_show_setting", function () {
             // Xử lý sự kiện khi nhấn vào biểu tượng bánh răng
             console.log("Đã click vào biểu tượng bánh răng");
         });
 
-        $("#sortButtontang").on("click", function() {
+        $("#sortButtontang").on("click", function () {
             // Lấy danh sách sản phẩm và sắp xếp theo giá
             const $listItems = $(".list-item")
                 .detach(); // Sử dụng detach để giữ sự kiện và dữ liệu đính kèm
 
-            $listItems.sort(function(a, b) {
+            $listItems.sort(function (a, b) {
                 const priceA = parseFloat($(a).data("price"));
                 const priceB = parseFloat($(b).data("price"));
                 return priceA - priceB;
@@ -866,18 +887,18 @@ foreach ($listchucvu as $listchucvuu) {
 
 <!-- Đảm bảo đặt mã JavaScript trong thẻ script -->
 <script>
-    $(document).ready(function() {
-        $(".table_setting").on("click", ".table_show_setting", function() {
+    $(document).ready(function () {
+        $(".table_setting").on("click", ".table_show_setting", function () {
             // Xử lý sự kiện khi nhấn vào biểu tượng bánh răng
             console.log("Đã click vào biểu tượng bánh răng");
         });
 
-        $("#sortButtongiam").on("click", function() {
+        $("#sortButtongiam").on("click", function () {
             // Lấy danh sách sản phẩm và sắp xếp theo giá
             const $listItems = $(".list-item")
                 .detach(); // Sử dụng detach để giữ sự kiện và dữ liệu đính kèm
 
-            $listItems.sort(function(a, b) {
+            $listItems.sort(function (a, b) {
                 const priceA = parseFloat($(a).data("price"));
                 const priceB = parseFloat($(b).data("price"));
                 return priceB - priceA;
@@ -895,14 +916,14 @@ foreach ($listchucvu as $listchucvuu) {
 <!-- ================jsquery hiện ảnh ============ -->
 
 <script>
-    $(document).ready(function() {
-        $("#imageInput").change(function() {
+    $(document).ready(function () {
+        $("#imageInput").change(function () {
             var input = this;
 
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
 
-                reader.onload = function(e) {
+                reader.onload = function (e) {
                     $("#previewImage").attr("src", e.target.result);
                     $("#previewImage").css("display", "flex");
                 };
@@ -914,14 +935,14 @@ foreach ($listchucvu as $listchucvuu) {
 </script>
 
 <script>
-    $(document).ready(function() {
-        $("#imageInput1").change(function() {
+    $(document).ready(function () {
+        $("#imageInput1").change(function () {
             var input = this;
 
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
 
-                reader.onload = function(e) {
+                reader.onload = function (e) {
                     $("#previewImage1").attr("src", e.target.result);
                     $("#previewImage1").css("display", "flex");
                 };
@@ -933,14 +954,14 @@ foreach ($listchucvu as $listchucvuu) {
 </script>
 
 <script>
-    $(document).ready(function() {
-        $("#imageInput2").change(function() {
+    $(document).ready(function () {
+        $("#imageInput2").change(function () {
             var input = this;
 
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
 
-                reader.onload = function(e) {
+                reader.onload = function (e) {
                     $("#previewImage2").attr("src", e.target.result);
                     $("#previewImage2").css("display", "flex");
                 };
@@ -952,14 +973,14 @@ foreach ($listchucvu as $listchucvuu) {
 </script>
 
 <script>
-    $(document).ready(function() {
-        $("#imageInput3").change(function() {
+    $(document).ready(function () {
+        $("#imageInput3").change(function () {
             var input = this;
 
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
 
-                reader.onload = function(e) {
+                reader.onload = function (e) {
                     $("#previewImage3").attr("src", e.target.result);
                     $("#previewImage3").css("display", "flex");
                 };
@@ -970,14 +991,14 @@ foreach ($listchucvu as $listchucvuu) {
     });
 </script>
 <script>
-    $(document).ready(function() {
-        $("#imageInput4").change(function() {
+    $(document).ready(function () {
+        $("#imageInput4").change(function () {
             var input = this;
 
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
 
-                reader.onload = function(e) {
+                reader.onload = function (e) {
                     $("#previewImage4").attr("src", e.target.result);
                     $("#previewImage4").css("display", "flex");
                 };

@@ -14,7 +14,7 @@ include "../app/view/view_admin/header.php";
 if (isset($_GET['act'])) {
     switch ($_GET['act']) {
 
-            //danh muc
+        //danh muc
 
         case 'danhmuc':
 
@@ -123,7 +123,7 @@ if (isset($_GET['act'])) {
             }
             break;
 
-            // ============================San pham =============================
+        // ============================San pham =============================
 
         case 'sanpham':
 
@@ -375,7 +375,7 @@ if (isset($_GET['act'])) {
             }
             break;
 
-            // =================== Nhân Viên ===================
+        // =================== Nhân Viên ================================================
 
         case 'nhanvien':
             echo '<script src="../public/js/danhmuc/danhmuc_add.js"></script>';
@@ -543,7 +543,7 @@ if (isset($_GET['act'])) {
 
 
 
-            //============ Chức vụ nhân viên ================
+        //============ Chức vụ nhân viên ================
         case 'chucvunhanvien':
             // ==========load lai trang ===========
 
@@ -596,6 +596,12 @@ if (isset($_GET['act'])) {
 
             }
 
+            break;
+
+        // chức vụ nhân viên 
+        case 'chucvu':
+            
+            require_once "./view/nhanvien/chucvu.php";
             break;
     }
 } else {

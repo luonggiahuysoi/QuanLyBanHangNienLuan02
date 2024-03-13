@@ -293,6 +293,8 @@ foreach ($HienDanhMuc as $HienDanhMucc) {
         outline: none;
         caret-color: red;
         font-weight: 500;
+        border: none;
+        border-bottom: 2px solid black;
     }
 
     .updatdm_content input:nth-child(4),
@@ -310,6 +312,7 @@ foreach ($HienDanhMuc as $HienDanhMucc) {
         color: white;
         font-weight: 600;
     }
+
 
     /* add img  */
     .hidden-input {
