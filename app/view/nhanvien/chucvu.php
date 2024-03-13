@@ -1,51 +1,45 @@
 <!-- php database -->
 <?php
-// $shownhanvien = '';
-// $showhienthi = '';
-// foreach ($HienNhanVien as $HienNhanVienn) {
-//    extract($HienNhanVienn);
-//    if ($ability == 1) {
-
-//       $showhienthi = '<i class="bi bi-eye-fill"></i>';
-//    } else {
-//       $showhienthi = '<i class="bi bi-eye-slash-fill"></i>';
-//    }
+$showpq = '';
+foreach ($showphanquyen as $showphanquyenn) {
+   extract($showphanquyenn);
 
 
 
-//    $shownhanvien .= '
-//         <div class="table_th table_tr list-item producttt" data-price="">
-//                     <div class="table_name_image table__bottom_center table_name_imagee tennhanviendt">
-//                         <p>' . $tennhanvien . '</p>
-//                     </div>
-//                     <div class="table_hidden table__bottom_center chucvu">
-//                         <p>
-//                             ' . $chucvu . '
-//                         </p>
-//                     </div>
-//                     <div class="table_settin table__bottom_center setting">
-//                         <div class="table_show_setting">
-//                             <p><i class="bi bi-gear-fill"></i></p>
-//                         </div>
-//                         <div class="table_show_setting_clone">
+
+   $showpq .= '
+        <div class="table_th table_tr list-item producttt" data-price="">
+                    <div class="table_name_image table__bottom_center table_name_imagee tennhanviendt">
+                        <p>' . $tenchucvu . '</p>
+                    </div>
+                    <div class="table_hidden table__bottom_center chucvu">
+                        <p>
+                            ' . $luong . '
+                        </p>
+                    </div>
+                    <div class="table_settin table__bottom_center setting">
+                        <div class="table_show_setting">
+                            <p><i class="bi bi-gear-fill"></i></p>
+                        </div>
+                        <div class="table_show_setting_clone">
 
 
-//                             <p>
-//                                 <a href="index.php?act=updatenhanvien&idnhanvien=' . $id_nhanvien . '">
-//                                     <i class="bi bi-arrow-counterclockwise"></i>
-//                                 </a>
-//                             </p>
-//                             <p>
-//                                 <a  style="color:red"  href="index.php?act=deletenhanvien&idnhanvien=' . $id_nhanvien . '">
-//                                     <i class="bi bi-trash-fill"></i>
-//                                 </a>
-//                             </p>
+                            <p>
+                                <a href="index.php?act=updatephanquyen&idphanquyen=' . $id_phanquyen . '">
+                                    <i class="bi bi-arrow-counterclockwise"></i>
+                                </a>
+                            </p>
+                            <p>
+                                <a  style="color:red"  href="index.php?act=deletephanquyen&idphanquyen=' . $id_phanquyen . '">
+                                    <i class="bi bi-trash-fill"></i>
+                                </a>
+                            </p>
 
-//                         </div>
-//                     </div>
-//         </div>
-//         ';
-// }
+                        </div>
+                    </div>
+        </div>
+        ';
+}
 
 ?>
 
@@ -53,38 +47,14 @@
 <!-- <======================= Hiện số lượng ========================> -->
 
 <?php
-// $soluong = '';
-// $i = 0;
-// foreach ($HienNhanVien as $HienNhanViensl) {
-//    extract($HienNhanViensl);
-//    $i++;
-// }
+$soluong = '';
+$i = 0;
+foreach ($showphanquyen as $showphanquyenn) {
+   extract($showphanquyenn);
+   $i++;
+}
 
 ?>
-
-<!-- =========== DANH MUC LIST============= -->
-
-<?php
-// $listchucvushow = '';
-// foreach ($listchucvu as $listchucvuu) {
-//    extract($listchucvuu);
-//    $listchucvushow .= '
-//       <option value="' . $id_phanquyen . '">' . $tenchucvu . '</option>
-//    ';
-// }
-?>
-<?php
-// $listchucvushownhanvien = '';
-// foreach ($HienNhanVien as $HienNhanVienlist) {
-//    extract($HienNhanVienlist);
-//    $listchucvushownhanvien .= '
-//       <option value="' . $id_nhanvien . '">' . $tennhanvien . '</option>
-//    ';
-// }
-?>
-
-
-
 
 
 
@@ -138,7 +108,7 @@
       <div class="content_bottom_link">
          <a href="" style="color: #999;">Trang chủ</a>
          <p>/</p>
-         <a href="" style="color: #464646;">Chức vụ nhân viên</a>
+         <a href="" style="color: #999;">Chức vụ nhân viên</a>
          <p>/</p>
          <a href="" style="color: #464646;">Chức vụ </a>
       </div>
@@ -190,7 +160,7 @@
 
 
 
-            <?= $shownhanvien ?>
+            <?= $showpq ?>
 
 
 
@@ -291,7 +261,7 @@
                         <?php
                         $listchucvushowup = '';
                         $defaultSelectedId = $howNhanVienGetById[0]['id_phanquyen']; // ID của option mà bạn muốn chọn mặc định
-                        
+
                         foreach ($listchucvu as $listchucvuu) {
                            extract($listchucvuu);
 
@@ -377,23 +347,47 @@
       <div class="updatedm_h3">
          <p>Tên chức vụ</p>
       </div>
+      <!-- ====================== tự tạo dấu chấm sau mỗi 3 ký tự số ====================== -->
       <form action="index.php?act=AddChucVuVaoNhanVien" method="post" enctype="multipart/form-data">
          <div class="updatdm_content">
             <div class="updatesp_price">
                <div class="updatechucvu_nv">
-                  <input type="text " value="Tên chức vụ">
-                  <input type="text " value="Lương">
+                  <input type="text " placeholder="Tên chức vụ" name="tenchucvu">
+                  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                  <!-- Input và cảnh báo -->
+                  <input type="text" id="luongInput" placeholder="Lương">
+
+                  <script>
+                     document.getElementById("luongInput").addEventListener("input", function(event) {
+                        let input = event.target.value.replace(/\D/g, ""); // Loại bỏ tất cả các ký tự không phải là số
+
+                        // Kiểm tra xem giá trị có chứa ký tự không phải số hay không
+                        if (/[^0-9]/.test(event.target.value)) {
+                           Swal.fire({
+                              title: "Bạn đã nhập sai kiểu dữ liệu?",
+                              text: "Xin vui lòng nhập lại!",
+                              icon: "warning"
+                           });
+                        }
+
+                        input = input.replace(/\B(?=(\d{3})+(?!\d))/g, "."); // Thêm dấu chấm sau mỗi 3 chữ số
+                        event.target.value = input;
+                     });
+                  </script>
+
+
+
                </div>
             </div>
             <div class="updatesp_btn">
-               <input class="btnsp_them" type="submit" value="Thêm mới nhân viên" name="add_chucvuvaonhanvien">
+               <input class="btnsp_them" type="submit" value="Thêm mới nhân viên" name="add_chucvumoi">
                <input class="btnsp_huy" type="reset" value="Hủy">
             </div>
             <input class="btnsp_close danhmnuc_close_add" type="button" value="Đóng" id="closeButton">
          </div>
          <script>
-            document.addEventListener("DOMContentLoaded", function () {
-               document.querySelector("#closeButton").addEventListener("click", function () {
+            document.addEventListener("DOMContentLoaded", function() {
+               document.querySelector("#closeButton").addEventListener("click", function() {
                   // Lấy phần tử cha và ẩn nó đi
                   document.querySelector(".AddDanhMuc").style.display = "none";
                });
@@ -680,17 +674,14 @@
       <form action="index.php?act=updatehanghoaimg" method="post" enctype="multipart/form-data">
          <div class="updatdm_content">
             <div class="updatesp_tensp updatesp_main-img">
-               <input type="text" name="tenhanghoa" id="" placeholder="Tên sản phẩm"
-                  value="<?= $HienMaHangHoa[0]['tenhanghoa'] ?>">
-               <input type="text" name="mahanghoa" id="" placeholder="Mã sản phẩm"
-                  value="<?= $HienMaHangHoa[0]['id_mahanghoa'] ?>">
+               <input type="text" name="tenhanghoa" id="" placeholder="Tên sản phẩm" value="<?= $HienMaHangHoa[0]['tenhanghoa'] ?>">
+               <input type="text" name="mahanghoa" id="" placeholder="Mã sản phẩm" value="<?= $HienMaHangHoa[0]['id_mahanghoa'] ?>">
             </div>
             <div class="updatesp_image-list">
                <div class="updatesp-img">
                   <label class="custum-file-upload" for="imageInput1">
                      <div class="icon">
-                        <img src="../public/img/folder.png" fill="" viewBox="0 0 24 24" width="160px" height="195px"
-                           id="previewImage1" style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
+                        <img src="../public/img/folder.png" fill="" viewBox="0 0 24 24" width="160px" height="195px" id="previewImage1" style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
 
                         </img>
                      </div>
@@ -702,8 +693,7 @@
                <div class="updatesp-img">
                   <label class="custum-file-upload" for="imageInput2">
                      <div class="icon">
-                        <img src="../public/img/folder.png" fill="" viewBox="0 0 24 24" width="160px" height="195px"
-                           id="previewImage2" style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
+                        <img src="../public/img/folder.png" fill="" viewBox="0 0 24 24" width="160px" height="195px" id="previewImage2" style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
 
                         </img>
                      </div>
@@ -715,8 +705,7 @@
                <div class="updatesp-img">
                   <label class="custum-file-upload" for="imageInput3">
                      <div class="icon">
-                        <img src="../public/img/folder.png" fill="" viewBox="0 0 24 24" width="160px" height="195px"
-                           id="previewImage3" style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
+                        <img src="../public/img/folder.png" fill="" viewBox="0 0 24 24" width="160px" height="195px" id="previewImage3" style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
 
                         </img>
                      </div>
@@ -728,8 +717,7 @@
                <div class="updatesp-img">
                   <label class="custum-file-upload" for="imageInput4">
                      <div class="icon">
-                        <img src="../public/img/folder.png" fill="" viewBox="0 0 24 24" width="160px" height="195px"
-                           id="previewImage4" style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
+                        <img src="../public/img/folder.png" fill="" viewBox="0 0 24 24" width="160px" height="195px" id="previewImage4" style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
 
                         </img>
                      </div>
@@ -793,13 +781,13 @@
 <!-- -------------------SEARCH---------------------- -->
 
 <script>
-   $(document).ready(function () {
+   $(document).ready(function() {
       // Xử lý sự kiện khi người dùng nhập vào ô tìm kiếm
-      $("#searchInput").on("input", function () {
+      $("#searchInput").on("input", function() {
          var searchText = $(this).val().toLowerCase();
 
          // Hiển thị hoặc ẩn các phần tử phù hợp với từ khóa tìm kiếm
-         $(".list-item").each(function () {
+         $(".list-item").each(function() {
             var itemName = $(this).find(".tendanhmuc p").text().toLowerCase();
             if (itemName.includes(searchText)) {
                $(this).show();
@@ -818,18 +806,18 @@
 
 <!-- Đảm bảo đặt mã JavaScript trong thẻ script -->
 <script>
-   $(document).ready(function () {
-      $(".table_setting").on("click", ".table_show_setting", function () {
+   $(document).ready(function() {
+      $(".table_setting").on("click", ".table_show_setting", function() {
          // Xử lý sự kiện khi nhấn vào biểu tượng bánh răng
          console.log("Đã click vào biểu tượng bánh răng");
       });
 
-      $("#sortButtontang").on("click", function () {
+      $("#sortButtontang").on("click", function() {
          // Lấy danh sách sản phẩm và sắp xếp theo giá
          const $listItems = $(".list-item")
             .detach(); // Sử dụng detach để giữ sự kiện và dữ liệu đính kèm
 
-         $listItems.sort(function (a, b) {
+         $listItems.sort(function(a, b) {
             const priceA = parseFloat($(a).data("price"));
             const priceB = parseFloat($(b).data("price"));
             return priceA - priceB;
@@ -849,18 +837,18 @@
 
 <!-- Đảm bảo đặt mã JavaScript trong thẻ script -->
 <script>
-   $(document).ready(function () {
-      $(".table_setting").on("click", ".table_show_setting", function () {
+   $(document).ready(function() {
+      $(".table_setting").on("click", ".table_show_setting", function() {
          // Xử lý sự kiện khi nhấn vào biểu tượng bánh răng
          console.log("Đã click vào biểu tượng bánh răng");
       });
 
-      $("#sortButtongiam").on("click", function () {
+      $("#sortButtongiam").on("click", function() {
          // Lấy danh sách sản phẩm và sắp xếp theo giá
          const $listItems = $(".list-item")
             .detach(); // Sử dụng detach để giữ sự kiện và dữ liệu đính kèm
 
-         $listItems.sort(function (a, b) {
+         $listItems.sort(function(a, b) {
             const priceA = parseFloat($(a).data("price"));
             const priceB = parseFloat($(b).data("price"));
             return priceB - priceA;
@@ -878,14 +866,14 @@
 <!-- ================jsquery hiện ảnh ============ -->
 
 <script>
-   $(document).ready(function () {
-      $("#imageInput").change(function () {
+   $(document).ready(function() {
+      $("#imageInput").change(function() {
          var input = this;
 
          if (input.files && input.files[0]) {
             var reader = new FileReader();
 
-            reader.onload = function (e) {
+            reader.onload = function(e) {
                $("#previewImage").attr("src", e.target.result);
                $("#previewImage").css("display", "flex");
             };
@@ -897,14 +885,14 @@
 </script>
 
 <script>
-   $(document).ready(function () {
-      $("#imageInput1").change(function () {
+   $(document).ready(function() {
+      $("#imageInput1").change(function() {
          var input = this;
 
          if (input.files && input.files[0]) {
             var reader = new FileReader();
 
-            reader.onload = function (e) {
+            reader.onload = function(e) {
                $("#previewImage1").attr("src", e.target.result);
                $("#previewImage1").css("display", "flex");
             };
@@ -916,14 +904,14 @@
 </script>
 
 <script>
-   $(document).ready(function () {
-      $("#imageInput2").change(function () {
+   $(document).ready(function() {
+      $("#imageInput2").change(function() {
          var input = this;
 
          if (input.files && input.files[0]) {
             var reader = new FileReader();
 
-            reader.onload = function (e) {
+            reader.onload = function(e) {
                $("#previewImage2").attr("src", e.target.result);
                $("#previewImage2").css("display", "flex");
             };
@@ -935,14 +923,14 @@
 </script>
 
 <script>
-   $(document).ready(function () {
-      $("#imageInput3").change(function () {
+   $(document).ready(function() {
+      $("#imageInput3").change(function() {
          var input = this;
 
          if (input.files && input.files[0]) {
             var reader = new FileReader();
 
-            reader.onload = function (e) {
+            reader.onload = function(e) {
                $("#previewImage3").attr("src", e.target.result);
                $("#previewImage3").css("display", "flex");
             };
@@ -953,14 +941,14 @@
    });
 </script>
 <script>
-   $(document).ready(function () {
-      $("#imageInput4").change(function () {
+   $(document).ready(function() {
+      $("#imageInput4").change(function() {
          var input = this;
 
          if (input.files && input.files[0]) {
             var reader = new FileReader();
 
-            reader.onload = function (e) {
+            reader.onload = function(e) {
                $("#previewImage4").attr("src", e.target.result);
                $("#previewImage4").css("display", "flex");
             };

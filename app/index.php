@@ -600,9 +600,25 @@ if (isset($_GET['act'])) {
 
         // chức vụ nhân viên 
         case 'chucvu':
+
+            $phanquyen = new DungChung;
+            $showphanquyen = $phanquyen->ShowDungChung('phanquyennhanvien');
+
+            
+            // ================= Load lại trang ==================
+            echo '<script src="../public/js/danhmuc/danhmuc_add.js"></script>';
+            echo '<script src="../public/js/sanpham/sanpham.js"></script>';
             
             require_once "./view/nhanvien/chucvu.php";
             break;
+
+        case 'AddChucVuVaoNhanVien':
+            if(isset($_POST['add_chucvumoi']) && $_POST['add_chucvumoi']) {
+                
+            }
+            break;
+
+        
     }
 } else {
 
