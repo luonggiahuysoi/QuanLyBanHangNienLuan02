@@ -141,4 +141,16 @@ class NhanVien {
       $this->nhanvien->get_all($sql);
    }
 
+   function AddChucVu($tenchucvu, $luong) {
+      $sql = "INSERT INTO phanquyennhanvien SET tenchucvu='" . $tenchucvu . "', luong ='" . $luong . "' ";
+      $this->nhanvien->get_all($sql);
+   }
+
+   function UpdateChucVu($tenchucvu, $luong, $getId) {
+      $sql = "UPDATE phanquyennhanvien SET tenchucvu='" . $tenchucvu . "', luong ='" . $luong . "'  WHERE id_phanquyen=" . $getId;
+      $this->nhanvien->get_all($sql);
+   }
+
+
+
 }

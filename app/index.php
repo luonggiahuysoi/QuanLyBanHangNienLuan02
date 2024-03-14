@@ -14,7 +14,7 @@ include "../app/view/view_admin/header.php";
 if (isset($_GET['act'])) {
     switch ($_GET['act']) {
 
-        //danh muc
+            //danh muc
 
         case 'danhmuc':
 
@@ -123,7 +123,7 @@ if (isset($_GET['act'])) {
             }
             break;
 
-        // ============================San pham =============================
+            // ============================San pham =============================
 
         case 'sanpham':
 
@@ -375,7 +375,7 @@ if (isset($_GET['act'])) {
             }
             break;
 
-        // =================== Nhân Viên ================================================
+            // =================== Nhân Viên ================================================
 
         case 'nhanvien':
             echo '<script src="../public/js/danhmuc/danhmuc_add.js"></script>';
@@ -543,7 +543,7 @@ if (isset($_GET['act'])) {
 
 
 
-        //============ Chức vụ nhân viên ================
+            //============ Chức vụ nhân viên ================
         case 'chucvunhanvien':
             // ==========load lai trang ===========
 
@@ -593,32 +593,100 @@ if (isset($_GET['act'])) {
                 $nhanvien = new DungChung;
                 $HienNhanVien = $nhanvien->ShowDungChung('nhanvien');
                 require_once "./view/nhanvien/phanquyen_nhanvien.php";
-
             }
 
             break;
 
-        // chức vụ nhân viên 
+            // chức vụ nhân viên 
         case 'chucvu':
 
             $phanquyen = new DungChung;
             $showphanquyen = $phanquyen->ShowDungChung('phanquyennhanvien');
 
-            
+
             // ================= Load lại trang ==================
             echo '<script src="../public/js/danhmuc/danhmuc_add.js"></script>';
             echo '<script src="../public/js/sanpham/sanpham.js"></script>';
-            
+
             require_once "./view/nhanvien/chucvu.php";
             break;
 
-        case 'AddChucVuVaoNhanVien':
-            if(isset($_POST['add_chucvumoi']) && $_POST['add_chucvumoi']) {
-                
+        case 'AddChucVu':
+            if (isset($_POST['add_chucvumoi']) && $_POST['add_chucvumoi']) {
+                $tenchucvu = $_POST['tenchucvu'];
+                $luong = $_POST['luong'];
+                $luong = preg_replace("/\./", "", $luong);
+
+                // Thêm chức vụ
+
+                $addchucvu = new NhanVien;
+                $addchucvu->AddChucVu($tenchucvu, $luong);
+
+                // ================= Load lại trang ==================
+                echo '<script src="../public/js/danhmuc/danhmuc_add.js"></script>';
+                echo '<script src="../public/js/sanpham/sanpham.js"></script>';
+
+                require_once "./view/nhanvien/chucvu.php";
             }
             break;
 
-        
+        case 'updatephanquyenchucvuu':
+            if (isset($_GET['idchucvu']) && $_GET['idchucvu']) {
+                $getId = $_GET['idchucvu'];
+
+                // Lấy id chức vụ
+
+                $idchucvu = new DungChung;
+                $hienupdatechucvu = $idchucvu->getByIdAll('phanquyennhanvien', 'id_phanquyen', $getId);
+
+                echo '<script src="../public/js/sanpham/sanpham_up.js"></script>';
+                // ================= Load lại trang ==================
+                echo '<script src="../public/js/danhmuc/danhmuc_add.js"></script>';
+                echo '<script src="../public/js/sanpham/sanpham.js"></script>';
+                $phanquyen = new DungChung;
+                $showphanquyen = $phanquyen->ShowDungChung('phanquyennhanvien');
+
+                require_once "./view/nhanvien/chucvu.php";
+            }
+
+            if (isset($_POST['add_chucvumoi']) && $_POST['add_chucvumoi']) {
+                $getId = $_POST['idchucvu'];
+                $tenchucvu = $_POST['tenchucvu'];
+                $luong = $_POST['luong'];
+                $luong = preg_replace("/\,/", "", $luong);
+                $luong = preg_replace("/\./", "", $luong);
+
+                // update chức vụ
+
+                $updatechucvu = new NhanVien;
+                $updatechucvu->UpdateChucVu($tenchucvu, $luong, $getId);
+
+                // ================= Load lại trang ==================
+                echo '<script src="../public/js/danhmuc/danhmuc_add.js"></script>';
+                echo '<script src="../public/js/sanpham/sanpham.js"></script>';
+                $phanquyen = new DungChung;
+                $showphanquyen = $phanquyen->ShowDungChung('phanquyennhanvien');
+
+                require_once "./view/nhanvien/chucvu.php";
+            }
+            break;
+
+        case 'deletephanquyenchucvuu':
+            if (isset($_GET['idchucvu']) && $_GET['idchucvu']) {
+                $deletechucvu = $_GET['idchucvu'];
+
+                $delete = new DungChung;
+                $delete->DeleteAll('phanquyennhanvien', 'id_phanquyen', $deletechucvu);
+                // ================= Load lại trang ==================
+                echo '<script src="../public/js/danhmuc/danhmuc_add.js"></script>';
+                echo '<script src="../public/js/sanpham/sanpham.js"></script>';
+                $phanquyen = new DungChung;
+                $showphanquyen = $phanquyen->ShowDungChung('phanquyennhanvien');
+
+                require_once "./view/nhanvien/chucvu.php";
+            }
+
+            break;
     }
 } else {
 

@@ -25,12 +25,12 @@ foreach ($showphanquyen as $showphanquyenn) {
 
 
                             <p>
-                                <a href="index.php?act=updatephanquyen&idphanquyen=' . $id_phanquyen . '">
+                                <a href="index.php?act=updatephanquyenchucvuu&idchucvu=' . $id_phanquyen . '">
                                     <i class="bi bi-arrow-counterclockwise"></i>
                                 </a>
                             </p>
                             <p>
-                                <a  style="color:red"  href="index.php?act=deletephanquyen&idphanquyen=' . $id_phanquyen . '">
+                                <a  style="color:red"  href="index.php?act=deletephanquyenchucvuu&idchucvu=' . $id_phanquyen . '">
                                     <i class="bi bi-trash-fill"></i>
                                 </a>
                             </p>
@@ -206,20 +206,20 @@ foreach ($showphanquyen as $showphanquyenn) {
 
 
 
-<!--================================ Thêm Nhân Viên Vào Quyền ========================== -->
+<!--================================ Thêm phân quyền ========================== -->
 <div class="updatedanhmuc AddDanhMuc">
    <div class="updatedm_view">
       <div class="updatedm_h3">
          <p>Tên chức vụ</p>
       </div>
       <!-- ====================== tự tạo dấu chấm sau mỗi 3 ký tự số ====================== -->
-      <form action="index.php?act=AddChucVuVaoNhanVien" method="post" enctype="multipart/form-data">
+      <form action="index.php?act=AddChucVu" method="post" enctype="multipart/form-data">
          <div class="updatdm_content">
             <div class="updatesp_price">
                <div class="updatechucvu_nv">
                   <div class="chucvu_nvluong">
                      <input type="text " placeholder="Tên chức vụ" name="tenchucvu">
-                     <input type="text" id="luongInput" placeholder="Lương">
+                     <input type="text" id="luongInput" placeholder="Lương" name="luong">
                   </div>
 
                   <!-- link lib  -->
@@ -243,6 +243,79 @@ foreach ($showphanquyen as $showphanquyenn) {
                      });
 
                      document.getElementById("luongInput").addEventListener("keypress", function (event) {
+                        // Kiểm tra xem ký tự được nhập có phải là số không
+                        if (event.key < "0" || event.key > "9") {
+                           Swal.fire({
+                              title: "Bạn đã nhập sai kiểu dữ liệu?",
+                              text: "Xin vui lòng chỉ nhập số!",
+                              icon: "warning"
+                           });
+                           event.preventDefault(); // Ngăn không cho ký tự nhập vào
+                        }
+                     });
+                  </script>
+
+
+               </div>
+            </div>
+            <div class="updatesp_btn">
+               <input class="btnsp_them" type="submit" value="Thêm mới nhân viên" name="add_chucvumoi">
+               <input class="btnsp_huy" type="reset" value="Hủy">
+            </div>
+            <input class="btnsp_close danhmnuc_close_add" type="button" value="Đóng" id="closeButton">
+         </div>
+         <script>
+            document.addEventListener("DOMContentLoaded", function () {
+               document.querySelector("#closeButton").addEventListener("click", function () {
+                  // Lấy phần tử cha và ẩn nó đi
+                  document.querySelector(".AddDanhMuc").style.display = "none";
+               });
+            });
+         </script>
+
+      </form>
+   </div>
+</div>
+
+
+<!--================================ UpdateChucVu ========================== -->
+<div class="updatedanhmuc updatedanhmucjs">
+   <div class="updatedm_view">
+      <div class="updatedm_h3">
+         <p>Tên chức vụ</p>
+      </div>
+      <!-- ====================== tự tạo dấu chấm sau mỗi 3 ký tự số ====================== -->
+      <form action="index.php?act=updatephanquyenchucvuu" method="post" enctype="multipart/form-data">
+         <input type="hidden" name="idchucvu" value="<?=$hienupdatechucvu[0]['id_phanquyen']?>">
+         <div class="updatdm_content">
+            <div class="updatesp_price">
+               <div class="updatechucvu_nv">
+                  <div class="chucvu_nvluong">
+                     <input type="text " placeholder="Tên chức vụ" name="tenchucvu" value="<?=$hienupdatechucvu[0]['tenchucvu']?>">
+                     <input type="text" id="luongInputt" placeholder="Lương" name="luong" value="<?= number_format($hienupdatechucvu[0]['luong'])?>">
+                  </div>
+
+                  <!-- link lib  -->
+                  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                  <script>
+                     document.getElementById("luongInputt").addEventListener("input", function (event) {
+                        let input = event.target.value.replace(/\D/g, ""); // Loại bỏ tất cả các ký tự không phải là số
+
+                        // Kiểm tra xem số ký tự đã nhập có quá 10 không
+                        if (input.length > 10) {
+                           Swal.fire({
+                              title: "Số lượng ký tự vượt quá giới hạn!",
+                              text: "Chỉ được nhập tối đa 10 số!",
+                              icon: "warning"
+                           });
+                           input = input.slice(0, 10); // Giới hạn số lượng ký tự nhập vào tối đa 10
+                        }
+
+                        input = input.replace(/\B(?=(\d{3})+(?!\d))/g, "."); // Thêm dấu chấm sau mỗi 3 chữ số
+                        event.target.value = input;
+                     });
+
+                     document.getElementById("luongInputt").addEventListener("keypress", function (event) {
                         // Kiểm tra xem ký tự được nhập có phải là số không
                         if (event.key < "0" || event.key > "9") {
                            Swal.fire({
@@ -544,125 +617,6 @@ foreach ($showphanquyen as $showphanquyenn) {
       display: none;
    }
 </style>
-
-
-<!--==================================== Them anh ============================== -->
-
-
-
-<div class="updatedanhmuc updatesanphamimg">
-   <div class="updatedm_view">
-      <div class="updatedm_h3">
-         <p>Thêm Ảnh Sản Phẩm</p>
-      </div>
-      <form action="index.php?act=updatehanghoaimg" method="post" enctype="multipart/form-data">
-         <div class="updatdm_content">
-            <div class="updatesp_tensp updatesp_main-img">
-               <input type="text" name="tenhanghoa" id="" placeholder="Tên sản phẩm"
-                  value="<?= $HienMaHangHoa[0]['tenhanghoa'] ?>">
-               <input type="text" name="mahanghoa" id="" placeholder="Mã sản phẩm"
-                  value="<?= $HienMaHangHoa[0]['id_mahanghoa'] ?>">
-            </div>
-            <div class="updatesp_image-list">
-               <div class="updatesp-img">
-                  <label class="custum-file-upload" for="imageInput1">
-                     <div class="icon">
-                        <img src="../public/img/folder.png" fill="" viewBox="0 0 24 24" width="160px" height="195px"
-                           id="previewImage1" style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
-
-                        </img>
-                     </div>
-                     <input type="file" id="imageInput1" name="fileimage1">
-                  </label>
-
-               </div>
-
-               <div class="updatesp-img">
-                  <label class="custum-file-upload" for="imageInput2">
-                     <div class="icon">
-                        <img src="../public/img/folder.png" fill="" viewBox="0 0 24 24" width="160px" height="195px"
-                           id="previewImage2" style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
-
-                        </img>
-                     </div>
-                     <input type="file" id="imageInput2" name="fileimage2">
-                  </label>
-
-               </div>
-
-               <div class="updatesp-img">
-                  <label class="custum-file-upload" for="imageInput3">
-                     <div class="icon">
-                        <img src="../public/img/folder.png" fill="" viewBox="0 0 24 24" width="160px" height="195px"
-                           id="previewImage3" style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
-
-                        </img>
-                     </div>
-                     <input type="file" id="imageInput3" name="fileimage3">
-                  </label>
-
-               </div>
-
-               <div class="updatesp-img">
-                  <label class="custum-file-upload" for="imageInput4">
-                     <div class="icon">
-                        <img src="../public/img/folder.png" fill="" viewBox="0 0 24 24" width="160px" height="195px"
-                           id="previewImage4" style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
-
-                        </img>
-                     </div>
-                     <input type="file" id="imageInput4" name="fileimage4">
-                  </label>
-
-               </div>
-            </div>
-            <div class="updatesp_btn">
-               <input class="btnsp_them" type="submit" value="Update ảnh " name="updateImg">
-               <input class="btnsp_huy" type="reset" value="Hủy">
-            </div>
-            <input class="btnsp_close sanphamimg" type="button" value="Quay lại" id="closeButton">
-         </div>
-
-      </form>
-   </div>
-</div>
-
-
-
-<style>
-   .updatesp_main-img {
-      margin-top: -17%;
-   }
-
-   .updatesp_image-list {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 12%;
-   }
-
-   .updatesp-img {
-      width: 200px;
-      height: 200px;
-      border: 1px solid #222;
-   }
-
-   .updatesp-img label {
-      width: 100%;
-      height: 110%;
-   }
-</style>
-
-
-
-
-
-
-
-
-
-
 
 
 

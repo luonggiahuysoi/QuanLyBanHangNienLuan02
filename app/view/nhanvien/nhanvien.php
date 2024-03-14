@@ -355,8 +355,22 @@ foreach ($listchucvu as $listchucvuu) {
         </form>
     </div>
 </div>
+<!-- xóa dấu tăng giảm  -->
+<style>
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-clear-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
 
-
+    /* Hiển thị dấu mũi tên tăng giảm khi hover */
+    input[type="number"]:hover::-webkit-outer-spin-button,
+    input[type="number"]:hover::-webkit-inner-spin-button,
+    input[type="number"]:hover::-webkit-clear-button {
+        display: none;
+    }
+</style>
 <!--================================ Thêm Nhân Viên Mới ========================== -->
 
 <div class="updatedanhmuc AddDanhMuc">
