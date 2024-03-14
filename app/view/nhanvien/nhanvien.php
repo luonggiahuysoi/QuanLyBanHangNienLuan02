@@ -400,42 +400,42 @@ foreach ($listchucvu as $listchucvuu) {
                     <input type="text" name="tentaikhoan" id="" placeholder="Tên tài khoản">
                     <input type="text" name="matkhau" id="" placeholder="Mật khẩu">
                     <div>
-                        <select name="chucvu" id="dropdownn">
+                        <select name="chucvu" id="dropdownnvn">
                             <?= $listchucvushow ?>
                         </select>
                         <script>
                             $(document).ready(function () {
                                 // Sử dụng Select2 cho dropdown
-                                $('#dropdownn').select2();
+                                $('#dropdownnvn').select2();
                             });
                         </script>
                     </div>
                 </div>
 
                 <div class="updatedm_img">
-                    <label class="custum-file-upload" for="imaAddnputAdd">
+                    <label class="custum-file-upload" for="imaAddnputAddd">
                         <div class="icon">
-                            <img id="previewImageAdd" src="../public/img/folder.png" fill="" viewBox="0 0 24 24"
+                            <img id="previewImageAddd" src="../public/img/folder.png" fill="" viewBox="0 0 24 24"
                                 width="160px" height="115px" id="previewImage"
                                 style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
 
                             </img>
                         </div>
-                        <input type="file" id="imaAddnputAdd" name="fileimage">
+                        <input type="file" id="imaAddnputAddd" name="fileimage">
                     </label>
 
                 </div>
                 <script>
                     $(document).ready(function () {
-                        $("#imaAddnputAdd").change(function () {
+                        $("#imaAddnputAddd").change(function () {
                             var input = this;
 
                             if (input.files && input.files[0]) {
                                 var reader = new FileReader();
 
                                 reader.onload = function (e) {
-                                    $("#previewImageAdd").attr("src", e.target.result);
-                                    $("#previewImageAdd").css("display", "flex");
+                                    $("#previewImageAddd").attr("src", e.target.result);
+                                    $("#previewImageAddd").css("display", "flex");
                                 };
 
                                 reader.readAsDataURL(input.files[0]);

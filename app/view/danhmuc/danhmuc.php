@@ -7,7 +7,6 @@ foreach ($HienDanhMuc as $HienDanhMucc) {
     if ($hienthi == 1) {
 
         $showhienthi = '<i class="bi bi-eye-fill"></i>';
-
     } else {
         $showhienthi = '<i class="bi bi-eye-slash-fill"></i>';
     }
@@ -185,13 +184,12 @@ foreach ($HienDanhMuc as $HienDanhMucc) {
         <form action="index.php?act=updatedanhmuc" method="post" enctype="multipart/form-data">
 
             <div class="updatdm_content">
-                <input type="text" name="tendanhmuc" id="" placeholder="Tên danh mục"
-                    value="<?= $id_onedanhmuc[0]['tendanhmuc'] ?>">
+                <input type="text" name="tendanhmuc" id="" placeholder="Tên danh mục" value="<?= $id_onedanhmuc[0]['tendanhmuc'] ?>">
                 <div class="updatedm_img">
-                    <label for="file">
-                        <img height="80px" width="90px" src="../public/img/folder.png" alt="Add Image">
+                    <label for="filedanhmucup">
+                        <img height="80px" width="90px" src="data:image/png;base64, <?= $id_onedanhmuc[0]['hinhanh']?>" alt="Add Image" id="filedanhmucsrcup">
                     </label>
-                    <input style="display:none;" type="file" name="fileimage" id="file">
+                    <input style="display:none;" type="file" name="fileimage" id="filedanhmucup">
                 </div>
                 <input type="submit" value="Update danh mục" name="btnUpdateDanhMuc">
                 <input type="button" class="danhmnuc_close" value="Đóng" id="closeButton">
@@ -202,6 +200,25 @@ foreach ($HienDanhMuc as $HienDanhMucc) {
         </form>
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+        $("#filedanhmucup").change(function() {
+            var input = this;
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $("#filedanhmucsrcup").attr("src", e.target.result);
+                    $("#filedanhmucsrcup").css("display", "flex");
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        });
+    });
+</script>
 
 <!--================================ Thêm danh mục mới ========================== -->
 
@@ -216,10 +233,10 @@ foreach ($HienDanhMuc as $HienDanhMucc) {
             <div class="updatdm_content">
                 <input type="text" name="tendanhmuc" id="" placeholder="Tên danh mục">
                 <div class="updatedm_img">
-                    <label for="fileadd">
-                        <img height="80px" width="90px" src="../public/img/folder.png" alt="Add Image">
+                    <label for="filedanhmuc">
+                        <img height="80px" width="90px" src="../public/img/folder.png" alt="Add Image" id="filedanhmucsrc">
                     </label>
-                    <input style="display:none;" type="file" name="fileimage" id="fileadd">
+                    <input style="display:none;" type="file" name="fileimage" id="filedanhmuc">
                 </div>
                 <input type="submit" value="Update danh mục" name="add_danhmuc">
                 <input type="button" class="danhmnuc_close_add" value="Đóng" id="closeButton">
@@ -228,6 +245,25 @@ foreach ($HienDanhMuc as $HienDanhMucc) {
         </form>
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+        $("#filedanhmuc").change(function() {
+            var input = this;
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $("#filedanhmucsrc").attr("src", e.target.result);
+                    $("#filedanhmucsrc").css("display", "flex");
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        });
+    });
+</script>
 
 
 <style>
@@ -345,13 +381,13 @@ foreach ($HienDanhMuc as $HienDanhMucc) {
 <!-- -------------------SEARCH---------------------- -->
 
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
         // Xử lý sự kiện khi người dùng nhập vào ô tìm kiếm
-        $("#searchInput").on("input", function () {
+        $("#searchInput").on("input", function() {
             var searchText = $(this).val().toLowerCase();
 
             // Hiển thị hoặc ẩn các phần tử phù hợp với từ khóa tìm kiếm
-            $(".list-item").each(function () {
+            $(".list-item").each(function() {
                 var itemName = $(this).find(".tendanhmuc p").text().toLowerCase();
                 if (itemName.includes(searchText)) {
                     $(this).show();

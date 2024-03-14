@@ -266,7 +266,7 @@ foreach ($listdanhmuc as $listdanhmucc) {
             <div class="updatedm_img">
                <label class="custum-file-upload" for="imageInputupdate">
                   <div class="icon">
-                     <img  id="previewImage" src="data:image/png;base64, <?= $showUpdateHangHoa[0]['anhhanghoa'] ?>" fill="" viewBox="0 0 24 24" width="160px" height="115px" id="previewImage" style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
+                     <img id="previewImage" src="data:image/png;base64, <?= $showUpdateHangHoa[0]['anhhanghoa'] ?>" fill="" viewBox="0 0 24 24" width="160px" height="115px" id="previewImage" style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
 
                      </img>
                   </div>
@@ -318,13 +318,13 @@ foreach ($listdanhmuc as $listdanhmucc) {
             <div class="updatesp_tensp">
                <input type="text" name="tenhanghoa" id="" placeholder="Tên sản phẩm">
                <div>
-                  <select name="danhmuc" id="dropdown">
+                  <select name="danhmuc" id="dropdownsanpham">
                      <?= $listdanhmucshow ?>
                   </select>
                   <script>
                      $(document).ready(function() {
                         // Sử dụng Select2 cho dropdown
-                        $('#dropdown').select2();
+                        $('#dropdownsanpham').select2();
                      });
                   </script>
                </div>
@@ -341,14 +341,32 @@ foreach ($listdanhmuc as $listdanhmucc) {
 
 
             <div class="updatedm_img">
-               <label class="custum-file-upload" for="imageInput">
+               <label class="custum-file-upload" for="filesanpham">
                   <div class="icon">
-                     <img src="../public/img/folder.png" fill="" viewBox="0 0 24 24" width="160px" height="115px" id="previewImage" style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
+                     <img src="../public/img/folder.png" fill="" viewBox="0 0 24 24" width="160px" height="115px" id="imgsanpham" style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
 
                      </img>
                   </div>
-                  <input type="file" id="imageInput" name="fileimage">
+                  <input type="file" id="filesanpham" name="fileimage">
                </label>
+               <script>
+                  $(document).ready(function() {
+                     $("#filesanpham").change(function() {
+                        var input = this;
+
+                        if (input.files && input.files[0]) {
+                           var reader = new FileReader();
+
+                           reader.onload = function(e) {
+                              $("#imgsanpham").attr("src", e.target.result);
+                              $("#imgsanpham").css("display", "flex");
+                           };
+
+                           reader.readAsDataURL(input.files[0]);
+                        }
+                     });
+                  });
+               </script>
 
             </div>
 

@@ -52,6 +52,9 @@ if (isset($_GET['act'])) {
                 $delete = new DungChung;
                 $delete->DeleteAll('danhmuc', 'id_danhmuc', $getId);
 
+
+                echo '<script src="../public/js/danhmuc/danhmuc_add.js"></script>';
+
                 $danhmuc = new DungChung;
                 $HienDanhMuc = $danhmuc->ShowDungChung('danhmuc');
                 require_once "../app/view/danhmuc/danhmuc.php";
@@ -623,6 +626,8 @@ if (isset($_GET['act'])) {
                 $addchucvu->AddChucVu($tenchucvu, $luong);
 
                 // ================= Load lại trang ==================
+                $phanquyen = new DungChung;
+                $showphanquyen = $phanquyen->ShowDungChung('phanquyennhanvien');
                 echo '<script src="../public/js/danhmuc/danhmuc_add.js"></script>';
                 echo '<script src="../public/js/sanpham/sanpham.js"></script>';
 
