@@ -40,11 +40,6 @@ foreach ($HienNhanVien as $HienNhanVienn) {
                             <p><i class="bi bi-gear-fill"></i></p>
                         </div>
                         <div class="table_show_setting_clone">
-                           <p>
-                              <a style="color:black" href="index.php?act=updatehanghoaimg&idhanghoa=' . $id_hanghoa . '">
-                                     <i class="bi bi-images"></i>
-                              </a>
-                          </p>
 
 
                             <p>

@@ -184,10 +184,12 @@ foreach ($HienDanhMuc as $HienDanhMucc) {
         <form action="index.php?act=updatedanhmuc" method="post" enctype="multipart/form-data">
 
             <div class="updatdm_content">
-                <input type="text" name="tendanhmuc" id="" placeholder="Tên danh mục" value="<?= $id_onedanhmuc[0]['tendanhmuc'] ?>">
+                <input type="text" name="tendanhmuc" id="" placeholder="Tên danh mục"
+                    value="<?= $id_onedanhmuc[0]['tendanhmuc'] ?>">
                 <div class="updatedm_img">
                     <label for="filedanhmucup">
-                        <img height="80px" width="90px" src="data:image/png;base64, <?= $id_onedanhmuc[0]['hinhanh']?>" alt="Add Image" id="filedanhmucsrcup">
+                        <img height="80px" width="90px" src="data:image/png;base64, <?= $id_onedanhmuc[0]['hinhanh'] ?>"
+                            alt="Add Image" id="filedanhmucsrcup">
                     </label>
                     <input style="display:none;" type="file" name="fileimage" id="filedanhmucup">
                 </div>
@@ -202,14 +204,14 @@ foreach ($HienDanhMuc as $HienDanhMucc) {
 </div>
 
 <script>
-    $(document).ready(function() {
-        $("#filedanhmucup").change(function() {
+    $(document).ready(function () {
+        $("#filedanhmucup").change(function () {
             var input = this;
 
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
 
-                reader.onload = function(e) {
+                reader.onload = function (e) {
                     $("#filedanhmucsrcup").attr("src", e.target.result);
                     $("#filedanhmucsrcup").css("display", "flex");
                 };
@@ -234,7 +236,8 @@ foreach ($HienDanhMuc as $HienDanhMucc) {
                 <input type="text" name="tendanhmuc" id="" placeholder="Tên danh mục">
                 <div class="updatedm_img">
                     <label for="filedanhmuc">
-                        <img height="80px" width="90px" src="../public/img/folder.png" alt="Add Image" id="filedanhmucsrc">
+                        <img style="object-fit:cover;" height="90px" width="90px" src="../public/img/folder.png"
+                            alt="Add Image" id="filedanhmucsrc">
                     </label>
                     <input style="display:none;" type="file" name="fileimage" id="filedanhmuc">
                 </div>
@@ -247,14 +250,14 @@ foreach ($HienDanhMuc as $HienDanhMucc) {
 </div>
 
 <script>
-    $(document).ready(function() {
-        $("#filedanhmuc").change(function() {
+    $(document).ready(function () {
+        $("#filedanhmuc").change(function () {
             var input = this;
 
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
 
-                reader.onload = function(e) {
+                reader.onload = function (e) {
                     $("#filedanhmucsrc").attr("src", e.target.result);
                     $("#filedanhmucsrc").css("display", "flex");
                 };
@@ -267,6 +270,12 @@ foreach ($HienDanhMuc as $HienDanhMucc) {
 
 
 <style>
+    .updatedm_img {
+        border:1.2px dashed black;
+        padding: 8px;
+        border-radius: 5px;
+    }
+
     .updatedanhmuc {
         position: absolute;
         display: none;
@@ -381,13 +390,13 @@ foreach ($HienDanhMuc as $HienDanhMucc) {
 <!-- -------------------SEARCH---------------------- -->
 
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         // Xử lý sự kiện khi người dùng nhập vào ô tìm kiếm
-        $("#searchInput").on("input", function() {
+        $("#searchInput").on("input", function () {
             var searchText = $(this).val().toLowerCase();
 
             // Hiển thị hoặc ẩn các phần tử phù hợp với từ khóa tìm kiếm
-            $(".list-item").each(function() {
+            $(".list-item").each(function () {
                 var itemName = $(this).find(".tendanhmuc p").text().toLowerCase();
                 if (itemName.includes(searchText)) {
                     $(this).show();
