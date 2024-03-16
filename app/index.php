@@ -692,12 +692,6 @@ if (isset($_GET['act'])) {
             }
 
             break;
-
-        case 'lichlam':
-           
-
-            require_once "./view/nhanvien/lichlam.php";
-            break;
     }
 } else {
 
