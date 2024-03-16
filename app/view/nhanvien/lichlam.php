@@ -72,8 +72,13 @@ foreach ($shownhanvien as $shownhanvienn) {
          <a href="" style="color: #464646;">Chức vụ </a>
       </div>
       <br>
-      <div class="content__bottom-adddm">
-         <input type="button" value="+ Thêm chức vụ" class="btn_add_lichlam">
+      <div style="display:flex;, width:100%;">
+         <div class="content__bottom-adddm">
+            <input type="button" value="+ Thêm lịch làm" class="btn_add_lichlam btn_lichlam">
+         </div>
+         <a class="content__bottom-adddm" href>
+            <input type="button" value="+ Check ca làm" class="btn_add_lichlam btn_lichlam">
+         </a>
       </div>
       <br>
       <!-- view lịch làm -->
@@ -89,13 +94,13 @@ foreach ($shownhanvien as $shownhanvienn) {
             $username = "root"; // Tên đăng nhập cơ sở dữ liệu
             $password = ""; // Mật khẩu cơ sở dữ liệu
             $dbname = "QuanLyBanHang"; // Tên cơ sở dữ liệu
-
+            
             // Tạo kết nối
             $conn = new mysqli($servername, $username, $password, $dbname);
 
             // Kiểm tra kết nối
             if ($conn->connect_error) {
-               die("Kết nối đến cơ sở dữ liệu thất bại: " . $conn->connect_error);
+               die ("Kết nối đến cơ sở dữ liệu thất bại: " . $conn->connect_error);
             }
 
             // Lấy ngày hiện tại
@@ -133,16 +138,9 @@ foreach ($shownhanvien as $shownhanvienn) {
                      <div class='table_show_setting'>
                          <p><i class='bi bi-gear-fill'></i></p>
                      </div>
-                     <div class='table_show_setting_clone'>
-
-
+                     <div class='table_show_setting_clone'>    
                          <p>
-                             <a href='index.php?act=updatenhanvien&idnhanvien='>
-                                 <i class='bi bi-arrow-counterclockwise'></i>
-                             </a>
-                         </p>
-                         <p>
-                             <a  style='color:red'  href='index.php?act=deletelichlam&idlichlam=".$row["id_lichlam"]."'>
+                             <a  style='color:red'  href='index.php?act=deletelichlam&idlichlam=" . $row["id_lichlam"] . "'>
                                  <i class='bi bi-trash-fill'></i>
                              </a>
                          </p>
@@ -176,6 +174,7 @@ foreach ($shownhanvien as $shownhanvienn) {
 <style>
    .content__bottom-adddm {
       position: relative;
+      width: 16%;
       height: 40px;
       display: flex;
       align-items: center;
@@ -183,7 +182,6 @@ foreach ($shownhanvien as $shownhanvienn) {
 
    .btn_add_lichlam {
       position: relative;
-      width: 10%;
       height: 80%;
       color: #333;
       font-size: 0.8rem;
@@ -325,9 +323,9 @@ foreach ($shownhanvien as $shownhanvienn) {
 </style>
 
 <script>
-   $(document).ready(function() {
+   $(document).ready(function () {
       // Bắt sự kiện click vào các phần tử h2 có class là 'day_lichlam'
-      $('.day_lichlam').click(function() {
+      $('.day_lichlam').click(function () {
          // Tìm phần tử kế tiếp (div) của h2 đang được click
          var content = $(this).next();
          // Ẩn/hiện nội dung của div đó
@@ -343,10 +341,10 @@ foreach ($shownhanvien as $shownhanvienn) {
 
 <div class="Them_Lich_Lam">
    <div class="View_Them_Lich_lAM">
-      <div>
-         <h3>Lịch làm</h3>
+      <div class="lichlam_title">
+         <h3 style="color:#fff;">Lịch làm</h3>
       </div>
-      <div>
+      <div class="lichlam_main">
          <form action="index.php?act=AddLichLam" method="post">
             <div class="nhanvien">
                <input type="text" name="ca" placeholder="Nhập ca làm">
@@ -363,32 +361,32 @@ foreach ($shownhanvien as $shownhanvienn) {
                </select>
 
                <script>
-                  $(document).ready(function() {
+                  $(document).ready(function () {
                      // Sử dụng Select2 cho dropdown
                      $('#dropdownnlichlam').select2();
                   });
                </script>
             </div>
 
-            <div class="btn_add_lichlam">
+            <div class="btn_add_lichlamm">
                <input type="submit" value="Thêm lịch làm" name="btnaddlichlam">
                <input type="reset" value="Huỷ">
 
             </div>
 
          </form>
+         <button id="btn_close_lichlam">Đóng</button>
          <div>
-            <button id="btn_close_lichlam">Đóng</button>
             <script>
                $(document).ready(function () {
-                  $("#btn_close_lichlam").click(function (e) { 
+                  $("#btn_close_lichlam").click(function (e) {
                      $(".Them_Lich_Lam").css("display", "none");
-                     
+
                   });
 
-                  $(".btn_add_lichlam").click(function (e) { 
+                  $(".btn_add_lichlam").click(function (e) {
                      $(".Them_Lich_Lam").css("display", "flex");
-                     
+
                   });
                });
             </script>
@@ -410,8 +408,8 @@ foreach ($shownhanvien as $shownhanvienn) {
 
    .View_Them_Lich_lAM {
       position: relative;
-      width: 60%;
-      height: 50%;
+      width: 50%;
+      height: 60%;
       background-color: white;
       border-radius: 10px;
       box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
@@ -421,9 +419,7 @@ foreach ($shownhanvien as $shownhanvienn) {
       position: relative;
       width: 100%;
       height: 20%;
-      background-color: #282e3d;
       border-radius: 10px;
-      box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -446,7 +442,6 @@ foreach ($shownhanvien as $shownhanvienn) {
    .nhanvien {
       position: relative;
       width: 200px;
-      background-color: red;
       font-weight: 400;
       font-size: 0.7rem;
       display: flex;
@@ -454,16 +449,87 @@ foreach ($shownhanvien as $shownhanvienn) {
       align-items: center;
    }
 
-   .btn_add_lichlam {
+   .btn_add_lichlam,
+   .btn_add_lichlamm {
       position: relative;
-      width: 10%;
       height: 80%;
-      background-color: red;
+      background-color: white;
+      font-weight: 550;
    }
+
    .btn_add_lichlam:hover {
-     cursor: pointer;
+      cursor: pointer;
+      background-color: #333;
+      color: #fff;
+   }
+
+   .btn_lichlam {
+      width: 60%;
+   }
+
+   .lichlam_title {
+      width: 100%;
+      background-color: #282e3d;
+   }
+
+   .lichlam_main {
+      position: relative;
+      left: 50%;
+      transform: translateX(-45%);
+   }
+
+   .nhanvien input:nth-child(1) {
+      height: 30px;
+      padding: 4px 8px;
+      border: none;
+      border-bottom: 1.2px solid black;
+   }
+
+   .btn_add_lichlamm input:nth-child(1),
+   .btn_add_lichlamm input:nth-child(2) {
+      margin-top: 10%;
+      height: 30px;
+      font-size: 0.9rem;
+      border-radius: 5px;
+      font-weight: 550;
+   }
+
+   .btn_add_lichlamm input:nth-child(1) {
+      width: 120px;
+   }
+
+   .btn_add_lichlamm input:nth-child(2) {
+      width: 80px;
+   }
+
+   .btn_add_lichlamm input:nth-child(1):hover,
+   .btn_add_lichlamm input:nth-child(2):hover {
+      background-color: #333;
+      color: #fff;
+   }
+
+   #dropdownnlichlam {
+      width: 200px;
+   }
+
+   #btn_close_lichlam {
+      position: relative;
+      left: -18%;
+      bottom: -40%;
+      width: 80px;
+      height: 30px;
+      font-weight: 550;
+      border-radius: 5px;
+   }
+
+   #btn_close_lichlam:hover {
+      background-color: #333;
+      color: #fff;
    }
 </style>
+
+
+
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
