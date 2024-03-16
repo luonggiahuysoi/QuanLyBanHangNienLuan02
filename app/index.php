@@ -692,6 +692,18 @@ if (isset($_GET['act'])) {
             }
 
             break;
+
+        // ================= lịch làm ================
+
+        case 'lichlam':
+            echo '<script src="../public/js/danhmuc/danhmuc_add.js"></script>';
+            echo '<script src="../public/js/sanpham/sanpham.js"></script>';
+            $phanquyen = new DungChung;
+            $showphanquyen = $phanquyen->ShowDungChung('phanquyennhanvien');
+            
+
+            require_once "./view/nhanvien/lichlam.php";
+            break;
     }
 } else {
 

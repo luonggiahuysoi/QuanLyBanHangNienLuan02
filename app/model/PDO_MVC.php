@@ -96,14 +96,15 @@ class HangHoa
       $sql = "INSERT INTO hanghoa_img (id_mahanghoa) VALUES ('" . $masanpham . "')";
       $this->hanghoa->get_all($sql);
    }
-   
+
    function AddImgHangHoa($masanpham, $hinhanh, $idhanghoa)
    {
       $sql = "INSERT INTO hanghoa_img (id_mahanghoa, hinh, id_hanghoa) VALUES ('" . $masanpham . "', '" . $hinhanh . "', '" . $idhanghoa . "')";
       $this->hanghoa->get_all($sql);
    }
 
-   function UpdateHangHoa($tenhanghoa, $gia, $giasale, $hinhanh, $mota, $tendanhmuc, $iddanhmuc, $getId) {
+   function UpdateHangHoa($tenhanghoa, $gia, $giasale, $hinhanh, $mota, $tendanhmuc, $iddanhmuc, $getId)
+   {
       $sql = "UPDATE hanghoa SET tenhanghoa='" . $tenhanghoa . "', gia='" . $gia . "', giasale='" . $giasale . "', anhhanghoa='" . $hinhanh . "', mota='" . $mota . "', tendanhmuc='" . $tendanhmuc . "', id_danhmuc='" . $iddanhmuc . "' WHERE id_hanghoa=" . $getId;
       $this->hanghoa->get_all($sql);
    }
@@ -113,12 +114,11 @@ class HangHoa
       $sql = "UPDATE hanghoa SET hienthi='" . $hienthi . "' WHERE id_hanghoa=" . $idhanghoa;
       $this->hanghoa->get_all($sql);
    }
-
-
 }
 
 
-class NhanVien {
+class NhanVien
+{
    private $nhanvien;
 
    function __construct()
@@ -126,31 +126,41 @@ class NhanVien {
       $this->nhanvien = new DatabaseModel;
    }
 
-   function AddNhanVien($tennhanvien, $ngaysinh, $sodienthoai, $email, $diachi, $hinhanh, $taikhoan, $matkhau, $tenchucvu, $chucvuId) {
+   function AddNhanVien($tennhanvien, $ngaysinh, $sodienthoai, $email, $diachi, $hinhanh, $taikhoan, $matkhau, $tenchucvu, $chucvuId)
+   {
       $sql = "INSERT INTO nhanvien (tennhanvien, ngaysinh, sodienthoai, email, diachi, hinhanh, taikhoan, matkhau, chucvu, id_phanquyen) VALUES ('" . $tennhanvien . "', '" . $ngaysinh . "', '" . $sodienthoai . "', '" . $email . "', '" . $diachi . "', '" . $hinhanh . "', '" . $taikhoan . "', '" . $matkhau . "', '" . $tenchucvu . "', '" . $chucvuId . "')";
       $this->nhanvien->get_all($sql);
    }
 
-   function UpdateNhanVien($tennhanvien, $ngaysinh, $sodienthoai, $email, $diachi, $hinhanh, $taikhoan, $matkhau, $tenchucvu, $chucvuId, $getId) {
+   function UpdateNhanVien($tennhanvien, $ngaysinh, $sodienthoai, $email, $diachi, $hinhanh, $taikhoan, $matkhau, $tenchucvu, $chucvuId, $getId)
+   {
       $sql = "UPDATE nhanvien SET tennhanvien='" . $tennhanvien . "', ngaysinh='" . $ngaysinh . "', sodienthoai='" . $sodienthoai . "', email='" . $email . "', diachi='" . $diachi . "', hinhanh='" . $hinhanh . "', taikhoan='" . $taikhoan . "', matkhau='" . $matkhau . "', chucvu='" . $tenchucvu . "', id_phanquyen='" . $chucvuId . "' WHERE id_nhanvien=" . $getId;
       $this->nhanvien->get_all($sql);
    }
 
-   function UpdateNhanVienChucVu($nhanvienId, $chucvuId, $tenchucvu) {
+   function UpdateNhanVienChucVu($nhanvienId, $chucvuId, $tenchucvu)
+   {
       $sql = "UPDATE nhanvien SET chucvu='" . $tenchucvu . "', id_phanquyen ='" . $chucvuId . "'  WHERE id_nhanvien=" . $nhanvienId;
       $this->nhanvien->get_all($sql);
    }
 
-   function AddChucVu($tenchucvu, $luong) {
+   function AddChucVu($tenchucvu, $luong)
+   {
       $sql = "INSERT INTO phanquyennhanvien SET tenchucvu='" . $tenchucvu . "', luong ='" . $luong . "' ";
       $this->nhanvien->get_all($sql);
    }
 
-   function UpdateChucVu($tenchucvu, $luong, $getId) {
+   function UpdateChucVu($tenchucvu, $luong, $getId)
+   {
       $sql = "UPDATE phanquyennhanvien SET tenchucvu='" . $tenchucvu . "', luong ='" . $luong . "'  WHERE id_phanquyen=" . $getId;
       $this->nhanvien->get_all($sql);
    }
-
-
-
 }
+
+
+
+
+
+
+
+
