@@ -693,7 +693,52 @@ if (isset ($_GET['act'])) {
             break;
 
         case 'lichlam':
+
+            $nhanvien = new DungChung;
+            $shownhanvien = $nhanvien->ShowDungChung('nhanvien');
             require_once "./view/nhanvien/lichlam.php";
+            break;
+
+        case 'AddLichLam':
+            if(isset($_POST['btnaddlichlam']) && $_POST['btnaddlichlam']) {
+                $ca = $_POST['ca'];
+                $nhanvienId = $_POST['nhanvien'];
+                $ngay = $_POST['date'];
+
+                //=======LẤY NHÂN VIÊN THEO ID ===========
+
+                $idnhanvien = new DungChung;
+                $NV = $idnhanvien->ShowDungChung('nhanvien');
+                $tennhanvien = '';
+
+                foreach ($NV as $NVV) {
+                    if ($NVV['id_nhanvien'] == $nhanvienId) {
+                        $tennhanvien = $NVV['tennhanvien'];
+                        break;
+                    }
+                }
+
+                // ============ THÊM LỊCH LÀM ===============
+                $addlich = new NhanVien;
+                $addlich->AddLichLam($tennhanvien, $nhanvienId, $ca, $ngay);
+
+
+                $nhanvien = new DungChung;
+                $shownhanvien = $nhanvien->ShowDungChung('nhanvien');
+                require_once "./view/nhanvien/lichlam.php";
+                break;
+            }
+
+        case 'deletelichlam':
+            if(isset($_GET['idlichlam']) && $_GET['idlichlam']) {
+                $getId = $_GET['idlichlam'];
+                $deletelichlam = new DungChung;
+                $deletelichlam->DeleteAll('lichlam', 'id_lichlam', $getId);
+                $nhanvien = new DungChung;
+                $shownhanvien = $nhanvien->ShowDungChung('nhanvien');
+                require_once "./view/nhanvien/lichlam.php";
+                break;
+            }
             break;
     }
 } else {

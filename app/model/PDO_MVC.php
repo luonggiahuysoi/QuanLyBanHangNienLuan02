@@ -155,6 +155,12 @@ class NhanVien
       $sql = "UPDATE phanquyennhanvien SET tenchucvu='" . $tenchucvu . "', luong ='" . $luong . "'  WHERE id_phanquyen=" . $getId;
       $this->nhanvien->get_all($sql);
    }
+
+   function AddLichLam($tennhanvien, $nhanvienId, $ca, $ngay)
+   {
+      $sql = "INSERT INTO lichlam (ngay, ca, nhanvien, id_nhanvien) VALUES ('" . $ngay . "', '" . $ca . "', '" . $tennhanvien . "', '" . $nhanvienId . "')";
+      $this->nhanvien->get_all($sql);
+   }
 }
 
 
