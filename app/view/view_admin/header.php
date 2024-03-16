@@ -51,7 +51,7 @@
                      <a href=""><i class="bi bi-dot"></i>Lương nhân viên</a>
                   </div>
                   <div class="item-con_list">
-                     <a href=""><i class="bi bi-dot"></i>Lịch làm</a>
+                     <a href="index.php?act=lichlam"><i class="bi bi-dot"></i>Lịch làm</a>
                   </div>
                   <div class="item-con_list item-con_listout" id="close_nav">
                      <a href="#"><i class="bi bi-box-arrow-in-left"></i>Trở về</a>
