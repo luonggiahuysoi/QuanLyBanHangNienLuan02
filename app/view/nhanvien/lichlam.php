@@ -81,6 +81,11 @@ foreach ($shownhanvien as $shownhanvienn) {
          </a>
       </div>
       <br>
+
+
+
+
+
       <!-- view lịch làm -->
       <div class="view_lichlam">
          <div class="header_view_lichlam">
@@ -167,8 +172,6 @@ foreach ($shownhanvien as $shownhanvienn) {
 
 
 </div>
-
-
 
 
 <style>
@@ -333,6 +336,12 @@ foreach ($shownhanvien as $shownhanvienn) {
       });
    });
 </script>
+
+
+
+
+
+
 
 
 <!-- =============== -->
@@ -527,6 +536,108 @@ foreach ($shownhanvien as $shownhanvienn) {
       color: #fff;
    }
 </style>
+
+
+
+
+
+
+
+
+
+
+<!--================ Check ca làm ============================= -->
+
+<div class="Them_Lich_Lamm">
+   <div class="View_Them_Lich_lAM">
+      <div class="lichlam_title">
+         <h3 style="color:#fff;">Check ca làm</h3>
+      </div>
+      <div class="lichlam_main">
+         <form action="index.php?act=AddLichLam" method="post">
+            <div class="nhanvien">
+               <input type="text" name="ca" placeholder="Nhập ca làm">
+            </div>
+            <br>
+
+            <div class="nhanvien">
+               <input type="date" name="date">
+            </div>
+            <br>
+            <div class="nhanvien">
+               <select name="nhanvien" id="dropdownnlichlam">
+                  <?= $listshownhanvien ?>
+               </select>
+
+               <script>
+                  $(document).ready(function () {
+                     // Sử dụng Select2 cho dropdown
+                     $('#dropdownnlichlam').select2();
+                  });
+               </script>
+            </div>
+
+            <div class="btn_add_lichlamm">
+               <input type="submit" value="Thêm lịch làm" name="btnaddlichlam">
+               <input type="reset" value="Huỷ">
+
+            </div>
+
+         </form>
+         <button id="btn_close_lichlam">Đóng</button>
+         <div>
+            <script>
+               $(document).ready(function () {
+                  $("#btn_close_lichlam").click(function (e) {
+                     $(".Them_Lich_Lam").css("display", "none");
+
+                  });
+
+                  $(".btn_add_lichlam").click(function (e) {
+                     $(".Them_Lich_Lam").css("display", "flex");
+
+                  });
+               });
+            </script>
+         </div>
+      </div>
+   </div>
+</div>
+
+<style>
+   .Them_Lich_Lamm {
+      /* display: none; */
+      position: absolute;
+      width: 100%;
+      height: 100vh;
+      background-color: rgba(184, 184, 184, 0.1);
+      justify-content: center;
+      align-items: center;
+      z-index: 111;
+   }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
