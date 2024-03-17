@@ -8,11 +8,34 @@ foreach ($shownhanvien as $shownhanvienn) {
 }
 ?>
 <?php
-$listshownhanvien = '';
-foreach ($shownhanvien as $shownhanvienn) {
-   extract($shownhanvienn);
-   $listshownhanvien .= '
-      <option value="' . $id_nhanvien . '">' . $tennhanvien . '</option>
+$listshowgiolam = '';
+foreach ($checkcashow as $checkcashoww) {
+   extract($checkcashoww);
+   $listshowgiolam .= '
+   <div class="lichlam_tr list-item">
+            <div class="lichlam_th__item">
+               <p>'.$tennhanvien.'</p>
+            </div>
+            <div class="lichlam_th__item">
+               <p>'.$giolam.'</p>
+            </div>
+            <div class="lichlam_th__item">
+               <p>'.$ngay.'</p>
+            </div>
+            <div style="display:flex;" class="lichlam_th__item">
+               <p>
+                  <a href="index.php?act=updatesogiolam&idsogiolam=' . $id_sogiolam . '">
+                     <i class="bi bi-arrow-counterclockwise"></i>
+                  </a>
+               </p>
+               <p>
+                  <a style="color:red" href="index.php?act=deletesogiolam&idsogiolam=' . $id_sogiolam . '">
+                     <i class="bi bi-trash-fill"></i>
+                  </a>
+               </p>
+            </div>
+         </div>
+    
    ';
 }
 ?>
@@ -660,6 +683,20 @@ foreach ($shownhanvien as $shownhanvienn) {
       <div class="lichlam_title lichlam_show">
          <h3 style="color:#fff;">Check ca làm</h3>
       </div>
+      <form action="index.php?act=giolamsearch" method="post">
+      <div class="icon_show_lichlam">
+         <div class="search_day"> 
+               <input type="date" name="tungay" id="" class="date" value = "<?php echo $startOfMonth = date("Y-m-01"); ?>">
+               <input type="date" name="denngay" id="" class="date" value = "<?php echo $endOfMonth = date("Y-m-t");?>">
+               <input type="submit" value="Search" class="timdate" name="timdate">
+               
+            </div>
+            <p class="icon_show_lichlamm"><i class="bi bi-x-circle"></i></p>
+         </div>
+      </form>
+      <div class="show_search_lichlam"> 
+            <input type="text" name="search_giolam" id="searchGioLam" placeholder="Nhập để tìm kiếm nhân viên">
+         </div>
       <div class="lichlam_mainover">
          <div class="lichlam_th">
             <div class="lichlam_th__item">
@@ -676,45 +713,47 @@ foreach ($shownhanvien as $shownhanvienn) {
             </div>
          </div>
 
-         <div class="lichlam_tr">
-            <div class="lichlam_th__item">
-               <p>Nhan vien A</p>
-            </div>
-            <div class="lichlam_th__item">
-               <p>8 tiếng</p>
-            </div>
-            <div class="lichlam_th__item">
-               <p>08/02/04</p>
-            </div>
-            <div style="display:flex;" class="lichlam_th__item">
-               <p>
-                  <a href="index.php?act=updatenhanvien&idnhanvien=' . $id_nhanvien . '">
-                     <i class="bi bi-arrow-counterclockwise"></i>
-                  </a>
-               </p>
-               <p>
-                  <a style="color:red" href="index.php?act=deletenhanvien&idnhanvien=' . $id_nhanvien . '">
-                     <i class="bi bi-trash-fill"></i>
-                  </a>
-               </p>
-            </div>
-         </div>
-      </div>
-      <div class="icon_show_lichlam">
-         <p><i class="bi bi-x-circle"></i></p>
+        <?=$listshowgiolam?>
       </div>
    </div>
 </div>
 </div>
 
 <script>
-   document.addEventListener("DOMContentLoaded", function () {
-      document.querySelector(".icon_show_lichlam").addEventListener("click", function () {
-         // Lấy phần tử cha và ẩn nó đi
-         document.querySelector(".Them_Lich_Lammm").style.display = "none";
+   
+
+   $(document).ready(function () {
+      $(".icon_show_lichlamm").click(function (e) { 
+         $(".Them_Lich_Lammm").hide();
+         
+      });
+   });
+   $(document).ready(function () {
+      $(".btn_show_giolam").click(function (e) { 
+         $(".Them_Lich_Lammm").show();
+         
       });
    });
 
+</script>
+
+<script>
+    $(document).ready(function () {
+        // Xử lý sự kiện khi người dùng nhập vào ô tìm kiếm
+        $("#searchGioLam").on("input", function () {
+            var searchText = $(this).val().toLowerCase();
+
+            // Hiển thị hoặc ẩn các phần tử phù hợp với từ khóa tìm kiếm
+            $(".list-item").each(function () {
+                var itemName = $(this).find(".lichlam_th__item p").text().toLowerCase();
+                if (itemName.includes(searchText)) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+        });
+    });
 </script>
 
 
@@ -724,7 +763,7 @@ foreach ($shownhanvien as $shownhanvienn) {
    }
 
    .Them_Lich_Lammm {
-      /* display: none; */
+      display: none;
       position: absolute;
       width: 100%;
       height: 100vh;
@@ -744,12 +783,16 @@ foreach ($shownhanvien as $shownhanvienn) {
       background-color: white;
       border-radius: 10px;
       box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+      z-index: 4;
    }
 
    .lichlam_mainover {
       position: relative;
       overflow: auto;
+      height: 70%;
    }
+
+
 
    .lichlam_th {
       border-bottom: 1px solid #444;
@@ -795,15 +838,82 @@ foreach ($shownhanvien as $shownhanvienn) {
    }
 
    .icon_show_lichlam {
-      position: relative;
-      top: -25%;
-      right: -95%;
+      position: absolute;
+      cursor: pointer;
+      display: flex;
+      justify-content: right;
+      align-items: center;
+      height: 7%;
+      width: 100%;
+      z-index: 5;
+   }
+   .hover_icon:hover {
       cursor: pointer;
    }
 
    .icon_show_lichlam i {
       font-size: 1.5rem;
+      margin-right: 20px;
+      color: red;
    }
+
+   .search_day{
+      position: relative;
+      width: 80%;
+      height: 100%;
+      display: flex;
+      justify-content: left;
+      align-items: center;
+   }
+
+   .date {
+      position: relative;
+      width: 20%;
+      height: 60%;
+      margin-right: 5%;
+      border: none;
+      border-bottom: 3px solid #060f0e;
+   }
+
+   .timdate {
+      position: relative;
+      width: 7%;
+      height: 62%;
+      margin-left: -4%;
+      border: 1px solid #333;
+      border-radius: 5px;
+      font-weight: 600;
+      background-color: tomato;
+      color: white;
+   }
+   .timdate:hover {
+      position: relative;
+      border: 1px solid while;
+      background-color:#282e3d;
+      color: white;
+      cursor: pointer;
+
+   }
+
+   .show_search_lichlam {
+      position: relative;
+      width: 100%;
+      height: 7%;
+      background-color: #5585b5;
+      display: flex;
+      justify-content: right;
+      align-items: center;
+   }
+
+   .show_search_lichlam input {
+      position: relative;
+      width: 20%;
+      height: 50%;
+      margin-right: 18%;
+      z-index: 5;
+   }
+
+  
 </style>
 
 

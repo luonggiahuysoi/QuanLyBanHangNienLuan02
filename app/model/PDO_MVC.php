@@ -162,16 +162,31 @@ class NhanVien
       $this->nhanvien->get_all($sql);
    }
 
-   function AddCaLam($tennhanvien, $nhanvienId, $giolam, $ngay) {
+   function AddCaLam($tennhanvien, $nhanvienId, $giolam, $ngay)
+   {
       $sql = "INSERT INTO sogiolam (giolam, ngay, tennhanvien, id_nhanvien) VALUES ('" . $giolam . "', '" . $ngay . "', '" . $tennhanvien . "', '" . $nhanvienId . "')";
       $this->nhanvien->get_all($sql);
    }
+
+   function CaLamTheoThang($startOfMonth, $endOfMonth)
+   {
+      try {
+         // Chuẩn bị truy vấn SQL với tham số ràng buộc
+         $sql = "SELECT * FROM sogiolam WHERE ngay BETWEEN :startOfMonth AND :endOfMonth";
+         $stmt = $this->nhanvien->prepare($sql);
+         $stmt->bindParam(':startOfMonth', $startOfMonth, PDO::PARAM_STR);
+         $stmt->bindParam(':endOfMonth', $endOfMonth, PDO::PARAM_STR);
+
+         // Thực thi truy vấn
+         $stmt->execute();
+         
+         // Lấy kết quả
+         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+         
+         return $result;
+      } catch(PDOException $e) {
+         // Xử lý ngoại lệ nếu có lỗi
+         echo "Lỗi: " . $e->getMessage();
+      }
+   }
 }
-
-
-
-
-
-
-
-

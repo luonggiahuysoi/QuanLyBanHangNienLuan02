@@ -20,6 +20,10 @@
                 
         }
 
+        function prepare($sql) {
+            return $this->conn->prepare($sql);
+        }
+
         function get_all($sql) {
             $this->stmt = $this->conn->prepare($sql);
             $this->stmt->execute();
