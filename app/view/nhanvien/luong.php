@@ -146,7 +146,7 @@ foreach ($shownhanvien as $shownhanvienn) {
       <div class="content__bottom-adddm">
          <!-- <input type="button" value="+ Thêm nhân viên" class="btn_show_add_danhmuc"> -->
          <button class="btn_show_giolam">Chi tiết lương thưởng</button>
-         <button class="btn_show_giolamm">Chi tiết lương phạt</button>
+         <button class="btn_show_giolamm hvr-grow-shadow">Chi tiết lương phạt</button>
       </div>
 
       <!-- view danh muc -->
@@ -1049,21 +1049,39 @@ foreach ($shownhanvien as $shownhanvienn) {
 
 
 <!--===================== Chi tiết lương phat ============== -->
-
+<?php
+$listnhanvienshow = '';
+foreach ($shownhanvien as $shownhanvienn) {
+    extract($shownhanvienn);
+    $listnhanvienshow .= '
+      <option value="' . $id_nhanvien . '">' . $tennhanvien . '</option>
+   ';
+}
+?>
 
 <div class="Them_Lich_Lammm">
    <div class=" View_Them_Lich_lAMM">
       <div class="lichlam_title lichlam_luong">
          <h3 style="color:#fff;">Chi tiết lương phạt</h3>
       </div>
-      <form action="index.php?act=giolamsearch" method="post">
+      <form action="index.php?act=addluongthuong" method="post">
          <div class="icon_show_lichlam">
+            
 
             <div>
-               <input type="text" placeholder="Tên nhân viên">
-               <input type="text" placeholder="Tên nhân viên">
-               <input type="text" placeholder="Tên nhân viên">
-               <input type="submit" value="Thêm" class="add_luongg">
+            <select name="nhanvien" id="dropdownnluongthuong">
+                            <?= $listnhanvienshow ?>
+                        </select>
+
+                        <script>
+                            $(document).ready(function () {
+                                // Sử dụng Select2 cho dropdown
+                                $('#dropdownnluongthuong').select2();
+                            });
+                        </script>
+               <input type="text" placeholder="Số tiền thưởng" name="sotienthuong">
+               <input type="text" placeholder="Nội dung thưởng" name="noidungthuong">
+               <input type="submit" value="Thêm" class="add_luongg" name="themluongthuong">
             </div>
             <p class="icon_show_lichlamm"><i class="bi bi-x-circle"></i></p>
 
@@ -1088,6 +1106,45 @@ foreach ($shownhanvien as $shownhanvienn) {
             </div>
          </div>
 
+        <?php
+
+            foreach($showluongthuong as $showluongthuongG) {
+                extract($showluongthuongG);
+                $tennhanvien = '';
+                foreach($shownhanvien as $shownhanvienn) {
+                    if($shownhanvienn['id_nhanvien'] == $showluongthuongG['id_nhanvien']) {
+                        $tennhanvien = $shownhanvienn['tennhanvien'];
+                    }
+                }
+                echo'
+                <div class="lichlam_tr list-item">
+            <div class="lichlam_th__item">
+               <p>'.$tennhanvien.'</p>
+            </div>
+            <div class="lichlam_th__item">
+               <p>'.$noidungthuong.'</p>
+            </div>
+            <div class="lichlam_th__item">
+               <p>'.$sotienthuong.'</p>
+            </div>
+            <div style="display:flex;" class="lichlam_th__item">
+               <p>
+                  <a href="index.php?act=updatesogiolam&idsogiolam=' . $id_thuongphat . '">
+                     <i class="bi bi-arrow-counterclockwise"></i>
+                  </a>
+               </p>
+               <p>
+                  <a style="color:red" href="index.php?act=deletesogiolam&idsogiolam=' . $id_thuongphat . '">
+                     <i class="bi bi-trash-fill"></i>
+                  </a>
+               </p>
+            </div>
+         </div>
+                ';
+            }
+
+        ?>
+         
 
       </div>
    </div>

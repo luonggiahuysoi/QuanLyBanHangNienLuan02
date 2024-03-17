@@ -189,4 +189,16 @@ class NhanVien
          echo "Lỗi: " . $e->getMessage();
       }
    }
+
+   function getByIdThuong()
+   {
+      $sql = "SELECT * FROM thuongphat WHERE 'set' = 0";
+      return $this->nhanvien->get_all($sql);
+   }
+
+   function AddTienThuong($nhanvienId, $sotienthuong, $noidungthuong) {
+      $sql = "INSERT INTO thuongphat (noidungthuong, sotienthuong, id_nhanvien) VALUES ('" . $noidungthuong . "', '" . $sotienthuong . "', '" . $nhanvienId . "')";
+      $this->nhanvien->get_all($sql);
+
+   }
 }
