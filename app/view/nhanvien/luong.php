@@ -1,59 +1,69 @@
 <?php
-// $shownhanvien = '';
-// $showhienthi = '';
-// foreach ($HienNhanVien as $HienNhanVienn) {
-//    extract($HienNhanVienn);
-//    if ($ability == 1) {
-
-//       $showhienthi = '<i class="bi bi-eye-fill"></i>';
-//    } else {
-//       $showhienthi = '<i class="bi bi-eye-slash-fill"></i>';
-//    }
+$showluong = '';
+foreach ($shownhanvien as $shownhanvienn) {
+   extract($shownhanvienn);
 
 
+   // ======= Tính tổng giờ làm ==========
+   $tonggiolamcanhan = 0;
+   foreach($showgiolam as $showgiolamm) {
+       if($shownhanvienn['id_nhanvien'] == $showgiolamm['id_nhanvien']) {
+           $tonggiolamcanhan += $showgiolamm['giolam'];
+       }
+   }
 
-//    $shownhanvien .= '
-//         <div class="table_th table_tr list-item producttt" data-price="">
-//                     <div class="table_name_image table__bottom_center table_name_imagee tendanhmuc">
-//                         <img src="data:image/png;base64,' . $hinhanh . '" alt="">
-//                         <p>' . $tennhanvien . '</p>
-//                     </div>
-//                     <div class="table_hidden table__bottom_center">
-//                         <p>
-//                             <a href="index.php?act=UpdateHienThiNhanVien&idnhanvien=' . $id_nhanvien . '">
-//                                 ' . $showhienthi . '
-//                             </a>
-//                         </p>
-//                     </div>
-//                     <div class="table_view_category table__bottom_center">
-//                         <p>' . $sodienthoai . '</p>
-//                     </div>
-//                     <div class="table_view_category table__bottom_center email">
-//                         <p>' . $email . '</p>
-//                     </div>
-//                     <div class="table_settin table__bottom_center setting">
-//                         <div class="table_show_setting">
-//                             <p><i class="bi bi-gear-fill"></i></p>
-//                         </div>
-//                         <div class="table_show_setting_clone">
+   // ====== Tính tổng tiền =========
+   $tongtienluong = 0;
+   foreach($showphanquyen as $showphanquyenn) {
+    if($shownhanvienn['id_phanquyen'] == $showphanquyenn['id_phanquyen']) {
+        $tongtienluong = $showphanquyenn['luong']*$tonggiolamcanhan;
+
+    }
+   }
+
+   $showluong .= '
+        <div class="table_th table_tr list-item producttt" data-price="">
+                    <div class="table_name_image table__bottom_center table_name_imagee tendanhmuc">
+                        <p>' . $tennhanvien . '</p>
+                    </div>
+                    <div class="table_hidden table__bottom_center">
+                        <p>'.$chucvu.'</p>
+                    </div>
+                    <div class="table_view_category table__bottom_center">
+                        <p>'.$tonggiolamcanhan.'</p>
+                    </div>
+                    <div class="table_view_category table__bottom_center email">
+                        <p>null</p>
+                    </div>
+                    <div class="table_view_category table__bottom_center email">
+                        <p>null</p>
+                    </div>
+                    <div class="table_view_category table__bottom_center email">
+                        <p>'.number_format($tongtienluong).' vnđ</p>
+                    </div>
+                    <div class="table_settin table__bottom_center setting">
+                        <div class="table_show_setting">
+                            <p><i class="bi bi-gear-fill"></i></p>
+                        </div>
+                        <div class="table_show_setting_clone">
 
 
-//                             <p>
-//                                 <a href="index.php?act=updatenhanvien&idnhanvien=' . $id_nhanvien . '">
-//                                     <i class="bi bi-arrow-counterclockwise"></i>
-//                                 </a>
-//                             </p>
-//                             <p>
-//                                 <a  style="color:red"  href="index.php?act=deletenhanvien&idnhanvien=' . $id_nhanvien . '">
-//                                     <i class="bi bi-trash-fill"></i>
-//                                 </a>
-//                             </p>
+                            <p>
+                                <a href="index.php?act=updatenhanvien&idnhanvien=' . $id_nhanvien . '">
+                                    <i class="bi bi-arrow-counterclockwise"></i>
+                                </a>
+                            </p>
+                            <p>
+                                <a  style="color:red"  href="index.php?act=deletenhanvien&idnhanvien=' . $id_nhanvien . '">
+                                    <i class="bi bi-trash-fill"></i>
+                                </a>
+                            </p>
 
-//                         </div>
-//                     </div>
-//         </div>
-//         ';
-// }
+                        </div>
+                    </div>
+        </div>
+        ';
+}
 ?>
 
 
@@ -174,6 +184,9 @@
                   <p>Chức vụ</p>
                </div>
                <div class="table_hidden table__bottom_center">
+                  <p>Giờ làm</p>
+               </div>
+               <div class="table_hidden table__bottom_center">
                   <p>Lương thưởng</p>
                </div>
                <div class="table_hidden table__bottom_center">
@@ -190,7 +203,7 @@
 
 
 
-            <!-- <?= $shownhanvien ?> -->
+             <?= $showluong ?>
 
 
 
