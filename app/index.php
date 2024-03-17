@@ -11,10 +11,10 @@ include "../app/model/PDO_MVC.php";
 
 include "../app/view/view_admin/header.php";
 
-if (isset($_GET['act'])) {
+if (isset ($_GET['act'])) {
     switch ($_GET['act']) {
 
-            //danh muc
+        //danh muc
 
         case 'danhmuc':
 
@@ -26,7 +26,7 @@ if (isset($_GET['act'])) {
             break;
 
         case 'updatehienthi':
-            if (isset($_GET['iddanhmuc'])) {
+            if (isset ($_GET['iddanhmuc'])) {
                 $getId = $_GET['iddanhmuc'];
                 $iddanhmuc = new DungChung;
                 $LayIdDanhMuc = $iddanhmuc->getByIdAll('danhmuc', 'id_danhmuc', $getId);
@@ -47,7 +47,7 @@ if (isset($_GET['act'])) {
             break;
 
         case 'deletedanhmuc':
-            if (isset($_GET['iddanhmuc'])) {
+            if (isset ($_GET['iddanhmuc'])) {
                 $getId = $_GET['iddanhmuc'];
                 $delete = new DungChung;
                 $delete->DeleteAll('danhmuc', 'id_danhmuc', $getId);
@@ -62,7 +62,7 @@ if (isset($_GET['act'])) {
             break;
 
         case 'updatedanhmuc':
-            if (isset($_GET['iddanhmuc'])) {
+            if (isset ($_GET['iddanhmuc'])) {
                 $getId = $_GET['iddanhmuc'];
                 $iddanhmuc = new DungChung;
                 $id_onedanhmuc = $iddanhmuc->getByIdAll('danhmuc', 'id_danhmuc', $getId);
@@ -75,12 +75,12 @@ if (isset($_GET['act'])) {
                 require_once "../app/view/danhmuc/danhmuc.php";
             }
 
-            if (isset($_POST['btnUpdateDanhMuc']) && $_POST['btnUpdateDanhMuc']) {
+            if (isset ($_POST['btnUpdateDanhMuc']) && $_POST['btnUpdateDanhMuc']) {
                 $iddanhmuc = $_POST['iddanhmuc'];
                 $tendanhmuc = $_POST['tendanhmuc'];
 
                 // điều kiện để lấy ảnh
-                if (isset($_FILES['fileimage']['tmp_name']) && is_uploaded_file($_FILES['fileimage']['tmp_name'])) {
+                if (isset ($_FILES['fileimage']['tmp_name']) && is_uploaded_file($_FILES['fileimage']['tmp_name'])) {
                     $hinhanh = $_FILES['fileimage']['tmp_name'];
                     $hinhanh = base64_encode(file_get_contents($hinhanh));
                 } else {
@@ -102,11 +102,11 @@ if (isset($_GET['act'])) {
             break;
 
         case 'AddDanhMuc':
-            if (isset($_POST['add_danhmuc']) && $_POST['add_danhmuc']) {
+            if (isset ($_POST['add_danhmuc']) && $_POST['add_danhmuc']) {
                 $tendanhmuc = $_POST['tendanhmuc'];
 
                 // Kiểm tra xem file hình ảnh đã được chọn hay chưa
-                if (isset($_FILES['fileimage']) && $_FILES['fileimage']['error'] === UPLOAD_ERR_OK) {
+                if (isset ($_FILES['fileimage']) && $_FILES['fileimage']['error'] === UPLOAD_ERR_OK) {
                     $hinhanh1 = $_FILES['fileimage']['tmp_name'];
                     $hinhanh1 = base64_encode(file_get_contents($hinhanh1));
                 } else {
@@ -126,7 +126,7 @@ if (isset($_GET['act'])) {
             }
             break;
 
-            // ============================San pham =============================
+        // ============================San pham =============================
 
         case 'sanpham':
 
@@ -141,13 +141,13 @@ if (isset($_GET['act'])) {
             break;
 
         case 'AddHangHoa':
-            if (isset($_POST['add_hanghoa']) && $_POST['add_hanghoa']) {
+            if (isset ($_POST['add_hanghoa']) && $_POST['add_hanghoa']) {
                 $iddanhmuc = $_POST['danhmuc'];
                 $tenhanghoa = $_POST['tenhanghoa'];
                 $gia = $_POST['gia'];
                 $giasale = $_POST['giasale'];
                 $mota = $_POST['mota'];
-                if (isset($_FILES['fileimage']['tmp_name']) && is_uploaded_file($_FILES['fileimage']['tmp_name'])) {
+                if (isset ($_FILES['fileimage']['tmp_name']) && is_uploaded_file($_FILES['fileimage']['tmp_name'])) {
                     $hinhanh = $_FILES['fileimage']['tmp_name'];
                     $hinhanh = base64_encode(file_get_contents($hinhanh));
                 } else {
@@ -188,7 +188,7 @@ if (isset($_GET['act'])) {
             break;
 
         case 'deletehanghoa':
-            if (isset($_GET['idhanghoa']) && $_GET['idhanghoa']) {
+            if (isset ($_GET['idhanghoa']) && $_GET['idhanghoa']) {
                 $idhanghoa = $_GET['idhanghoa'];
 
                 $DeleteHangHoa = new DungChung;
@@ -211,7 +211,7 @@ if (isset($_GET['act'])) {
             break;
 
         case 'updatehanghoa':
-            if (isset($_GET['idhanghoa']) && $_GET['idhanghoa']) {
+            if (isset ($_GET['idhanghoa']) && $_GET['idhanghoa']) {
                 $getId = $_GET['idhanghoa'];
                 $getIdHangHoa = new DungChung;
                 $showUpdateHangHoa = $getIdHangHoa->getByIdAll('hanghoa', 'id_hanghoa', $getId);
@@ -229,12 +229,12 @@ if (isset($_GET['act'])) {
                 require_once "../app/view/sanpham/sanpham.php";
             }
 
-            if (isset($_POST['add_hanghoa_update']) && $_POST['add_hanghoa_update']) {
+            if (isset ($_POST['add_hanghoa_update']) && $_POST['add_hanghoa_update']) {
                 $getId = $_POST['idhanghoaa'];
                 $getIdHangHoa = new DungChung;
                 $showUpdateHangHoa = $getIdHangHoa->getByIdAll('hanghoa', 'id_hanghoa', $getId);
 
-                if (isset($_FILES['fileimage']['tmp_name']) && is_uploaded_file($_FILES['fileimage']['tmp_name'])) {
+                if (isset ($_FILES['fileimage']['tmp_name']) && is_uploaded_file($_FILES['fileimage']['tmp_name'])) {
                     $hinhanh = $_FILES['fileimage']['tmp_name'];
                     $hinhanh = base64_encode(file_get_contents($hinhanh));
                 } else {
@@ -277,7 +277,7 @@ if (isset($_GET['act'])) {
             break;
 
         case 'UpdateHienThiSanPham':
-            if (isset($_GET['idhanghoa']) && $_GET['idhanghoa']) {
+            if (isset ($_GET['idhanghoa']) && $_GET['idhanghoa']) {
                 $getId = $_GET['idhanghoa'];
                 $idhanghoa = new DungChung;
                 $LyaIdHangHoa = $idhanghoa->getByIdAll('hanghoa', 'id_hanghoa', $getId);
@@ -315,10 +315,10 @@ if (isset($_GET['act'])) {
             break;
 
         case 'AddImgHangHoa':
-            if (isset($_POST['add_hanghoa_img']) && $_POST['add_hanghoa_img']) {
+            if (isset ($_POST['add_hanghoa_img']) && $_POST['add_hanghoa_img']) {
                 $idhanghoa = $_POST['hanghoaid'];
 
-                if (isset($_FILES['fileimage']['tmp_name']) && is_uploaded_file($_FILES['fileimage']['tmp_name'])) {
+                if (isset ($_FILES['fileimage']['tmp_name']) && is_uploaded_file($_FILES['fileimage']['tmp_name'])) {
                     $hinhanh = $_FILES['fileimage']['tmp_name'];
                     $hinhanh = base64_encode(file_get_contents($hinhanh));
                 } else {
@@ -358,7 +358,7 @@ if (isset($_GET['act'])) {
             break;
 
         case 'deletehanghoaimg':
-            if (isset($_GET['idhanghoaimg']) && $_GET['idhanghoaimg']) {
+            if (isset ($_GET['idhanghoaimg']) && $_GET['idhanghoaimg']) {
                 $idhanghoaimg = $_GET['idhanghoaimg'];
 
                 $deleteImgHangHoa = new DungChung;
@@ -378,7 +378,7 @@ if (isset($_GET['act'])) {
             }
             break;
 
-            // =================== Nhân Viên ================================================
+        // =================== Nhân Viên ================================================
 
         case 'nhanvien':
             echo '<script src="../public/js/danhmuc/danhmuc_add.js"></script>';
@@ -393,7 +393,7 @@ if (isset($_GET['act'])) {
             break;
 
         case 'AddNhanVien':
-            if (isset($_POST['add_nhanvien']) && $_POST['add_nhanvien']) {
+            if (isset ($_POST['add_nhanvien']) && $_POST['add_nhanvien']) {
                 $tennhanvien = $_POST['tennhanvien'];
                 $ngaysinh = $_POST['ngaysinh'];
                 $sodienthoai = $_POST['sodienthoai'];
@@ -416,7 +416,7 @@ if (isset($_GET['act'])) {
                     }
                 }
 
-                if (isset($_FILES['fileimage']['tmp_name']) && is_uploaded_file($_FILES['fileimage']['tmp_name'])) {
+                if (isset ($_FILES['fileimage']['tmp_name']) && is_uploaded_file($_FILES['fileimage']['tmp_name'])) {
                     $hinhanh = $_FILES['fileimage']['tmp_name'];
                     $hinhanh = base64_encode(file_get_contents($hinhanh));
                 } else {
@@ -445,7 +445,7 @@ if (isset($_GET['act'])) {
 
 
         case 'deletenhanvien':
-            if (isset($_GET['idnhanvien'])) {
+            if (isset ($_GET['idnhanvien'])) {
                 $getId = $_GET['idnhanvien'];
                 $deletenhanvien = new DungChung;
                 $deletenhanvien->DeleteAll('nhanvien', 'id_nhanvien', $getId);
@@ -465,7 +465,7 @@ if (isset($_GET['act'])) {
             break;
 
         case 'updatenhanvien':
-            if (isset($_GET['idnhanvien'])) {
+            if (isset ($_GET['idnhanvien'])) {
 
                 $getId = $_GET['idnhanvien'];
                 $NhanVienGetById = new DungChung;
@@ -487,7 +487,7 @@ if (isset($_GET['act'])) {
                 require_once "./view/nhanvien/nhanvien.php";
             }
 
-            if (isset($_POST['idnhanvien']) && $_POST['idnhanvien']) {
+            if (isset ($_POST['idnhanvien']) && $_POST['idnhanvien']) {
                 $getId = $_POST['idnhanvien'];
                 $tennhanvien = $_POST['tennhanvien'];
                 $ngaysinh = $_POST['ngaysinh'];
@@ -511,7 +511,7 @@ if (isset($_GET['act'])) {
                     }
                 }
 
-                if (isset($_FILES['fileimage']['tmp_name']) && is_uploaded_file($_FILES['fileimage']['tmp_name'])) {
+                if (isset ($_FILES['fileimage']['tmp_name']) && is_uploaded_file($_FILES['fileimage']['tmp_name'])) {
                     $hinhanh = $_FILES['fileimage']['tmp_name'];
                     $hinhanh = base64_encode(file_get_contents($hinhanh));
                 } else {
@@ -546,7 +546,7 @@ if (isset($_GET['act'])) {
 
 
 
-            //============ Chức vụ nhân viên ================
+        //============ Chức vụ nhân viên ================
         case 'chucvunhanvien':
             // ==========load lai trang ===========
 
@@ -564,7 +564,7 @@ if (isset($_GET['act'])) {
             break;
 
         case 'AddChucVuVaoNhanVien':
-            if (isset($_POST['add_chucvuvaonhanvien'])) {
+            if (isset ($_POST['add_chucvuvaonhanvien'])) {
                 $nhanvienId = $_POST['nhanvien'];
                 $chucvuId = $_POST['chucvu'];
 
@@ -600,7 +600,7 @@ if (isset($_GET['act'])) {
 
             break;
 
-            // chức vụ nhân viên 
+        // chức vụ nhân viên 
         case 'chucvu':
 
             $phanquyen = new DungChung;
@@ -615,7 +615,7 @@ if (isset($_GET['act'])) {
             break;
 
         case 'AddChucVu':
-            if (isset($_POST['add_chucvumoi']) && $_POST['add_chucvumoi']) {
+            if (isset ($_POST['add_chucvumoi']) && $_POST['add_chucvumoi']) {
                 $tenchucvu = $_POST['tenchucvu'];
                 $luong = $_POST['luong'];
                 $luong = preg_replace("/\./", "", $luong);
@@ -636,7 +636,7 @@ if (isset($_GET['act'])) {
             break;
 
         case 'updatephanquyenchucvuu':
-            if (isset($_GET['idchucvu']) && $_GET['idchucvu']) {
+            if (isset ($_GET['idchucvu']) && $_GET['idchucvu']) {
                 $getId = $_GET['idchucvu'];
 
                 // Lấy id chức vụ
@@ -654,7 +654,7 @@ if (isset($_GET['act'])) {
                 require_once "./view/nhanvien/chucvu.php";
             }
 
-            if (isset($_POST['add_chucvumoi']) && $_POST['add_chucvumoi']) {
+            if (isset ($_POST['add_chucvumoi']) && $_POST['add_chucvumoi']) {
                 $getId = $_POST['idchucvu'];
                 $tenchucvu = $_POST['tenchucvu'];
                 $luong = $_POST['luong'];
@@ -677,7 +677,7 @@ if (isset($_GET['act'])) {
             break;
 
         case 'deletephanquyenchucvuu':
-            if (isset($_GET['idchucvu']) && $_GET['idchucvu']) {
+            if (isset ($_GET['idchucvu']) && $_GET['idchucvu']) {
                 $deletechucvu = $_GET['idchucvu'];
 
                 $delete = new DungChung;
@@ -692,7 +692,7 @@ if (isset($_GET['act'])) {
             }
             break;
 
-            //================ Lich Lam =======================
+        //================ Lich Lam =======================
 
         case 'lichlam':
 
@@ -710,7 +710,7 @@ if (isset($_GET['act'])) {
             break;
 
         case 'AddLichLam':
-            if (isset($_POST['btnaddlichlam']) && $_POST['btnaddlichlam']) {
+            if (isset ($_POST['btnaddlichlam']) && $_POST['btnaddlichlam']) {
                 $ca = $_POST['ca'];
                 $nhanvienId = $_POST['nhanvien'];
                 $ngay = $_POST['date'];
@@ -740,7 +740,7 @@ if (isset($_GET['act'])) {
             }
 
         case 'deletelichlam':
-            if (isset($_GET['idlichlam']) && $_GET['idlichlam']) {
+            if (isset ($_GET['idlichlam']) && $_GET['idlichlam']) {
                 $getId = $_GET['idlichlam'];
                 $deletelichlam = new DungChung;
                 $deletelichlam->DeleteAll('lichlam', 'id_lichlam', $getId);
@@ -756,7 +756,7 @@ if (isset($_GET['act'])) {
 
 
         case 'AddGioLam':
-            if (isset($_POST['btnaddlichlam']) && $_POST['btnaddlichlam']) {
+            if (isset ($_POST['btnaddlichlam']) && $_POST['btnaddlichlam']) {
                 $giolam = $_POST['giolam'];
                 $ngay = $_POST['date'];
                 $nhanvienId = $_POST['nhanvien'];
@@ -792,7 +792,7 @@ if (isset($_GET['act'])) {
             break;
 
         case 'giolamsearch':
-            if (isset($_POST['timdate']) && $_POST['timdate']) {
+            if (isset ($_POST['timdate']) && $_POST['timdate']) {
                 $startOfMonth = $_POST['tungay'];
                 $endOfMonth = $_POST['denngay'];
 
@@ -805,6 +805,14 @@ if (isset($_GET['act'])) {
                 $shownhanvien = $nhanvien->ShowDungChung('nhanvien');
                 require_once "./view/nhanvien/lichlam.php";
             }
+            break;
+
+
+        //=====Luong nhân viên=================
+        case 'luongnhanvien':
+            $nhanvien = new DungChung;
+            $shownhanvien = $nhanvien->ShowDungChung('nhanvien');
+            require_once "./view/nhanvien/luong.php";
             break;
     }
 } else {

@@ -48,7 +48,7 @@
                      <a href="index.php?act=chucvunhanvien"><i class="bi bi-dot"></i>Chức vụ nhân viên</a>
                   </div>
                   <div class="item-con_list">
-                     <a href=""><i class="bi bi-dot"></i>Lương nhân viên</a>
+                     <a href="index.php?act=luongnhanvien"><i class="bi bi-dot"></i>Lương nhân viên</a>
                   </div>
                   <div class="item-con_list">
                      <a href="index.php?act=lichlam"><i class="bi bi-dot"></i>Lịch làm</a>
@@ -149,7 +149,7 @@
                      <a href=""><i class="bi bi-dot"></i>Phân quyền nhân viên</a>
                   </div>
                   <div class="item-con_list">
-                     <a href=""><i class="bi bi-dot"></i>Lương nhân viên</a>
+                     <a href="index.php"><i class="bi bi-dot"></i>Lương nhân viên</a>
                   </div>
                   <div class="item-con_list">
                      <a href=""><i class="bi bi-dot"></i>Lịch làm</a>
