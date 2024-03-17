@@ -102,13 +102,13 @@ foreach ($shownhanvien as $shownhanvienn) {
             $username = "root"; // Tên đăng nhập cơ sở dữ liệu
             $password = ""; // Mật khẩu cơ sở dữ liệu
             $dbname = "QuanLyBanHang"; // Tên cơ sở dữ liệu
-
+            
             // Tạo kết nối
             $conn = new mysqli($servername, $username, $password, $dbname);
 
             // Kiểm tra kết nối
             if ($conn->connect_error) {
-               die("Kết nối đến cơ sở dữ liệu thất bại: " . $conn->connect_error);
+               die ("Kết nối đến cơ sở dữ liệu thất bại: " . $conn->connect_error);
             }
 
             // Lấy ngày hiện tại
@@ -235,23 +235,27 @@ foreach ($shownhanvien as $shownhanvienn) {
    }
 
    .day_lichlam {
-      font-size: 1.2rem;
+      font-family: "Public Sans", sans-serif;
+      font-size: 1.1rem;
       font-weight: 600;
       width: 50%;
       height: 50px;
-      background-color: #999;
+      background-color: #d8d4d3;
       display: flex;
       justify-content: center;
       align-items: center;
       left: 50%;
       transform: translateX(50%);
       cursor: pointer;
+      color: #060f0e;
    }
 
    .day_lichlam1 {
-      font-size: 1rem;
+      font-family: "Cabin", sans-serif;
+      font-size: 0.9rem;
       left: 50%;
       transform: translateX(30%);
+
    }
 
    .lichlam_name {
@@ -329,9 +333,9 @@ foreach ($shownhanvien as $shownhanvienn) {
 </style>
 
 <script>
-   $(document).ready(function() {
+   $(document).ready(function () {
       // Bắt sự kiện click vào các phần tử h2 có class là 'day_lichlam'
-      $('.day_lichlam').click(function() {
+      $('.day_lichlam').click(function () {
          // Tìm phần tử kế tiếp (div) của h2 đang được click
          var content = $(this).next();
          // Ẩn/hiện nội dung của div đó
@@ -373,7 +377,7 @@ foreach ($shownhanvien as $shownhanvienn) {
                </select>
 
                <script>
-                  $(document).ready(function() {
+                  $(document).ready(function () {
                      // Sử dụng Select2 cho dropdown
                      $('#dropdownnlichlam').select2();
                   });
@@ -390,13 +394,13 @@ foreach ($shownhanvien as $shownhanvienn) {
          <button id="btn_close_lichlam">Đóng</button>
          <div>
             <script>
-               $(document).ready(function() {
-                  $("#btn_close_lichlam").click(function(e) {
+               $(document).ready(function () {
+                  $("#btn_close_lichlam").click(function (e) {
                      $(".Them_Lich_Lam").css("display", "none");
 
                   });
 
-                  $(".btn_add_lichlam").click(function(e) {
+                  $(".btn_add_lichlam").click(function (e) {
                      $(".Them_Lich_Lam").css("display", "flex");
 
                   });
@@ -482,6 +486,7 @@ foreach ($shownhanvien as $shownhanvienn) {
    .lichlam_title {
       width: 100%;
       background-color: #282e3d;
+      font-family: "Public Sans", sans-serif;
    }
 
    .lichlam_main {
@@ -573,7 +578,7 @@ foreach ($shownhanvien as $shownhanvienn) {
                </select>
 
                <script>
-                  $(document).ready(function() {
+                  $(document).ready(function () {
                      // Sử dụng Select2 cho dropdown
                      $('#dropdownnlichlamcheckca').select2();
                   });
@@ -583,20 +588,19 @@ foreach ($shownhanvien as $shownhanvienn) {
             <div class="btn_add_lichlamm">
                <input type="submit" value="Thêm lịch làm" name="btnaddlichlam">
                <input type="reset" value="Huỷ">
-
             </div>
 
          </form>
          <button id="btn_close_calam">Đóng</button>
          <div>
             <script>
-               $(document).ready(function() {
-                  $("#btn_close_calam").click(function(e) {
+               $(document).ready(function () {
+                  $("#btn_close_calam").click(function (e) {
                      $(".Them_Lich_Lamm").css("display", "none");
 
                   });
 
-                  $(".btn_calam").click(function(e) {
+                  $(".btn_calam").click(function (e) {
                      $(".Them_Lich_Lamm").css("display", "flex");
 
                   });
@@ -619,50 +623,108 @@ foreach ($shownhanvien as $shownhanvienn) {
       align-items: center;
       z-index: 111;
    }
+
+   .btn_calam,
+   .btn_show_giolam {
+      height: 30px;
+      width: 60%;
+      border-radius: 5px;
+      background-color: white;
+   }
+
+   .btn_calam:hover,
+   .btn_show_giolam:hover {
+      background-color: black;
+      color: #fff;
+   }
+
+   #btn_close_calam {
+      position: relative;
+      top: 40%;
+      left: -18%;
+      width: 10%;
+      height: 30px;
+      border-radius: 5px;
+   }
+
+   #btn_close_calam:hover {
+      background-color: black;
+      color: #fff;
+   }
 </style>
 
 <!-- ====================== show lịch làm -->
 
 <div class="Them_Lich_Lammm">
-   <div class="View_Them_Lich_lAM View_Them_Lich_lAMM">
-      <div class="lichlam_title lichlam_titlee">
+   <div class=" View_Them_Lich_lAMM">
+      <div class="lichlam_title lichlam_show">
          <h3 style="color:#fff;">Check ca làm</h3>
       </div>
       <div class="lichlam_mainover">
-
-         <div class="table_th">
-            <div class="table_name_image table__bottom_center">
-               <p>Thông tin nhân viên</p>
+         <div class="lichlam_th">
+            <div class="lichlam_th__item">
+               <p>Tên nhân viên</p>
             </div>
-            <div class="table_hidden table__bottom_center">
-               <p>Hiển thị</p>
+            <div class="lichlam_th__item">
+               <p>Số giờ làm</p>
             </div>
-            <div class="table_hidden table__bottom_center">
-               <p>Số điện thoại</p>
+            <div class="lichlam_th__item">
+               <p>Ngày làm</p>
             </div>
-            <div class="table_hidden table__bottom_center">
-               <p>Email</p>
-            </div>
-            <div class="table_view_category table__bottom_center">
-               <p>Tài khoản</p>
-            </div>
-            <div class="table_settin table__bottom_center">
+            <div class="lichlam_th__item">
                <p>Cài đặt</p>
-               <p></p>
             </div>
          </div>
 
+         <div class="lichlam_tr">
+            <div class="lichlam_th__item">
+               <p>Nhan vien A</p>
+            </div>
+            <div class="lichlam_th__item">
+               <p>8 tiếng</p>
+            </div>
+            <div class="lichlam_th__item">
+               <p>08/02/04</p>
+            </div>
+            <div style="display:flex;" class="lichlam_th__item">
+               <p>
+                  <a href="index.php?act=updatenhanvien&idnhanvien=' . $id_nhanvien . '">
+                     <i class="bi bi-arrow-counterclockwise"></i>
+                  </a>
+               </p>
+               <p>
+                  <a style="color:red" href="index.php?act=deletenhanvien&idnhanvien=' . $id_nhanvien . '">
+                     <i class="bi bi-trash-fill"></i>
+                  </a>
+               </p>
+            </div>
+         </div>
+      </div>
+      <div class="icon_show_lichlam">
+         <p><i class="bi bi-x-circle"></i></p>
       </div>
    </div>
 </div>
 </div>
 
+<script>
+   document.addEventListener("DOMContentLoaded", function () {
+      document.querySelector(".icon_show_lichlam").addEventListener("click", function () {
+         // Lấy phần tử cha và ẩn nó đi
+         document.querySelector(".Them_Lich_Lammm").style.display = "none";
+      });
+   });
 
+</script>
 
 
 <style>
+   .table_th {
+      display: none;
+   }
+
    .Them_Lich_Lammm {
-      display: flex;
+      /* display: none; */
       position: absolute;
       width: 100%;
       height: 100vh;
@@ -670,18 +732,77 @@ foreach ($shownhanvien as $shownhanvienn) {
       justify-content: center;
       align-items: center;
       z-index: 111;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-30%);
    }
 
    .View_Them_Lich_lAMM {
       position: relative;
-      width: 80%;
-      height: 80%;
+      width: 70%;
+      height: 70%;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
    }
 
    .lichlam_mainover {
       position: relative;
       overflow: auto;
-      background-color: red;
+   }
+
+   .lichlam_th {
+      border-bottom: 1px solid #444;
+      background-color: #e2e2e2;
+      margin-top: 5%;
+      font-weight: 550;
+      font-size: 1.1rem;
+   }
+
+   .lichlam_tr {
+      font-size: 0.9rem;
+   }
+
+   .lichlam_th,
+   .lichlam_tr {
+      /* border-bottom: 1px solid black; */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      height: 40px;
+   }
+
+   .lichlam_th__item {
+      color: black;
+      width: 30%;
+   }
+
+   .lichlam_show {
+      height: 60px;
+      text-align: center;
+      line-height: 60px;
+      border-radius: 4px;
+   }
+
+   .lichlam_show h3 {
+      font-size: 1.5rem;
+   }
+
+   .lichlam_tr div:nth-child(4) {
+      justify-content: center;
+      align-items: center;
+   }
+
+   .icon_show_lichlam {
+      position: relative;
+      top: -25%;
+      right: -95%;
+      cursor: pointer;
+   }
+
+   .icon_show_lichlam i {
+      font-size: 1.5rem;
    }
 </style>
 
