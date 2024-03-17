@@ -161,6 +161,11 @@ class NhanVien
       $sql = "INSERT INTO lichlam (ngay, ca, nhanvien, id_nhanvien) VALUES ('" . $ngay . "', '" . $ca . "', '" . $tennhanvien . "', '" . $nhanvienId . "')";
       $this->nhanvien->get_all($sql);
    }
+
+   function AddCaLam($tennhanvien, $nhanvienId, $giolam, $ngay) {
+      $sql = "INSERT INTO sogiolam (giolam, ngay, tennhanvien, id_nhanvien) VALUES ('" . $giolam . "', '" . $ngay . "', '" . $tennhanvien . "', '" . $nhanvienId . "')";
+      $this->nhanvien->get_all($sql);
+   }
 }
 
 

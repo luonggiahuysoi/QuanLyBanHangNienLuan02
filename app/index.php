@@ -740,6 +740,40 @@ if (isset ($_GET['act'])) {
                 break;
             }
             break;
+
+
+
+
+
+        case 'AddGioLam':
+            $giolam = $_POST['giolam'];
+            $ngay = $_POST['date'];
+            $nhanvienId = $_POST['nhanvien'];
+
+            //=======LẤY NHÂN VIÊN THEO ID ===========
+
+            $idnhanvien = new DungChung;
+            $NV = $idnhanvien->ShowDungChung('nhanvien');
+            $tennhanvien = '';
+
+            foreach ($NV as $NVV) {
+                if ($NVV['id_nhanvien'] == $nhanvienId) {
+                    $tennhanvien = $NVV['tennhanvien'];
+                    break;
+                }
+            }
+           
+
+               // ============ THÊM LỊCH LÀM ===============
+               $addlich = new NhanVien;
+               $addlich->AddCaLam($tennhanvien, $nhanvienId, $giolam, $ngay);
+               
+
+
+
+
+
+            break;
     }
 } else {
 

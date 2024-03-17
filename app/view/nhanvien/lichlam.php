@@ -72,13 +72,16 @@ foreach ($shownhanvien as $shownhanvienn) {
          <a href="" style="color: #464646;">Chức vụ </a>
       </div>
       <br>
-      <div style="display:flex;, width:100%;">
+      <div style="display:flex; width:100%;">
          <div class="content__bottom-adddm">
             <input type="button" value="+ Thêm lịch làm" class="btn_add_lichlam btn_lichlam">
          </div>
-         <a class="content__bottom-adddm" href>
-            <input type="button" value="+ Check ca làm" class="btn_add_lichlam btn_lichlam">
-         </a>
+         <div class="content__bottom-adddm" href>
+            <input type="button" value="+ Check ca làm" class="btn_calam">
+         </div>
+         <div class="content__bottom-adddm" href>
+            <input type="button" value="Show ca làm" class="btn_show_giolam">
+         </div>
       </div>
       <br>
 
@@ -99,13 +102,13 @@ foreach ($shownhanvien as $shownhanvienn) {
             $username = "root"; // Tên đăng nhập cơ sở dữ liệu
             $password = ""; // Mật khẩu cơ sở dữ liệu
             $dbname = "QuanLyBanHang"; // Tên cơ sở dữ liệu
-            
+
             // Tạo kết nối
             $conn = new mysqli($servername, $username, $password, $dbname);
 
             // Kiểm tra kết nối
             if ($conn->connect_error) {
-               die ("Kết nối đến cơ sở dữ liệu thất bại: " . $conn->connect_error);
+               die("Kết nối đến cơ sở dữ liệu thất bại: " . $conn->connect_error);
             }
 
             // Lấy ngày hiện tại
@@ -326,9 +329,9 @@ foreach ($shownhanvien as $shownhanvienn) {
 </style>
 
 <script>
-   $(document).ready(function () {
+   $(document).ready(function() {
       // Bắt sự kiện click vào các phần tử h2 có class là 'day_lichlam'
-      $('.day_lichlam').click(function () {
+      $('.day_lichlam').click(function() {
          // Tìm phần tử kế tiếp (div) của h2 đang được click
          var content = $(this).next();
          // Ẩn/hiện nội dung của div đó
@@ -370,7 +373,7 @@ foreach ($shownhanvien as $shownhanvienn) {
                </select>
 
                <script>
-                  $(document).ready(function () {
+                  $(document).ready(function() {
                      // Sử dụng Select2 cho dropdown
                      $('#dropdownnlichlam').select2();
                   });
@@ -387,13 +390,13 @@ foreach ($shownhanvien as $shownhanvienn) {
          <button id="btn_close_lichlam">Đóng</button>
          <div>
             <script>
-               $(document).ready(function () {
-                  $("#btn_close_lichlam").click(function (e) {
+               $(document).ready(function() {
+                  $("#btn_close_lichlam").click(function(e) {
                      $(".Them_Lich_Lam").css("display", "none");
 
                   });
 
-                  $(".btn_add_lichlam").click(function (e) {
+                  $(".btn_add_lichlam").click(function(e) {
                      $(".Them_Lich_Lam").css("display", "flex");
 
                   });
@@ -554,9 +557,9 @@ foreach ($shownhanvien as $shownhanvienn) {
          <h3 style="color:#fff;">Check ca làm</h3>
       </div>
       <div class="lichlam_main">
-         <form action="index.php?act=AddLichLam" method="post">
+         <form action="index.php?act=AddGioLam" method="post">
             <div class="nhanvien">
-               <input type="text" name="ca" placeholder="Nhập ca làm">
+               <input type="text" name="giolam" placeholder="Số giờ làm">
             </div>
             <br>
 
@@ -565,14 +568,14 @@ foreach ($shownhanvien as $shownhanvienn) {
             </div>
             <br>
             <div class="nhanvien">
-               <select name="nhanvien" id="dropdownnlichlam">
+               <select name="nhanvien" id="dropdownnlichlamcheckca">
                   <?= $listshownhanvien ?>
                </select>
 
                <script>
-                  $(document).ready(function () {
+                  $(document).ready(function() {
                      // Sử dụng Select2 cho dropdown
-                     $('#dropdownnlichlam').select2();
+                     $('#dropdownnlichlamcheckca').select2();
                   });
                </script>
             </div>
@@ -584,17 +587,17 @@ foreach ($shownhanvien as $shownhanvienn) {
             </div>
 
          </form>
-         <button id="btn_close_lichlam">Đóng</button>
+         <button id="btn_close_calam">Đóng</button>
          <div>
             <script>
-               $(document).ready(function () {
-                  $("#btn_close_lichlam").click(function (e) {
-                     $(".Them_Lich_Lam").css("display", "none");
+               $(document).ready(function() {
+                  $("#btn_close_calam").click(function(e) {
+                     $(".Them_Lich_Lamm").css("display", "none");
 
                   });
 
-                  $(".btn_add_lichlam").click(function (e) {
-                     $(".Them_Lich_Lam").css("display", "flex");
+                  $(".btn_calam").click(function(e) {
+                     $(".Them_Lich_Lamm").css("display", "flex");
 
                   });
                });
@@ -604,9 +607,10 @@ foreach ($shownhanvien as $shownhanvienn) {
    </div>
 </div>
 
+
 <style>
    .Them_Lich_Lamm {
-      /* display: none; */
+      display: none;
       position: absolute;
       width: 100%;
       height: 100vh;
@@ -614,6 +618,70 @@ foreach ($shownhanvien as $shownhanvienn) {
       justify-content: center;
       align-items: center;
       z-index: 111;
+   }
+</style>
+
+<!-- ====================== show lịch làm -->
+
+<div class="Them_Lich_Lammm">
+   <div class="View_Them_Lich_lAM View_Them_Lich_lAMM">
+      <div class="lichlam_title lichlam_titlee">
+         <h3 style="color:#fff;">Check ca làm</h3>
+      </div>
+      <div class="lichlam_mainover">
+
+         <div class="table_th">
+            <div class="table_name_image table__bottom_center">
+               <p>Thông tin nhân viên</p>
+            </div>
+            <div class="table_hidden table__bottom_center">
+               <p>Hiển thị</p>
+            </div>
+            <div class="table_hidden table__bottom_center">
+               <p>Số điện thoại</p>
+            </div>
+            <div class="table_hidden table__bottom_center">
+               <p>Email</p>
+            </div>
+            <div class="table_view_category table__bottom_center">
+               <p>Tài khoản</p>
+            </div>
+            <div class="table_settin table__bottom_center">
+               <p>Cài đặt</p>
+               <p></p>
+            </div>
+         </div>
+
+      </div>
+   </div>
+</div>
+</div>
+
+
+
+
+<style>
+   .Them_Lich_Lammm {
+      display: flex;
+      position: absolute;
+      width: 100%;
+      height: 100vh;
+      background-color: rgba(184, 184, 184, 0.1);
+      justify-content: center;
+      align-items: center;
+      z-index: 111;
+   }
+
+   .View_Them_Lich_lAMM {
+      position: relative;
+      width: 80%;
+      height: 80%;
+   }
+
+   .lichlam_mainover {
+      position: relative;
+      overflow: auto;
+      background-color: red;
    }
 </style>
 
