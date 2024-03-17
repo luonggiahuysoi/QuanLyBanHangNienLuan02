@@ -6,19 +6,19 @@ foreach ($shownhanvien as $shownhanvienn) {
 
    // ======= Tính tổng giờ làm ==========
    $tonggiolamcanhan = 0;
-   foreach($showgiolam as $showgiolamm) {
-       if($shownhanvienn['id_nhanvien'] == $showgiolamm['id_nhanvien']) {
-           $tonggiolamcanhan += $showgiolamm['giolam'];
-       }
+   foreach ($showgiolam as $showgiolamm) {
+      if ($shownhanvienn['id_nhanvien'] == $showgiolamm['id_nhanvien']) {
+         $tonggiolamcanhan += $showgiolamm['giolam'];
+      }
    }
 
    // ====== Tính tổng tiền =========
    $tongtienluong = 0;
-   foreach($showphanquyen as $showphanquyenn) {
-    if($shownhanvienn['id_phanquyen'] == $showphanquyenn['id_phanquyen']) {
-        $tongtienluong = $showphanquyenn['luong']*$tonggiolamcanhan;
+   foreach ($showphanquyen as $showphanquyenn) {
+      if ($shownhanvienn['id_phanquyen'] == $showphanquyenn['id_phanquyen']) {
+         $tongtienluong = $showphanquyenn['luong'] * $tonggiolamcanhan;
 
-    }
+      }
    }
 
    $showluong .= '
@@ -27,10 +27,10 @@ foreach ($shownhanvien as $shownhanvienn) {
                         <p>' . $tennhanvien . '</p>
                     </div>
                     <div class="table_hidden table__bottom_center">
-                        <p>'.$chucvu.'</p>
+                        <p>' . $chucvu . '</p>
                     </div>
                     <div class="table_view_category table__bottom_center">
-                        <p>'.$tonggiolamcanhan.'</p>
+                        <p>' . $tonggiolamcanhan . '</p>
                     </div>
                     <div class="table_view_category table__bottom_center email">
                         <p>null</p>
@@ -39,7 +39,7 @@ foreach ($shownhanvien as $shownhanvienn) {
                         <p>null</p>
                     </div>
                     <div class="table_view_category table__bottom_center email">
-                        <p>'.number_format($tongtienluong).' vnđ</p>
+                        <p>' . number_format($tongtienluong) . ' vnđ</p>
                     </div>
                     <div class="table_settin table__bottom_center setting">
                         <div class="table_show_setting">
@@ -145,8 +145,8 @@ foreach ($shownhanvien as $shownhanvienn) {
 
       <div class="content__bottom-adddm">
          <!-- <input type="button" value="+ Thêm nhân viên" class="btn_show_add_danhmuc"> -->
-         <button id="">Chi tiết lương thưởng</button>
-         <button id="">Chi tiết lương phạt</button>
+         <button class="btn_show_giolam">Chi tiết lương thưởng</button>
+         <button class="btn_show_giolamm">Chi tiết lương phạt</button>
       </div>
 
       <!-- view danh muc -->
@@ -203,7 +203,7 @@ foreach ($shownhanvien as $shownhanvienn) {
 
 
 
-             <?= $showluong ?>
+            <?= $showluong ?>
 
 
 
@@ -225,18 +225,6 @@ foreach ($shownhanvien as $shownhanvienn) {
       width: 30%;
    }
 </style>
-
-
-
-
-
-
-
-</div>
-
-
-
-
 
 
 
@@ -824,6 +812,233 @@ foreach ($shownhanvien as $shownhanvienn) {
       height: 110%;
    }
 </style>
+===
+
+
+<!--===================== Chi tiết lương thưởng ============== -->
+
+
+<div class="Them_Lich_Lammm">
+   <div class=" View_Them_Lich_lAMM">
+      <div class="lichlam_title lichlam_luong">
+         <h3 style="color:#fff;">Chi tiết lương thưởng</h3>
+      </div>
+      <form action="index.php?act=giolamsearch" method="post">
+         <div class="icon_show_lichlam">
+
+            <div>
+               <input type="text" placeholder="Tên nhân viên">
+               <input type="text" placeholder="Tên nhân viên">
+               <input type="text" placeholder="Tên nhân viên">
+               <input type="submit" value="Thêm" class="add_luongg">
+            </div>
+            <p class="icon_show_lichlamm"><i class="bi bi-x-circle"></i></p>
+
+         </div>
+      </form>
+      <div class="show_search_lichlam">
+         <input type="text" name="search_giolam" id="searchGioLam" placeholder="Nhập để tìm kiếm nhân viên">
+      </div>
+      <div class="lichlam_mainover">
+         <div class="lichlam_th">
+            <div class="lichlam_th__item">
+               <p>Tên nhân viên</p>
+            </div>
+            <div class="lichlam_th__item">
+               <p>Lý do lương phạt</p>
+            </div>
+            <div class="lichlam_th__item">
+               <p>Số tiền</p>
+            </div>
+            <div class="lichlam_th__item">
+               <p>Cài đặt</p>
+            </div>
+         </div>
+
+
+      </div>
+   </div>
+</div>
+</div>
+
+<script>
+
+
+   $(document).ready(function () {
+      $(".icon_show_lichlamm").click(function (e) {
+         $(".Them_Lich_Lammm").hide();
+
+      });
+   });
+   $(document).ready(function () {
+      $(".btn_show_giolam").click(function (e) {
+         $(".Them_Lich_Lammm").show();
+
+      });
+   });
+
+</script>
+
+<style>
+   .Them_Lich_Lammm {
+      display: none;
+      position: absolute;
+      width: 100%;
+      height: 100vh;
+      background-color: rgba(184, 184, 184, 0.1);
+      justify-content: center;
+      align-items: center;
+      z-index: 111;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-30%);
+   }
+
+   .View_Them_Lich_lAMM {
+      position: relative;
+      width: 70%;
+      height: 70%;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+      z-index: 4;
+   }
+
+   .lichlam_mainover {
+      position: relative;
+      overflow: auto;
+      height: 70%;
+   }
+
+
+
+   .lichlam_th {
+      border-bottom: 1px solid #444;
+      background-color: #e2e2e2;
+      margin-top: 5%;
+      font-weight: 550;
+      font-size: 1.1rem;
+   }
+
+   .lichlam_tr {
+      font-size: 0.9rem;
+   }
+
+   .lichlam_th,
+   .lichlam_tr {
+      /* border-bottom: 1px solid black; */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      height: 40px;
+   }
+
+   .lichlam_th__item {
+      color: black;
+      width: 30%;
+   }
+
+   .lichlam_show {
+      height: 60px;
+      text-align: center;
+      line-height: 60px;
+      border-radius: 4px;
+   }
+
+   .lichlam_show h3 {
+      font-size: 1.5rem;
+   }
+
+   .lichlam_tr div:nth-child(4) {
+      justify-content: center;
+      align-items: center;
+   }
+
+   .icon_show_lichlam {
+      position: absolute;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 10%;
+      width: 100%;
+      z-index: 5;
+   }
+
+   .hover_icon:hover {
+      cursor: pointer;
+   }
+
+   .icon_show_lichlam i {
+      font-size: 1.5rem;
+      margin-right: 20px;
+      color: red;
+   }
+
+   .search_day {
+      position: relative;
+      width: 80%;
+      height: 100%;
+      display: flex;
+      justify-content: left;
+      align-items: center;
+   }
+
+
+   .show_search_lichlam {
+      position: relative;
+      width: 100%;
+      height: 9%;
+      background-color: #5585b5;
+      display: flex;
+      justify-content: right;
+      align-items: center;
+   }
+
+   .show_search_lichlam input {
+      position: relative;
+      width: 20%;
+      height: 50%;
+      margin-right: 18%;
+      z-index: 5;
+   }
+</style>
+
+<style>
+   .lichlam_luong {
+      height: 70px;
+      background-color: #282e3d;
+      text-align: center;
+      line-height: 70px;
+      font-size: 1.3rem;
+      border-radius: 5px;
+   }
+
+   #searchGioLam {
+      height: 30px;
+      outline: none;
+      padding: 5px 10px;
+   }
+
+   .icon_show_lichlam div input {
+      outline: none;
+      height: 30px;
+      padding: 5px 10px;
+      border-radius: 5px;
+      border: none;
+      border-bottom: 1px solid black;
+   }
+
+   .add_luongg {
+      font-weight: 600;
+   }
+
+   .add_luongg:hover {
+      background-color: black;
+      color: #fff;
+   }
+</style>
 
 
 
@@ -833,8 +1048,69 @@ foreach ($shownhanvien as $shownhanvienn) {
 
 
 
+<!--===================== Chi tiết lương phat ============== -->
 
 
+<div class="Them_Lich_Lammm">
+   <div class=" View_Them_Lich_lAMM">
+      <div class="lichlam_title lichlam_luong">
+         <h3 style="color:#fff;">Chi tiết lương phạt</h3>
+      </div>
+      <form action="index.php?act=giolamsearch" method="post">
+         <div class="icon_show_lichlam">
+
+            <div>
+               <input type="text" placeholder="Tên nhân viên">
+               <input type="text" placeholder="Tên nhân viên">
+               <input type="text" placeholder="Tên nhân viên">
+               <input type="submit" value="Thêm" class="add_luongg">
+            </div>
+            <p class="icon_show_lichlamm"><i class="bi bi-x-circle"></i></p>
+
+         </div>
+      </form>
+      <div class="show_search_lichlam">
+         <input type="text" name="search_giolam" id="searchGioLam" placeholder="Nhập để tìm kiếm nhân viên">
+      </div>
+      <div class="lichlam_mainover">
+         <div class="lichlam_th">
+            <div class="lichlam_th__item">
+               <p>Tên nhân viên</p>
+            </div>
+            <div class="lichlam_th__item">
+               <p>Lý do lương phạt</p>
+            </div>
+            <div class="lichlam_th__item">
+               <p>Số tiền</p>
+            </div>
+            <div class="lichlam_th__item">
+               <p>Cài đặt</p>
+            </div>
+         </div>
+
+
+      </div>
+   </div>
+</div>
+</div>
+
+<script>
+
+
+   $(document).ready(function () {
+      $(".icon_show_lichlamm").click(function (e) {
+         $(".Them_Lich_Lammm").hide();
+
+      });
+   });
+   $(document).ready(function () {
+      $(".btn_show_giolamm").click(function (e) {
+         $(".Them_Lich_Lammm").show();
+
+      });
+   });
+
+</script>
 
 
 
