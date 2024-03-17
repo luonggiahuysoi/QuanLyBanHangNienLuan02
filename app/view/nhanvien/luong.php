@@ -145,8 +145,8 @@ foreach ($shownhanvien as $shownhanvienn) {
 
       <div class="content__bottom-adddm">
          <!-- <input type="button" value="+ Thêm nhân viên" class="btn_show_add_danhmuc"> -->
-         <button class="btn_show_giolam">Chi tiết lương thưởng</button>
          <button class="btn_show_giolamm hvr-grow-shadow">Chi tiết lương phạt</button>
+         <button class="btn_show_giolammm">Chi tiết lương thưởng</button>
       </div>
 
       <!-- view danh muc -->
@@ -818,7 +818,7 @@ foreach ($shownhanvien as $shownhanvienn) {
 <!--===================== Chi tiết lương thưởng ============== -->
 
 
-<div class="Them_Lich_Lammm">
+<div class="Them_Lich_Lammmm">
    <div class=" View_Them_Lich_lAMM">
       <div class="lichlam_title lichlam_luong">
          <h3 style="color:#fff;">Chi tiết lương thưởng</h3>
@@ -866,13 +866,13 @@ foreach ($shownhanvien as $shownhanvienn) {
 
    $(document).ready(function () {
       $(".icon_show_lichlamm").click(function (e) {
-         $(".Them_Lich_Lammm").hide();
+         $(".Them_Lich_Lammmm").hide();
 
       });
    });
    $(document).ready(function () {
-      $(".btn_show_giolam").click(function (e) {
-         $(".Them_Lich_Lammm").show();
+      $(".btn_show_giolammm").click(function (e) {
+         $(".Them_Lich_Lammmm").show();
 
       });
    });
@@ -880,7 +880,8 @@ foreach ($shownhanvien as $shownhanvienn) {
 </script>
 
 <style>
-   .Them_Lich_Lammm {
+   .Them_Lich_Lammm,
+   .Them_Lich_Lammmm {
       display: none;
       position: absolute;
       width: 100%;
@@ -1052,8 +1053,8 @@ foreach ($shownhanvien as $shownhanvienn) {
 <?php
 $listnhanvienshow = '';
 foreach ($shownhanvien as $shownhanvienn) {
-    extract($shownhanvienn);
-    $listnhanvienshow .= '
+   extract($shownhanvienn);
+   $listnhanvienshow .= '
       <option value="' . $id_nhanvien . '">' . $tennhanvien . '</option>
    ';
 }
@@ -1066,19 +1067,19 @@ foreach ($shownhanvien as $shownhanvienn) {
       </div>
       <form action="index.php?act=addluongthuong" method="post">
          <div class="icon_show_lichlam">
-            
+
 
             <div>
-            <select name="nhanvien" id="dropdownnluongthuong">
-                            <?= $listnhanvienshow ?>
-                        </select>
+               <select name="nhanvien" id="dropdownnluongthuong">
+                  <?= $listnhanvienshow ?>
+               </select>
 
-                        <script>
-                            $(document).ready(function () {
-                                // Sử dụng Select2 cho dropdown
-                                $('#dropdownnluongthuong').select2();
-                            });
-                        </script>
+               <script>
+                  $(document).ready(function () {
+                     // Sử dụng Select2 cho dropdown
+                     $('#dropdownnluongthuong').select2();
+                  });
+               </script>
                <input type="text" placeholder="Số tiền thưởng" name="sotienthuong">
                <input type="text" placeholder="Nội dung thưởng" name="noidungthuong">
                <input type="submit" value="Thêm" class="add_luongg" name="themluongthuong">
@@ -1106,26 +1107,26 @@ foreach ($shownhanvien as $shownhanvienn) {
             </div>
          </div>
 
-        <?php
+         <?php
 
-            foreach($showluongthuong as $showluongthuongG) {
-                extract($showluongthuongG);
-                $tennhanvien = '';
-                foreach($shownhanvien as $shownhanvienn) {
-                    if($shownhanvienn['id_nhanvien'] == $showluongthuongG['id_nhanvien']) {
-                        $tennhanvien = $shownhanvienn['tennhanvien'];
-                    }
-                }
-                echo'
+         foreach ($showluongthuong as $showluongthuongG) {
+            extract($showluongthuongG);
+            $tennhanvien = '';
+            foreach ($shownhanvien as $shownhanvienn) {
+               if ($shownhanvienn['id_nhanvien'] == $showluongthuongG['id_nhanvien']) {
+                  $tennhanvien = $shownhanvienn['tennhanvien'];
+               }
+            }
+            echo '
                 <div class="lichlam_tr list-item">
             <div class="lichlam_th__item">
-               <p>'.$tennhanvien.'</p>
+               <p>' . $tennhanvien . '</p>
             </div>
             <div class="lichlam_th__item">
-               <p>'.$noidungthuong.'</p>
+               <p>' . $noidungthuong . '</p>
             </div>
             <div class="lichlam_th__item">
-               <p>'.$sotienthuong.'</p>
+               <p>' . $sotienthuong . '</p>
             </div>
             <div style="display:flex;" class="lichlam_th__item">
                <p>
@@ -1141,10 +1142,10 @@ foreach ($shownhanvien as $shownhanvienn) {
             </div>
          </div>
                 ';
-            }
+         }
 
-        ?>
-         
+         ?>
+
 
       </div>
    </div>
@@ -1168,6 +1169,28 @@ foreach ($shownhanvien as $shownhanvienn) {
    });
 
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
