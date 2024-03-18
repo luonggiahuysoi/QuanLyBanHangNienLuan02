@@ -192,12 +192,23 @@ class NhanVien
 
    function getByIdThuong()
    {
-      $sql = "SELECT * FROM thuongphat WHERE 'set' = 0";
+      $sql = "SELECT * FROM thuongphat WHERE hiden = 0";
       return $this->nhanvien->get_all($sql);
    }
 
    function AddTienThuong($nhanvienId, $sotienthuong, $noidungthuong) {
-      $sql = "INSERT INTO thuongphat (noidungthuong, sotienthuong, id_nhanvien) VALUES ('" . $noidungthuong . "', '" . $sotienthuong . "', '" . $nhanvienId . "')";
+      $sql = "INSERT INTO thuongphat (noidungthuong, sotienthuong, hiden, id_nhanvien) VALUES ('" . $noidungthuong . "', '" . $sotienthuong . "', 0, '" . $nhanvienId . "')";
+      $this->nhanvien->get_all($sql);
+
+   }
+   function getByIdPhat()
+   {
+      $sql = "SELECT * FROM thuongphat WHERE hiden = 1";
+      return $this->nhanvien->get_all($sql);
+   }
+
+   function AddTienPhat($nhanvienId, $sotienthuong, $noidungthuong) {
+      $sql = "INSERT INTO thuongphat (noidungphat, sotienphat, hiden, id_nhanvien) VALUES ('" . $noidungthuong . "', '" . $sotienthuong . "', 1, '" . $nhanvienId . "')";
       $this->nhanvien->get_all($sql);
 
    }

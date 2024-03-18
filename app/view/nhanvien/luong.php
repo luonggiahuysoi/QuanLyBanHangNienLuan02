@@ -145,8 +145,8 @@ foreach ($shownhanvien as $shownhanvienn) {
 
       <div class="content__bottom-adddm">
          <!-- <input type="button" value="+ Thêm nhân viên" class="btn_show_add_danhmuc"> -->
-         <button class="btn_show_giolamm hvr-grow-shadow">Chi tiết lương phạt</button>
-         <button class="btn_show_giolammm">Chi tiết lương thưởng</button>
+         <button class="btn_show_giolamm hvr-grow-shadow">Chi tiết lương thưởng</button>
+         <button class="btn_show_giolammm">Chi tiết lương phạt</button>
       </div>
 
       <!-- view danh muc -->
@@ -817,20 +817,37 @@ foreach ($shownhanvien as $shownhanvienn) {
 
 <!--===================== Chi tiết lương thưởng ============== -->
 
-
+<?php
+$listnhanvienshoww = '';
+foreach ($shownhanvien as $shownhanvienn) {
+   extract($shownhanvienn);
+   $listnhanvienshoww .= '
+      <option value="' . $id_nhanvien . '">' . $tennhanvien . '</option>
+   ';
+}
+?>
 <div class="Them_Lich_Lammmm">
    <div class=" View_Them_Lich_lAMM">
       <div class="lichlam_title lichlam_luong">
-         <h3 style="color:#fff;">Chi tiết lương thưởng</h3>
+         <h3 style="color:#fff;">Chi tiết lương phạt</h3>
       </div>
-      <form action="index.php?act=giolamsearch" method="post">
+      <form action="index.php?act=addluongphat" method="post">
          <div class="icon_show_lichlam">
 
             <div>
-               <input type="text" placeholder="Tên nhân viên">
-               <input type="text" placeholder="Tên nhân viên">
-               <input type="text" placeholder="Tên nhân viên">
-               <input type="submit" value="Thêm" class="add_luongg">
+            <select name="nhanvien" id="dropdownnluongphat">
+                  <?= $listnhanvienshoww ?>
+               </select>
+
+               <script>
+                  $(document).ready(function () {
+                     // Sử dụng Select2 cho dropdown
+                     $('#dropdownnluongphat').select2();
+                  });
+               </script>
+               <input type="text" placeholder="Số tiền phạt" name = "sotienphat">
+               <input type="text" placeholder="Nội dung phạt" name="noidungphat">
+               <input type="submit" value="Thêm" class="add_luongg" name="themtienphatt">
             </div>
             <p class="icon_show_lichlamm"><i class="bi bi-x-circle"></i></p>
 
@@ -854,6 +871,39 @@ foreach ($shownhanvien as $shownhanvienn) {
                <p>Cài đặt</p>
             </div>
          </div>
+         <?php
+
+         foreach ($showluongphat as $showluongphatt) {
+            extract($showluongphatt);
+            $tennhanvien = '';
+            foreach ($shownhanvien as $shownhanvienn) {
+               if ($shownhanvienn['id_nhanvien'] == $showluongphatt['id_nhanvien']) {
+                  $tennhanvien = $shownhanvienn['tennhanvien'];
+               }
+            }
+            echo '
+                <div class="lichlam_tr list-item">
+            <div class="lichlam_th__item">
+               <p>' . $tennhanvien . '</p>
+            </div>
+            <div class="lichlam_th__item">
+               <p>' . $noidungphat . '</p>
+            </div>
+            <div class="lichlam_th__item">
+               <p>' . $sotienphat . '</p>
+            </div>
+            <div style="display:flex;" class="lichlam_th__item">
+               <p>
+                  <a style="color:red" href="index.php?act=deleteluongphat&idluongphat=' . $id_thuongphat . '">
+                     <i class="bi bi-trash-fill"></i>
+                  </a>
+               </p>
+            </div>
+         </div>
+                ';
+         }
+
+         ?>
 
 
       </div>
@@ -1063,7 +1113,7 @@ foreach ($shownhanvien as $shownhanvienn) {
 <div class="Them_Lich_Lammm">
    <div class=" View_Them_Lich_lAMM">
       <div class="lichlam_title lichlam_luong">
-         <h3 style="color:#fff;">Chi tiết lương phạt</h3>
+         <h3 style="color:#fff;">Chi tiết lương thưởng</h3>
       </div>
       <form action="index.php?act=addluongthuong" method="post">
          <div class="icon_show_lichlam">
@@ -1097,7 +1147,7 @@ foreach ($shownhanvien as $shownhanvienn) {
                <p>Tên nhân viên</p>
             </div>
             <div class="lichlam_th__item">
-               <p>Lý do lương phạt</p>
+               <p>Lý do lương thưởng</p>
             </div>
             <div class="lichlam_th__item">
                <p>Số tiền</p>
@@ -1130,12 +1180,7 @@ foreach ($shownhanvien as $shownhanvienn) {
             </div>
             <div style="display:flex;" class="lichlam_th__item">
                <p>
-                  <a href="index.php?act=updatesogiolam&idsogiolam=' . $id_thuongphat . '">
-                     <i class="bi bi-arrow-counterclockwise"></i>
-                  </a>
-               </p>
-               <p>
-                  <a style="color:red" href="index.php?act=deletesogiolam&idsogiolam=' . $id_thuongphat . '">
+                  <a style="color:red" href="index.php?act=deleteluongthuong&idluongthuong=' . $id_thuongphat . '">
                      <i class="bi bi-trash-fill"></i>
                   </a>
                </p>
@@ -1280,101 +1325,6 @@ foreach ($shownhanvien as $shownhanvienn) {
 
 
 
-<!-- ================jsquery hiện ảnh ============ -->
-
-<script>
-   $(document).ready(function () {
-      $("#imageInput").change(function () {
-         var input = this;
-
-         if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-               $("#previewImage").attr("src", e.target.result);
-               $("#previewImage").css("display", "flex");
-            };
-
-            reader.readAsDataURL(input.files[0]);
-         }
-      });
-   });
-</script>
-
-<script>
-   $(document).ready(function () {
-      $("#imageInput1").change(function () {
-         var input = this;
-
-         if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-               $("#previewImage1").attr("src", e.target.result);
-               $("#previewImage1").css("display", "flex");
-            };
-
-            reader.readAsDataURL(input.files[0]);
-         }
-      });
-   });
-</script>
-
-<script>
-   $(document).ready(function () {
-      $("#imageInput2").change(function () {
-         var input = this;
-
-         if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-               $("#previewImage2").attr("src", e.target.result);
-               $("#previewImage2").css("display", "flex");
-            };
-
-            reader.readAsDataURL(input.files[0]);
-         }
-      });
-   });
-</script>
-
-<script>
-   $(document).ready(function () {
-      $("#imageInput3").change(function () {
-         var input = this;
-
-         if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-               $("#previewImage3").attr("src", e.target.result);
-               $("#previewImage3").css("display", "flex");
-            };
-
-            reader.readAsDataURL(input.files[0]);
-         }
-      });
-   });
-</script>
-<script>
-   $(document).ready(function () {
-      $("#imageInput4").change(function () {
-         var input = this;
-
-         if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-               $("#previewImage4").attr("src", e.target.result);
-               $("#previewImage4").css("display", "flex");
-            };
-
-            reader.readAsDataURL(input.files[0]);
-         }
-      });
-   });
-</script>
 
 
 
