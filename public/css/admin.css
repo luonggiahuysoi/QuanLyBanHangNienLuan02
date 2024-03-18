@@ -69,7 +69,7 @@
 
 
 
-.item_cha:hover a {
+.item_cha:hover p {
     cursor: pointer;
     background-color: var(--color-black);
     color: white;
@@ -83,7 +83,7 @@
 }
 
 
-.item_cha>a {
+.item_cha>p:nth-child(1) {
     color: #666;
     font-size: 1rem;
     margin-left: 5%;

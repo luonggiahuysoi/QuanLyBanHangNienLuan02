@@ -271,7 +271,7 @@ foreach ($HienDanhMuc as $HienDanhMucc) {
 
 <style>
     .updatedm_img {
-        border:1.2px dashed black;
+        border: 1.2px dashed black;
         padding: 8px;
         border-radius: 5px;
     }
@@ -297,12 +297,13 @@ foreach ($HienDanhMuc as $HienDanhMucc) {
         display: flex;
         flex-direction: column;
         align-items: center;
+        border-radius: 5px;
     }
 
     .updatedm_h3 {
         position: relative;
         width: 110%;
-        height: 20%;
+        height: 16%;
         display: flex;
         align-items: center;
         background: #000000;
@@ -335,7 +336,6 @@ foreach ($HienDanhMuc as $HienDanhMucc) {
         font-size: 1rem;
         margin-top: 15%;
         padding: 6px 12px;
-        outline: none;
         caret-color: red;
         font-weight: 500;
         border: none;
@@ -344,8 +344,8 @@ foreach ($HienDanhMuc as $HienDanhMucc) {
 
     .updatdm_content input:nth-child(4),
     .updatdm_content input:nth-child(3) {
-        font-family: "Fira Sans";
-        font-weight: 550;
+        font-family: "Roboto";
+        font-weight: 500;
         font-size: 1rem;
         padding: 6px 10px;
         cursor: pointer;

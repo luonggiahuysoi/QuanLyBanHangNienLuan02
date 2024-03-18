@@ -37,7 +37,7 @@
 
             <div class="nav_view_center magintop_nav">
                <div class="item_cha" id="item_cha">
-                  <a href=""><i style="margin-right: 5px;" class="bi bi-person-badge-fill"></i> Quản lý nhân viên</a>
+                  <a><i style="margin-right: 5px;" class="bi bi-person-badge-fill"></i> Quản lý nhân viên</a>
                   <p class="plus_r"><i class="bi bi-chevron-down"></i></p>
                </div>
                <div class="item-con" id="item-con">
@@ -59,13 +59,11 @@
 
                </div>
             </div>
-
-
             <!--=========================== NOTE: Người dùng ===================== -->
 
             <div class="nav_view_center magintop_nav">
                <div class="item_cha" id="item_cha1">
-                  <a href=""><i style="margin-right: 5px;" class="bi bi-people-fill "></i>Quản lý người dùng</a>
+                  <a><i style="margin-right: 5px;" class="bi bi-people-fill "></i>Quản lý người dùng</a>
                   <p class="plus_r"><i class="bi bi-chevron-down"></i></p>
                </div>
                <div class="item-con" id="item-con1">
@@ -89,7 +87,7 @@
 
             <div class="nav_view_center magintop_nav">
                <div class="item_cha" id="item_cha2">
-                  <a href=""><i style="margin-right: 5px;" class="bi bi-cart-plus"></i> Quản lý hàng hóa</a>
+                  <a><i style="margin-right: 5px;" class="bi bi-cart-plus"></i> Quản lý hàng hóa</a>
                   <p class="plus_r"><i class="bi bi-chevron-down"></i></p>
                </div>
                <div class="item-con" id="item-con2">
@@ -117,7 +115,7 @@
 
             <div class="nav_view_center magintop_nav">
                <div class="item_cha" id="item_cha3">
-                  <a href=""><i style="margin-right: 5px;" class="bi bi-bag-plus"></i>Quản lý đơn hàng</a>
+                  <a><i style="margin-right: 5px;" class="bi bi-bag-plus"></i>Quản lý đơn hàng</a>
                   <p class="plus_r"><i class="bi bi-chevron-down"></i></p>
                </div>
                <div class="item-con" id="item-con3">
@@ -141,7 +139,7 @@
             <!--=========================== NOTE: Bình luận ===================== -->
             <div class="nav_view_center magintop_nav">
                <div class="item_cha" id="item_cha4">
-                  <a href=""><i style="margin-right: 10px;" class="bi bi-chat-square-dots"></i>Bình luân</a>
+                  <a><i style="margin-right: 10px;" class="bi bi-chat-square-dots"></i>Bình luân</a>
                   <p class="plus_r"><i class="bi bi-chevron-down"></i></p>
                </div>
                <div class="item-con" id="item-con4">
@@ -165,7 +163,7 @@
 
             <div class="nav_view_center magintop_nav">
                <div class="item_cha" id="item_cha5">
-                  <a href=""><i style="margin-right: 5px;" class="bi bi-file-ruled"></i> Thống kê</a>
+                  <a><i style="margin-right: 5px;" class="bi bi-file-ruled"></i> Thống kê</a>
                   <p class="plus_r"><i class="bi bi-chevron-down"></i></p>
                </div>
                <div class="item-con" id="item-con5">
