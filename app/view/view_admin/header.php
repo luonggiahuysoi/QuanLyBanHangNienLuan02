@@ -29,7 +29,8 @@
             </div>
             <div class="nav_view_center">
                <div class="item_cha">
-                  <a href=""><i class="bi bi-house-fill"></i> Trang chủ</a>
+                  <a class="admin_home" href="index.php"><i class="bi bi-house-fill"></i> Trang
+                     chủ</a>
                </div>
             </div>
 
@@ -73,11 +74,11 @@
                   <div class="item-con_list">
                      <a href=""><i class="bi bi-dot"></i>Lương nhân viên</a>
                   </div>
-                  <div class="item-con_list">
+                  <!-- <div class="item-con_list">
                      <a href=""><i class="bi bi-dot"></i>Lịch làm</a>
-                  </div>
+                  </div> -->
                   <div class="item-con_list item-con_listout" id="close_nav1">
-                     <a href="index.html"><i class="bi bi-box-arrow-in-left"></i>Trở về</a>
+                     <a href=""><i class="bi bi-box-arrow-in-left"></i>Trở về</a>
                   </div>
                </div>
             </div>
@@ -104,7 +105,7 @@
                      <a href=""><i class="bi bi-dot"></i>Quản lý kho</a>
                   </div>
                   <div class="item-con_list item-con_listout" id="close_nav2">
-                     <a href="index.html"><i class="bi bi-box-arrow-in-left"></i>Trở về</a>
+                     <a href=""><i class="bi bi-box-arrow-in-left"></i>Trở về</a>
                   </div>
                </div>
             </div>
@@ -129,7 +130,7 @@
                      <a href=""><i class="bi bi-dot"></i>Lịch làm</a>
                   </div>
                   <div class="item-con_list item-con_listout" id="close_nav3">
-                     <a href="index.html"><i class="bi bi-box-arrow-in-left"></i>Trở về</a>
+                     <a href=""><i class="bi bi-box-arrow-in-left"></i>Trở về</a>
                   </div>
                </div>
             </div>
@@ -153,7 +154,7 @@
                      <a href=""><i class="bi bi-dot"></i>Lịch làm</a>
                   </div>
                   <div class="item-con_list item-con_listout" id="close_nav4">
-                     <a href="index.html"><i class="bi bi-box-arrow-in-left"></i>Trở về</a>
+                     <a href=""><i class="bi bi-box-arrow-in-left"></i>Trở về</a>
                   </div>
                </div>
             </div>
@@ -177,9 +178,24 @@
                      <a href=""><i class="bi bi-dot"></i>Thống kê đơn hàng</a>
                   </div>
                   <div class="item-con_list item-con_listout" id="close_nav5">
-                     <a href="index.html"><i class="bi bi-box-arrow-in-left"></i>Trở về</a>
+                     <a href=""><i class="bi bi-box-arrow-in-left"></i>Trở về</a>
                   </div>
                </div>
             </div>
          </div>
       </div>
+
+      <style>
+         .item_cha a {
+            margin-left: 30px;
+            text-decoration: none;
+            color: black;
+         }
+
+
+         .item_cha:hover a {
+            cursor: pointer;
+            background-color: var(--color-black);
+            color: white;
+         }
+      </style>

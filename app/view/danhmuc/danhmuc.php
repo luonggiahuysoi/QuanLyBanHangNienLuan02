@@ -107,7 +107,7 @@ foreach ($HienDanhMuc as $HienDanhMucc) {
         </div>
 
         <div class="content__bottom-adddm">
-            <input type="button" value="+ Thêm danh mục" placeholder="Thêm danh mục" class="btn_show_add_danhmuc">
+            <input type="button" value="+ Thêm danh mục" placeholder="Thêm danh mục" class="btn_show_add_danhmuc hvr-grow-shadow">
         </div>
 
         <!-- view danh muc -->

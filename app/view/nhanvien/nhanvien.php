@@ -143,7 +143,7 @@ foreach ($listchucvu as $listchucvuu) {
         </div>
 
         <div class="content__bottom-adddm">
-            <input type="button" value="+ Thêm nhân viên" class="btn_show_add_danhmuc">
+            <input type="button" value="+ Thêm nhân viên" class="btn_show_add_danhmuc hvr-grow-shadow">
             <button id="sortButtontang"><i class="bi bi-graph-up-arrow"></i> Giá tăng dần</button>
             <button id="sortButtongiam"><i class="bi bi-graph-down-arrow"></i> Giá giảm dần</button>
         </div>

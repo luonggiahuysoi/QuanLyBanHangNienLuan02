@@ -142,7 +142,7 @@ foreach ($HienNhanVien as $HienNhanVienlist) {
         </div>
 
         <div class="content__bottom-adddm">
-            <input type="button" value="+ Thêm chức vụ" class="btn_show_add_danhmuc">
+            <input type="button" value="+ Thêm chức vụ" class="btn_show_add_danhmuc hvr-grow-shadow">
             <a href="index.php?act=chucvu">Chức vụ</a>
         </div>
 

@@ -114,7 +114,7 @@ foreach ($showphanquyen as $showphanquyenn) {
       </div>
 
       <div class="content__bottom-adddm">
-         <input type="button" value="+ Thêm chức vụ" class="btn_show_add_danhmuc">
+         <input type="button" value="+ Thêm chức vụ" class="btn_show_add_danhmuc hvr-grow-shadow">
          <a class="hover_all" href="index.php?act=chucvu">Chức vụ</a>
       </div>
 
@@ -286,13 +286,15 @@ foreach ($showphanquyen as $showphanquyenn) {
       </div>
       <!-- ====================== tự tạo dấu chấm sau mỗi 3 ký tự số ====================== -->
       <form action="index.php?act=updatephanquyenchucvuu" method="post" enctype="multipart/form-data">
-         <input type="hidden" name="idchucvu" value="<?=$hienupdatechucvu[0]['id_phanquyen']?>">
+         <input type="hidden" name="idchucvu" value="<?= $hienupdatechucvu[0]['id_phanquyen'] ?>">
          <div class="updatdm_content">
             <div class="updatesp_price">
                <div class="updatechucvu_nv">
                   <div class="chucvu_nvluong">
-                     <input type="text " placeholder="Tên chức vụ" name="tenchucvu" value="<?=$hienupdatechucvu[0]['tenchucvu']?>">
-                     <input type="text" id="luongInputt" placeholder="Lương" name="luong" value="<?= number_format($hienupdatechucvu[0]['luong'])?>">
+                     <input type="text " placeholder="Tên chức vụ" name="tenchucvu"
+                        value="<?= $hienupdatechucvu[0]['tenchucvu'] ?>">
+                     <input type="text" id="luongInputt" placeholder="Lương" name="luong"
+                        value="<?= number_format($hienupdatechucvu[0]['luong']) ?>">
                   </div>
 
                   <!-- link lib  -->
@@ -354,6 +356,14 @@ foreach ($showphanquyen as $showphanquyenn) {
    .chucvu_nvluong {
       display: flex;
       width: 100%;
+   }
+
+   .chucvu_nvluong input {
+      margin: 0 10px;
+      padding: 5px 12px;
+      outline: none;
+      border: none;
+      border-bottom: 1px solid black;
    }
 
    .updatesp_price {
@@ -509,9 +519,6 @@ foreach ($showphanquyen as $showphanquyenn) {
       align-items: center;
 
    }
-
-
- 
 </style>
 
 

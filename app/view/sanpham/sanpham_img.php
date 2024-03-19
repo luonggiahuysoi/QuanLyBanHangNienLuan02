@@ -115,7 +115,7 @@ foreach ($lishanghoa as $listdanhmucc) {
       </div>
 
       <div class="content__bottom-adddm">
-         <input type="button" value="+ Thêm ảnh sản phẩm" class="btn_show_add_danhmuc">
+         <input type="button" value="+ Thêm ảnh sản phẩm" class="btn_show_add_danhmuc hvr-grow-shadow">
          <button id="sortButtontang"><i class="bi bi-graph-up-arrow"></i> Ảnh mới nhất</button>
          <button id="sortButtongiam"><i class="bi bi-graph-down-arrow"></i> Ảnh cũ nhất</button>
       </div>
