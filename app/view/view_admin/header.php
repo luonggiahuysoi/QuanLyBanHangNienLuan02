@@ -29,7 +29,8 @@
             </div>
             <div class="nav_view_center">
                <div class="item_cha">
-                  <a href=""><i class="bi bi-house-fill"></i> Trang chủ</a>
+                  <a class="admin_home" href="index.php"><i class="bi bi-house-fill"></i> Trang
+                     chủ</a>
                </div>
             </div>
 
@@ -37,7 +38,7 @@
 
             <div class="nav_view_center magintop_nav">
                <div class="item_cha" id="item_cha">
-                  <a href=""><i style="margin-right: 5px;" class="bi bi-person-badge-fill"></i> Quản lý nhân viên</a>
+                  <a><i style="margin-right: 5px;" class="bi bi-person-badge-fill"></i> Quản lý nhân viên</a>
                   <p class="plus_r"><i class="bi bi-chevron-down"></i></p>
                </div>
                <div class="item-con" id="item-con">
@@ -59,13 +60,11 @@
 
                </div>
             </div>
-
-
             <!--=========================== NOTE: Người dùng ===================== -->
 
             <div class="nav_view_center magintop_nav">
                <div class="item_cha" id="item_cha1">
-                  <a href=""><i style="margin-right: 5px;" class="bi bi-people-fill "></i>Quản lý người dùng</a>
+                  <a><i style="margin-right: 5px;" class="bi bi-people-fill "></i>Quản lý người dùng</a>
                   <p class="plus_r"><i class="bi bi-chevron-down"></i></p>
                </div>
                <div class="item-con" id="item-con1">
@@ -75,11 +74,11 @@
                   <div class="item-con_list">
                      <a href=""><i class="bi bi-dot"></i>Lương nhân viên</a>
                   </div>
-                  <div class="item-con_list">
+                  <!-- <div class="item-con_list">
                      <a href=""><i class="bi bi-dot"></i>Lịch làm</a>
-                  </div>
+                  </div> -->
                   <div class="item-con_list item-con_listout" id="close_nav1">
-                     <a href="index.html"><i class="bi bi-box-arrow-in-left"></i>Trở về</a>
+                     <a href=""><i class="bi bi-box-arrow-in-left"></i>Trở về</a>
                   </div>
                </div>
             </div>
@@ -89,7 +88,7 @@
 
             <div class="nav_view_center magintop_nav">
                <div class="item_cha" id="item_cha2">
-                  <a href=""><i style="margin-right: 5px;" class="bi bi-cart-plus"></i> Quản lý hàng hóa</a>
+                  <a><i style="margin-right: 5px;" class="bi bi-cart-plus"></i> Quản lý hàng hóa</a>
                   <p class="plus_r"><i class="bi bi-chevron-down"></i></p>
                </div>
                <div class="item-con" id="item-con2">
@@ -106,7 +105,7 @@
                      <a href=""><i class="bi bi-dot"></i>Quản lý kho</a>
                   </div>
                   <div class="item-con_list item-con_listout" id="close_nav2">
-                     <a href="index.html"><i class="bi bi-box-arrow-in-left"></i>Trở về</a>
+                     <a href=""><i class="bi bi-box-arrow-in-left"></i>Trở về</a>
                   </div>
                </div>
             </div>
@@ -117,7 +116,7 @@
 
             <div class="nav_view_center magintop_nav">
                <div class="item_cha" id="item_cha3">
-                  <a href=""><i style="margin-right: 5px;" class="bi bi-bag-plus"></i>Quản lý đơn hàng</a>
+                  <a><i style="margin-right: 5px;" class="bi bi-bag-plus"></i>Quản lý đơn hàng</a>
                   <p class="plus_r"><i class="bi bi-chevron-down"></i></p>
                </div>
                <div class="item-con" id="item-con3">
@@ -131,7 +130,7 @@
                      <a href=""><i class="bi bi-dot"></i>Lịch làm</a>
                   </div>
                   <div class="item-con_list item-con_listout" id="close_nav3">
-                     <a href="index.html"><i class="bi bi-box-arrow-in-left"></i>Trở về</a>
+                     <a href=""><i class="bi bi-box-arrow-in-left"></i>Trở về</a>
                   </div>
                </div>
             </div>
@@ -141,7 +140,7 @@
             <!--=========================== NOTE: Bình luận ===================== -->
             <div class="nav_view_center magintop_nav">
                <div class="item_cha" id="item_cha4">
-                  <a href=""><i style="margin-right: 10px;" class="bi bi-chat-square-dots"></i>Bình luân</a>
+                  <a><i style="margin-right: 10px;" class="bi bi-chat-square-dots"></i>Bình luân</a>
                   <p class="plus_r"><i class="bi bi-chevron-down"></i></p>
                </div>
                <div class="item-con" id="item-con4">
@@ -155,7 +154,7 @@
                      <a href=""><i class="bi bi-dot"></i>Lịch làm</a>
                   </div>
                   <div class="item-con_list item-con_listout" id="close_nav4">
-                     <a href="index.html"><i class="bi bi-box-arrow-in-left"></i>Trở về</a>
+                     <a href=""><i class="bi bi-box-arrow-in-left"></i>Trở về</a>
                   </div>
                </div>
             </div>
@@ -165,7 +164,7 @@
 
             <div class="nav_view_center magintop_nav">
                <div class="item_cha" id="item_cha5">
-                  <a href=""><i style="margin-right: 5px;" class="bi bi-file-ruled"></i> Thống kê</a>
+                  <a><i style="margin-right: 5px;" class="bi bi-file-ruled"></i> Thống kê</a>
                   <p class="plus_r"><i class="bi bi-chevron-down"></i></p>
                </div>
                <div class="item-con" id="item-con5">
@@ -179,9 +178,24 @@
                      <a href=""><i class="bi bi-dot"></i>Thống kê đơn hàng</a>
                   </div>
                   <div class="item-con_list item-con_listout" id="close_nav5">
-                     <a href="index.html"><i class="bi bi-box-arrow-in-left"></i>Trở về</a>
+                     <a href=""><i class="bi bi-box-arrow-in-left"></i>Trở về</a>
                   </div>
                </div>
             </div>
          </div>
       </div>
+
+      <style>
+         .item_cha a {
+            margin-left: 30px;
+            text-decoration: none;
+            color: black;
+         }
+
+
+         .item_cha:hover a {
+            cursor: pointer;
+            background-color: var(--color-black);
+            color: white;
+         }
+      </style>

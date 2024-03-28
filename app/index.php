@@ -751,10 +751,6 @@ if (isset($_GET['act'])) {
             }
             break;
 
-
-
-
-
         case 'AddGioLam':
             if (isset($_POST['btnaddlichlam']) && $_POST['btnaddlichlam']) {
                 $giolam = $_POST['giolam'];
@@ -895,7 +891,6 @@ if (isset($_GET['act'])) {
                 }
 
                 // =========== tính tổng giờ làm =============
-
                 foreach ($shownhanvien as $shownhanvienn) {
                     $tonggiolamcanhan = 0;
                     foreach ($showgiolam as $showgiolamm) {

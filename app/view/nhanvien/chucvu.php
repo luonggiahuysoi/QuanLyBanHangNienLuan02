@@ -114,7 +114,7 @@ foreach ($showphanquyen as $showphanquyenn) {
       </div>
 
       <div class="content__bottom-adddm">
-         <input type="button" value="+ Thêm chức vụ" class="btn_show_add_danhmuc">
+         <input type="button" value="+ Thêm chức vụ" class="btn_show_add_danhmuc hvr-grow-shadow">
          <a class="hover_all" href="index.php?act=chucvu">Chức vụ</a>
       </div>
 
@@ -286,13 +286,15 @@ foreach ($showphanquyen as $showphanquyenn) {
       </div>
       <!-- ====================== tự tạo dấu chấm sau mỗi 3 ký tự số ====================== -->
       <form action="index.php?act=updatephanquyenchucvuu" method="post" enctype="multipart/form-data">
-         <input type="hidden" name="idchucvu" value="<?=$hienupdatechucvu[0]['id_phanquyen']?>">
+         <input type="hidden" name="idchucvu" value="<?= $hienupdatechucvu[0]['id_phanquyen'] ?>">
          <div class="updatdm_content">
             <div class="updatesp_price">
                <div class="updatechucvu_nv">
                   <div class="chucvu_nvluong">
-                     <input type="text " placeholder="Tên chức vụ" name="tenchucvu" value="<?=$hienupdatechucvu[0]['tenchucvu']?>">
-                     <input type="text" id="luongInputt" placeholder="Lương" name="luong" value="<?= number_format($hienupdatechucvu[0]['luong'])?>">
+                     <input type="text " placeholder="Tên chức vụ" name="tenchucvu"
+                        value="<?= $hienupdatechucvu[0]['tenchucvu'] ?>">
+                     <input type="text" id="luongInputt" placeholder="Lương" name="luong"
+                        value="<?= number_format($hienupdatechucvu[0]['luong']) ?>">
                   </div>
 
                   <!-- link lib  -->
@@ -354,6 +356,14 @@ foreach ($showphanquyen as $showphanquyenn) {
    .chucvu_nvluong {
       display: flex;
       width: 100%;
+   }
+
+   .chucvu_nvluong input {
+      margin: 0 10px;
+      padding: 5px 12px;
+      outline: none;
+      border: none;
+      border-bottom: 1px solid black;
    }
 
    .updatesp_price {
@@ -509,113 +519,6 @@ foreach ($showphanquyen as $showphanquyenn) {
       align-items: center;
 
    }
-
-   /* --------------------//ten sp ---------------- */
-
-
-
-   .updatesp_tensp {
-      margin-bottom: 5%;
-   }
-
-   .updatesp_tensp input:nth-child(1) {
-      width: 250px;
-      height: 33px;
-      margin-right: 4%;
-      padding: 5px 12px;
-      border: none;
-      border-bottom: 2px solid black;
-
-   }
-
-   .updatesp_tensp input:nth-child(2) {
-      width: 150px;
-      height: 33px;
-      padding: 5px 12px;
-      border: none;
-      border-bottom: 2px solid black;
-
-
-   }
-
-   .updatesp_price {
-      display: flex;
-
-   }
-
-   .updatesp_price input:nth-child(1) {
-      width: 250px;
-      height: 33px;
-      margin-right: 4%;
-      padding: 5px 12px;
-      border: none;
-      border-bottom: 2px solid black;
-
-
-   }
-
-   .updatesp_price input:nth-child(2) {
-      width: 160px;
-      height: 33px;
-      margin-right: 4%;
-      padding: 5px 12px;
-      border: none;
-      border-bottom: 2px solid black;
-
-   }
-
-
-
-   .update_mota textarea {
-      width: 400px;
-      height: 100px;
-
-      padding: 8px 12px;
-   }
-
-   /*======================== update- img ===================== */
-   .custum-file-upload {
-      height: 130px;
-      width: 180px;
-      display: flex;
-      flex-direction: column;
-      align-items: space-between;
-      gap: 20px;
-      cursor: pointer;
-      align-items: center;
-      justify-content: center;
-      border: 2px dashed #cacaca;
-      background-color: rgba(255, 255, 255, 1);
-      padding: 1.5rem;
-      border-radius: 10px;
-      box-shadow: 0px 48px 35px -48px rgba(0, 0, 0, 0.1);
-   }
-
-   .custum-file-upload .icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-   }
-
-   .custum-file-upload .icon svg {
-      height: 80px;
-      fill: rgba(75, 85, 99, 1);
-   }
-
-   .custum-file-upload .text {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-   }
-
-   .custum-file-upload .text span {
-      font-weight: 400;
-      color: rgba(75, 85, 99, 1);
-   }
-
-   .custum-file-upload input {
-      display: none;
-   }
 </style>
 
 
@@ -639,166 +542,6 @@ foreach ($showphanquyen as $showphanquyenn) {
                $(this).hide();
             }
          });
-      });
-   });
-</script>
-
-
-<!-- ======== jquery tăng giảm ========== -->
-<!-- Import jQuery -->
-
-
-<!-- Đảm bảo đặt mã JavaScript trong thẻ script -->
-<script>
-   $(document).ready(function () {
-      $(".table_setting").on("click", ".table_show_setting", function () {
-         // Xử lý sự kiện khi nhấn vào biểu tượng bánh răng
-         console.log("Đã click vào biểu tượng bánh răng");
-      });
-
-      $("#sortButtontang").on("click", function () {
-         // Lấy danh sách sản phẩm và sắp xếp theo giá
-         const $listItems = $(".list-item")
-            .detach(); // Sử dụng detach để giữ sự kiện và dữ liệu đính kèm
-
-         $listItems.sort(function (a, b) {
-            const priceA = parseFloat($(a).data("price"));
-            const priceB = parseFloat($(b).data("price"));
-            return priceA - priceB;
-         });
-
-         // Xóa sản phẩm cũ và hiển thị sản phẩm mới
-         $(".producttt").remove(); // Xóa tất cả các phần tử con
-         $(".content_bottom_table").append($listItems); // Thêm danh sách đã sắp xếp
-      });
-   });
-</script>
-
-
-
-<!-- Import jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
-<!-- Đảm bảo đặt mã JavaScript trong thẻ script -->
-<script>
-   $(document).ready(function () {
-      $(".table_setting").on("click", ".table_show_setting", function () {
-         // Xử lý sự kiện khi nhấn vào biểu tượng bánh răng
-         console.log("Đã click vào biểu tượng bánh răng");
-      });
-
-      $("#sortButtongiam").on("click", function () {
-         // Lấy danh sách sản phẩm và sắp xếp theo giá
-         const $listItems = $(".list-item")
-            .detach(); // Sử dụng detach để giữ sự kiện và dữ liệu đính kèm
-
-         $listItems.sort(function (a, b) {
-            const priceA = parseFloat($(a).data("price"));
-            const priceB = parseFloat($(b).data("price"));
-            return priceB - priceA;
-         });
-
-         // Xóa sản phẩm cũ và hiển thị sản phẩm mới
-         $(".producttt").remove(); // Xóa tất cả các phần tử con
-         $(".content_bottom_table").append($listItems); // Thêm danh sách đã sắp xếp
-      });
-   });
-</script>
-
-
-
-<!-- ================jsquery hiện ảnh ============ -->
-
-<script>
-   $(document).ready(function () {
-      $("#imageInput").change(function () {
-         var input = this;
-
-         if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-               $("#previewImage").attr("src", e.target.result);
-               $("#previewImage").css("display", "flex");
-            };
-
-            reader.readAsDataURL(input.files[0]);
-         }
-      });
-   });
-</script>
-
-<script>
-   $(document).ready(function () {
-      $("#imageInput1").change(function () {
-         var input = this;
-
-         if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-               $("#previewImage1").attr("src", e.target.result);
-               $("#previewImage1").css("display", "flex");
-            };
-
-            reader.readAsDataURL(input.files[0]);
-         }
-      });
-   });
-</script>
-
-<script>
-   $(document).ready(function () {
-      $("#imageInput2").change(function () {
-         var input = this;
-
-         if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-               $("#previewImage2").attr("src", e.target.result);
-               $("#previewImage2").css("display", "flex");
-            };
-
-            reader.readAsDataURL(input.files[0]);
-         }
-      });
-   });
-</script>
-
-<script>
-   $(document).ready(function () {
-      $("#imageInput3").change(function () {
-         var input = this;
-
-         if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-               $("#previewImage3").attr("src", e.target.result);
-               $("#previewImage3").css("display", "flex");
-            };
-
-            reader.readAsDataURL(input.files[0]);
-         }
-      });
-   });
-</script>
-<script>
-   $(document).ready(function () {
-      $("#imageInput4").change(function () {
-         var input = this;
-
-         if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-               $("#previewImage4").attr("src", e.target.result);
-               $("#previewImage4").css("display", "flex");
-            };
-
-            reader.readAsDataURL(input.files[0]);
-         }
       });
    });
 </script>

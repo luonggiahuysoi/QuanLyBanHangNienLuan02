@@ -85,32 +85,17 @@ foreach ($shownhanvien as $shownhanvienn) {
 <!-- <======================= Hiện số lượng ========================> -->
 
 <?php
-// $soluong = '';
-// $i = 0;
-// foreach ($HienNhanVien as $HienNhanViensl) {
-//    extract($HienNhanViensl);
-//    $i++;
-// }
+$soluong = '';
+$i = 0;
+foreach ($shownhanvien as $shownhanvienn) {
+   extract($shownhanvienn);
+   $i++;
+}
 
 ?>
 
-<!-- =========== DANH MUC LIST============= -->
 
-<?php
-// $listchucvushow = '';
-// foreach ($listchucvu as $listchucvuu) {
-//    extract($listchucvuu);
-//    $listchucvushow .= '
-//       <option value="' . $id_phanquyen . '">' . $tenchucvu . '</option>
-//    ';
-// }
-?>
-
-
-
-
-
-<!-- center -->
+<!--=============================================== center ===========================================-->
 <div class="content">
 
    <div class="content_top">
@@ -148,7 +133,7 @@ foreach ($shownhanvien as $shownhanvienn) {
    </div>
 
 
-   <!-- bottom -->
+   <!--=============================================== bottom ============================================-->
 
    <div class="content_bottom">
       <div class="hiden_content_bottom"></div>
@@ -179,7 +164,7 @@ foreach ($shownhanvien as $shownhanvienn) {
                <div style="display: flex;  align-items: center;">
                   <p style="color: #555;">Tổng số nhân viên:</p>
                   <p style="margin-left: 1%; color: black;">x
-                     <!-- <?= $i ?> -->
+                     <?= $i ?>
                   </p>
                </div>
             </div>
@@ -243,232 +228,6 @@ foreach ($shownhanvien as $shownhanvienn) {
 
 
 
-<!--================================  Nhân Viên update ========================== -->
-
-
-<div class="updatedanhmuc updatedanhmucjs">
-   <div class="updatedm_view">
-      <div class="updatedm_h3">
-         <p>Thêm nhân viên</p>
-      </div>
-      <form action="index.php?act=updatenhanvien" method="post" enctype="multipart/form-data">
-         <input type="hidden" name="idnhanvien" value="<?= $howNhanVienGetById[0]['id_nhanvien'] ?>">
-
-         <div class="updatdm_content">
-            <div class="updatesp_tensp">
-               <input type="text" name="tennhanvien" id="" placeholder="Tên nhân viên"
-                  value="<?= $howNhanVienGetById[0]['tennhanvien'] ?>">
-               <div>
-                  <input type="date" name="ngaysinh" id="" value="<?= $howNhanVienGetById[0]['ngaysinh'] ?>">
-               </div>
-            </div>
-
-            <div class="updatesp_price">
-               <input type="number" name="sodienthoai" id="" placeholder="Số điện thoại"
-                  value="<?= $howNhanVienGetById[0]['sodienthoai'] ?>">
-               <input type="email" name="email" id="" placeholder="Địa chỉ email"
-                  value="<?= $howNhanVienGetById[0]['email'] ?>">
-            </div>
-
-            <div class="update_mota">
-               <textarea name="diachi" id=""
-                  placeholder="Nhập địa chỉ"><?= $howNhanVienGetById[0]['diachi'] ?></textarea>
-            </div>
-
-            <div class="updatesp_price">
-               <input type="text" name="tentaikhoan" id="" placeholder="Tên tài khoản"
-                  value="<?= $howNhanVienGetById[0]['taikhoan'] ?>">
-               <input type="text" name="matkhau" id="" placeholder="Mật khẩu"
-                  value="<?= $howNhanVienGetById[0]['matkhau'] ?>">
-               <div>
-                  <?php
-                  $listchucvushowup = '';
-                  $defaultSelectedId = $howNhanVienGetById[0]['id_phanquyen']; // ID của option mà bạn muốn chọn mặc định
-                  
-                  foreach ($listchucvu as $listchucvuu) {
-                     extract($listchucvuu);
-
-                     // Kiểm tra nếu $id_phanquyen bằng với ID mặc định, thêm thuộc tính selected
-                     $selected = ($id_phanquyen == $defaultSelectedId) ? 'selected' : '';
-
-                     $listchucvushowup .= '<option value="' . $id_phanquyen . '" ' . $selected . '>' . $tenchucvu . '</option>';
-                  }
-                  ?>
-
-                  <select name="chucvu" id="dropdownn">
-                     <?= $listchucvushowup ?>
-                  </select>
-
-                  <script>
-                     $(document).ready(function () {
-                        // Sử dụng Select2 cho dropdown
-                        $('#dropdownn').select2();
-                     });
-                  </script>
-
-               </div>
-            </div>
-
-            <div class="updatedm_img">
-               <label class="custum-file-upload" for="imaAddnputAdd">
-                  <div class="icon">
-                     <img id="previewImageAdd" src="data:image/png;base64, <?= $howNhanVienGetById[0]['hinhanh'] ?>"
-                        fill="" viewBox="0 0 24 24" width="160px" height="115px" id="previewImage"
-                        style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
-
-                     </img>
-                  </div>
-                  <input type="file" id="imaAddnputAdd" name="fileimage">
-               </label>
-
-            </div>
-            <script>
-               $(document).ready(function () {
-                  $("#imaAddnputAdd").change(function () {
-                     var input = this;
-
-                     if (input.files && input.files[0]) {
-                        var reader = new FileReader();
-
-                        reader.onload = function (e) {
-                           $("#previewImageAdd").attr("src", e.target.result);
-                           $("#previewImageAdd").css("display", "flex");
-                        };
-
-                        reader.readAsDataURL(input.files[0]);
-                     }
-                  });
-               });
-            </script>
-
-
-            <div class="updatesp_btn">
-               <input class="btnsp_them" type="submit" value="Thêm mới nhân viên" name="add_nhanvien">
-               <input class="btnsp_huy" type="reset" value="Hủy">
-            </div>
-            <input class="btnsp_close danhmnuc_close_add" type="button" value="Đóng" id="closeButtonUpdate">
-         </div>
-         <script>
-            document.addEventListener("DOMContentLoaded", function () {
-               document.querySelector("#closeButton").addEventListener("click", function () {
-                  // Lấy phần tử cha và ẩn nó đi
-                  document.querySelector(".AddDanhMuc").style.display = "none";
-               });
-            });
-         </script>
-
-      </form>
-   </div>
-</div>
-<!-- xóa dấu tăng giảm  -->
-<style>
-   input[type="number"]::-webkit-outer-spin-button,
-   input[type="number"]::-webkit-inner-spin-button,
-   input[type="number"]::-webkit-clear-button {
-      -webkit-appearance: none;
-      margin: 0;
-   }
-
-   /* Hiển thị dấu mũi tên tăng giảm khi hover */
-   input[type="number"]:hover::-webkit-outer-spin-button,
-   input[type="number"]:hover::-webkit-inner-spin-button,
-   input[type="number"]:hover::-webkit-clear-button {
-      display: none;
-   }
-</style>
-<!--================================ Thêm Nhân Viên Mới ========================== -->
-
-<div class="updatedanhmuc AddDanhMuc">
-   <div class="updatedm_view">
-      <div class="updatedm_h3">
-         <p>Thêm nhân viên</p>
-      </div>
-      <form action="index.php?act=AddNhanVien" method="post" enctype="multipart/form-data">
-         <div class="updatdm_content">
-            <div class="updatesp_tensp">
-               <input type="text" name="tennhanvien" id="" placeholder="Tên nhân viên">
-               <div>
-                  <input type="date" name="ngaysinh" id="">
-               </div>
-            </div>
-
-            <div class="updatesp_price">
-               <input type="number" name="sodienthoai" id="" placeholder="Số điện thoại">
-               <input type="email" name="email" id="" placeholder="Địa chỉ email">
-            </div>
-
-            <div class="update_mota">
-               <textarea name="diachi" id="" placeholder="Nhập địa chỉ"></textarea>
-            </div>
-
-            <div class="updatesp_price">
-               <input type="text" name="tentaikhoan" id="" placeholder="Tên tài khoản">
-               <input type="text" name="matkhau" id="" placeholder="Mật khẩu">
-               <div>
-                  <select name="chucvu" id="dropdownnvn">
-                     <?= $listchucvushow ?>
-                  </select>
-                  <script>
-                     $(document).ready(function () {
-                        // Sử dụng Select2 cho dropdown
-                        $('#dropdownnvn').select2();
-                     });
-                  </script>
-               </div>
-            </div>
-
-            <div class="updatedm_img">
-               <label class="custum-file-upload" for="imaAddnputAddd">
-                  <div class="icon">
-                     <img id="previewImageAddd" src="../public/img/folder.png" fill="" viewBox="0 0 24 24" width="160px"
-                        height="115px" id="previewImage"
-                        style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
-
-                     </img>
-                  </div>
-                  <input type="file" id="imaAddnputAddd" name="fileimage">
-               </label>
-
-            </div>
-            <script>
-               $(document).ready(function () {
-                  $("#imaAddnputAddd").change(function () {
-                     var input = this;
-
-                     if (input.files && input.files[0]) {
-                        var reader = new FileReader();
-
-                        reader.onload = function (e) {
-                           $("#previewImageAddd").attr("src", e.target.result);
-                           $("#previewImageAddd").css("display", "flex");
-                        };
-
-                        reader.readAsDataURL(input.files[0]);
-                     }
-                  });
-               });
-            </script>
-
-
-            <div class="updatesp_btn">
-               <input class="btnsp_them" type="submit" value="Thêm mới nhân viên" name="add_nhanvien">
-               <input class="btnsp_huy" type="reset" value="Hủy">
-            </div>
-            <input class="btnsp_close danhmnuc_close_add" type="button" value="Đóng" id="closeButton">
-         </div>
-         <script>
-            document.addEventListener("DOMContentLoaded", function () {
-               document.querySelector("#closeButton").addEventListener("click", function () {
-                  // Lấy phần tử cha và ẩn nó đi
-                  document.querySelector(".AddDanhMuc").style.display = "none";
-               });
-            });
-         </script>
-
-      </form>
-   </div>
-</div>
-
 <style>
    .updatedanhmuc {
       position: absolute;
@@ -526,29 +285,11 @@ foreach ($shownhanvien as $shownhanvienn) {
 
 
 
-   /* add img  */
-   .hidden-input {
-      font-size: 0;
-      color: transparent;
-   }
 
 
    /* add dm  */
    .content__bottom-adddm {
       margin: 1% 0 0 10%;
-   }
-
-   .content__bottom-adddm>input {
-      font-size: 0.9rem;
-      font-weight: 550;
-      padding: 5px 10px;
-      cursor: pointer;
-   }
-
-   .content__bottom-adddm>input:hover {
-      background-color: black;
-      color: white;
-      font-weight: 600;
    }
 
    .content__bottom-adddm>button {
@@ -580,254 +321,8 @@ foreach ($shownhanvien as $shownhanvienn) {
       align-items: center;
       margin-top: -10%;
    }
-
-   .updatesp_btn input:nth-child(1),
-   .updatesp_btn input:nth-child(2) {
-      /* height: 40px; */
-      font-weight: 550;
-      font-size: 0.9rem;
-      padding: 8px 20px;
-      margin-top: 15%;
-      margin-left: 5%;
-   }
-
-   .btnsp_them:hover,
-   .btnsp_huy:hover,
-   .btnsp_close:hover {
-      background-color: black;
-      color: #fff;
-   }
-
-   .btnsp_close {
-      padding: 8px 18px;
-      font-weight: 550;
-      font-size: 0.9rem;
-   }
-
-   .updatesp_tensp {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-   }
-
-   /* --------------------//ten sp ---------------- */
-
-
-
-   .updatesp_tensp {
-      margin-bottom: 5%;
-   }
-
-   .updatesp_tensp input:nth-child(1) {
-      width: 250px;
-      height: 33px;
-      margin-right: 4%;
-      padding: 5px 12px;
-      border: none;
-      border-bottom: 2px solid black;
-
-   }
-
-   .updatesp_tensp input:nth-child(2) {
-      width: 150px;
-      height: 33px;
-      padding: 5px 12px;
-      border: none;
-      border-bottom: 2px solid black;
-
-
-   }
-
-   .updatesp_price {
-      display: flex;
-
-   }
-
-   .updatesp_price input:nth-child(1) {
-      width: 190px;
-      height: 33px;
-      margin-right: 4%;
-      padding: 5px 12px;
-      border: none;
-      border-bottom: 2px solid black;
-
-
-   }
-
-   .updatesp_price input:nth-child(2) {
-      width: 160px;
-      height: 33px;
-      margin-right: 4%;
-      padding: 5px 12px;
-      border: none;
-      border-bottom: 2px solid black;
-
-   }
-
-
-
-   .update_mota textarea {
-      width: 400px;
-      height: 100px;
-
-      padding: 8px 12px;
-   }
-
-   /*======================== update- img ===================== */
-   .custum-file-upload {
-      height: 130px;
-      width: 180px;
-      display: flex;
-      flex-direction: column;
-      align-items: space-between;
-      gap: 20px;
-      cursor: pointer;
-      align-items: center;
-      justify-content: center;
-      border: 2px dashed #cacaca;
-      background-color: rgba(255, 255, 255, 1);
-      padding: 1.5rem;
-      border-radius: 10px;
-      box-shadow: 0px 48px 35px -48px rgba(0, 0, 0, 0.1);
-   }
-
-   .custum-file-upload .icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-   }
-
-   .custum-file-upload .icon svg {
-      height: 80px;
-      fill: rgba(75, 85, 99, 1);
-   }
-
-   .custum-file-upload .text {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-   }
-
-   .custum-file-upload .text span {
-      font-weight: 400;
-      color: rgba(75, 85, 99, 1);
-   }
-
-   .custum-file-upload input {
-      display: none;
-   }
 </style>
 
-
-<!--==================================== Them anh ============================== -->
-
-
-
-<div class="updatedanhmuc updatesanphamimg">
-   <div class="updatedm_view">
-      <div class="updatedm_h3">
-         <p>Thêm Ảnh Sản Phẩm</p>
-      </div>
-      <form action="index.php?act=updatehanghoaimg" method="post" enctype="multipart/form-data">
-         <div class="updatdm_content">
-            <div class="updatesp_tensp updatesp_main-img">
-               <input type="text" name="tenhanghoa" id="" placeholder="Tên sản phẩm"
-                  value="<?= $HienMaHangHoa[0]['tenhanghoa'] ?>">
-               <input type="text" name="mahanghoa" id="" placeholder="Mã sản phẩm"
-                  value="<?= $HienMaHangHoa[0]['id_mahanghoa'] ?>">
-            </div>
-            <div class="updatesp_image-list">
-               <div class="updatesp-img">
-                  <label class="custum-file-upload" for="imageInput1">
-                     <div class="icon">
-                        <img src="../public/img/folder.png" fill="" viewBox="0 0 24 24" width="160px" height="195px"
-                           id="previewImage1" style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
-
-                        </img>
-                     </div>
-                     <input type="file" id="imageInput1" name="fileimage1">
-                  </label>
-
-               </div>
-
-               <div class="updatesp-img">
-                  <label class="custum-file-upload" for="imageInput2">
-                     <div class="icon">
-                        <img src="../public/img/folder.png" fill="" viewBox="0 0 24 24" width="160px" height="195px"
-                           id="previewImage2" style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
-
-                        </img>
-                     </div>
-                     <input type="file" id="imageInput2" name="fileimage2">
-                  </label>
-
-               </div>
-
-               <div class="updatesp-img">
-                  <label class="custum-file-upload" for="imageInput3">
-                     <div class="icon">
-                        <img src="../public/img/folder.png" fill="" viewBox="0 0 24 24" width="160px" height="195px"
-                           id="previewImage3" style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
-
-                        </img>
-                     </div>
-                     <input type="file" id="imageInput3" name="fileimage3">
-                  </label>
-
-               </div>
-
-               <div class="updatesp-img">
-                  <label class="custum-file-upload" for="imageInput4">
-                     <div class="icon">
-                        <img src="../public/img/folder.png" fill="" viewBox="0 0 24 24" width="160px" height="195px"
-                           id="previewImage4" style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
-
-                        </img>
-                     </div>
-                     <input type="file" id="imageInput4" name="fileimage4">
-                  </label>
-
-               </div>
-            </div>
-            <div class="updatesp_btn">
-               <input class="btnsp_them" type="submit" value="Update ảnh " name="updateImg">
-               <input class="btnsp_huy" type="reset" value="Hủy">
-            </div>
-            <input class="btnsp_close sanphamimg" type="button" value="Quay lại" id="closeButton">
-         </div>
-
-      </form>
-   </div>
-</div>
-
-
-
-<style>
-   .updatesp_main-img {
-      margin-top: -17%;
-   }
-
-   .updatesp_image-list {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 12%;
-   }
-
-   .updatesp-img {
-      width: 200px;
-      height: 200px;
-      border: 1px solid #222;
-   }
-
-   .updatesp-img label {
-      width: 100%;
-      height: 110%;
-   }
-</style>
-===
 
 
 <!--===================== Chi tiết lương thưởng ============== -->
@@ -850,7 +345,7 @@ foreach ($shownhanvien as $shownhanvienn) {
          <div class="icon_show_lichlam">
 
             <div>
-            <select name="nhanvien" id="dropdownnluongphat">
+               <select name="nhanvien" id="dropdownnluongphat">
                   <?= $listnhanvienshoww ?>
                </select>
 
@@ -860,7 +355,7 @@ foreach ($shownhanvien as $shownhanvienn) {
                      $('#dropdownnluongphat').select2();
                   });
                </script>
-               <input type="text" placeholder="Số tiền phạt" name = "sotienphat">
+               <input type="text" placeholder="Số tiền phạt" name="sotienphat">
                <input type="text" placeholder="Nội dung phạt" name="noidungphat">
                <input type="submit" value="Thêm" class="add_luongg" name="themtienphatt">
             </div>
@@ -1213,8 +708,6 @@ foreach ($shownhanvien as $shownhanvienn) {
 </div>
 
 <script>
-
-
    $(document).ready(function () {
       $(".icon_show_lichlamm").click(function (e) {
          $(".Them_Lich_Lammm").hide();
@@ -1227,25 +720,7 @@ foreach ($shownhanvien as $shownhanvienn) {
 
       });
    });
-
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1275,76 +750,6 @@ foreach ($shownhanvien as $shownhanvienn) {
       });
    });
 </script>
-
-
-<!-- ======== jquery tăng giảm ========== -->
-<!-- Import jQuery -->
-
-
-<!-- Đảm bảo đặt mã JavaScript trong thẻ script -->
-<script>
-   $(document).ready(function () {
-      $(".table_setting").on("click", ".table_show_setting", function () {
-         // Xử lý sự kiện khi nhấn vào biểu tượng bánh răng
-         console.log("Đã click vào biểu tượng bánh răng");
-      });
-
-      $("#sortButtontang").on("click", function () {
-         // Lấy danh sách sản phẩm và sắp xếp theo giá
-         const $listItems = $(".list-item")
-            .detach(); // Sử dụng detach để giữ sự kiện và dữ liệu đính kèm
-
-         $listItems.sort(function (a, b) {
-            const priceA = parseFloat($(a).data("price"));
-            const priceB = parseFloat($(b).data("price"));
-            return priceA - priceB;
-         });
-
-         // Xóa sản phẩm cũ và hiển thị sản phẩm mới
-         $(".producttt").remove(); // Xóa tất cả các phần tử con
-         $(".content_bottom_table").append($listItems); // Thêm danh sách đã sắp xếp
-      });
-   });
-</script>
-
-
-
-<!-- Import jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
-<!-- Đảm bảo đặt mã JavaScript trong thẻ script -->
-<script>
-   $(document).ready(function () {
-      $(".table_setting").on("click", ".table_show_setting", function () {
-         // Xử lý sự kiện khi nhấn vào biểu tượng bánh răng
-         console.log("Đã click vào biểu tượng bánh răng");
-      });
-
-      $("#sortButtongiam").on("click", function () {
-         // Lấy danh sách sản phẩm và sắp xếp theo giá
-         const $listItems = $(".list-item")
-            .detach(); // Sử dụng detach để giữ sự kiện và dữ liệu đính kèm
-
-         $listItems.sort(function (a, b) {
-            const priceA = parseFloat($(a).data("price"));
-            const priceB = parseFloat($(b).data("price"));
-            return priceB - priceA;
-         });
-
-         // Xóa sản phẩm cũ và hiển thị sản phẩm mới
-         $(".producttt").remove(); // Xóa tất cả các phần tử con
-         $(".content_bottom_table").append($listItems); // Thêm danh sách đã sắp xếp
-      });
-   });
-</script>
-
-
-
-
-
-
-
-
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
