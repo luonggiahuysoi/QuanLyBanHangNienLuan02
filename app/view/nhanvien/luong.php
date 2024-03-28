@@ -3,6 +3,26 @@ $showluong = '';
 foreach ($shownhanvien as $shownhanvienn) {
    extract($shownhanvienn);
 
+   // tổng lương phạt
+   $tongluongphat = 0;
+   foreach ($showluongphat as $showluongphatt) {
+      if($shownhanvienn['id_nhanvien'] == $showluongphatt['id_nhanvien']) {
+         $tongluongphat = $tongluongphat + $showluongphatt['sotienphat'];
+      }
+   }
+
+   // tổng tiền thưởng
+   $tongtienthuong = 0;
+   foreach($showluongthuong as $showluongthuongg) {
+      if($shownhanvienn['id_nhanvien'] == $showluongthuongg['id_nhanvien']) {
+         $tongtienthuong = $tongtienthuong + $showluongthuongg['sotienthuong'];
+      }
+
+
+   }
+
+
+
 
    // ======= Tính tổng giờ làm ==========
    $tonggiolamcanhan = 0;
@@ -21,6 +41,8 @@ foreach ($shownhanvien as $shownhanvienn) {
       }
    }
 
+   // == show luong == 
+
    $showluong .= '
         <div class="table_th table_tr list-item producttt" data-price="">
                     <div class="table_name_image table__bottom_center table_name_imagee tendanhmuc">
@@ -33,10 +55,10 @@ foreach ($shownhanvien as $shownhanvienn) {
                         <p>' . $tonggiolamcanhan . '</p>
                     </div>
                     <div class="table_view_category table__bottom_center email">
-                        <p>null</p>
+                        <p>'.$tongtienthuong.'</p>
                     </div>
                     <div class="table_view_category table__bottom_center email">
-                        <p>null</p>
+                        <p>'.$tongluongphat.'</p>
                     </div>
                     <div class="table_view_category table__bottom_center email">
                         <p>' . number_format($tongtienluong) . ' vnđ</p>
@@ -46,15 +68,8 @@ foreach ($shownhanvien as $shownhanvienn) {
                             <p><i class="bi bi-gear-fill"></i></p>
                         </div>
                         <div class="table_show_setting_clone">
-
-
                             <p>
-                                <a href="index.php?act=updatenhanvien&idnhanvien=' . $id_nhanvien . '">
-                                    <i class="bi bi-arrow-counterclockwise"></i>
-                                </a>
-                            </p>
-                            <p>
-                                <a  style="color:red"  href="index.php?act=deletenhanvien&idnhanvien=' . $id_nhanvien . '">
+                                <a  style="color:red"  href="index.php?act=deletenhanvienluongnhanvien&idnhanvien=' . $id_nhanvien . '">
                                     <i class="bi bi-trash-fill"></i>
                                 </a>
                             </p>

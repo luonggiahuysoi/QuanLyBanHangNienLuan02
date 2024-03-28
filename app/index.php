@@ -848,7 +848,6 @@ if (isset($_GET['act'])) {
                         $tonggiolamcanhan += $showgiolamm['giolam'];
                     }
                 }
-                // echo "Tổng số giờ làm của nhân viên " . $shownhanvienn['tennhanvien'] . ": " . $tonggiolamcanhan . "<br>";
             }
 
 
@@ -1050,35 +1049,43 @@ if (isset($_GET['act'])) {
                 $showluongphat = $luongphat->getByIdPhat();
 
 
-                //============= Phép tính xử lý =================
-
-                foreach ($shownhanvien as $shownhanvienn) {
-                    foreach ($showphanquyen as $showphanquyenn) {
-
-                        if ($shownhanvienn['id_phanquyen'] == $showphanquyenn['id_phanquyen']) {
-                            // echo $showphanquyenn['luong'];
-
-                        }
-                    }
-                }
-
-                // =========== tính tổng giờ làm =============
-
-                foreach ($shownhanvien as $shownhanvienn) {
-                    $tonggiolamcanhan = 0;
-                    foreach ($showgiolam as $showgiolamm) {
-                        if ($shownhanvienn['id_nhanvien'] == $showgiolamm['id_nhanvien']) {
-                            $tonggiolamcanhan += $showgiolamm['giolam'];
-                        }
-                    }
-                    // echo "Tổng số giờ làm của nhân viên " . $shownhanvienn['tennhanvien'] . ": " . $tonggiolamcanhan . "<br>";
-                }
 
 
 
                 require_once "./view/nhanvien/luong.php";
             }
             break;
+
+        case 'deletenhanvienluongnhanvien':
+            if(isset($_GET['idnhanvien']) && $_GET['idnhanvien']) {
+                $getId = $_GET['idnhanvien'];
+                $delete = new DungChung;
+                $delete->DeleteAll('nhanvien', 'id_nhanvien', $getId);
+
+                $startOfMonth = date("Y-m-01");
+                $endOfMonth = date("Y-m-t");
+                $giolam = new NhanVien;
+                $showgiolam = $giolam->CaLamTheoThang($startOfMonth, $endOfMonth);
+
+                $phanquyen = new DungChung;
+                $showphanquyen = $phanquyen->ShowDungChung('phanquyennhanvien');
+                $nhanvien = new DungChung;
+                $shownhanvien = $nhanvien->ShowDungChung('nhanvien');
+
+                $luongthuong = new NhanVien;
+                $showluongthuong = $luongthuong->getByIdThuong();
+
+                $luongphat = new NhanVien;
+                $showluongphat = $luongphat->getByIdPhat();
+
+
+
+
+
+                require_once "./view/nhanvien/luong.php";
+            }
+            break;
+        
     }
 } else {
 
