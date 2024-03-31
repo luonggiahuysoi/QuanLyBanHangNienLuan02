@@ -6,15 +6,15 @@ foreach ($shownhanvien as $shownhanvienn) {
    // tổng lương phạt
    $tongluongphat = 0;
    foreach ($showluongphat as $showluongphatt) {
-      if($shownhanvienn['id_nhanvien'] == $showluongphatt['id_nhanvien']) {
+      if ($shownhanvienn['id_nhanvien'] == $showluongphatt['id_nhanvien']) {
          $tongluongphat = $tongluongphat + $showluongphatt['sotienphat'];
       }
    }
 
    // tổng tiền thưởng
    $tongtienthuong = 0;
-   foreach($showluongthuong as $showluongthuongg) {
-      if($shownhanvienn['id_nhanvien'] == $showluongthuongg['id_nhanvien']) {
+   foreach ($showluongthuong as $showluongthuongg) {
+      if ($shownhanvienn['id_nhanvien'] == $showluongthuongg['id_nhanvien']) {
          $tongtienthuong = $tongtienthuong + $showluongthuongg['sotienthuong'];
       }
 
@@ -55,10 +55,10 @@ foreach ($shownhanvien as $shownhanvienn) {
                         <p>' . $tonggiolamcanhan . '</p>
                     </div>
                     <div class="table_view_category table__bottom_center email">
-                        <p>'.$tongtienthuong.'</p>
+                        <p>' . $tongtienthuong . '</p>
                     </div>
                     <div class="table_view_category table__bottom_center email">
-                        <p>'.$tongluongphat.'</p>
+                        <p>' . $tongluongphat . '</p>
                     </div>
                     <div class="table_view_category table__bottom_center email">
                         <p>' . number_format($tongtienluong) . ' vnđ</p>
@@ -146,7 +146,7 @@ foreach ($shownhanvien as $shownhanvienn) {
       <div class="content__bottom-adddm">
          <!-- <input type="button" value="+ Thêm nhân viên" class="btn_show_add_danhmuc"> -->
          <button class="btn_show_giolamm hvr-grow-shadow">Chi tiết lương thưởng</button>
-         <button class="btn_show_giolammm">Chi tiết lương phạt</button>
+         <button class="btn_show_giolammm hvr-grow-shadow">Chi tiết lương phạt</button>
       </div>
 
       <!-- view danh muc -->

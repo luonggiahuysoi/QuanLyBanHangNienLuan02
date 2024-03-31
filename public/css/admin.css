@@ -63,7 +63,7 @@
     justify-content: left;
     justify-content: left;
     align-items: center;
-    background-color: #ca1414;
+    background-color: #d0d0d0;
     border-radius: 5px;
 }
 
@@ -419,7 +419,7 @@
 
 .content_top_right_admin_view_user>img {
     position: relative;
-    width: 19%;
+    width: 16%;
     height: 92%;
     border-radius: 50%;
     border: 1.5px solid rgb(35, 182, 240);

@@ -102,7 +102,7 @@
                      <a href="index.php?act=sanphamimg"><i class="bi bi-dot"></i>Quản lý hình ảnh sản phẩm</a>
                   </div>
                   <div class="item-con_list">
-                     <a href=""><i class="bi bi-dot"></i>Quản lý kho</a>
+                     <a href="index.php?act=kho"><i class="bi bi-dot"></i>Quản lý kho</a>
                   </div>
                   <div class="item-con_list item-con_listout" id="close_nav2">
                      <a href=""><i class="bi bi-box-arrow-in-left"></i>Trở về</a>

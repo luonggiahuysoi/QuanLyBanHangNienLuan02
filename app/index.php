@@ -14,7 +14,7 @@ include "../app/view/view_admin/header.php";
 if (isset($_GET['act'])) {
     switch ($_GET['act']) {
 
-            //danh muc
+        //danh muc
 
         case 'danhmuc':
 
@@ -126,7 +126,7 @@ if (isset($_GET['act'])) {
             }
             break;
 
-            // ============================San pham =============================
+        // ============================San pham =============================
 
         case 'sanpham':
 
@@ -378,7 +378,15 @@ if (isset($_GET['act'])) {
             }
             break;
 
-            // =================== Nhân Viên ================================================
+        // note: Kho hang hoa 
+        case 'kho':
+            $HienHangHoa = new DungChung;
+            $lishanghoa = $HienHangHoa->ShowDungChung('hanghoa');
+            require_once "./view/kho/kho.php";
+            break;
+
+
+        // =================== Nhân Viên ================================================
 
         case 'nhanvien':
             echo '<script src="../public/js/danhmuc/danhmuc_add.js"></script>';
@@ -546,7 +554,7 @@ if (isset($_GET['act'])) {
 
 
 
-            //============ Chức vụ nhân viên ================
+        //============ Chức vụ nhân viên ================
         case 'chucvunhanvien':
             // ==========load lai trang ===========
 
@@ -600,7 +608,7 @@ if (isset($_GET['act'])) {
 
             break;
 
-            // chức vụ nhân viên 
+        // chức vụ nhân viên 
         case 'chucvu':
 
             $phanquyen = new DungChung;
@@ -692,7 +700,7 @@ if (isset($_GET['act'])) {
             }
             break;
 
-            //================ Lich Lam =======================
+        //================ Lich Lam =======================
 
         case 'lichlam':
 
@@ -804,7 +812,7 @@ if (isset($_GET['act'])) {
             break;
 
 
-            //=====Luong nhân viên=================
+        //=====Luong nhân viên=================
         case 'luongnhanvien':
             $startOfMonth = date("Y-m-01");
             $endOfMonth = date("Y-m-t");
@@ -1052,7 +1060,7 @@ if (isset($_GET['act'])) {
             break;
 
         case 'deletenhanvienluongnhanvien':
-            if(isset($_GET['idnhanvien']) && $_GET['idnhanvien']) {
+            if (isset($_GET['idnhanvien']) && $_GET['idnhanvien']) {
                 $getId = $_GET['idnhanvien'];
                 $delete = new DungChung;
                 $delete->DeleteAll('nhanvien', 'id_nhanvien', $getId);
@@ -1080,7 +1088,7 @@ if (isset($_GET['act'])) {
                 require_once "./view/nhanvien/luong.php";
             }
             break;
-        
+
     }
 } else {
 
