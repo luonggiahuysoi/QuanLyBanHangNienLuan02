@@ -154,7 +154,7 @@
 
             <div class="content_bottom_view_header">
                 <div>
-                    <p>Table kho sản phẩm</p>
+                    <p>Table danh sách đơn hàng</p>
                 </div>
                 <br>
                 <div>
@@ -184,7 +184,7 @@
                         <p>Ngày tạo</p>
                     </div>
                     <div class="table_hidden table__bottom_center">
-                        <p>Thành tiền</p>
+                        <p>Tổng tiền</p>
                     </div>
                     <div class="table_hidden table__bottom_center">
                         <p>Xem chi tiết </p>
@@ -211,22 +211,8 @@
                         <p>Chi tiết</p>
                     </div>
                     <div class="table_settin table__bottom_center setting">
-                        <div class="table_show_setting">
-                            <p><i class="bi bi-gear-fill"></i></p>
-                        </div>
-                        <div class="table_show_setting_clone">
-
-                            <p>
-                                <a href="index.php?act=updatehanghoa&idhanghoa=' . $id_hanghoa . '">
-                                    <i class="bi bi-arrow-counterclockwise"></i>
-                                </a>
-                            </p>
-                            <p>
-                                <a style="color:red" href="index.php?act=deletehanghoa&idhanghoa=' . $id_hanghoa . '">
-                                    <i class="bi bi-trash-fill"></i>
-                                </a>
-                            </p>
-
+                        <div class=" ct_donhang">
+                            <p onclick="cancelOrder(this)">Hủy đơn</p>
                         </div>
                     </div>
 
@@ -247,16 +233,71 @@
     }
 
     .ct_donhang:hover p {
-        background-color: #fd5959;
+        background-color: #118a7e;
         color: white;
+    }
+</style>
+
+<!-- Hủy đơn  -->
+<script>
+    function cancelOrder(element) {
+        element.innerText = 'Đã hủy đơn';
+        element.style.backgroundColor = 'red';
+    }
+
+</script>
+
+
+
+<!-- Chi tiết đơn hàng  -->
+
+<div class="ctdonhang">
+    <div class="ctdonhang__title">
+        <p>Xem chi tiết đơn hàng</p>
+    </div>
+    <div class="ctdonhang__main">
+        <div class="ctdonhang__main-item">
+            <p>Tên khách hàng: </p>
+            <input type="text">
+        </div>
+        <div class="ctdonhang__main-item">
+            <p>Số điện thoại: </p>
+            <input type="text">
+        </div>
+    </div>
+</div>
+
+<style>
+    .ctdonhang {
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+        background-color: #3333;
     }
 </style>
 
 
 
 
-<!-- -------------------SEARCH---------------------- -->
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- -------------------SEARCH---------------------- -->
 <script>
     $(document).ready(function () {
         // Xử lý sự kiện khi người dùng nhập vào ô tìm kiếm
@@ -275,12 +316,6 @@
         });
     });
 </script>
-
-
-
-
-
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>

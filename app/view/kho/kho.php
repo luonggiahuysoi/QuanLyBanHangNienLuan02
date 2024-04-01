@@ -5,14 +5,14 @@ foreach ($hienchungtumua as $hienchungtumuaa) {
    $showchungtumua .= '
       <div class="table_th table_tr list-item producttt" data-price="">
       <div class="table_name_image table__bottom_center ">
-         <p>'.$tenchungtu.'</p>
+         <p>' . $tenchungtu . '</p>
       </div>
       <div class="table_view_category table__bottom_center">
-         <p>'.$ngaynhap.'</p>
+         <p>' . $ngaynhap . '</p>
       </div>
       <div class="table_view_category table__bottom_center">
          <p>
-         <a href="index.php?act=xemchitietkho&ngaysearch='.$ngaynhap.'" class="kho__link">Xem chi tiết</a>
+         <a href="index.php?act=xemchitietkho&ngaysearch=' . $ngaynhap . '" class="kho__link">Xem chi tiết</a>
          </p>
       </div>
    </div>
@@ -96,18 +96,6 @@ foreach ($hienchungtumua as $hienchungtumuaa) {
 
       <div class="content__bottom-adddm">
          <input type="button" value="+ Cập nhật kho" class="btn_show_add_danhmuc hvr-grow-shadow">
-         <form action="index.php?act=khodatesearch" method="post">
-            <div class="icon_show_lichlam">
-               <div class="search_day">
-                  <input type="date" name="tungay" id="" class="date"
-                     value="<?php echo $startOfMonth = date("Y-m-01"); ?>">
-                  <input type="date" name="denngay" id="" class="date"
-                     value="<?php echo $endOfMonth = date("Y-m-t"); ?>">
-                  <input type="submit" value="Search" class="timdate" name="timdate">
-
-               </div>
-            </div>
-         </form>
 
       </div>
 
@@ -302,7 +290,6 @@ foreach ($hienchungtumua as $hienchungtumuaa) {
 
 
 <!--======================= chi tiet kho ================= -->
-
 <div class="chitietkho">
    <div class="ctkho__title">
       <p>Table chi tiết kho</p>
@@ -310,14 +297,14 @@ foreach ($hienchungtumua as $hienchungtumuaa) {
    <div class="ctkho__main">
       <div class="ctkho__day">
          <div class="ctkho__day-input">
-            <form action="" method="post">
+            <!-- <form action="" method="post">
                <input type="date" name="tungay" id="" class="date" value="">
                <input type="date" name="denngay" id="" class="date" value="">
                <input type="submit" value="Search" class="timdate" name="timdate">
-            </form>
+            </form> -->
          </div>
          <div class="ctkho__day-search">
-            <input type="search" name="" id="">
+            <!-- <input type="search" name="" id=""> -->
             <p class="icon_show_ctkho"><i class="bi bi-x-circle"></i></p>
          </div>
       </div>
@@ -339,46 +326,41 @@ foreach ($hienchungtumua as $hienchungtumuaa) {
             </div>
          </div>
          <?php
-            $tong=0;
-            $showhanghoatheongay='';
-            foreach($hiensearchkho as $hiensearchkhoo) {
-               extract($hiensearchkhoo);
-               $tong = $soluong * $gia;
-               if($hiensearchkhoo['ngaythem'] == $ngaythemm) {
+         $tong = 0;
+         $showhanghoatheongay = '';
+         foreach ($hiensearchkho as $hiensearchkhoo) {
+            extract($hiensearchkhoo);
+            $tong = $soluong * $gia;
+            if ($hiensearchkhoo['ngaythem'] == $ngaythemm) {
 
-                  $showhanghoatheongay.='
+               $showhanghoatheongay .= '
                   <div class="lichlam_tr">
                   <div class="lichlam_tr__item">
-                     <p>'.$tenhanghoa.'</p>
+                     <p>' . $tenhanghoa . '</p>
                   </div>
                   <div class="lichlam_tr__item">
-                     <p>'.$soluong.'</p>
+                     <p>' . $soluong . '</p>
                   </div>
                   <div class="lichlam_tr__item">
-                     <p>'.number_format($gia).' vnđ</p>
+                     <p>' . number_format($gia) . ' vnđ</p>
                   </div>
                   <div class="lichlam_tr__item">
-                     <p>'.number_format($tong).' vnđ</p>
+                     <p>' . number_format($tong) . ' vnđ</p>
                   </div>
                </div>
                   ';
-               }
-
             }
+
+         }
 
          ?>
 
-         <?=$showhanghoatheongay?>
-         
+         <?= $showhanghoatheongay ?>
+
       </div>
    </div>
 </div>
 </div>
-
-
-
-
-
 <style>
    .chitietkho {
       width: 100%;
@@ -418,7 +400,7 @@ foreach ($hienchungtumua as $hienchungtumuaa) {
       align-items: center;
       width: 100%;
       height: 50px;
-      background-color: #374c71;
+      /* background-color: #374c71; */
    }
 
    .ctkho__day-input input {
@@ -453,6 +435,7 @@ foreach ($hienchungtumua as $hienchungtumuaa) {
       color: red;
       font-size: 1.5rem;
       position: absolute;
+      top: 20%;
       right: 20px;
       cursor: pointer;
    }
@@ -495,6 +478,141 @@ foreach ($hienchungtumua as $hienchungtumuaa) {
       color: #fc3e34;
    }
 </style>
+
+
+<!-- =======================- update kho ====================== -->
+
+<div class="updatekho">
+   <div class="updatekho__title">
+      <p>Table Update kho hàng</p>
+   </div>
+   <div class="updatekho__main">
+      <div class="updatekho__content">
+         <input type="text" placeholder="Tên chứng từ">
+         <input type="date" value="">
+      </div>
+
+      <div class="updatekho_btn">
+         <input class="updatekho_reset" type="reset" value="Hủy">
+         <input class="updatekho_add" type="button" value="Thêm kho">
+      </div>
+      <input class="updatekho_close" type="button" value="Thoát" id="closeButton">
+   </div>
+</div>
+<style>
+   .updatekho {
+      width: 100%;
+      height: 100vh;
+      position: absolute;
+      background-color: #3333;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      top: 0;
+   }
+
+   .updatekho__title {
+      height: 60px;
+      font-size: 1.5rem;
+      font-weight: 500;
+      width: 47%;
+      text-align: center;
+      line-height: 60px;
+      background-color: #233142;
+      color: #fff;
+      border-radius: 5px;
+   }
+
+   .updatekho__main {
+      display: flex;
+      flex-direction: column;
+      width: 45%;
+      height: 35%;
+      background-color: #fff;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      border-radius: 5px;
+   }
+
+   .updatekho__content {
+      width: 100%;
+      display: flex;
+      text-align: center;
+      margin: 4% 0 0 14%;
+   }
+
+   .updatekho__content input:nth-child(1) {
+      width: 35%;
+      height: 30px;
+      padding: 6px 12px;
+      border: none;
+      border-bottom: 1.5px solid #333;
+      margin: 0 4% 0 0;
+   }
+
+   .updatekho__content input:nth-child(2) {
+      width: 25%;
+      height: 30px;
+
+   }
+
+   .updatekho_btn {
+      margin-top: 10%;
+      margin-left: 34%
+   }
+
+   .updatekho_add {
+      width: 100px;
+      height: 30px;
+      margin: 0 5px;
+      font-weight: 550;
+   }
+
+   .updatekho_reset {
+      width: 100px;
+      height: 30px;
+      margin: 0 5px;
+      font-weight: 550;
+   }
+
+   .updatekho_close {
+      margin-left: 42%;
+      margin-top: 3%;
+      width: 100px;
+      height: 30px;
+      font-weight: 550;
+   }
+
+   .updatekho_close:hover,
+   .updatekho_reset:hover,
+   .updatekho_add:hover {
+      background-color: black;
+      color: #fff;
+   }
+</style>
+
+<!-- Đóng kho  -->
+<script>
+   document.addEventListener("DOMContentLoaded", function () {
+      document.querySelector("#closeButton").addEventListener("click", function () {
+         // Lấy phần tử cha và ẩn nó đi
+         document.querySelector(".updatekho").style.display = "none";
+      });
+   });
+</script>
+
+
+<!-- Mở kho  -->
+
+<script>
+   $(document).ready(function () {
+      $(".btn_show_add_danhmuc").click(function (e) {
+         $(".updatekho").css("display", "flex");
+
+      });
+   });
+</script>
+
 
 
 
