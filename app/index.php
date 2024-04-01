@@ -389,7 +389,7 @@ if (isset($_GET['act'])) {
         case 'xemchitietkho':
             if (isset($_GET['ngaysearch']) && $_GET['ngaysearch']) {
                 $ngaythemm = $_GET['ngaysearch'];
-                
+
                 $searchkho = new DungChung;
                 $hiensearchkho = $searchkho->ShowDungChung('hanghoa');
 
@@ -414,6 +414,21 @@ if (isset($_GET['act'])) {
                     </script>
                 ';
 
+                $chungtumua = new DungChung;
+                $hienchungtumua = $chungtumua->ShowDungChung('chungtumua');
+                require_once "./view/kho/kho.php";
+            }
+            break;
+
+        case 'addkhohang':
+            if (isset($_POST['addkho']) && $_POST['addkho']) {
+                $tenchungtu = $_POST['tenchungtu'];
+                $ngaythem = $_POST['ngaythem'];
+
+                $addkho = new HangHoa;
+                $addkho->AddKhoHang($tenchungtu, $ngaythem);
+
+                // load lại kho
                 $chungtumua = new DungChung;
                 $hienchungtumua = $chungtumua->ShowDungChung('chungtumua');
                 require_once "./view/kho/kho.php";

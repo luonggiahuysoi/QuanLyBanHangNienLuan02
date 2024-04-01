@@ -481,24 +481,25 @@ foreach ($hienchungtumua as $hienchungtumuaa) {
 
 
 <!-- =======================- update kho ====================== -->
-
-<div class="updatekho">
-   <div class="updatekho__title">
-      <p>Table Update kho hàng</p>
-   </div>
-   <div class="updatekho__main">
-      <div class="updatekho__content">
-         <input type="text" placeholder="Tên chứng từ">
-         <input type="date" value="">
+<form action="index.php?act=addkhohang" method="post">
+   <div class="updatekho">
+      <div class="updatekho__title">
+         <p>Table Update kho hàng</p>
       </div>
-
-      <div class="updatekho_btn">
-         <input class="updatekho_reset" type="reset" value="Hủy">
-         <input class="updatekho_add" type="button" value="Thêm kho">
+      <div class="updatekho__main">
+         <div class="updatekho__content">
+            <input type="text" placeholder="Tên chứng từ" name="tenchungtu">
+            <input type="date" value="" name="ngaythem">
+         </div>
+   
+         <div class="updatekho_btn">
+            <input class="updatekho_reset" type="reset" value="Hủy">
+            <input class="updatekho_add" type="submit" value="Thêm kho" name="addkho">
+         </div>
+         <input class="updatekho_close" type="button" value="Thoát" id="closeButton">
       </div>
-      <input class="updatekho_close" type="button" value="Thoát" id="closeButton">
    </div>
-</div>
+</form>
 <style>
    .updatekho {
       width: 100%;

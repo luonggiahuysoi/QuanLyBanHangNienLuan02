@@ -94,39 +94,6 @@
 <!-- center -->
 <div class="content">
 
-    <div class="content_top">
-
-        <!-- close menu -->
-        <div class="Close_nav_menu_content hvr-grow-shadow">
-            <i class="bi bi-justify"></i>
-        </div>
-
-        <!-- search -->
-        <div class="content_top-search">
-            <form action="">
-                <input type="text" id="searchInput" class="search-input" placeholder="Tìm kiếm...">
-                <input type="submit" value="Search" class="btn_search_header_content">
-            </form>
-        </div>
-
-        <!-- nav menu -->
-        <div class="content_top_right_admin">
-            <div class="content_top_right_admin_view">
-                <div class="content_top_right_admin_view_user">
-                    <img src="./public/img/tải xuống.jfif" alt="">
-                    <a href=""><i class="bi bi-three-dots-vertical"></i>Sign In</a>
-
-                </div>
-                <div class="content_top_right_admin_view_setting">
-                    <p class="hvr-glow"><i class="bi bi-bell-fill"></i></p>
-                    <p class="hvr-glow"><i class="bi bi-gear-fill"></i></p>
-                </div>
-            </div>
-        </div>
-
-
-
-    </div>
 
 
     <!-- bottom -->
@@ -211,14 +178,14 @@
                         <p>Chi tiết</p>
                     </div>
                     <div class="table_settin table__bottom_center setting">
-                        <div class=" ct_donhang">
-                            <p onclick="cancelOrder(this)">Hủy đơn</p>
-                        </div>
                     </div>
 
                 </div>
             </div>
         </div>
+    </div>
+    <div class=" ct_donhang">
+        <p onclick="cancelOrder(this)">Hủy đơn</p>
     </div>
 </div>
 
@@ -244,7 +211,6 @@
         element.innerText = 'Đã hủy đơn';
         element.style.backgroundColor = 'red';
     }
-
 </script>
 
 
@@ -264,11 +230,19 @@
                     <p>Nguyễn Văn A</p>
                 </div>
                 <div class="ctdonhang__main-item">
-                    <p>Ngày lập: </p>
+                    <p>Ngày đặt hàng: </p>
                     <p>02/03/2024</p>
                 </div>
                 <div class="ctdonhang__main-item">
-                    <p>Hình thức thanh toán: </p>
+                    <p>Số điện thoại: </p>
+                    <p>0333353414</p>
+                </div>
+                <div class="ctdonhang__main-item" style="height: 8vh;">
+                    <p>Địa chỉ: </p>
+                    <p>An Bien</p>
+                </div>
+                <div class="ctdonhang__main-item">
+                    <p>Thanh toán: </p>
                     <p>Quỵt</p>
                 </div>
                 <div class="ctdonhang__main-item">
@@ -307,7 +281,7 @@
                         <p>Hang hoa 1</p>
                     </div>
                     <div class="ctdonhang__table-item">
-                        <p>02/93/1000</p>
+                        <p>x 10</p>
                     </div>
                     <div class="ctdonhang__table-item">
                         <p>20000đ</p>
@@ -316,27 +290,216 @@
                         <p>457694500đ </p>
                     </div>
                 </div>
-
-                <div class="ctdonhang__table-totle">
-                    <div class="ctdonhang__table-item">
-                        <p>Tổng tiền</p>
+                <div class="ctdonhang__table-tr">
+                    <div style="width: 10%" class="ctdonhang__table-item">
+                        <p>1</p>
                     </div>
                     <div class="ctdonhang__table-item">
-                        <p></p>
+                        <p>Hang hoa 1</p>
                     </div>
                     <div class="ctdonhang__table-item">
-                        <p></p>
+                        <p>x 10</p>
                     </div>
                     <div class="ctdonhang__table-item">
                         <p>20000đ</p>
                     </div>
                     <div class="ctdonhang__table-item">
-                        <p> </p>
+                        <p>457694500đ </p>
                     </div>
                 </div>
+                <div class="ctdonhang__table-tr">
+                    <div style="width: 10%" class="ctdonhang__table-item">
+                        <p>1</p>
+                    </div>
+                    <div class="ctdonhang__table-item">
+                        <p>Hang hoa 1</p>
+                    </div>
+                    <div class="ctdonhang__table-item">
+                        <p>x 10</p>
+                    </div>
+                    <div class="ctdonhang__table-item">
+                        <p>20000đ</p>
+                    </div>
+                    <div class="ctdonhang__table-item">
+                        <p>457694500đ </p>
+                    </div>
+                </div>
+                <div class="ctdonhang__table-tr">
+                    <div style="width: 10%" class="ctdonhang__table-item">
+                        <p>1</p>
+                    </div>
+                    <div class="ctdonhang__table-item">
+                        <p>Hang hoa 1</p>
+                    </div>
+                    <div class="ctdonhang__table-item">
+                        <p>x 10</p>
+                    </div>
+                    <div class="ctdonhang__table-item">
+                        <p>20000đ</p>
+                    </div>
+                    <div class="ctdonhang__table-item">
+                        <p>457694500đ </p>
+                    </div>
+                </div>
+                <div class="ctdonhang__table-tr">
+                    <div style="width: 10%" class="ctdonhang__table-item">
+                        <p>1</p>
+                    </div>
+                    <div class="ctdonhang__table-item">
+                        <p>Hang hoa 1</p>
+                    </div>
+                    <div class="ctdonhang__table-item">
+                        <p>x 10</p>
+                    </div>
+                    <div class="ctdonhang__table-item">
+                        <p>20000đ</p>
+                    </div>
+                    <div class="ctdonhang__table-item">
+                        <p>457694500đ </p>
+                    </div>
+                </div>
+                <div class="ctdonhang__table-tr">
+                    <div style="width: 10%" class="ctdonhang__table-item">
+                        <p>1</p>
+                    </div>
+                    <div class="ctdonhang__table-item">
+                        <p>Hang hoa 1</p>
+                    </div>
+                    <div class="ctdonhang__table-item">
+                        <p>x 10</p>
+                    </div>
+                    <div class="ctdonhang__table-item">
+                        <p>20000đ</p>
+                    </div>
+                    <div class="ctdonhang__table-item">
+                        <p>457694500đ </p>
+                    </div>
+                </div>
+                <div class="ctdonhang__table-tr">
+                    <div style="width: 10%" class="ctdonhang__table-item">
+                        <p>1</p>
+                    </div>
+                    <div class="ctdonhang__table-item">
+                        <p>Hang hoa 1</p>
+                    </div>
+                    <div class="ctdonhang__table-item">
+                        <p>x 10</p>
+                    </div>
+                    <div class="ctdonhang__table-item">
+                        <p>20000đ</p>
+                    </div>
+                    <div class="ctdonhang__table-item">
+                        <p>457694500đ </p>
+                    </div>
+                </div>
+                <div class="ctdonhang__table-tr">
+                    <div style="width: 10%" class="ctdonhang__table-item">
+                        <p>1</p>
+                    </div>
+                    <div class="ctdonhang__table-item">
+                        <p>Hang hoa 1</p>
+                    </div>
+                    <div class="ctdonhang__table-item">
+                        <p>x 10</p>
+                    </div>
+                    <div class="ctdonhang__table-item">
+                        <p>20000đ</p>
+                    </div>
+                    <div class="ctdonhang__table-item">
+                        <p>457694500đ </p>
+                    </div>
+                </div>
+                <div class="ctdonhang__table-tr">
+                    <div style="width: 10%" class="ctdonhang__table-item">
+                        <p>1</p>
+                    </div>
+                    <div class="ctdonhang__table-item">
+                        <p>Hang hoa 1</p>
+                    </div>
+                    <div class="ctdonhang__table-item">
+                        <p>x 10</p>
+                    </div>
+                    <div class="ctdonhang__table-item">
+                        <p>20000đ</p>
+                    </div>
+                    <div class="ctdonhang__table-item">
+                        <p>457694500đ </p>
+                    </div>
+                </div>
+                <div class="ctdonhang__table-tr">
+                    <div style="width: 10%" class="ctdonhang__table-item">
+                        <p>1</p>
+                    </div>
+                    <div class="ctdonhang__table-item">
+                        <p>Hang hoa 1</p>
+                    </div>
+                    <div class="ctdonhang__table-item">
+                        <p>x 10</p>
+                    </div>
+                    <div class="ctdonhang__table-item">
+                        <p>20000đ</p>
+                    </div>
+                    <div class="ctdonhang__table-item">
+                        <p>457694500đ </p>
+                    </div>
+                </div>
+                <div class="ctdonhang__table-tr">
+                    <div style="width: 10%" class="ctdonhang__table-item">
+                        <p>1</p>
+                    </div>
+                    <div class="ctdonhang__table-item">
+                        <p>Hang hoa 1</p>
+                    </div>
+                    <div class="ctdonhang__table-item">
+                        <p>x 10</p>
+                    </div>
+                    <div class="ctdonhang__table-item">
+                        <p>20000đ</p>
+                    </div>
+                    <div class="ctdonhang__table-item">
+                        <p>457694500đ </p>
+                    </div>
+                </div>
+                <div class="ctdonhang__table-tr" style=" border-top: 1px solid black;">
+                    <div style="width: 10%" class="ctdonhang__table-item">
+                        <p>Tổng tiền</p>
+                    </div>
+                    <div class="ctdonhang__table-item">
+
+                    </div>
+                    <div class="ctdonhang__table-item">
+
+                    </div>
+                    <div class="ctdonhang__table-item">
+
+                    </div>
+                    <div class="ctdonhang__table-item">
+                        <p>457694500đ </p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                window.print(); // In đơn hàng khi người dùng bấm phím "Enter"
+            }
+        });
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'F2') {
+                window.print(); // ĐÓNG HOÁ ĐƠN
+            }
+        });
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'F1') {
+                window.history.back();
+            }
+        });
+    </script>
+</div>
 </div>
 <style>
     .ctdonhang {
@@ -348,14 +511,14 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        z-index: 111;
+        z-index: 20;
     }
 
     .ctdonhangg {
         background-color: #fff;
-        width: 50%;
+        width: 99%;
         height: 100vh;
-        overflow: auto;
+        /* overflow: auto; */
         border-radius: 2px;
     }
 
@@ -370,7 +533,6 @@
         color: #fff;
     }
 
-    .ctdonhang__title p {}
 
     .ctdonhang__main {
         width: 95%;
@@ -391,7 +553,7 @@
         padding: 30px 20px 10px 40px;
     }
 
-    .ctdonhang__main-list {}
+
 
     .ctdonhang__main-item {
         display: flex;
@@ -409,7 +571,7 @@
 
     .ctdonhang__main-item p:nth-child(2) {
         border-left: 1px dashed black;
-        width: 50%;
+        width: 70%;
         padding-left: 4%;
     }
 
@@ -442,13 +604,13 @@
 
     }
 
-    .ctdonhang__table-totle {
-        display: flex;
+    .inchitietdonhang {
+        position: relative;
         width: 100%;
-        height: 40px;
-        line-height: 40px;
-        text-align: center;
-        border-top: 2px solid black;
+        height: 6%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 </style>
 
@@ -475,13 +637,13 @@
 
 <!-- -------------------SEARCH---------------------- -->
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
         // Xử lý sự kiện khi người dùng nhập vào ô tìm kiếm
-        $("#searchInput").on("input", function () {
+        $("#searchInput").on("input", function() {
             var searchText = $(this).val().toLowerCase();
 
             // Hiển thị hoặc ẩn các phần tử phù hợp với từ khóa tìm kiếm
-            $(".list-item").each(function () {
+            $(".list-item").each(function() {
                 var itemName = $(this).find(".tendanhmuc p").text().toLowerCase();
                 if (itemName.includes(searchText)) {
                     $(this).show();

@@ -141,6 +141,12 @@ class HangHoa
       $sql = "SELECT * FROM hanghoa WHERE ngaythem=" . $ngaythem;
       return $this->hanghoa->get_all($sql);
    }
+
+   function AddKhoHang($tenchungtu, $ngaythem)
+   {
+      $sql = "INSERT INTO chungtumua (tenchungtu, ngaynhap) VALUES ('" . $tenchungtu . "', '" . $ngaythem . "')";
+      $this->hanghoa->get_all($sql);
+   }
 }
 
 
