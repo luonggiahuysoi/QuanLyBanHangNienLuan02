@@ -6,45 +6,17 @@ foreach ($listhanghoa as $listhanghoaa) {
    $tongtien = $gia * $soluong;
    $showkhohanghoa .= '
       <div class="table_th table_tr list-item producttt" data-price="' . $gia . '">
-      <div class="table_name_image table__bottom_center table_name_imagee tendanhmuc">
-         <img src="data:image/png;base64,' . $anhhanghoa . '" alt="">
+      <div class="table_name_image table__bottom_center ">
          <p>Tên sp</p>
-      </div>
-      <div class="table_view_category table__bottom_center">
-         <p>' . $donvi . '</p>
       </div>
       <div class="table_view_category table__bottom_center">
          <p>02/04/2024</p>
       </div>
       <div class="table_view_category table__bottom_center">
-         <p>' . $soluong . '</p>
+         <p>
+         <a href="" class="kho__link">Xem chi tiết</a>
+         </p>
       </div>
-      <div class="table_view_category table__bottom_center">
-         <p>' . $gia . '</p>
-      </div>
-      <div class="table_view_category table__bottom_center">
-         <p>' . $tongtien . '</p>
-      </div>
-      <div class="table_settin table__bottom_center setting">
-         <div class="table_show_setting">
-            <p><i class="bi bi-gear-fill"></i></p>
-         </div>
-         <div class="table_show_setting_clone">
-
-            <p>
-               <a href="index.php?act=updatehanghoa&idhanghoa=' . $id_hanghoa . '">
-                  <i class="bi bi-arrow-counterclockwise"></i>
-               </a>
-            </p>
-            <p>
-               <a style="color:red" href="index.php?act=deletehanghoa&idhanghoa=' . $id_hanghoa . '">
-                  <i class="bi bi-trash-fill"></i>
-               </a>
-            </p>
-
-         </div>
-      </div>
-
    </div>
 
       ';
@@ -125,12 +97,14 @@ foreach ($listhanghoa as $listhanghoaa) {
       </div>
 
       <div class="content__bottom-adddm">
-         <input type="button" value="+ cập nhật kho" class="btn_show_add_danhmuc hvr-grow-shadow">
+         <input type="button" value="+ Cập nhật kho" class="btn_show_add_danhmuc hvr-grow-shadow">
          <form action="index.php?act=khodatesearch" method="post">
             <div class="icon_show_lichlam">
                <div class="search_day">
-                  <input type="date" name="tungay" id="" class="date" value="<?php echo $startOfMonth = date("Y-m-01"); ?>">
-                  <input type="date" name="denngay" id="" class="date" value="<?php echo $endOfMonth = date("Y-m-t"); ?>">
+                  <input type="date" name="tungay" id="" class="date"
+                     value="<?php echo $startOfMonth = date("Y-m-01"); ?>">
+                  <input type="date" name="denngay" id="" class="date"
+                     value="<?php echo $endOfMonth = date("Y-m-t"); ?>">
                   <input type="submit" value="Search" class="timdate" name="timdate">
 
                </div>
@@ -144,7 +118,6 @@ foreach ($listhanghoa as $listhanghoaa) {
       <div class="content_bottom_view">
 
          <!-- header  -->
-
          <div class="content_bottom_view_header">
             <div>
                <p>Table kho sản phẩm</p>
@@ -159,296 +132,44 @@ foreach ($listhanghoa as $listhanghoaa) {
                </div>
             </div>
          </div>
-
          <!-- center  -->
-
          <div class="content_bottom_table">
             <div class="padding_table"></div>
-
             <!-- table  -->
             <div class="table_th">
                <div class="table_name_image table__bottom_center">
-                  <p>Thông tin sản phẩm</p>
-               </div>
-               <div class="table_hidden table__bottom_center">
-                  <p>Đơn vị tính</p>
+                  <p>Tên chứng từ</p>
                </div>
                <div class="table_hidden table__bottom_center">
                   <p>Ngày nhập</p>
                </div>
-               <div class="table_hidden table__bottom_center">
-                  <p>Số lượng</p>
-               </div>
-               <div class="table_hidden table__bottom_center">
-                  <p>Giá(1 sản phẩn)</p>
-               </div>
-               <div class="table_hidden table__bottom_center">
-                  <p>Thành tiền</p>
-               </div>
                <div class="table_settin table__bottom_center">
                   <p>Cài đặt</p>
-                  <p></p>
                </div>
             </div>
 
             <?= $showkhohanghoa ?>
-
-
-
-
-
          </div>
       </div>
-
 
    </div>
 
 </div>
 
-
-
-
-
-<!--================================ note: Sản phẩm update ========================== -->
-
-
-<div class="updatedanhmuc updatedanhmucjs">
-   <div class="updatedm_view">
-      <div class="updatedm_h3">
-         <p>Thêm Sản Phẩm</p>
-      </div>
-      <form action="index.php?act=updatehanghoa" method="post" enctype="multipart/form-data">
-         <input type="hidden" name="idhanghoaa" value="<?= $showUpdateHangHoa[0]['id_hanghoa'] ?>">
-         <div class="updatdm_content">
-            <div class="updatesp_tensp">
-               <input type="text" name="tenhanghoa" id="" placeholder="Tên sản phẩm" value="<?= $showUpdateHangHoa[0]['tenhanghoa'] ?>">
-               <div>
-                  <select name="danhmuc" id="dropdown">
-                     <?= $listdanhmucshow ?>
-                  </select>
-                  <script>
-                     $(document).ready(function() {
-                        // Sử dụng Select2 cho dropdown
-                        $('#dropdown').select2();
-                     });
-                  </script>
-               </div>
-            </div>
-
-            <div class="updatesp_price">
-               <input type="text" name="gia" id="" placeholder="Giá sản phẩm" value="<?= $showUpdateHangHoa[0]['gia'] ?>">
-               <input type="text" name="giasale" id="" placeholder="Giá sale" value="<?= $showUpdateHangHoa[0]['giasale'] ?>">
-            </div>
-
-            <div class="update_mota">
-               <textarea name="mota" id="" placeholder="Mô tả sản phẩm"><?= $showUpdateHangHoa[0]['mota'] ?></textarea>
-            </div>
-
-
-            <div class="updatedm_img">
-               <label class="custum-file-upload" for="imageInputupdate">
-                  <div class="icon">
-                     <img id="previewImage" src="data:image/png;base64, <?= $showUpdateHangHoa[0]['anhhanghoa'] ?>" fill="" viewBox="0 0 24 24" width="160px" height="115px" id="previewImage" style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
-
-                     </img>
-                  </div>
-                  <input type="file" id="imageInputupdate" name="fileimage">
-               </label>
-
-            </div>
-            <script>
-               $(document).ready(function() {
-                  $("#imageInputupdate").change(function() {
-                     var input = this;
-
-                     if (input.files && input.files[0]) {
-                        var reader = new FileReader();
-
-                        reader.onload = function(e) {
-                           $("#previewImage").attr("src", e.target.result);
-                           $("#previewImage").css("display", "flex");
-                        };
-
-                        reader.readAsDataURL(input.files[0]);
-                     }
-                  });
-               });
-            </script>
-
-
-            <div class="updatesp_btn">
-               <input class="btnsp_them" type="submit" value="Update sản phẩm " name="add_hanghoa_update">
-               <input class="btnsp_huy" type="reset" value="Hủy">
-            </div>
-            <input class="btnsp_close danhmnuc_close_add" type="button" value="Đóng" id="closeButtonUpdate">
-         </div>
-
-      </form>
-   </div>
-</div>
-
-
-<!--================================ Thêm sản phẩm mới ========================== -->
-
-<div class="updatedanhmuc AddDanhMuc">
-   <div class="updatedm_view">
-      <div class="updatedm_h3">
-         <p>Thêm Sản Phẩm</p>
-      </div>
-      <form action="index.php?act=AddHangHoa" method="post" enctype="multipart/form-data">
-         <div class="updatdm_content">
-            <div class="updatesp_tensp">
-               <input type="text" name="tenhanghoa" id="" placeholder="Tên sản phẩm">
-               <div>
-                  <select name="danhmuc" id="dropdownsanpham">
-                     <?= $listdanhmucshow ?>
-                  </select>
-                  <script>
-                     $(document).ready(function() {
-                        // Sử dụng Select2 cho dropdown
-                        $('#dropdownsanpham').select2();
-                     });
-                  </script>
-               </div>
-            </div>
-
-            <div class="updatesp_price">
-               <input type="text" name="gia" id="giaInput" placeholder="Giá sản phẩm">
-               <input type="text" name="giasale" id="giaSale" placeholder="Giá sale">
-               <!-- link lib  -->
-               <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-               <!-- todo: thêm dấu phẩy cho number  -->
-               <script>
-                  document.getElementById("giaInput").addEventListener("input", function(event) {
-                     let input = event.target.value.replace(/\D/g, ""); // Loại bỏ tất cả các ký tự không phải là số
-
-                     // Kiểm tra xem số ký tự đã nhập có quá 10 không
-                     if (input.length > 10) {
-                        Swal.fire({
-                           title: "Số lượng ký tự vượt quá giới hạn!",
-                           text: "Chỉ được nhập tối đa 10 số!",
-                           icon: "warning"
-                        });
-                        input = input.slice(0, 10); // Giới hạn số lượng ký tự nhập vào tối đa 10
-                     }
-
-                     input = input.replace(/\B(?=(\d{3})+(?!\d))/g, "."); // Thêm dấu chấm sau mỗi 3 chữ số
-                     event.target.value = input;
-                  });
-
-                  document.getElementById("giaInput").addEventListener("keypress", function(event) {
-                     // Kiểm tra xem ký tự được nhập có phải là số không
-                     if (event.key < "0" || event.key > "9") {
-                        Swal.fire({
-                           title: "Bạn đã nhập sai kiểu dữ liệu?",
-                           text: "Xin vui lòng chỉ nhập số!",
-                           icon: "warning"
-                        });
-                        event.preventDefault(); // Ngăn không cho ký tự nhập vào
-                     }
-                  });
-               </script>
-
-               <script>
-                  document.getElementById("giaSale").addEventListener("input", function(event) {
-                     let input = event.target.value.replace(/\D/g, ""); // Loại bỏ tất cả các ký tự không phải là số
-
-                     // Kiểm tra xem số ký tự đã nhập có quá 10 không
-                     if (input.length > 10) {
-                        Swal.fire({
-                           title: "Số lượng ký tự vượt quá giới hạn!",
-                           text: "Chỉ được nhập tối đa 10 số!",
-                           icon: "warning"
-                        });
-                        input = input.slice(0, 10); // Giới hạn số lượng ký tự nhập vào tối đa 10
-                     }
-
-                     input = input.replace(/\B(?=(\d{3})+(?!\d))/g, "."); // Thêm dấu chấm sau mỗi 3 chữ số
-                     event.target.value = input;
-                  });
-
-                  document.getElementById("giaSale").addEventListener("keypress", function(event) {
-                     // Kiểm tra xem ký tự được nhập có phải là số không
-                     if (event.key < "0" || event.key > "9") {
-                        Swal.fire({
-                           title: "Bạn đã nhập sai kiểu dữ liệu?",
-                           text: "Xin vui lòng chỉ nhập số!",
-                           icon: "warning"
-                        });
-                        event.preventDefault(); // Ngăn không cho ký tự nhập vào
-                     }
-                  });
-               </script>
-            </div>
-
-            <div class="update_mota">
-               <textarea name="mota" id="" placeholder="Mô tả sản phẩm"></textarea>
-            </div>
-
-
-            <div class="updatedm_img">
-               <label class="custum-file-upload" for="filesanpham">
-                  <div class="icon">
-                     <img src="../public/img/folder.png" fill="" viewBox="0 0 24 24" width="160px" height="115px" id="imgsanpham" style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
-
-                     </img>
-                  </div>
-                  <input type="file" id="filesanpham" name="fileimage">
-               </label>
-               <script>
-                  $(document).ready(function() {
-                     $("#filesanpham").change(function() {
-                        var input = this;
-
-                        if (input.files && input.files[0]) {
-                           var reader = new FileReader();
-
-                           reader.onload = function(e) {
-                              $("#imgsanpham").attr("src", e.target.result);
-                              $("#imgsanpham").css("display", "flex");
-                           };
-
-                           reader.readAsDataURL(input.files[0]);
-                        }
-                     });
-                  });
-               </script>
-
-            </div>
-
-
-            <div class="updatesp_btn">
-               <input class="btnsp_them" type="submit" value="Update sản phẩm " name="add_hanghoa">
-               <input class="btnsp_huy" type="reset" value="Hủy">
-            </div>
-            <input class="btnsp_close danhmnuc_close_add" type="button" value="Đóng" id="closeButton">
-         </div>
-         <script>
-            document.addEventListener("DOMContentLoaded", function() {
-               document.querySelector("#closeButton").addEventListener("click", function() {
-                  // Lấy phần tử cha và ẩn nó đi
-                  document.querySelector(".AddDanhMuc").style.display = "none";
-               });
-            });
-         </script>
-
-      </form>
-   </div>
-</div>
 
 <style>
-   .updatedanhmuc {
-      position: absolute;
-      display: none;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      height: 100vh;
-      background-color: #a3a3a341;
-      z-index: 11;
-      top: 0;
-
+   .table__bottom_center {
+      text-align: center;
    }
+
+   .kho__link {
+      color: black;
+      font-size: 0.9rem;
+      font-weight: 550;
+      font-family: Arial, Helvetica, sans-serif;
+   }
+
+
 
    .updatedm_view {
       width: 75%;
@@ -510,6 +231,7 @@ foreach ($listhanghoa as $listhanghoaa) {
       font-weight: 550;
       padding: 5px 10px;
       cursor: pointer;
+      margin: 0 0 1% 6%;
 
    }
 
@@ -578,222 +300,206 @@ foreach ($listhanghoa as $listhanghoaa) {
       align-items: center;
 
    }
-
-   /* --------------------//ten sp ---------------- */
-
-
-
-   .updatesp_tensp {
-      margin-bottom: 5%;
-   }
-
-   .updatesp_tensp input:nth-child(1) {
-      width: 250px;
-      height: 33px;
-      margin-right: 4%;
-      padding: 5px 12px;
-      border: none;
-      border-bottom: 2px solid black;
-   }
-
-   .updatesp_tensp input:nth-child(2) {
-      width: 150px;
-      height: 33px;
-      padding: 5px 12px;
-      border: none;
-      border-bottom: 2px solid black;
-
-
-   }
-
-   .updatesp_price {
-      display: flex;
-
-   }
-
-   .updatesp_price input:nth-child(1) {
-      width: 190px;
-      height: 33px;
-      margin-right: 4%;
-      padding: 5px 12px;
-      border: none;
-      border-bottom: 2px solid black;
-   }
-
-   .updatesp_price input:nth-child(2) {
-      width: 160px;
-      height: 33px;
-      margin-right: 4%;
-      padding: 5px 12px;
-      border: none;
-      border-bottom: 2px solid black;
-
-   }
-
-
-
-   .update_mota textarea {
-      width: 400px;
-      height: 100px;
-
-      padding: 8px 12px;
-   }
-
-   /*======================== update- img ===================== */
-   .custum-file-upload {
-      height: 130px;
-      width: 180px;
-      display: flex;
-      flex-direction: column;
-      align-items: space-between;
-      gap: 20px;
-      cursor: pointer;
-      align-items: center;
-      justify-content: center;
-      border: 2px dashed #cacaca;
-      background-color: rgba(255, 255, 255, 1);
-      padding: 1.5rem;
-      border-radius: 10px;
-      box-shadow: 0px 48px 35px -48px rgba(0, 0, 0, 0.1);
-   }
-
-   .custum-file-upload .icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-   }
-
-   .custum-file-upload .icon svg {
-      height: 80px;
-      fill: rgba(75, 85, 99, 1);
-   }
-
-   .custum-file-upload .text {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-   }
-
-   .custum-file-upload .text span {
-      font-weight: 400;
-      color: rgba(75, 85, 99, 1);
-   }
-
-   .custum-file-upload input {
-      display: none;
-   }
 </style>
 
 
-<!--==================================== Them anh ============================== -->
+<!--======================= chi tiet kho ================= -->
 
-
-
-<div class="updatedanhmuc updatesanphamimg">
-   <div class="updatedm_view">
-      <div class="updatedm_h3">
-         <p>Thêm Ảnh Sản Phẩm</p>
-      </div>
-      <form action="index.php?act=updatehanghoaimg" method="post" enctype="multipart/form-data">
-         <div class="updatdm_content">
-            <div class="updatesp_tensp updatesp_main-img">
-               <input type="text" name="tenhanghoa" id="" placeholder="Tên sản phẩm" value="<?= $HienMaHangHoa[0]['tenhanghoa'] ?>">
-               <input type="text" name="mahanghoa" id="" placeholder="Mã sản phẩm" value="<?= $HienMaHangHoa[0]['id_mahanghoa'] ?>">
-            </div>
-            <div class="updatesp_image-list">
-               <div class="updatesp-img">
-                  <label class="custum-file-upload" for="imageInput1">
-                     <div class="icon">
-                        <img src="../public/img/folder.png" fill="" viewBox="0 0 24 24" width="160px" height="195px" id="previewImage1" style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
-
-                        </img>
-                     </div>
-                     <input type="file" id="imageInput1" name="fileimage1">
-                  </label>
-
-               </div>
-
-               <div class="updatesp-img">
-                  <label class="custum-file-upload" for="imageInput2">
-                     <div class="icon">
-                        <img src="../public/img/folder.png" fill="" viewBox="0 0 24 24" width="160px" height="195px" id="previewImage2" style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
-
-                        </img>
-                     </div>
-                     <input type="file" id="imageInput2" name="fileimage2">
-                  </label>
-
-               </div>
-
-               <div class="updatesp-img">
-                  <label class="custum-file-upload" for="imageInput3">
-                     <div class="icon">
-                        <img src="../public/img/folder.png" fill="" viewBox="0 0 24 24" width="160px" height="195px" id="previewImage3" style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
-
-                        </img>
-                     </div>
-                     <input type="file" id="imageInput3" name="fileimage3">
-                  </label>
-
-               </div>
-
-               <div class="updatesp-img">
-                  <label class="custum-file-upload" for="imageInput4">
-                     <div class="icon">
-                        <img src="../public/img/folder.png" fill="" viewBox="0 0 24 24" width="160px" height="195px" id="previewImage4" style="border-radius: 5px; border: 1px solid #333; object-fit: cover;">
-
-                        </img>
-                     </div>
-                     <input type="file" id="imageInput4" name="fileimage4">
-                  </label>
-
-               </div>
-            </div>
-            <div class="updatesp_btn">
-               <input class="btnsp_them" type="submit" value="Update ảnh " name="updateImg">
-               <input class="btnsp_huy" type="reset" value="Hủy">
-            </div>
-            <input class="btnsp_close sanphamimg" type="button" value="Quay lại" id="closeButton">
-         </div>
-
-      </form>
+<div class="chitietkho">
+   <div class="ctkho__title">
+      <p>Table chi tiết kho</p>
    </div>
+   <div class="ctkho__main">
+      <div class="ctkho__day">
+         <div class="ctkho__day-input">
+            <input type="date" name="tungay" id="" class="date" value="">
+            <input type="date" name="denngay" id="" class="date" value="">
+            <input type="submit" value="Search" class="timdate" name="timdate">
+         </div>
+         <div class="ctkho__day-search">
+            <input type="search" name="" id="">
+            <p class="icon_show_ctkho"><i class="bi bi-x-circle"></i></p>
+         </div>
+      </div>
+
+
+      <div class="ctkho__table">
+         <div class="lichlam_th">
+            <div class="lichlam_th__item">
+               <p>Tên hàng hóa</p>
+            </div>
+            <div class="lichlam_th__item">
+               <p>Tồn kho</p>
+            </div>
+            <div class="lichlam_th__item">
+               <p>Giá</p>
+            </div>
+            <div class="lichlam_th__item">
+               <p>Cài đặt</p>
+            </div>
+         </div>
+         <div class="lichlam_tr">
+            <div class="lichlam_tr__item">
+               <p>sdsdvsvd</p>
+            </div>
+            <div class="lichlam_tr__item">
+               <p>Số lượng</p>
+            </div>
+            <div class="lichlam_tr__item">
+               <p>Giá</p>
+            </div>
+            <div class="lichlam_tr__item">
+               <p>Cài đặt</p>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
 </div>
 
 
 
+
+
 <style>
-   .updatesp_main-img {
-      margin-top: -17%;
+   .chitietkho {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background-color: #dfdfdf58;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
    }
 
-   .updatesp_image-list {
+   .ctkho__main {
+      width: 70%;
+      height: 70%;
+      background-color: white;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+   }
+
+   .ctkho__title {
+      width: 73%;
+      height: 60px;
+      color: white;
+      background-color: #121e2f;
+      font-size: 1.5rem;
+      font-weight: 600;
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 15px;
-      margin-bottom: 12%;
+      border-radius: 5px;
    }
 
-   .updatesp-img {
-      width: 200px;
-      height: 200px;
-      border: 1px solid #222;
-   }
-
-   .updatesp-img label {
+   .ctkho__day {
+      position: relative;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
       width: 100%;
-      height: 110%;
+      height: 50px;
+      background-color: #374c71;
+   }
+
+   .ctkho__day-input input {
+      height: 30px;
+   }
+
+   .timdate {
+      border-radius: 5px;
+      width: 80px;
+      font-weight: 600;
+      color: white;
+      background-color: #d48c68;
+   }
+
+   .ctkho__day-search {
+      display: flex;
+      gap: 30px;
+   }
+
+   .ctkho__day-search input {
+      height: 30px;
+      outline: none;
+      border: none;
+      padding: 6px 12px;
+   }
+
+   .timdate:hover {
+      background-color: #1e2b47;
+   }
+
+   .icon_show_ctkho {
+      color: red;
+      font-size: 1.5rem;
+      position: absolute;
+      right: 20px;
+      cursor: pointer;
+   }
+
+   .lichlam_th {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 2%;
+      background-color: #e2e2e2;
+   }
+
+   .lichlam_th__item {
+      width: 25%;
+      height: 40px;
+      font-size: 1.1rem;
+      text-align: center;
+      line-height: 40px;
+      font-weight: 550;
+   }
+
+   .lichlam_tr {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+   }
+
+   .lichlam_tr__item {
+
+      width: 25%;
+      height: 40px;
+      font-size: 1.1rem;
+      text-align: center;
+      line-height: 40px;
+   }
+
+   .kho__link:hover {
+      color: #fc3e34;
    }
 </style>
 
 
+<script>
 
 
+   $(document).ready(function () {
+      $(".icon_show_ctkho").click(function (e) {
+         $(".chitietkho").hide();
+
+      });
+   });
+   $(document).ready(function () {
+      $(".kho__link").click(function (e) {
+         $(".chitietkho").show();
+
+      });
+   });
 
 
-
-
+   $(document).ready(function () {
+      $(".chitietkho").css("display", "flex");
+   });
+</script>
 
 
 
@@ -804,13 +510,13 @@ foreach ($listhanghoa as $listhanghoaa) {
 <!-- -------------------SEARCH---------------------- -->
 
 <script>
-   $(document).ready(function() {
+   $(document).ready(function () {
       // Xử lý sự kiện khi người dùng nhập vào ô tìm kiếm
-      $("#searchInput").on("input", function() {
+      $("#searchInput").on("input", function () {
          var searchText = $(this).val().toLowerCase();
 
          // Hiển thị hoặc ẩn các phần tử phù hợp với từ khóa tìm kiếm
-         $(".list-item").each(function() {
+         $(".list-item").each(function () {
             var itemName = $(this).find(".tendanhmuc p").text().toLowerCase();
             if (itemName.includes(searchText)) {
                $(this).show();
@@ -821,171 +527,6 @@ foreach ($listhanghoa as $listhanghoaa) {
       });
    });
 </script>
-
-
-<!-- ======== jquery tăng giảm ========== -->
-<!-- Import jQuery -->
-
-
-<!-- Đảm bảo đặt mã JavaScript trong thẻ script -->
-<script>
-   $(document).ready(function() {
-      $(".table_setting").on("click", ".table_show_setting", function() {
-         // Xử lý sự kiện khi nhấn vào biểu tượng bánh răng
-         console.log("Đã click vào biểu tượng bánh răng");
-      });
-
-      $("#sortButtontang").on("click", function() {
-         // Lấy danh sách sản phẩm và sắp xếp theo giá
-         const $listItems = $(".list-item")
-            .detach(); // Sử dụng detach để giữ sự kiện và dữ liệu đính kèm
-
-         $listItems.sort(function(a, b) {
-            const priceA = parseFloat($(a).data("price"));
-            const priceB = parseFloat($(b).data("price"));
-            return priceA - priceB;
-         });
-
-         // Xóa sản phẩm cũ và hiển thị sản phẩm mới
-         $(".producttt").remove(); // Xóa tất cả các phần tử con
-         $(".content_bottom_table").append($listItems); // Thêm danh sách đã sắp xếp
-      });
-   });
-</script>
-
-
-
-<!-- Import jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
-<!-- Đảm bảo đặt mã JavaScript trong thẻ script -->
-<script>
-   $(document).ready(function() {
-      $(".table_setting").on("click", ".table_show_setting", function() {
-         // Xử lý sự kiện khi nhấn vào biểu tượng bánh răng
-         console.log("Đã click vào biểu tượng bánh răng");
-      });
-
-      $("#sortButtongiam").on("click", function() {
-         // Lấy danh sách sản phẩm và sắp xếp theo giá
-         const $listItems = $(".list-item")
-            .detach(); // Sử dụng detach để giữ sự kiện và dữ liệu đính kèm
-
-         $listItems.sort(function(a, b) {
-            const priceA = parseFloat($(a).data("price"));
-            const priceB = parseFloat($(b).data("price"));
-            return priceB - priceA;
-         });
-
-         // Xóa sản phẩm cũ và hiển thị sản phẩm mới
-         $(".producttt").remove(); // Xóa tất cả các phần tử con
-         $(".content_bottom_table").append($listItems); // Thêm danh sách đã sắp xếp
-      });
-   });
-</script>
-
-
-
-<!-- ================jsquery hiện ảnh ============ -->
-
-<script>
-   $(document).ready(function() {
-      $("#imageInput").change(function() {
-         var input = this;
-
-         if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function(e) {
-               $("#previewImage").attr("src", e.target.result);
-               $("#previewImage").css("display", "flex");
-            };
-
-            reader.readAsDataURL(input.files[0]);
-         }
-      });
-   });
-</script>
-
-<script>
-   $(document).ready(function() {
-      $("#imageInput1").change(function() {
-         var input = this;
-
-         if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function(e) {
-               $("#previewImage1").attr("src", e.target.result);
-               $("#previewImage1").css("display", "flex");
-            };
-
-            reader.readAsDataURL(input.files[0]);
-         }
-      });
-   });
-</script>
-
-<script>
-   $(document).ready(function() {
-      $("#imageInput2").change(function() {
-         var input = this;
-
-         if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function(e) {
-               $("#previewImage2").attr("src", e.target.result);
-               $("#previewImage2").css("display", "flex");
-            };
-
-            reader.readAsDataURL(input.files[0]);
-         }
-      });
-   });
-</script>
-
-<script>
-   $(document).ready(function() {
-      $("#imageInput3").change(function() {
-         var input = this;
-
-         if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function(e) {
-               $("#previewImage3").attr("src", e.target.result);
-               $("#previewImage3").css("display", "flex");
-            };
-
-            reader.readAsDataURL(input.files[0]);
-         }
-      });
-   });
-</script>
-<script>
-   $(document).ready(function() {
-      $("#imageInput4").change(function() {
-         var input = this;
-
-         if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function(e) {
-               $("#previewImage4").attr("src", e.target.result);
-               $("#previewImage4").css("display", "flex");
-            };
-
-            reader.readAsDataURL(input.files[0]);
-         }
-      });
-   });
-</script>
-
-
-
-
-
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
