@@ -136,6 +136,11 @@ class HangHoa
       }
 
    }
+
+   function HangHoaTheoNgayKho($ngaythem) {
+      $sql = "SELECT * FROM hanghoa WHERE ngaythem=" . $ngaythem;
+      return $this->hanghoa->get_all($sql);
+   }
 }
 
 
