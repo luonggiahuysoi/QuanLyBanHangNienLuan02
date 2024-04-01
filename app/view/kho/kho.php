@@ -1,20 +1,18 @@
 <?php
-$showkhohanghoa = '';
-foreach ($listhanghoa as $listhanghoaa) {
-   extract($listhanghoaa);
-   $tongtien = 0;
-   $tongtien = $gia * $soluong;
-   $showkhohanghoa .= '
-      <div class="table_th table_tr list-item producttt" data-price="' . $gia . '">
+$showchungtumua = '';
+foreach ($hienchungtumua as $hienchungtumuaa) {
+   extract($hienchungtumuaa);
+   $showchungtumua .= '
+      <div class="table_th table_tr list-item producttt" data-price="">
       <div class="table_name_image table__bottom_center ">
-         <p>Tên sp</p>
+         <p>'.$tenchungtu.'</p>
       </div>
       <div class="table_view_category table__bottom_center">
-         <p>02/04/2024</p>
+         <p>'.$ngaynhap.'</p>
       </div>
       <div class="table_view_category table__bottom_center">
          <p>
-         <a href="" class="kho__link">Xem chi tiết</a>
+         <a href="index.php?act=xemchitietkho&ngaysearch='.$ngaynhap.'" class="kho__link">Xem chi tiết</a>
          </p>
       </div>
    </div>
@@ -37,7 +35,7 @@ foreach ($listhanghoa as $listhanghoaa) {
 
 <?php
 $i = 0;
-foreach ($listhanghoa as $listhanghoaa) {
+foreach ($hienchungtumua as $hienchungtumuaa) {
    $i++;
 }
 
@@ -148,7 +146,7 @@ foreach ($listhanghoa as $listhanghoaa) {
                </div>
             </div>
 
-            <?= $showkhohanghoa ?>
+            <?= $showchungtumua ?>
          </div>
       </div>
 
@@ -312,9 +310,11 @@ foreach ($listhanghoa as $listhanghoaa) {
    <div class="ctkho__main">
       <div class="ctkho__day">
          <div class="ctkho__day-input">
-            <input type="date" name="tungay" id="" class="date" value="">
-            <input type="date" name="denngay" id="" class="date" value="">
-            <input type="submit" value="Search" class="timdate" name="timdate">
+            <form action="" method="post">
+               <input type="date" name="tungay" id="" class="date" value="">
+               <input type="date" name="denngay" id="" class="date" value="">
+               <input type="submit" value="Search" class="timdate" name="timdate">
+            </form>
          </div>
          <div class="ctkho__day-search">
             <input type="search" name="" id="">
@@ -338,20 +338,38 @@ foreach ($listhanghoa as $listhanghoaa) {
                <p>Cài đặt</p>
             </div>
          </div>
-         <div class="lichlam_tr">
-            <div class="lichlam_tr__item">
-               <p>sdsdvsvd</p>
-            </div>
-            <div class="lichlam_tr__item">
-               <p>Số lượng</p>
-            </div>
-            <div class="lichlam_tr__item">
-               <p>Giá</p>
-            </div>
-            <div class="lichlam_tr__item">
-               <p>Cài đặt</p>
-            </div>
-         </div>
+         <?php
+            $tong=0;
+            $showhanghoatheongay='';
+            foreach($hiensearchkho as $hiensearchkhoo) {
+               extract($hiensearchkhoo);
+               $tong = $soluong * $gia;
+               if($hiensearchkhoo['ngaythem'] == $ngaythemm) {
+
+                  $showhanghoatheongay.='
+                  <div class="lichlam_tr">
+                  <div class="lichlam_tr__item">
+                     <p>'.$tenhanghoa.'</p>
+                  </div>
+                  <div class="lichlam_tr__item">
+                     <p>'.$soluong.'</p>
+                  </div>
+                  <div class="lichlam_tr__item">
+                     <p>'.number_format($gia).' vnđ</p>
+                  </div>
+                  <div class="lichlam_tr__item">
+                     <p>'.number_format($tong).' vnđ</p>
+                  </div>
+               </div>
+                  ';
+               }
+
+            }
+
+         ?>
+
+         <?=$showhanghoatheongay?>
+         
       </div>
    </div>
 </div>
@@ -479,27 +497,7 @@ foreach ($listhanghoa as $listhanghoaa) {
 </style>
 
 
-<script>
 
-
-   $(document).ready(function () {
-      $(".icon_show_ctkho").click(function (e) {
-         $(".chitietkho").hide();
-
-      });
-   });
-   $(document).ready(function () {
-      $(".kho__link").click(function (e) {
-         $(".chitietkho").show();
-
-      });
-   });
-
-
-   $(document).ready(function () {
-      $(".chitietkho").css("display", "flex");
-   });
-</script>
 
 
 
