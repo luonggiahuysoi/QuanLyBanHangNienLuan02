@@ -252,27 +252,203 @@
 <!-- Chi tiết đơn hàng  -->
 
 <div class="ctdonhang">
-    <div class="ctdonhang__title">
-        <p>Xem chi tiết đơn hàng</p>
-    </div>
-    <div class="ctdonhang__main">
-        <div class="ctdonhang__main-item">
-            <p>Tên khách hàng: </p>
-            <input type="text">
+    <div class="ctdonhangg">
+        <div class="ctdonhang__title">
+            <p>Hóa đơn hàng hóa</p>
         </div>
-        <div class="ctdonhang__main-item">
-            <p>Số điện thoại: </p>
-            <input type="text">
+        <div class="ctdonhang__main">
+            <p class="ctdonhang__main-headding"><i>Thông tin khách hàng</i></p>
+            <div class="ctdonhang__main-list">
+                <div class="ctdonhang__main-item">
+                    <p>Khách hàng: </p>
+                    <p>Nguyễn Văn A</p>
+                </div>
+                <div class="ctdonhang__main-item">
+                    <p>Ngày lập: </p>
+                    <p>02/03/2024</p>
+                </div>
+                <div class="ctdonhang__main-item">
+                    <p>Hình thức thanh toán: </p>
+                    <p>Quỵt</p>
+                </div>
+                <div class="ctdonhang__main-item">
+                    <p>Tổng tiền: </p>
+                    <p>0000000đ</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="ctdonhang__table">
+            <p class="ctdonhang__table-headding"><i>Chi tiết đơn hàng</i></p>
+            <div class="ctdonhang__tablee">
+                <div class="ctdonhang__table-th">
+                    <div style="width: 10%" class="ctdonhang__table-item ">
+                        <p>STT</p>
+                    </div>
+                    <div class="ctdonhang__table-item">
+                        <p>Tên sản phẩm</p>
+                    </div>
+                    <div class="ctdonhang__table-item">
+                        <p>Số lượng</p>
+                    </div>
+                    <div class="ctdonhang__table-item">
+                        <p>Đơn giá</p>
+                    </div>
+                    <div class="ctdonhang__table-item">
+                        <p>Thành tiền </p>
+                    </div>
+                </div>
+
+                <div class="ctdonhang__table-tr">
+                    <div style="width: 10%" class="ctdonhang__table-item">
+                        <p>1</p>
+                    </div>
+                    <div class="ctdonhang__table-item">
+                        <p>Hang hoa 1</p>
+                    </div>
+                    <div class="ctdonhang__table-item">
+                        <p>02/93/1000</p>
+                    </div>
+                    <div class="ctdonhang__table-item">
+                        <p>20000đ</p>
+                    </div>
+                    <div class="ctdonhang__table-item">
+                        <p>457694500đ </p>
+                    </div>
+                </div>
+
+                <div class="ctdonhang__table-totle">
+                    <div class="ctdonhang__table-item">
+                        <p>Tổng tiền</p>
+                    </div>
+                    <div class="ctdonhang__table-item">
+                        <p></p>
+                    </div>
+                    <div class="ctdonhang__table-item">
+                        <p></p>
+                    </div>
+                    <div class="ctdonhang__table-item">
+                        <p>20000đ</p>
+                    </div>
+                    <div class="ctdonhang__table-item">
+                        <p> </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-
 <style>
     .ctdonhang {
-        position: absolute;
         width: 100%;
         height: 100vh;
+        position: absolute;
         background-color: #3333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        z-index: 111;
+    }
+
+    .ctdonhangg {
+        background-color: #fff;
+        width: 50%;
+        height: 100vh;
+        overflow: auto;
+        border-radius: 2px;
+    }
+
+    .ctdonhang__title {
+        width: 100%;
+        height: 70px;
+        line-height: 70px;
+        text-align: center;
+        font-size: 2rem;
+        font-weight: 550;
+        background-color: #2d4059;
+        color: #fff;
+    }
+
+    .ctdonhang__title p {}
+
+    .ctdonhang__main {
+        width: 95%;
+        border: 1px dashed black;
+        margin-top: 5%;
+        margin-left: 2%;
+    }
+
+    .ctdonhang__main-headding {
+        font-style: italic;
+        text-decoration: underline;
+        padding: 10px 20px;
+    }
+
+    .ctdonhang__table-headding {
+        font-style: italic;
+        text-decoration: underline;
+        padding: 30px 20px 10px 40px;
+    }
+
+    .ctdonhang__main-list {}
+
+    .ctdonhang__main-item {
+        display: flex;
+        border: 1px dashed black;
+        margin: 10px 15px;
+        height: 30px;
+        line-height: 30px;
+        gap: 80px;
+    }
+
+    .ctdonhang__main-item p:nth-child(1) {
+        width: 30%;
+        margin-left: 2%;
+    }
+
+    .ctdonhang__main-item p:nth-child(2) {
+        border-left: 1px dashed black;
+        width: 50%;
+        padding-left: 4%;
+    }
+
+    .ctdonhang__tablee {
+        width: 95%;
+        margin-left: 2%;
+        border: 1px solid black;
+    }
+
+    .ctdonhang__table-item {
+        width: 20%;
+    }
+
+    .ctdonhang__table-th {
+        width: 100%;
+        height: 48px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-bottom: 1px solid black;
+        background-color: #3333;
+    }
+
+    .ctdonhang__table-tr {
+        width: 100%;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .ctdonhang__table-totle {
+        display: flex;
+        width: 100%;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        border-top: 2px solid black;
     }
 </style>
 
