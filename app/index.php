@@ -381,9 +381,25 @@ if (isset($_GET['act'])) {
         // note: Kho hang hoa 
         case 'kho':
             $HienHangHoa = new DungChung;
-            $lishanghoa = $HienHangHoa->ShowDungChung('hanghoa');
+            $listhanghoa = $HienHangHoa->ShowDungChung('hanghoa');
             require_once "./view/kho/kho.php";
             break;
+
+
+        case 'khodatesearch':
+            if (isset($_POST['timdate']) && $_POST['timdate']) {
+                $startOfMonth = $_POST['tungay'];
+                $endOfMonth = $_POST['denngay'];
+
+                $checkca = new HangHoa;
+                $checkcashow = $checkca->HangHoaTheoThang($startOfMonth, $endOfMonth);
+
+
+
+                $HienHangHoa = new DungChung;
+                $listhanghoa = $HienHangHoa->ShowDungChung('hanghoa');
+                require_once "./view/kho/kho.php";
+            }
 
 
         // =================== Nhân Viên ================================================

@@ -114,6 +114,28 @@ class HangHoa
       $sql = "UPDATE hanghoa SET hienthi='" . $hienthi . "' WHERE id_hanghoa=" . $idhanghoa;
       $this->hanghoa->get_all($sql);
    }
+
+   function HangHoaTheoThang($startOfMonth, $endOfMonth) {
+      try {
+         // Chuẩn bị truy vấn SQL với tham số ràng buộc
+         $sql = "SELECT * FROM hanghoa WHERE ngay BETWEEN :startOfMonth AND :endOfMonth";
+         $stmt = $this->hanghoa->prepare($sql);
+         $stmt->bindParam(':startOfMonth', $startOfMonth, PDO::PARAM_STR);
+         $stmt->bindParam(':endOfMonth', $endOfMonth, PDO::PARAM_STR);
+
+         // Thực thi truy vấn
+         $stmt->execute();
+         
+         // Lấy kết quả
+         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+         
+         return $result;
+      } catch(PDOException $e) {
+         // Xử lý ngoại lệ nếu có lỗi
+         echo "Lỗi: " . $e->getMessage();
+      }
+
+   }
 }
 
 
