@@ -120,14 +120,11 @@
                   <p class="plus_r"><i class="bi bi-chevron-down"></i></p>
                </div>
                <div class="item-con" id="item-con3">
+                  <div class="item-con_list">
+                     <a href=""><i class="bi bi-dot"></i>Danh sách đơn hàng</a>
+                  </div>
                   <div class="item-con_list" id="">
-                     <a href=""><i class="bi bi-dot"></i>Theo dõi đơn</a>
-                  </div>
-                  <div class="item-con_list">
-                     <a href=""><i class="bi bi-dot"></i>Lương nhân viên</a>
-                  </div>
-                  <div class="item-con_list">
-                     <a href=""><i class="bi bi-dot"></i>Lịch làm</a>
+                     <a href=""><i class="bi bi-dot"></i>Chi tiết đơn hàng</a>
                   </div>
                   <div class="item-con_list item-con_listout" id="close_nav3">
                      <a href=""><i class="bi bi-box-arrow-in-left"></i>Trở về</a>

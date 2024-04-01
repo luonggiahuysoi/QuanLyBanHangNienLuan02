@@ -1080,14 +1080,24 @@ if (isset($_GET['act'])) {
 
                 $luongphat = new NhanVien;
                 $showluongphat = $luongphat->getByIdPhat();
-
-
-
-
-
                 require_once "./view/nhanvien/luong.php";
             }
             break;
+        // note: Quan ly don hang 
+
+        case 'dsdonhang':
+
+            break;
+
+
+
+
+
+
+
+
+
+
 
     }
 } else {
