@@ -121,7 +121,7 @@
                </div>
                <div class="item-con" id="item-con3">
                   <div class="item-con_list">
-                     <a href=""><i class="bi bi-dot"></i>Danh sách đơn hàng</a>
+                     <a href="index.php?act=listdonhang"><i class="bi bi-dot"></i>Danh sách đơn hàng</a>
                   </div>
                   <div class="item-con_list" id="">
                      <a href=""><i class="bi bi-dot"></i>Chi tiết đơn hàng</a>

@@ -1066,11 +1066,6 @@ if (isset($_GET['act'])) {
 
                 $luongphat = new NhanVien;
                 $showluongphat = $luongphat->getByIdPhat();
-
-
-
-
-
                 require_once "./view/nhanvien/luong.php";
             }
             break;
@@ -1101,8 +1096,12 @@ if (isset($_GET['act'])) {
             break;
         // note: Quan ly don hang 
 
-        case 'dsdonhang':
-
+        case 'listdonhang':
+            $phanquyen = new DungChung;
+            $showphanquyen = $phanquyen->ShowDungChung('phanquyennhanvien');
+            echo '<script src="../public/js/danhmuc/danhmuc_add.js"></script>';
+            echo '<script src="../public/js/sanpham/sanpham.js"></script>';
+            require_once "./view/donhang/listdonhang.php";
             break;
 
 
