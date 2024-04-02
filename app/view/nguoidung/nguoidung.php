@@ -137,12 +137,10 @@
         <div class="content_bottom_link">
             <a href="" style="color: #999;">Trang chủ</a>
             <p>/</p>
-            <a href="" style="color: #464646;">Thông tin nhân viên</a>
+            <a href="" style="color: #464646;">Người dùng</a>
         </div>
 
-        <div class="content__bottom-adddm">
-            <input type="button" value="+ Thêm người dùng" class="btn_show_add_danhmuc hvr-grow-shadow">
-        </div>
+
 
         <!-- view danh muc -->
 
@@ -157,7 +155,7 @@
                 <br>
                 <div>
                     <div style="display: flex;  align-items: center;">
-                        <p style="color: #555;">Tổng số nhân viên:</p>
+                        <p style="color: #555;">Tổng số người dùng:</p>
                         <p style="margin-left: 1%; color: black;">x
                             <!-- <?= $i ?> -->
                         </p>
@@ -205,7 +203,8 @@
                         <p>345645756756</p>
                     </div>
                     <div class="table_view_category table__bottom_center">
-                        <p>Cần Thơ</p>
+                        <p><i class="bi bi-lock-fill"></i></p>
+                        <p><i class="bi bi-unlock-fill"></i></p>
                     </div>
                     <div class="table_view_category table__bottom_center email">
                         <p>vân@gmail.com</p>
