@@ -246,3 +246,16 @@ class NhanVien
 
    }
 }
+
+class DonHang {
+   private $donhang;
+   function __construct()
+   {
+      $this->donhang= new DatabaseModel;
+   }
+
+   function hoadontheoId () {
+      $sql = "SELECT * FROM thuongphat WHERE hiden = 0";
+      return $this->donhang->get_all($sql);
+   }
+}

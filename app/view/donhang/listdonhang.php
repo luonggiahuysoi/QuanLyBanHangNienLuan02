@@ -1,69 +1,5 @@
 <!-- php database -->
-<?php
-// $showhh = '';
-// $showhienthi = '';
-// foreach ($HienHangHoa as $HienHangHoaa) {
-//    extract($HienHangHoaa);
-//    if ($hienthi == 1) {
 
-//       $showhienthi = '<i class="bi bi-eye-fill"></i>';
-//    } else {
-//       $showhienthi = '<i class="bi bi-eye-slash-fill"></i>';
-//    }
-
-
-
-//    $showhh .= '
-//         <div class="table_th table_tr list-item producttt" data-price="' . $gia . '">
-//                     <div class="table_name_image table__bottom_center table_name_imagee tendanhmuc">
-//                         <img src="data:image/png;base64,' . $anhhanghoa . '" alt="">
-//                         <p>' . $tenhanghoa . '</p>
-//                     </div>
-//                     <div class="table_hidden table__bottom_center">
-//                         <p>
-//                             <a href="index.php?act=UpdateHienThiSanPham&idhanghoa=' . $id_hanghoa . '">
-//                                 ' . $showhienthi . '
-//                             </a>
-//                         </p>
-//                     </div>
-//                     <div class="table_view_category table__bottom_center">
-//                     <p>' . number_format($gia) . 'Vnđ</p>
-//                     </div>
-//                     <div class="table_view_category table__bottom_center">
-//                     <p>' . number_format($giasale) . 'Vnđ</p>
-//                 </div>  <div class="table_view_category table__bottom_center">
-//                 <p>' . $luotxem . '</p>
-//             </div>
-//                     <div class="table_settin table__bottom_center setting">
-//                         <div class="table_show_setting">
-//                             <p><i class="bi bi-gear-fill"></i></p>
-//                         </div>
-//                         <div class="table_show_setting_clone">
-//                            <p>
-//                               <a style="color:black" href="index.php?act=updatehanghoaimg&idhanghoa=' . $id_hanghoa . '">
-//                                      <i class="bi bi-images"></i>
-//                               </a>
-//                           </p>
-
-
-//                             <p>
-//                                 <a href="index.php?act=updatehanghoa&idhanghoa=' . $id_hanghoa . '">
-//                                     <i class="bi bi-arrow-counterclockwise"></i>
-//                                 </a>
-//                             </p>
-//                             <p>
-//                                 <a  style="color:red"  href="index.php?act=deletehanghoa&idhanghoa=' . $id_hanghoa . '">
-//                                     <i class="bi bi-trash-fill"></i>
-//                                 </a>
-//                             </p>
-
-//                         </div>
-//                     </div>
-//         </div>
-//         ';
-// }
-
-?>
 
 
 <!-- <======================= Hiện số lượng ========================> -->
@@ -151,7 +87,7 @@
                         <p>Ngày tạo</p>
                     </div>
                     <div class="table_hidden table__bottom_center">
-                        <p>Tổng tiền</p>
+                        <p>Tình trạng</p>
                     </div>
                     <div class="table_hidden table__bottom_center">
                         <p>Xem chi tiết </p>
@@ -161,31 +97,99 @@
                     </div>
                 </div>
 
-                <div class="table_th table_tr list-item producttt" data-price="' . $gia . '">
-                    <div class="table_name_image table__bottom_center  ">
-                        <p>Khach hang 1</p>
-                    </div>
-                    <div class="table_view_category table__bottom_center">
-                        <p>Đang giao</p>
-                    </div>
-                    <div class="table_view_category table__bottom_center">
-                        <p>02/04/2024</p>
-                    </div>
-                    <div class="table_view_category table__bottom_center">
-                        <p>2000</p>
-                    </div>
-                    <div class="table_view_category table__bottom_center ct_donhang">
-                        <p class="ctdonhang__hide">Chi tiết</p>
-                    </div>
-                    <div class="table_settin table__bottom_center setting">
-                    </div>
+                <?php
+                $showdonhang = '';
+                $trangthaii = '';
+                $tinhtrangg = '';
 
-                </div>
+                foreach ($HienDonHang as $HienDonHangg) {
+
+                    extract($HienDonHangg);
+                    if ($trangthai == 0) {
+                        $trangthaii = ' 
+                            <div class="table_view_category table__bottom_center ct_donhang">
+                                <p class="ctdonhang__hide">Đang giao</p>
+                            </div>
+                            ';
+                    } else {
+                        $trangthaii = ' 
+                            <div class="table_view_category table__bottom_center ct_donhang">
+                                <p class="ctdonhang__hide">Đã giao</p>
+                            </div>
+                            ';
+                    }
+
+                    if ($tinhtrang == 0) {
+
+                        $tinhtrangg = 'Chưa xem';
+                    } else {
+
+                        $tinhtrangg = 'Đã xem';
+                    }
+
+
+                    $showdonhang = '
+                        <div class="table_th table_tr list-item producttt" data-price="">
+                            <div class="table_name_image table__bottom_center  ">
+                                <p>' . $tenkhachhang . '</p>
+                            </div>
+                            <div class="table_view_category table__bottom_center">
+                                <p>' . $trangthaii . '</p>
+                            </div>
+                            <div class="table_view_category table__bottom_center">
+                                <p>' . $ngaytaodon . '</p>
+                            </div>
+                            <div class="table_view_category table__bottom_center">
+                                <p>' . $tinhtrangg . '</p>
+                            </div>
+                            <div class="table_view_category table__bottom_center ct_donhang">
+                                <p class="ctdonhang__hide"><a href="index.php?act=listdonhangbill&iddonhang='.$id_donhang.'" style="color:aliceblue;">Chi tiết</a></p>
+                            </div>
+                            <div class="table_settin table__bottom_center setting">
+                                <div class=" ct_donhang">
+                                        <form id="deleteForm" action="delete.php" method="post">
+                                        <input type="submit" value="Huỷ đơn" onclick="return confirmDelete()" />
+                                    </form>
+                                </div>
+                            </div>
+        
+                        </div>
+                    ';
+                }
+
+                ?>
+                <?= $showdonhang ?>
+                <!-- Đầu tiên, thêm thư viện SweetAlert vào trang của bạn -->
+                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+                <!-- Sử dụng onclick để gọi hàm confirmDelete() khi nút "Xoá" được click -->
+
+                <script>
+                    function confirmDelete() {
+                        // Hiển thị thông báo xác nhận bằng SweetAlert
+                        Swal.fire({
+                            title: 'Bạn có chắc muốn xoá không?',
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonText: 'Có',
+                            cancelButtonText: 'Không'
+                        }).then((result) => {
+                            // Nếu người dùng chọn "Có", submit form
+                            if (result.isConfirmed) {
+                                document.getElementById('deleteForm').submit();
+                            }
+                        });
+
+                        // return false để ngăn chặn hành động mặc định của nút submit
+                        return false;
+                    }
+                </script>
+
+
+
+
             </div>
         </div>
-    </div>
-    <div class=" ct_donhang">
-        <p onclick="cancelOrder(this)">Hủy đơn</p>
     </div>
 </div>
 
@@ -222,34 +226,62 @@
         <div class="ctdonhang__title">
             <p>Hóa đơn hàng hóa</p>
         </div>
+
+        <?php
+            $hienkhachhang='';
+            $tongtienn = 0;
+            $tien = 0;
+            foreach($showbill as $showbilll) {
+                extract($showbilll);
+                foreach($khachhanghien as $khachhanghienn) {
+                    extract($khachhanghienn);
+                    foreach($HienDonHang as $HienDonHangg) {
+                        extract($HienDonHangg);
+                        $tien = $soluong * $dongia;
+                        $tongtienn = $tongtienn + $tien;
+
+                        
+
+                        if($showbilll['id_khachhang'] == $khachhanghienn['id_khachhang'] && $showbilll['id_khachhang'] == $HienDonHangg['id_khachhang']) {
+                            $hienkhachhang = '
+                                <div class="ctdonhang__main-list">
+                                    <div class="ctdonhang__main-item">
+                                        <p>Khách hàng: </p>
+                                        <p>'.$tenkhachhang.'</p>
+                                    </div>
+                                    <div class="ctdonhang__main-item">
+                                        <p>Ngày đặt hàng: </p>
+                                        <p>'.$ngaytaodon.'</p>
+                                    </div>
+                                    <div class="ctdonhang__main-item">
+                                        <p>Số điện thoại: </p>
+                                        <p>'.$sodienthoai.'</p>
+                                    </div>
+                                    <div class="ctdonhang__main-item" style="height: 8vh;">
+                                        <p>Địa chỉ: </p>
+                                        <p>'.$diachi.'</p>
+                                    </div>
+                                    <div class="ctdonhang__main-item">
+                                        <p>Thanh toán: </p>
+                                        <p>'.$hinhthucthanhtoan.'</p>
+                                    </div>
+                                    <div class="ctdonhang__main-item">
+                                        <p>Tổng tiền: </p>
+                                        <p>'.number_format($tongtienn).' vnđ</p>
+                                    </div>
+                                </div>
+                            ';
+                        }
+
+                    }
+
+                }
+                
+            }
+        ?>
         <div class="ctdonhang__main">
             <p class="ctdonhang__main-headding"><i>Thông tin khách hàng</i></p>
-            <div class="ctdonhang__main-list">
-                <div class="ctdonhang__main-item">
-                    <p>Khách hàng: </p>
-                    <p>Nguyễn Văn A</p>
-                </div>
-                <div class="ctdonhang__main-item">
-                    <p>Ngày đặt hàng: </p>
-                    <p>02/03/2024</p>
-                </div>
-                <div class="ctdonhang__main-item">
-                    <p>Số điện thoại: </p>
-                    <p>0333353414</p>
-                </div>
-                <div class="ctdonhang__main-item" style="height: 8vh;">
-                    <p>Địa chỉ: </p>
-                    <p>An Bien</p>
-                </div>
-                <div class="ctdonhang__main-item">
-                    <p>Thanh toán: </p>
-                    <p>Quỵt</p>
-                </div>
-                <div class="ctdonhang__main-item">
-                    <p>Tổng tiền: </p>
-                    <p>0000000đ</p>
-                </div>
-            </div>
+            <?=$hienkhachhang?>
         </div>
 
         <div class="ctdonhang__table">
@@ -273,193 +305,41 @@
                     </div>
                 </div>
 
-                <div class="ctdonhang__table-tr">
-                    <div style="width: 10%" class="ctdonhang__table-item">
-                        <p>1</p>
-                    </div>
-                    <div class="ctdonhang__table-item">
-                        <p>Hang hoa 1</p>
-                    </div>
-                    <div class="ctdonhang__table-item">
-                        <p>x 10</p>
-                    </div>
-                    <div class="ctdonhang__table-item">
-                        <p>20000đ</p>
-                    </div>
-                    <div class="ctdonhang__table-item">
-                        <p>457694500đ </p>
-                    </div>
-                </div>
-                <div class="ctdonhang__table-tr">
-                    <div style="width: 10%" class="ctdonhang__table-item">
-                        <p>1</p>
-                    </div>
-                    <div class="ctdonhang__table-item">
-                        <p>Hang hoa 1</p>
-                    </div>
-                    <div class="ctdonhang__table-item">
-                        <p>x 10</p>
-                    </div>
-                    <div class="ctdonhang__table-item">
-                        <p>20000đ</p>
-                    </div>
-                    <div class="ctdonhang__table-item">
-                        <p>457694500đ </p>
-                    </div>
-                </div>
-                <div class="ctdonhang__table-tr">
-                    <div style="width: 10%" class="ctdonhang__table-item">
-                        <p>1</p>
-                    </div>
-                    <div class="ctdonhang__table-item">
-                        <p>Hang hoa 1</p>
-                    </div>
-                    <div class="ctdonhang__table-item">
-                        <p>x 10</p>
-                    </div>
-                    <div class="ctdonhang__table-item">
-                        <p>20000đ</p>
-                    </div>
-                    <div class="ctdonhang__table-item">
-                        <p>457694500đ </p>
-                    </div>
-                </div>
-                <div class="ctdonhang__table-tr">
-                    <div style="width: 10%" class="ctdonhang__table-item">
-                        <p>1</p>
-                    </div>
-                    <div class="ctdonhang__table-item">
-                        <p>Hang hoa 1</p>
-                    </div>
-                    <div class="ctdonhang__table-item">
-                        <p>x 10</p>
-                    </div>
-                    <div class="ctdonhang__table-item">
-                        <p>20000đ</p>
-                    </div>
-                    <div class="ctdonhang__table-item">
-                        <p>457694500đ </p>
-                    </div>
-                </div>
-                <div class="ctdonhang__table-tr">
-                    <div style="width: 10%" class="ctdonhang__table-item">
-                        <p>1</p>
-                    </div>
-                    <div class="ctdonhang__table-item">
-                        <p>Hang hoa 1</p>
-                    </div>
-                    <div class="ctdonhang__table-item">
-                        <p>x 10</p>
-                    </div>
-                    <div class="ctdonhang__table-item">
-                        <p>20000đ</p>
-                    </div>
-                    <div class="ctdonhang__table-item">
-                        <p>457694500đ </p>
-                    </div>
-                </div>
-                <div class="ctdonhang__table-tr">
-                    <div style="width: 10%" class="ctdonhang__table-item">
-                        <p>1</p>
-                    </div>
-                    <div class="ctdonhang__table-item">
-                        <p>Hang hoa 1</p>
-                    </div>
-                    <div class="ctdonhang__table-item">
-                        <p>x 10</p>
-                    </div>
-                    <div class="ctdonhang__table-item">
-                        <p>20000đ</p>
-                    </div>
-                    <div class="ctdonhang__table-item">
-                        <p>457694500đ </p>
-                    </div>
-                </div>
-                <div class="ctdonhang__table-tr">
-                    <div style="width: 10%" class="ctdonhang__table-item">
-                        <p>1</p>
-                    </div>
-                    <div class="ctdonhang__table-item">
-                        <p>Hang hoa 1</p>
-                    </div>
-                    <div class="ctdonhang__table-item">
-                        <p>x 10</p>
-                    </div>
-                    <div class="ctdonhang__table-item">
-                        <p>20000đ</p>
-                    </div>
-                    <div class="ctdonhang__table-item">
-                        <p>457694500đ </p>
-                    </div>
-                </div>
-                <div class="ctdonhang__table-tr">
-                    <div style="width: 10%" class="ctdonhang__table-item">
-                        <p>1</p>
-                    </div>
-                    <div class="ctdonhang__table-item">
-                        <p>Hang hoa 1</p>
-                    </div>
-                    <div class="ctdonhang__table-item">
-                        <p>x 10</p>
-                    </div>
-                    <div class="ctdonhang__table-item">
-                        <p>20000đ</p>
-                    </div>
-                    <div class="ctdonhang__table-item">
-                        <p>457694500đ </p>
-                    </div>
-                </div>
-                <div class="ctdonhang__table-tr">
-                    <div style="width: 10%" class="ctdonhang__table-item">
-                        <p>1</p>
-                    </div>
-                    <div class="ctdonhang__table-item">
-                        <p>Hang hoa 1</p>
-                    </div>
-                    <div class="ctdonhang__table-item">
-                        <p>x 10</p>
-                    </div>
-                    <div class="ctdonhang__table-item">
-                        <p>20000đ</p>
-                    </div>
-                    <div class="ctdonhang__table-item">
-                        <p>457694500đ </p>
-                    </div>
-                </div>
-                <div class="ctdonhang__table-tr">
-                    <div style="width: 10%" class="ctdonhang__table-item">
-                        <p>1</p>
-                    </div>
-                    <div class="ctdonhang__table-item">
-                        <p>Hang hoa 1</p>
-                    </div>
-                    <div class="ctdonhang__table-item">
-                        <p>x 10</p>
-                    </div>
-                    <div class="ctdonhang__table-item">
-                        <p>20000đ</p>
-                    </div>
-                    <div class="ctdonhang__table-item">
-                        <p>457694500đ </p>
-                    </div>
-                </div>
-                <div class="ctdonhang__table-tr">
-                    <div style="width: 10%" class="ctdonhang__table-item">
-                        <p>1</p>
-                    </div>
-                    <div class="ctdonhang__table-item">
-                        <p>Hang hoa 1</p>
-                    </div>
-                    <div class="ctdonhang__table-item">
-                        <p>x 10</p>
-                    </div>
-                    <div class="ctdonhang__table-item">
-                        <p>20000đ</p>
-                    </div>
-                    <div class="ctdonhang__table-item">
-                        <p>457694500đ </p>
-                    </div>
-                </div>
+                <?php
+                    $hienbill='';
+                    $stt = 1;
+                    $tongtiensp = 0;
+                    $tongtien = 0;
+                    foreach($showbill as $showbilll) {
+                        extract($showbilll);
+                        $tongtiensp = $soluong * $dongia;
+                        $tongtien = $tongtien + $tongtiensp;
+                        $hienbill.='
+                            <div class="ctdonhang__table-tr">
+                                <div style="width: 10%" class="ctdonhang__table-item">
+                                    <p>'.$stt.'</p>
+                                </div>
+                                <div class="ctdonhang__table-item">
+                                    <p>'.$tensanpham.'</p>
+                                </div>
+                                <div class="ctdonhang__table-item">
+                                    <p>'.$soluong.'</p>
+                                </div>
+                                <div class="ctdonhang__table-item">
+                                    <p>'.number_format($dongia).' vnđ</p>
+                                </div>
+                                <div class="ctdonhang__table-item">
+                                    <p>'.number_format($tongtiensp).' vnđ</p>
+                                </div>
+                            </div>
+                        ';
+                        $stt++;
+                    }
+
+                ?>
+                <?=$hienbill?>
+
+   
                 <div class="ctdonhang__table-tr" style=" border-top: 1px solid black;">
                     <div style="width: 10%" class="ctdonhang__table-item">
                         <p>Tổng tiền</p>
@@ -474,7 +354,7 @@
 
                     </div>
                     <div class="ctdonhang__table-item">
-                        <p>457694500đ </p>
+                        <p><?=number_format($tongtien)?> vnđ</p>
                     </div>
                 </div>
 
@@ -498,17 +378,17 @@
         }
     </style>
     <script>
-        document.addEventListener('keydown', function (event) {
+        document.addEventListener('keydown', function(event) {
             if (event.key === 'Enter') {
                 window.print(); // In đơn hàng khi người dùng bấm phím "Enter"
             }
         });
-        document.addEventListener('keydown', function (event) {
+        document.addEventListener('keydown', function(event) {
             if (event.key === 'F2') {
                 window.print(); // ĐÓNG HOÁ ĐƠN
             }
         });
-        document.addEventListener('keydown', function (event) {
+        document.addEventListener('keydown', function(event) {
             if (event.key === 'F1') {
                 window.history.back();
             }
@@ -645,8 +525,8 @@
 
 
 <script>
-    $(document).ready(function () {
-        $(".icon_show_ctkho").click(function (e) {
+    $(document).ready(function() {
+        $(".icon_show_ctkho").click(function(e) {
             $(".ctdonhang").css("display", "none");
 
         });
@@ -655,8 +535,8 @@
 
 <!-- mở hóa đơn  -->
 <script>
-    $(document).ready(function () {
-        $(".ctdonhang__hide").click(function (e) {
+    $(document).ready(function() {
+        $(".ctdonhang__hide").click(function(e) {
             $(".ctdonhang").css("display", "flex");
 
         });
@@ -666,13 +546,13 @@
 
 <!-- -------------------SEARCH---------------------- -->
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
         // Xử lý sự kiện khi người dùng nhập vào ô tìm kiếm
-        $("#searchInput").on("input", function () {
+        $("#searchInput").on("input", function() {
             var searchText = $(this).val().toLowerCase();
 
             // Hiển thị hoặc ẩn các phần tử phù hợp với từ khóa tìm kiếm
-            $(".list-item").each(function () {
+            $(".list-item").each(function() {
                 var itemName = $(this).find(".tendanhmuc p").text().toLowerCase();
                 if (itemName.includes(searchText)) {
                     $(this).show();
