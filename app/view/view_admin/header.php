@@ -69,11 +69,11 @@
                </div>
                <div class="item-con" id="item-con1">
                   <div class="item-con_list" id="">
-                     <a href=""><i class="bi bi-dot"></i>Phân quyền nhân viên</a>
+                     <a href="index.php?act=nguoidung"><i class="bi bi-dot"></i>Người dùng</a>
                   </div>
-                  <div class="item-con_list">
+                  <!-- <div class="item-con_list">
                      <a href=""><i class="bi bi-dot"></i>Lương nhân viên</a>
-                  </div>
+                  </div> -->
                   <!-- <div class="item-con_list">
                      <a href=""><i class="bi bi-dot"></i>Lịch làm</a>
                   </div> -->

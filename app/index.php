@@ -14,7 +14,7 @@ include "../app/view/view_admin/header.php";
 if (isset($_GET['act'])) {
     switch ($_GET['act']) {
 
-            //danh muc
+        //danh muc
 
         case 'danhmuc':
 
@@ -126,7 +126,7 @@ if (isset($_GET['act'])) {
             }
             break;
 
-            // ============================San pham =============================
+        // ============================San pham =============================
 
         case 'sanpham':
 
@@ -378,7 +378,7 @@ if (isset($_GET['act'])) {
             }
             break;
 
-            // note: Kho hang hoa 
+        // note: Kho hang hoa 
         case 'kho':
             $chungtumua = new DungChung;
             $hienchungtumua = $chungtumua->ShowDungChung('chungtumua');
@@ -428,7 +428,7 @@ if (isset($_GET['act'])) {
             break;
 
 
-            // =================== Nhân Viên ================================================
+        // =================== Nhân Viên ================================================
 
         case 'nhanvien':
             echo '<script src="../public/js/danhmuc/danhmuc_add.js"></script>';
@@ -596,7 +596,7 @@ if (isset($_GET['act'])) {
 
 
 
-            //============ Chức vụ nhân viên ================
+        //============ Chức vụ nhân viên ================
         case 'chucvunhanvien':
             // ==========load lai trang ===========
 
@@ -650,7 +650,7 @@ if (isset($_GET['act'])) {
 
             break;
 
-            // chức vụ nhân viên 
+        // chức vụ nhân viên 
         case 'chucvu':
 
             $phanquyen = new DungChung;
@@ -742,7 +742,7 @@ if (isset($_GET['act'])) {
             }
             break;
 
-            //================ Lich Lam =======================
+        //================ Lich Lam =======================
 
         case 'lichlam':
 
@@ -854,7 +854,7 @@ if (isset($_GET['act'])) {
             break;
 
 
-            //=====Luong nhân viên=================
+        //=====Luong nhân viên=================
         case 'luongnhanvien':
             $startOfMonth = date("Y-m-01");
             $endOfMonth = date("Y-m-t");
@@ -1120,7 +1120,7 @@ if (isset($_GET['act'])) {
                 require_once "./view/nhanvien/luong.php";
             }
             break;
-            // note: Quan ly don hang 
+        // note: Quan ly don hang 
 
         case 'listdonhang':
             $donhang = new DungChung;
@@ -1156,6 +1156,39 @@ if (isset($_GET['act'])) {
                 require_once "./view/donhang/listdonhang.php";
             }
             break;
+
+        // todo:  Nguoi dung ====================================================================
+
+        case 'nguoidung':
+            $donhang = new DungChung;
+            $HienDonHang = $donhang->ShowDungChung('donhang');
+            echo '<script src="../public/js/danhmuc/danhmuc_add.js"></>';
+            echo '<script src="../public/js/sanpham/sanpham.js"></script>';
+            require_once "./view/nguoidung/nguoidung.php";
+            break;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 } else {
 
