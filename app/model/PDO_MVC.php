@@ -115,7 +115,8 @@ class HangHoa
       $this->hanghoa->get_all($sql);
    }
 
-   function HangHoaTheoThang($startOfMonth, $endOfMonth) {
+   function HangHoaTheoThang($startOfMonth, $endOfMonth)
+   {
       try {
          // Chuẩn bị truy vấn SQL với tham số ràng buộc
          $sql = "SELECT * FROM hanghoa WHERE ngay BETWEEN :startOfMonth AND :endOfMonth";
@@ -125,19 +126,19 @@ class HangHoa
 
          // Thực thi truy vấn
          $stmt->execute();
-         
+
          // Lấy kết quả
          $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-         
+
          return $result;
-      } catch(PDOException $e) {
+      } catch (PDOException $e) {
          // Xử lý ngoại lệ nếu có lỗi
          echo "Lỗi: " . $e->getMessage();
       }
-
    }
 
-   function HangHoaTheoNgayKho($ngaythem) {
+   function HangHoaTheoNgayKho($ngaythem)
+   {
       $sql = "SELECT * FROM hanghoa WHERE ngaythem=" . $ngaythem;
       return $this->hanghoa->get_all($sql);
    }
@@ -212,12 +213,12 @@ class NhanVien
 
          // Thực thi truy vấn
          $stmt->execute();
-         
+
          // Lấy kết quả
          $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-         
+
          return $result;
-      } catch(PDOException $e) {
+      } catch (PDOException $e) {
          // Xử lý ngoại lệ nếu có lỗi
          echo "Lỗi: " . $e->getMessage();
       }
@@ -229,10 +230,10 @@ class NhanVien
       return $this->nhanvien->get_all($sql);
    }
 
-   function AddTienThuong($nhanvienId, $sotienthuong, $noidungthuong) {
+   function AddTienThuong($nhanvienId, $sotienthuong, $noidungthuong)
+   {
       $sql = "INSERT INTO thuongphat (noidungthuong, sotienthuong, hiden, id_nhanvien) VALUES ('" . $noidungthuong . "', '" . $sotienthuong . "', 0, '" . $nhanvienId . "')";
       $this->nhanvien->get_all($sql);
-
    }
    function getByIdPhat()
    {
@@ -240,22 +241,46 @@ class NhanVien
       return $this->nhanvien->get_all($sql);
    }
 
-   function AddTienPhat($nhanvienId, $sotienthuong, $noidungthuong) {
+   function AddTienPhat($nhanvienId, $sotienthuong, $noidungthuong)
+   {
       $sql = "INSERT INTO thuongphat (noidungphat, sotienphat, hiden, id_nhanvien) VALUES ('" . $noidungthuong . "', '" . $sotienthuong . "', 1, '" . $nhanvienId . "')";
       $this->nhanvien->get_all($sql);
-
    }
 }
 
-class DonHang {
+class DonHang
+{
    private $donhang;
    function __construct()
    {
-      $this->donhang= new DatabaseModel;
+      $this->donhang = new DatabaseModel;
    }
 
-   function hoadontheoId () {
+   function hoadontheoId()
+   {
       $sql = "SELECT * FROM thuongphat WHERE hiden = 0";
       return $this->donhang->get_all($sql);
+   }
+}
+class KhachHang
+{
+   private $khachhang;
+   function __construct()
+   {
+      $this->khachhang = new DatabaseModel;
+   }
+
+   function updatekhachhang($email, $sodienthoai, $matkhau, $idkhachhang)
+   {
+
+      $sql = "UPDATE khachhang SET email='" . $email . "', sodienthoai='" . $sodienthoai . "', matkhau='" . $matkhau . "' WHERE id_khachhang=" . $idkhachhang;
+      $this->khachhang->get_all($sql);
+   }
+   
+   function UpdateAbilityKhachHang($abl, $idkhachhang) {
+      $sql = "UPDATE khachhang SET ability='" . $abl . "' WHERE id_khachhang=" . $idkhachhang;
+      $this->khachhang->get_all($sql);
+
+
    }
 }

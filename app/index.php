@@ -14,7 +14,7 @@ include "../app/view/view_admin/header.php";
 if (isset($_GET['act'])) {
     switch ($_GET['act']) {
 
-        //danh muc
+            //danh muc
 
         case 'danhmuc':
 
@@ -126,7 +126,7 @@ if (isset($_GET['act'])) {
             }
             break;
 
-        // ============================San pham =============================
+            // ============================San pham =============================
 
         case 'sanpham':
 
@@ -378,7 +378,7 @@ if (isset($_GET['act'])) {
             }
             break;
 
-        // note: Kho hang hoa 
+            // note: Kho hang hoa 
         case 'kho':
             $chungtumua = new DungChung;
             $hienchungtumua = $chungtumua->ShowDungChung('chungtumua');
@@ -428,7 +428,7 @@ if (isset($_GET['act'])) {
             break;
 
 
-        // =================== Nhân Viên ================================================
+            // =================== Nhân Viên ================================================
 
         case 'nhanvien':
             echo '<script src="../public/js/danhmuc/danhmuc_add.js"></script>';
@@ -596,7 +596,7 @@ if (isset($_GET['act'])) {
 
 
 
-        //============ Chức vụ nhân viên ================
+            //============ Chức vụ nhân viên ================
         case 'chucvunhanvien':
             // ==========load lai trang ===========
 
@@ -650,7 +650,7 @@ if (isset($_GET['act'])) {
 
             break;
 
-        // chức vụ nhân viên 
+            // chức vụ nhân viên 
         case 'chucvu':
 
             $phanquyen = new DungChung;
@@ -742,7 +742,7 @@ if (isset($_GET['act'])) {
             }
             break;
 
-        //================ Lich Lam =======================
+            //================ Lich Lam =======================
 
         case 'lichlam':
 
@@ -854,7 +854,7 @@ if (isset($_GET['act'])) {
             break;
 
 
-        //=====Luong nhân viên=================
+            //=====Luong nhân viên=================
         case 'luongnhanvien':
             $startOfMonth = date("Y-m-01");
             $endOfMonth = date("Y-m-t");
@@ -1120,7 +1120,7 @@ if (isset($_GET['act'])) {
                 require_once "./view/nhanvien/luong.php";
             }
             break;
-        // note: Quan ly don hang 
+            // note: Quan ly don hang 
 
         case 'listdonhang':
             $donhang = new DungChung;
@@ -1157,38 +1157,88 @@ if (isset($_GET['act'])) {
             }
             break;
 
-        // todo:  Nguoi dung ====================================================================
+            // todo:  Nguoi dung ====================================================================
 
         case 'nguoidung':
-            $donhang = new DungChung;
-            $HienDonHang = $donhang->ShowDungChung('donhang');
-            echo '<script src="../public/js/danhmuc/danhmuc_add.js"></>';
-            echo '<script src="../public/js/sanpham/sanpham.js"></script>';
+            $khachhang = new DungChung;
+            $HienKhachHang = $khachhang->ShowDungChung('khachhang');
             require_once "./view/nguoidung/nguoidung.php";
             break;
 
+        case 'updatekhachhang':
+            if (isset($_GET['idkhachhang']) && $_GET['idkhachhang']) {
+                $idkhachhang = $_GET['idkhachhang'];
+                $khachhangid = new DungChung;
+                $HienKhachHangId = $khachhangid->getByIdAll('khachhang', 'id_khachhang', $idkhachhang);
 
+                echo '
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            // Tự động hiển thị phần tử .AddDanhMuc khi trang được tải
+                            document.querySelector(".AddDanhMuc").style.display = "flex";
 
+                            // Thêm sự kiện click cho nút .danhmnuc_close_add
+                            document.querySelector(".danhmnuc_close_add").addEventListener("click", function() {
+                                // Lấy phần tử cha và ẩn nó đi
+                                document.querySelector(".AddDanhMuc").style.display = "none";
+                            });
+                        });
+                    </script>
+                ';
+                $khachhang = new DungChung;
+                $HienKhachHang = $khachhang->ShowDungChung('khachhang');
+                require_once "./view/nguoidung/nguoidung.php";
+            }
 
+            if (isset($_POST['update_khachhang']) && $_POST['update_khachhang']) {
+                $idkhachhang = $_POST['idkhachhang'];
+                $email = $_POST['email'];
+                $sodienthoai = $_POST['sodienthoai'];
+                $matkhau = $_POST['matkhau'];
 
+                $updatekhachhang = new KhachHang;
+                $updatekhachhang->updatekhachhang($email, $sodienthoai, $matkhau, $idkhachhang);
 
+                $khachhang = new DungChung;
+                $HienKhachHang = $khachhang->ShowDungChung('khachhang');
+                require_once "./view/nguoidung/nguoidung.php";
+            }
 
+            break;
 
+        case 'updateabilitykhachhang':
+            if (isset($_GET['idkhachhang']) && $_GET['idkhachhang']) {
+                $idkhachhang = $_GET['idkhachhang'];
+                $khachhangid = new DungChung;
+                $HienKhachHangId = $khachhangid->getByIdAll('khachhang', 'id_khachhang', $idkhachhang);
 
+                if ($HienKhachHangId[0]['ability'] == 0) {
+                    $update = new KhachHang;
+                    $update->UpdateAbilityKhachHang(1, $idkhachhang);
+                } else {
 
+                    $update = new KhachHang;
+                    $update->UpdateAbilityKhachHang(0, $idkhachhang);
+                }
 
+                $khachhang = new DungChung;
+                $HienKhachHang = $khachhang->ShowDungChung('khachhang');
+                require_once "./view/nguoidung/nguoidung.php";
+            }
+            break;
 
+        case 'deletekhachhang':
+            if (isset($_GET['idkhachhang']) && $_GET['idkhachhang']) {
+                $idkhachhang = $_GET['idkhachhang'];
+                $delete = new DungChung;
+                $delete->DeleteAll('khachhang', 'id_khachhang', $idkhachhang);
 
+                $khachhang = new DungChung;
+                $HienKhachHang = $khachhang->ShowDungChung('khachhang');
+                require_once "./view/nguoidung/nguoidung.php";
+            }
 
-
-
-
-
-
-
-
-
-
+            break;
     }
 } else {
 
