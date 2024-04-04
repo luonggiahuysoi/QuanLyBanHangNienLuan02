@@ -55,3 +55,15 @@ var countdown = setInterval(function () {
         document.getElementById('countdown').innerHTML = hours + ' giờ ' + minutes + ' phút ' + seconds + ' giây';
     }
 }, 1000);
+
+
+
+// chuyen anh 
+
+function changeImage(img) {
+    img.src = "./public/img/aotheteho.jpg";
+}
+
+function restoreImage(img) {
+    img.src = "./public/img/giay.jpg"; // Đường dẫn ban đầu của ảnh
+}
