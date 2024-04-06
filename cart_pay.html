@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- css  -->
+    <link rel="stylesheet" href="public/css/style.css" />
+    <link rel="stylesheet" href="public/css/base.css">
+    <link rel="stylesheet" href="public/css/cart.css">
+
+    <!-- bootstrap icon  -->
+    <link rel="stylesheet" href="public/lib/themify-icons-font/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="public/lib/fontawesome-free-6.5.1-web/fontawesome-free-6.5.1-web/css/all.min.css">
+
+    <!-- hover-master  -->
+    <link rel="stylesheet" href="public/lib/Hover-master/css/hover-min.css">
+    <title>Cart-Pay</title>
+</head>
+
+<body>
+    <header id="header">
+        <div class="header__top">
+            <div class="header-logo">
+                <img src="./public/img/logo.png" alt="">
+            </div>
+            <div class="header-search">
+                <div class="input-container">
+                    <input type="text" placeholder="Tìm kiếm sản phẩm">
+                    <button class="button">Search</button>
+                </div>
+            </div>
+            <div class="header-accout">
+                <i class="bi bi-person-circle"></i>
+                <a href="">Đăng nhập</a>
+                <p>/</p>
+                <a href="">Đăng ký</a>
+            </div>
+            <div class="header-cart">
+                <i class="bi bi-bag-plus"></i>
+                <a href="">Giỏ hàng</a>
+            </div>
+        </div>
+
+        <div class="header__bottom">
+            <div class="header__bottom-content">
+                <div class="header__bottom-list">
+                    <a href="">Trang chủ</a>
+                </div>
+                <div class="header__bottom-list">
+                    <a href="">Giới thiệu</a>
+                </div>
+                <div class="header__bottom-list">
+                    <a href="">Sản phẩm <i class="bi bi-chevron-down"></i>
+
+
+                        <div class="header__bottom-children">
+                            <div class="header__children-list">
+                                <h2>Quần</h2>
+                                <div class="header__children-item">
+                                    <a href="">Sản phẩm 1</a>
+                                    <a href="">Sản phẩm 2</a>
+                                    <a href="">Sản phẩm 3</a>
+                                </div>
+                            </div>
+
+                            <div class="header__children-list">
+                                <h2>Áo</h2>
+                                <div class="header__children-item">
+                                    <a href="">Sản phẩm 1</a>
+                                    <a href="">Sản phẩm 2</a>
+                                    <a href="">Sản phẩm 3</a>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="header__bottom-list">
+                    <a href="">Tin tức</a>
+                </div>
+                <div class="header__bottom-list">
+                    <a href="">Liên hệ</a>
+                </div>
+                <div class="header__bottom-list">
+                    <a href="">Hệ thống cửa hàng</a>
+                </div>
+            </div>
+
+
+            <div class="header__bottom-hottile">
+                <a href="">
+                    <i class="bi bi-headset"></i>
+                    <p>Holine: 09988323</p>
+                </a>
+            </div>
+        </div>
+    </header>
+    <!--=============== END: HEADER  =============-->
+
+
+
+
+
+    <main class="main-cart">
+        <h2 class="cart-heading">Giỏ hàng của bạn</h2>
+        <div class="main__cart-icon">
+            <i style="color: #3333;" class="bi bi-cart-fill"></i>
+            <p class="cart-line"></p>
+            <i style="color: #15410d;" class="bi bi-geo-alt-fill"></i>
+            <p class="cart-line"></p>
+            <i style="color: #3333;" class="bi bi-credit-card-2-front"></i>
+        </div>
+        <div class="cart__pay-list">
+            <div class="cart__pay-list--left">
+                <h3>Vui lòng chọn địa chỉ giao hàng *</h3>
+                <div class="cart__pay-account">
+                    <a href="" class="cart__pay-login">
+                        <i class="bi bi-box-arrow-in-right"></i>
+                        <p>Đăng nhập khi đã có tài khoản</p>
+                        <input type="button" value="Đăng nhập">
+                    </a>
+                    <a href="" class="cart__pay-sigin">
+                        <p>Đăng ký bên dưới để tạo tài khoản</p>
+                    </a>
+                </div>
+                <div class="cartpay-form">
+                    <div class="cartpay-name">
+                        <input type="text" value="" placeholder="Nhập họ tên">
+                        <input type="text" value="" placeholder="Nhập số điện thoại">
+                    </div>
+                    <div class="cartpay-address">
+                        <input type="text" value="" placeholder="Tỉnh/thành phố">
+                        <input type="text" value="" placeholder="Quận/huyện">
+                    </div>
+
+                    <input class="caerpay__address-all" type="text" placeholder="Địa chỉ">
+
+                    <div class="cartpay-btn">
+                        <input type="button" value="THANH TOÁN VÀ GIAO HÀNG">
+                    </div>
+                </div>
+            </div>
+
+            <div class="cart__pay-list--right">
+                <div class="cart__pay-table--th">
+                    <div class="cart__pay-table--name">
+                        <p>Tên sản phẩm</p>
+                    </div>
+                    <div class="cart__pay-table--quanity">
+                        <p>Số lượng</p>
+                    </div>
+                    <div class="cart__pay-table--total">
+                        <p>Thành tiền</p>
+                    </div>
+                </div>
+
+                <div class="cart__pay-table--tr">
+                    <div class="cart__pay-table--name">
+                        <p>Balo thời trang</p>
+                    </div>
+                    <div class="cart__pay-table--quanity">
+                        <p>2</p>
+                    </div>
+                    <div class="cart__pay-table--total">
+                        <p>5550 <sup>đ</sup></p>
+                    </div>
+                </div>
+
+
+                <!-- ----------note: Tổng tiền -------- -->
+                <div class="cart__pay-table--th cart__pay-line">
+                    <div class="cart__pay-table--name">
+                        <p>Tổng tiền hàng</p>
+                    </div>
+                    <div class="cart__pay-table--quanity">
+                        <p></p>
+                    </div>
+                    <div class="cart__pay-table--total">
+                        <p>10000 <sup>đ</sup></p>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </main>
+    <!--================- END: MAIN  ===================-->
+
+
+    <footer>
+        <div class="footer-main">
+            <div class="footer__main-infor">
+                <img src="public/img/logo.png" alt="">
+                <p class="footer-address"><i class="bi bi-geo-alt"></i>Địa chỉ: số 32a Hưng Phú, Cái Răng, CT</p>
+                <p class="footer-hotline"><i class="bi bi-telephone"></i>Hotline: 09837637</p>
+                <p class="footer-email"><i class="bi bi-envelope"></i>Email: Iloveshop@gmail.com</p>
+                <div class="footer-network">
+                    <img src="public/img/facebook.png" alt="">
+                    <img src="public/img/youtobe.png" alt="">
+                    <img src="public/img/instagram.jpg" alt="">
+                </div>
+            </div>
+
+            <div class="footer__main-help">
+                <h3>Hỗ trợ khách hàng</h3>
+                <ul class="footer__main-help--list">
+                    <li>Hệ thống cửa hàng</li>
+                    <li>Câu hỏi thường gặp</li>
+                    <li>Kiểm tra hàng</li>
+                    <li>Liên hệ</li>
+                </ul>
+            </div>
+
+            <div class="footer__main-policy">
+                <h3>Chính sách hỗ trợ</h3>
+                <ul class="footer__main-help--list">
+                    <li>Chính sách bảo hành</li>
+                    <li>Chính sách đổi trả</li>
+                    <li>Chính sách bảo mật</li>
+                </ul>
+            </div>
+
+            <div class="footer__main-sale">
+                <h2>Đăng ký nhận ưu đãi</h2>
+                <p>Bạn muốn nhận khuyến mãi đặc biệt? Đăng kí tham gia ngay cộng động hơn 68.000+ người theo dõi của
+                    chúng tôi để cập nhật khuyến mãi ngay lập tức</p>
+
+                <div class="footer__main-sale--email">
+                    <input type="email" placeholder="Nhập email nhận ưu đãi">
+                    <p>Đăng ký</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-end">
+            <p>© Bản quyền thuộc về EGANY | Cung cấp bởi Sapo</p>
+        </div>
+
+    </footer>
+
+    <!-- js  -->
+    <script src="./public/js/script.js"></script>
+</body>
+
+</html>

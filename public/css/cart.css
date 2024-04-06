@@ -1,0 +1,568 @@
+/* note:   
+
+1. Cart (Giỏ hàng)
+2. Cart pay (Thanh toán sản phẩm trong giỏ)
+3. payment methods (Phương thức thanht toán)
+
+*/
+
+/* 1 =====================START: cart =================== */
+footer {
+    margin-top: 20%;
+}
+
+.main-cart {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.main__cart-icon {
+    display: flex;
+    /* justify-content: space-around; */
+    align-items: center;
+    width: 80%;
+    font-size: 2.5rem;
+    left: 50%;
+    transform: translateX(30%);
+}
+
+.cart-line {
+    width: 400px;
+    height: 1px;
+    background-color: #808080;
+}
+
+.cart-heading {
+    font-size: 3rem;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    margin-top: 2%;
+}
+
+.cart-list {
+    padding: 0 20px;
+    margin-top: 2%;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+}
+
+.cart__list-left {
+    width: 55%;
+}
+
+.cart__table-th {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    border-bottom: 1px solid #4444;
+    height: 60px;
+    background-color: #4444;
+
+    font-size: 1.2rem;
+    font-weight: 550;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.cart__table-image {
+    width: 18%;
+
+}
+
+.cart__table-image img {
+    width: 80%;
+    height: 80%;
+}
+
+.cart__table-name {
+    width: 18%;
+}
+
+.cart__table-quanity {
+    width: 18%;
+
+}
+
+.cart__table-price {
+    width: 18%;
+
+}
+
+.cart__table-delete {
+    width: 18%;
+
+}
+
+.cart__table-tr {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    margin: 10px 0;
+
+    font-size: 1.4rem;
+    /* font-weight: 550; */
+    font-family: Arial, Helvetica, sans-serif;
+    border-bottom: 1px solid #5555;
+}
+
+/* end cart left - */
+
+.cart__list-right {
+    width: 35%;
+}
+
+.cart__list-right h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 550;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #555;
+}
+
+.cart__list-right--total {
+    margin-top: 5%;
+    border-top: 1px solid #4444;
+    padding: 20px 0;
+}
+
+.cart__list-right--total---quanyti {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cart__list-right--total---quanyti p:nth-child(1),
+.cart__list-right--total---quanyti p:nth-child(2) {
+    font-size: 1.8rem;
+    font-weight: 500;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #555;
+}
+
+.cart__list-right--total---price {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2%;
+
+}
+
+.cart__list-right--total---price p:nth-child(1),
+.cart__list-right--total---price p:nth-child(2) {
+    font-size: 1.8rem;
+    font-weight: 500;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #555;
+}
+
+.cart__list-right--btn {
+    margin-top: 5%;
+    display: flex;
+    justify-content: space-around;
+    border-top: 1px solid #4444;
+    padding: 20px 0;
+}
+
+.cart__list-right--btn a {
+    color: black;
+    font-size: 1.3rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    border: 1px solid black;
+    padding: 10px 20px;
+}
+
+.cart__list-right--btn input {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #fff;
+    background-color: black;
+    font-size: 1.3rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    border: 1px solid black;
+    padding: 10px 20px;
+}
+
+.cart__list-right--btn input:hover,
+.cart__list-right--btn a:hover {
+    background-color: #4444;
+    color: black;
+}
+
+/* 1---------------END:  CART MAN ------------- */
+
+
+
+/*  2 ----------------- START: CART PAY ---------------- */
+
+.cart__pay-list {
+    margin-top: 3%;
+    display: flex;
+}
+
+.cart__pay-list--left {
+    margin-left: 5%;
+    width: 50%;
+    border-right: 2px solid #5555;
+}
+
+.cart__pay-list--left h3 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.4rem;
+    font-weight: 550;
+    color: black;
+}
+
+.cartpay-form {}
+
+.cartpay-name {
+    display: flex;
+}
+
+.cartpay-name input {
+    width: 300px;
+    height: 30px;
+    padding: 5px 10px;
+    margin: 5px 10px;
+    border: 1px solid black;
+    outline: none;
+    font-size: 1.3rem;
+}
+
+.cartpay-address {
+    display: flex;
+}
+
+.cartpay-address input {
+    width: 300px;
+    height: 30px;
+    padding: 5px 10px;
+    margin: 5px 10px;
+    border: 1px solid black;
+    outline: none;
+    font-size: 1.3rem;
+}
+
+.caerpay__address-all {
+    width: 620px;
+    height: 30px;
+    padding: 5px 10px;
+    margin: 5px 10px;
+    border: 1px solid black;
+    outline: none;
+    font-size: 1.3rem;
+}
+
+.cartpay-btn {
+    display: flex;
+    margin-left: 25%;
+    margin-top: 3%;
+    align-items: center;
+}
+
+.cartpay-btn input {
+    font-size: 1.3rem;
+    font-weight: 550;
+    width: 200px;
+    height: 40px;
+    border: 1px solid black;
+}
+
+.cartpay-btn input:hover {
+    background-color: black;
+    color: #fff;
+}
+
+.cart__pay-list--right {
+    width: 40%;
+}
+
+.cart__pay-list--right {
+    margin-left: 2%;
+}
+
+.cart__pay-table--th {
+    height: 50px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-weight: 550;
+    font-size: 1.4rem;
+    font-family: Arial, Helvetica, sans-serif;
+
+    border-bottom: 1px solid #4444;
+}
+
+.cart__pay-table--tr {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    /* font-weight: 550; */
+    font-size: 1.4rem;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.cart__pay-table--name {}
+
+.cart__pay-table--quanity {
+    text-align: center;
+}
+
+.cart__pay-table--total {}
+
+.cart__pay-line {
+    border-top: 1px solid #4444;
+}
+
+/* todo: Đăng ky TK  */
+
+.cart__pay-account {}
+
+.cart__pay-login {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+
+    color: black;
+    font-size: 1.3rem;
+    gap: 15px;
+}
+
+.cart__pay-login i {
+    font-size: 2rem;
+}
+
+.cart__pay-login input {
+    outline: none;
+    border: 1px solid black;
+    color: black;
+    padding: 6px 10px;
+    font-weight: 550;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+}
+
+.cart__pay-login input:hover {
+    background-color: black;
+    color: #fff;
+}
+
+.cart__pay-sigin {
+    color: black;
+    font-size: 1.3rem;
+}
+
+.cart__pay-sigin p {
+    margin: 1% 0 2% 3.5%;
+}
+
+/*  2 ----------------- END: CART PAY ---------------- */
+
+
+
+
+/* 3 --------- END:  payment methods ---------- */
+
+.main-payment {
+    margin-top: 3%;
+}
+
+.payment-methods {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+
+    margin-left: 10%;
+    margin-top: 3%;
+}
+
+.payment-methods p {
+    font-size: 2.5rem;
+    font-weight: 550;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.payment__list {
+    margin-top: 3%;
+}
+
+select {
+    width: 400px;
+    height: 40px;
+    font-size: 2rem;
+
+    /* styling */
+    background-color: white;
+    border: thin solid blue;
+    border-radius: 4px;
+    display: inline-block;
+    font: inherit;
+    line-height: 1.5em;
+    padding: 0.5em 3.5em 0.5em 1em;
+
+    /* reset */
+
+    margin: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+
+/* arrows */
+
+select.classic {
+    background-image:
+        linear-gradient(45deg, transparent 50%, blue 50%),
+        linear-gradient(135deg, blue 50%, transparent 50%),
+        linear-gradient(to right, skyblue, skyblue);
+    background-position:
+        calc(100% - 20px) calc(1em + 2px),
+        calc(100% - 15px) calc(1em + 2px),
+        100% 0;
+    background-size:
+        5px 5px,
+        5px 5px,
+        3em 3em;
+    background-repeat: no-repeat;
+
+    font-size: 1.5rem;
+}
+
+select.classic:focus {
+    background-image:
+        linear-gradient(45deg, white 50%, transparent 50%),
+        linear-gradient(135deg, transparent 50%, white 50%),
+        linear-gradient(to right, gray, gray);
+    background-position:
+        calc(100% - 15px) 1em,
+        calc(100% - 20px) 1em,
+        100% 0;
+    background-size:
+        5px 5px,
+        5px 5px,
+        3em 3em;
+    background-repeat: no-repeat;
+    border-color: grey;
+    outline: 0;
+}
+
+
+.payment__voucher {
+    margin-top: 3%;
+}
+
+.payment-btn {
+    width: 200px;
+    height: 40px;
+    font-size: 1.4rem;
+    font-weight: 550;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 6px 12px;
+    color: black;
+    outline: none;
+    border: 1px solid black;
+    text-align: center;
+    margin-top: 2%;
+    cursor: pointer;
+}
+
+.payment-btn:hover {
+    background-color: black;
+    color: white;
+}
+
+.payment-total {
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+    font-size: 1.4rem;
+    font-weight: 500;
+    gap: 20px;
+    height: 40px;
+    line-height: 40px;
+
+    margin-top: 3%;
+}
+
+.payment-total p {
+    display: flex;
+    font-size: 2rem;
+    font-weight: 550;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/* 3 --------- END:  payment methods ---------- */
+
+
+/* 4--------------- END:  Complete --------------------- */
+
+.complete {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    line-height: 40px;
+}
+
+.complete h2 {
+    font-size: 3.5rem;
+    font-weight: 550;
+    color: #186F65;
+    text-transform: uppercase;
+    margin: 4% 0 1% 0;
+    border-bottom: 1px solid #4444;
+    padding: 10px 0;
+}
+
+.complete p {
+    font-size: 2rem;
+    font-weight: 400;
+    color: black;
+}
+
+.complete-btn {
+    margin: 2% 0;
+}
+
+.complete-btn input {
+    outline: none;
+    border: 1px solid black;
+    color: black;
+    padding: 6px 15px;
+    font-size: 1.3rem;
+    font-weight: 550;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+.complete-btn input:hover{
+    background-color: black;
+    color: white;
+}
+
+.complete-end {
+    border-top: 1px solid #4444;
+    padding: 20px 0;
+}
+
+.comolace-bold{
+    font-weight: 600;
+    color: red;
+    /* font-size: ; */
+}

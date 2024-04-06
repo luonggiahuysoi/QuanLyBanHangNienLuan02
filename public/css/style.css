@@ -150,6 +150,7 @@ header {
     justify-content: space-around;
     align-items: center;
     background-color: #272829;
+    font-family: "Poppins", sans-serif;
 }
 
 .header__bottom-content {
@@ -216,8 +217,11 @@ header {
 }
 
 .header__children-list h2 {
+    width: 100%;
     text-align: center;
-    color: black;
+    color: #ececec;
+    background-color: var(--bg-color);
+    border-radius: 10px;
 }
 
 .header__children-item {
@@ -977,7 +981,7 @@ header {
 }
 
 .main__product-content--full {
-    height: 100%;
+    height: 700px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -988,18 +992,22 @@ header {
 .main__product-content--full---main {
     font-size: 1.5rem;
     text-align: center;
+    width: 100%;
     height: 100%;
+    background-color: rgb(255, 255, 255);
 }
 
 .main__product-content--full---main>p {
     font-size: 2.4rem;
     font-weight: 550;
+    margin-top: 40px;
 }
 
 .full-img {
-    width: 100%;
-    height: 600px;
-
+    text-align: center;
+    width: 90%;
+    height: 400px;
+    margin-left: 5%;
 }
 
 .main__product-full--price {
@@ -1011,14 +1019,22 @@ header {
 .main__product-full>p {
     color: red;
     font-weight: 550;
+    font-size: 2rem;
 }
 
 .main__product-full>p:nth-child(2) {
     color: rgb(134, 134, 134);
     font-weight: 500;
+    font-size: 1.5rem;
 }
 
-.main__product-full {}
+.main__product-full {
+    padding: 0 20px;
+}
+
+.main__product-full--sale {
+    margin: 0 30px;
+}
 
 .main__product-full--sale p {
     font-size: 1.5rem;
@@ -1029,7 +1045,9 @@ header {
     border-radius: 20px;
 }
 
-.main__product-full--addcart {}
+.main__product-full--addcart {
+    margin-top: 80px;
+}
 
 .main__product-full--addcart a {
     padding: 10px 20px;
@@ -1040,7 +1058,10 @@ header {
 }
 
 
-
+.main__product-full--addcart a:hover {
+    color: black;
+    background-color: var(--bg-color);
+}
 
 
 
@@ -1049,6 +1070,268 @@ header {
 
 
 
+.main-news {
+    margin-top: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.main__news-title {
+    width: 80%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.main__news-title-left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.main__news-title-left p:nth-child(1) {
+    color: blue;
+    font-size: 3rem;
+    font-weight: 500;
+}
+
+.main__news-title-left p:nth-child(2) {
+    font-size: 1.5rem;
+    color: #4444;
+}
+
+.main__news-title-left p:nth-child(3) {
+    font-size: 1.5rem;
+}
+
+.main__news-title-right {}
+
+.main__news-title-right a {
+    color: black;
+    font-size: 1.5rem;
+}
+
+.main__news-title-right a:hover {
+    color: var(--bg-color);
+}
+
+.main__news-main {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    margin-top: 3%;
+    /* background-color: red; */
+}
+
+.main__news-item {
+    width: 24%;
+    height: 480px;
+    background-color: white;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    border-radius: 10px;
+}
+
+.main__news-item img {
+    width: 90%;
+    height: 250px;
+    margin-left: 4%;
+    margin-top: 2%;
+}
+
+.main__news-item-heading {
+    font-size: 1.3rem;
+    font-weight: 550;
+    padding: 0 5px;
+    margin-top: 15%;
+}
+
+.main__news-item-title {
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 0 5px;
+    color: #707070;
+    margin-top: 2%;
+}
+
+.main__news-item--day {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5%;
+    padding: 0 10px;
+}
+
+.main__news-item--day p {
+    color: #818181;
+    font-size: 1.2rem;
+}
+
+.main__news-item--day a {
+    font-size: 1.3rem;
+    font-weight: 550;
+    color: red;
+    padding: 10px 15px;
+    border-radius: 20px;
+    border: 1px solid red;
+}
+
+.main__news-item--day a:hover {
+    color: white;
+    background-color: red;
+}
+
+
+/* todo: end main news  */
+
 
 
 /* ==========================END: MAIN ======================= */
+
+
+/*=========== START: FOOTER ========= */
+footer {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.footer-main {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    margin-top: 10%;
+    display: flex;
+}
+
+.footer__main-infor {
+    width: 25%;
+    margin-top: 2%;
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 30px;
+    padding: 0 0 0 20px;
+}
+
+.footer__main-infor img {
+    width: 100px;
+    height: 100px;
+}
+
+.footer-address {
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.footer-address i,
+.footer-email i,
+.footer-hotline i {
+    margin-right: 10px;
+}
+
+.footer-network {
+    display: flex;
+}
+
+.footer-network img {
+    width: 50px;
+    height: 50px;
+}
+
+.footer__main-help {
+    width: 25%;
+    margin-top: 2%;
+
+}
+
+.footer__main-help h3,
+.footer__main-policy h3 {
+    font-size: 1.8rem;
+    font-weight: 550;
+}
+
+.footer__main-help--list {
+    line-height: 30px;
+}
+
+.footer__main-help--list li {
+    font-size: 1.5rem;
+    list-style: circle;
+}
+
+.footer__main-help--list li:hover {
+    color: var(--bg-color);
+    scale: 1.1;
+    cursor: pointer;
+}
+
+.footer__main-policy {
+    width: 25%;
+    margin-top: 2%;
+
+}
+
+
+.footer__main-sale {
+    width: 25%;
+    margin-top: 2%;
+    padding-right: 20px;
+}
+
+.footer__main-sale h2 {
+    font-size: 1.8rem;
+    font-weight: 550;
+}
+
+.footer__main-sale p {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.footer__main-sale--email input {
+    width: 200px;
+    height: 40px;
+    outline: none;
+    border: 2px solid var(--bg-color);
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: 1.1rem;
+    margin: 2% 0 0 4%;
+}
+
+.footer__main-sale--email {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer__main-sale--email p {
+    font-size: 1.2rem;
+    font-weight: 550;
+    color: #fff;
+    background-color: red;
+    padding: 10px 10px;
+    border-radius: 10px;
+    margin-left: 1%;
+}
+
+.footer__main-sale--email p:hover {
+    opacity: 0.6;
+}
+
+.footer-end {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    font-size: 1.3rem;
+    border-top: 1px solid #4444;
+    margin-top: 15px;
+}
