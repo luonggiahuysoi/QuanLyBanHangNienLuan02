@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- css  -->
+    <link rel="stylesheet" href="public/css/style.css" />
+    <link rel="stylesheet" href="public/css/base.css">
+    <link rel="stylesheet" href="public/css/chitietsp.css">
+    <!-- <link rel="stylesheet" href="public/css/cart.css"> -->
+
+    <!-- bootstrap icon  -->
+    <link rel="stylesheet" href="public/lib/themify-icons-font/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="public/lib/fontawesome-free-6.5.1-web/fontawesome-free-6.5.1-web/css/all.min.css">
+
+    <!-- hover-master  -->
+    <link rel="stylesheet" href="public/lib/Hover-master/css/hover-min.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <header id="header">
+        <div class="header__top">
+            <div class="header-logo">
+                <img src="./public/img/logo.png" alt="">
+            </div>
+            <div class="header-search">
+                <div class="input-container">
+                    <input type="text" placeholder="Tìm kiếm sản phẩm">
+                    <button class="button">Search</button>
+                </div>
+            </div>
+            <div class="header-accout">
+                <i class="bi bi-person-circle"></i>
+                <a href="">Đăng nhập</a>
+                <p>/</p>
+                <a href="">Đăng ký</a>
+            </div>
+            <div class="header-cart">
+                <i class="bi bi-bag-plus"></i>
+                <a href="">Giỏ hàng</a>
+            </div>
+        </div>
+
+        <div class="header__bottom">
+            <div class="header__bottom-content">
+                <div class="header__bottom-list">
+                    <a href="">Trang chủ</a>
+                </div>
+                <div class="header__bottom-list">
+                    <a href="">Giới thiệu</a>
+                </div>
+                <div class="header__bottom-list">
+                    <a href="">Sản phẩm <i class="bi bi-chevron-down"></i>
+
+
+                        <div class="header__bottom-children">
+                            <div class="header__children-list">
+                                <h2>Quần</h2>
+                                <div class="header__children-item">
+                                    <a href="">Sản phẩm 1</a>
+                                    <a href="">Sản phẩm 2</a>
+                                    <a href="">Sản phẩm 3</a>
+                                </div>
+                            </div>
+
+                            <div class="header__children-list">
+                                <h2>Áo</h2>
+                                <div class="header__children-item">
+                                    <a href="">Sản phẩm 1</a>
+                                    <a href="">Sản phẩm 2</a>
+                                    <a href="">Sản phẩm 3</a>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="header__bottom-list">
+                    <a href="">Tin tức</a>
+                </div>
+                <div class="header__bottom-list">
+                    <a href="">Liên hệ</a>
+                </div>
+                <div class="header__bottom-list">
+                    <a href="">Hệ thống cửa hàng</a>
+                </div>
+            </div>
+
+
+            <div class="header__bottom-hottile">
+                <a href="">
+                    <i class="bi bi-headset"></i>
+                    <p>Holine: 09988323</p>
+                </a>
+            </div>
+        </div>
+    </header>
+    <!--=============== END: HEADER  =============-->
+
+
+
+
+    <main class="main">
+
+        <div class="detail">
+            <div class="detail-heading">
+                <p>Trang chủ</p>
+                <p><i class="bi bi-arrow-right"></i></p>
+                <p>Sản phẩm</p>
+            </div>
+
+            <div class="main-detail">
+                <div class="main__detail-left">
+                    <div class="main__detail-left--img">
+                        <img src="public/img/aonu.jpg" alt="">
+                    </div>
+                    <div class="main__detail-left--imgs">
+                        <img src="public/img/balo.jpg" alt="">
+                        <img src="public/img/aonam.jpg" alt="">
+                        <img src="public/img/aothethao1.jpg" alt="">
+                        <img src="public/img/taytrang.jpg" alt="">
+                    </div>
+                </div>
+
+                <div class="main__detail-right">
+                    <p>Áo nữ thời trang</p>
+
+                    <p class="detail-price">1.000.000 <sup>đ</sup></p>
+
+                    <div class="detail-color">
+                        <p>Màu sắc: </p>
+                        <select class="classic" style="width: 300px;">
+                            <option selected disabled>Chọn màu cho sản phẩm</option>
+                            <option>Xanh dương</option>
+                            <option>Đỏ dô</option>
+                            <option>Đen</option>
+
+                        </select>
+                    </div>
+                    <div class="detail-size">
+                        <p>Kích thước: </p>
+                        <select class="classic" style="width: 300px;">
+                            <option selected disabled>Chọn size cho sản phẩm</option>
+                            <option>Size S</option>
+                            <option>Size M</option>
+                            <option>Size L</option>
+                            <option>Size XL</option>
+                        </select>
+                    </div>
+
+                    <div class="datail-quanity">
+                        <input class="cart-add" type="button" value="-" onclick="decreaseQuantity(this)">
+                        <p class="quantity">1</p>
+                        <input class="cart-add" type="button" value="+" onclick="increaseQuantity(this)">
+                    </div>
+
+
+                    <div class="detail-buy">
+                        <input type="button" value="Thêm vào giỏ hàng">
+                        <input type="button" value="Mua sản phẩm">
+                    </div>
+
+
+
+                    <div class="detail-describe">
+                        <h2>Chi tiết sản phẩm</h2>
+                        <div class="materiat">
+                            <p>Chất liệu:</p>
+                            <p>Vải da</p>
+                        </div>
+                        <div class="materiat">
+                            <p>Kiểu dáng:</p>
+                            <p>áo khoác thiết kế dáng suông, cổ bẻ, đính khuy kim loại</p>
+                        </div>
+                        <div class="materiat">
+                            <p>Thông tin mẫu:</p>
+                            <p>cao 1m60, số đo 84 - 60 - 90 mặc sản phẩm size S</p>
+                        </div>
+                        <div class="materiat">
+                            <p>Nhà sản xuất:</p>
+                            <p>Việt Nam</p>
+                        </div>
+                    </div>
+
+
+
+
+
+
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+
+        <div class=" main-suggest main-suggest-hot">
+            <div class="main__suggest-list">
+                <div class="main__suggest-item">
+                    <p>Sản phẩm dành cho bạn</p>
+                    <div class="main__suggest-item--title">
+                        <p>Ghế công thái học</p>
+                        <p><i class="bi bi-circle-fill"></i></p>
+                        <p>Bàn nâng hạ</p>
+                    </div>
+                </div>
+                <div class="main__suggest-right">
+                    <a href="">Xem thêm <i class="bi bi-chevron-right"></i></a>
+                </div>
+            </div>
+
+            <div class="main__suggest-product">
+                <div class="main__product-item">
+                    <img src="./public/img/non1.jpg" alt="" onmouseover="changeImage(this)"
+                        onmouseout="restoreImage(this)">
+                    <p class="main__product-item--name">Giày thể thao nam</p>
+                    <div class="main__product-item-price">
+                        <p>1.999.999đ</p>
+                        <p>2.500.000đ</p>
+                    </div>
+                    <div class="main__product-item-color">
+                        <p style="background-color: black;     box-shadow: 0 0 0 2px black, inset 0 0 0 2px rgb(230, 224, 224);
+                        "></p>
+                        <p
+                            style="background-color: rgb(41, 147, 240); box-shadow: 0 0 0 2px rgb(41, 147, 240), inset 0 0 0 2px rgb(230, 224, 224)">
+                        </p>
+                    </div>
+                    <div class="main__product-item-quanity">
+                        <p>
+                            Số lương còn lại:
+                        </p>
+                        <p>
+                            x2 Sản phẩm
+                        </p>
+                    </div>
+
+                    <div class="main__product-item--sale">
+                        <p>10%</p>
+                    </div>
+
+                    <div class="main__product-item--sale">
+                        <p>10%</p>
+                    </div>
+
+                    <div class="main__children-product--item">
+                        <a href="">Thêm vào giỏ</a>
+                    </div>
+                </div>
+
+
+                <div class="main__product-item">
+                    <img src="./public/img/quandai.jpg" alt="">
+                    <p class="main__product-item--name">Giày thể thao nam</p>
+                    <div class="main__product-item-price">
+                        <p>1.999.999đ</p>
+                        <p>2.500.000đ</p>
+                    </div>
+                    <div class="main__product-item-color">
+                        <p style="background-color: black;     box-shadow: 0 0 0 2px black, inset 0 0 0 2px rgb(230, 224, 224);
+                        "></p>
+                        <p
+                            style="background-color: rgb(41, 147, 240); box-shadow: 0 0 0 2px rgb(41, 147, 240), inset 0 0 0 2px rgb(230, 224, 224)">
+                        </p>
+                    </div>
+                    <div class="main__product-item-quanity">
+                        <p>
+                            Số lương còn lại:
+                        </p>
+                        <p>
+                            x2 Sản phẩm
+                        </p>
+                    </div>
+
+                    <div class="main__product-item--sale">
+                        <p>10%</p>
+                    </div>
+
+                    <div class="main__product-item--sale">
+                        <p>10%</p>
+                    </div>
+
+                    <div class="main__children-product--item">
+                        <a href="">Thêm vào giỏ</a>
+                    </div>
+                </div>
+
+                <div class="main__product-item main__suggest-opacity">
+                    <img src="./public/img/giayda.jpg" alt="">
+                    <p class="main__product-item--name">Giày thể thao nam</p>
+                    <div class="main__product-item-price">
+                        <p>1.999.999đ</p>
+                        <p>2.500.000đ</p>
+                    </div>
+                    <div class="main__product-item-color">
+                        <p style="background-color: black;     box-shadow: 0 0 0 2px black, inset 0 0 0 2px rgb(230, 224, 224);
+                        "></p>
+                        <p
+                            style="background-color: rgb(41, 147, 240); box-shadow: 0 0 0 2px rgb(41, 147, 240), inset 0 0 0 2px rgb(230, 224, 224)">
+                        </p>
+                    </div>
+                    <div class="main__product-item-quanity">
+                        <p>
+                            Số lương còn lại:
+                        </p>
+                        <p>
+                            x2 Sản phẩm
+                        </p>
+                    </div>
+
+                    <div class="main__product-item--sale">
+                        <p>10%</p>
+                    </div>
+
+                    <div class="main__product-item--sale">
+                        <p>10%</p>
+                    </div>
+
+                    <div class="main__children-product--item">
+                        <a href="">Thêm vào giỏ</a>
+                    </div>
+
+                    <div class="main__product-sale--end">
+                        <p>Hết hàng</p>
+                    </div>
+
+
+                </div>
+
+                <div class="main__product-item">
+                    <img src="./public/img/aotheteho.jpg" alt="">
+                    <p class="main__product-item--name">Giày thể thao nam</p>
+                    <div class="main__product-item-price">
+                        <p>1.999.999đ</p>
+                        <p>2.500.000đ</p>
+                    </div>
+                    <div class="main__product-item-color">
+                        <p style="background-color: black;     box-shadow: 0 0 0 2px black, inset 0 0 0 2px rgb(230, 224, 224);
+                        "></p>
+                        <p
+                            style="background-color: rgb(41, 147, 240); box-shadow: 0 0 0 2px rgb(41, 147, 240), inset 0 0 0 2px rgb(230, 224, 224)">
+                        </p>
+                    </div>
+                    <div class="main__product-item-quanity">
+                        <p>
+                            Số lương còn lại:
+                        </p>
+                        <p>
+                            x2 Sản phẩm
+                        </p>
+                    </div>
+
+                    <div class="main__product-item--sale">
+                        <p>10%</p>
+                    </div>
+
+                    <div class="main__product-item--sale">
+                        <p>10%</p>
+                    </div>
+                    <div class="main__children-product--item">
+                        <a href="">Thêm vào giỏ</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+    <!--================- END: MAIN  ===================-->
+
+
+    <footer>
+        <div class="footer-main">
+            <div class="footer__main-infor">
+                <img src="public/img/logo.png" alt="">
+                <p class="footer-address"><i class="bi bi-geo-alt"></i>Địa chỉ: số 32a Hưng Phú, Cái Răng, CT</p>
+                <p class="footer-hotline"><i class="bi bi-telephone"></i>Hotline: 09837637</p>
+                <p class="footer-email"><i class="bi bi-envelope"></i>Email: Iloveshop@gmail.com</p>
+                <div class="footer-network">
+                    <img src="public/img/facebook.png" alt="">
+                    <img src="public/img/youtobe.png" alt="">
+                    <img src="public/img/instagram.jpg" alt="">
+                </div>
+            </div>
+
+            <div class="footer__main-help">
+                <h3>Hỗ trợ khách hàng</h3>
+                <ul class="footer__main-help--list">
+                    <li>Hệ thống cửa hàng</li>
+                    <li>Câu hỏi thường gặp</li>
+                    <li>Kiểm tra hàng</li>
+                    <li>Liên hệ</li>
+                </ul>
+            </div>
+
+            <div class="footer__main-policy">
+                <h3>Chính sách hỗ trợ</h3>
+                <ul class="footer__main-help--list">
+                    <li>Chính sách bảo hành</li>
+                    <li>Chính sách đổi trả</li>
+                    <li>Chính sách bảo mật</li>
+                </ul>
+            </div>
+
+            <div class="footer__main-sale">
+                <h2>Đăng ký nhận ưu đãi</h2>
+                <p>Bạn muốn nhận khuyến mãi đặc biệt? Đăng kí tham gia ngay cộng động hơn 68.000+ người theo dõi của
+                    chúng tôi để cập nhật khuyến mãi ngay lập tức</p>
+
+                <div class="footer__main-sale--email">
+                    <input type="email" placeholder="Nhập email nhận ưu đãi">
+                    <p>Đăng ký</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-end">
+            <p>© Bản quyền thuộc về EGANY | Cung cấp bởi Sapo</p>
+        </div>
+
+    </footer>
+
+    <!-- js  -->
+    <script src="./public/js/script.js"></script>
+</body>
+
+</html>

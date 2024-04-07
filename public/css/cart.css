@@ -84,7 +84,19 @@ footer {
 
 .cart__table-quanity {
     width: 18%;
-
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    gap: 15px;
+}
+.cart-add{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    line-height: 20px;
 }
 
 .cart__table-price {
@@ -551,7 +563,8 @@ select.classic:focus {
     cursor: pointer;
     text-transform: uppercase;
 }
-.complete-btn input:hover{
+
+.complete-btn input:hover {
     background-color: black;
     color: white;
 }
@@ -561,7 +574,7 @@ select.classic:focus {
     padding: 20px 0;
 }
 
-.comolace-bold{
+.comolace-bold {
     font-weight: 600;
     color: red;
     /* font-size: ; */

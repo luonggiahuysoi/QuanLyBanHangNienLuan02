@@ -58,7 +58,7 @@ var countdown = setInterval(function () {
 
 
 
-// chuyen anh 
+// chuyen anh  khi hover
 
 function changeImage(img) {
     img.src = "./public/img/aotheteho.jpg";
@@ -67,3 +67,38 @@ function changeImage(img) {
 function restoreImage(img) {
     img.src = "./public/img/giay.jpg"; // Đường dẫn ban đầu của ảnh
 }
+
+
+
+// tăng giảm số lượng 
+
+function decreaseQuantity(button) {
+    var quantityElement = button.nextElementSibling;
+    var quantity = parseInt(quantityElement.innerText);
+    if (quantity > 1) {
+        quantityElement.innerText = quantity - 1;
+    }
+}
+
+function increaseQuantity(button) {
+    var quantityElement = button.previousElementSibling;
+    var quantity = parseInt(quantityElement.innerText);
+    quantityElement.innerText = quantity + 1;
+}
+
+
+// Đổi ảnh 
+
+// Get all the images within main__detail-left--imgs
+const thumbnailImages = document.querySelectorAll('.main__detail-left--imgs img');
+
+// Get the main image container
+const mainImage = document.querySelector('.main__detail-left--img img');
+
+// Loop through each thumbnail image and add a click event listener
+thumbnailImages.forEach(thumbnail => {
+    thumbnail.addEventListener('click', function () {
+        // Change the source of the main image to the clicked thumbnail's source
+        mainImage.src = this.src;
+    });
+});
