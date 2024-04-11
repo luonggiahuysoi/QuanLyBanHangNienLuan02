@@ -370,23 +370,6 @@
     </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div>
 <!--================- END: MAIN  ===================-->
 
@@ -398,41 +381,51 @@
 </html>
 
 <style>
-    .main-product {
-        margin-top: 10%;
-    }
+   .main-product {
+    margin-top: 10%;
+}
 
-    .mainproduct-btn {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 40px;
-    }
+.main__product-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
 
-    .mainproduct-btn input {
-        border-radius: 10px;
-        padding: 6px 12px;
-        background-color: #ffffff;
-        border: 1px solid #444;
-        font-weight: 500;
-        font-family: Arial, Helvetica, sans-serif;
-        cursor: pointer;
-    }
+.main__product-btn input {
+    border-radius: 10px;
+    padding: 6px 12px;
+    background-color: #ffffff;
+    border: 1px solid #444;
+    font-weight: 500;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+}
 
-    .mainproduct-btn input:hover {
-        color: #186F65;
-        font-weight: 550;
-    }
+.main__product-btn input:hover {
+    color: #186F65;
+    font-weight: 550;
+}
 
-    .productfull {
-        height: 100%;
-        background-color: #4444;
-        margin-top: 2%;
-        padding: 40px 0;
+.product__full {
+    width: 100%;
+    height: 100%;
+    background-color: #4444;
+    margin-top: 2%;
+    padding: 40px 0;
 
-        background: linear-gradient(to right, #99f2c8, #1f4037);
+    background: linear-gradient(to right, #99f2c8, #1f4037);
 
 
-    }
+}
+
+.main__suggest {
+
+}
+
+
+footer {
+    margin-top: -30%;
+}
 
 </style>
