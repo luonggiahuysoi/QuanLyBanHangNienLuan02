@@ -15,80 +15,81 @@
         <div class="product__full">
             <div class="main__suggest-product">
 
-            <?php
-                    $tinhgiasale = 0;
-                    foreach ($lishHangHoa as $lishHangHoaa) {
-                        extract($lishHangHoaa);
-                        $tinhgiasale = $gia * (1 - $giasale / 100);
-                        if($lishHangHoaa['soluong']>0) {
-                            echo '<div class="main__product-item">';
-                                echo '<a href = "">';
-                                    echo '<img src="data:image/png;base64,' . $hinhanh . '" alt="">';
-                                    echo '<p class="main__product-item--name">'.$tenhanghoa.'</p>';
-                                    echo '<div class="main__product-item-price">';
-                                    echo '<p>' . number_format($tinhgiasale) . ' <span>vnđ</span></p>';
-                                    echo '<p>' . number_format($gia) . ' <span>vnđ</span></p>';
-                                    echo '</div>';
-            
-                                    // Hiển thị màu cho sản phẩm
-                                    echo '<div class="main__product-item-color">';
-                                    $mau = new DanhMuc;
-                                    $showmau = $mau->ShowMau($id_hanghoa);
-                                    foreach ($showmau as $mauu) {
-                                        echo '<p style="background-color: ' . $mauu['mausac'] . ';"></p>';
-                                    }
-                                    echo '</div>';
-            
-                                    echo '<div class="main__product-item-quanity">';
-                                    echo '<p>Số lương còn lại:</p>';
-                                    echo '<p>x' . $soluong . '</p>';
-                                    echo '</div>';
-                                    echo '<div class="main__product-item--sale">';
-                                    echo '<p>' . $giasale . '%</p>';
-                                    echo '</div>';
-                                    echo '<div class="main__children-product--item">';
-                                    echo '<a href="">Thêm vào giỏ</a>';
-                                    echo '</div>';
-                                echo '</a>';
-                            echo '</div>';
-                        } else {
+                <?php
+                $tinhgiasale = 0;
+                foreach ($lishHangHoa as $lishHangHoaa) {
+                    extract($lishHangHoaa);
+                    $tinhgiasale = $gia * (1 - $giasale / 100);
+                    if ($lishHangHoaa['soluong'] > 0) {
+                        echo '<div class="main__product-item">';
+                        echo '<a href = "" class="product-link" >';
 
-                            echo '<div class="main__product-item main__suggest-opacity">';
-                            echo '<img src="data:image/png;base64,' . $hinhanh . '" alt="">';
-                            echo '<p class="main__product-item--name">Giày thể thao nam</p>';
-                            echo '<div class="main__product-item-price">';
-                            echo '<p>' . number_format($tinhgiasale) . ' <span>vnđ</span></p>';
-                            echo '<p>' . number_format($gia) . ' <span>vnđ</span></p>';
-                            echo '</div>';
-    
-                            // Hiển thị màu cho sản phẩm
-                            echo '<div class="main__product-item-color">';
-                            $mau = new DanhMuc;
-                            $showmau = $mau->ShowMau($id_hanghoa);
-                            foreach ($showmau as $mauu) {
-                                echo '<p style="background-color: ' . $mauu['mausac'] . ';"></p>';
-                            }
-                            echo '</div>';
-    
-                            echo '<div class="main__product-item-quanity">';
-                            echo '<p>Số lương còn lại:</p>';
-                            echo '<p>x' . $soluong . '</p>';
-                            echo '</div>';
-                            echo '<div class="main__product-item--sale">';
-                            echo '<p>' . $giasale . '%</p>';
-                            echo '</div>';
-                            echo '<div class="main__children-product--item">';
-                            echo '<a href="">Thêm vào giỏ</a>';
-                            echo '</div>';
-                            echo '<div class="main__product-sale--end">
+                        echo '<img src="data:image/png;base64,' . $hinhanh . '" alt="">';
+                        echo '<p class="main__product-item--name">' . $tenhanghoa . '</p>';
+                        echo '<div class="main__product-item-price">';
+                        echo '<p>' . number_format($tinhgiasale) . ' <span>vnđ</span></p>';
+                        echo '<p>' . number_format($gia) . ' <span>vnđ</span></p>';
+                        echo '</div>';
+
+                        // Hiển thị màu cho sản phẩm
+                        echo '<div class="main__product-item-color">';
+                        $mau = new DanhMuc;
+                        $showmau = $mau->ShowMau($id_hanghoa);
+                        foreach ($showmau as $mauu) {
+                            echo '<p style="background-color: ' . $mauu['mausac'] . ';"></p>';
+                        }
+                        echo '</div>';
+
+                        echo '<div class="main__product-item-quanity">';
+                        echo '<p>Số lương còn lại:</p>';
+                        echo '<p>x' . $soluong . '</p>';
+                        echo '</div>';
+                        echo '<div class="main__product-item--sale">';
+                        echo '<p>' . $giasale . '%</p>';
+                        echo '</div>';
+                        echo '<div class="main__children-product--item">';
+                        echo '<a href="">Thêm vào giỏ</a>';
+                        echo '</div>';
+                        echo '</a>';
+                        echo '</div>';
+                    } else {
+
+                        echo '<div class="main__product-item main__suggest-opacity">';
+                        echo '<img src="data:image/png;base64,' . $hinhanh . '" alt="">';
+                        echo '<p class="main__product-item--name">Giày thể thao nam</p>';
+                        echo '<div class="main__product-item-price">';
+                        echo '<p>' . number_format($tinhgiasale) . ' <span>vnđ</span></p>';
+                        echo '<p>' . number_format($gia) . ' <span>vnđ</span></p>';
+                        echo '</div>';
+
+                        // Hiển thị màu cho sản phẩm
+                        echo '<div class="main__product-item-color">';
+                        $mau = new DanhMuc;
+                        $showmau = $mau->ShowMau($id_hanghoa);
+                        foreach ($showmau as $mauu) {
+                            echo '<p style="background-color: ' . $mauu['mausac'] . ';"></p>';
+                        }
+                        echo '</div>';
+
+                        echo '<div class="main__product-item-quanity">';
+                        echo '<p>Số lương còn lại:</p>';
+                        echo '<p>x' . $soluong . '</p>';
+                        echo '</div>';
+                        echo '<div class="main__product-item--sale">';
+                        echo '<p>' . $giasale . '%</p>';
+                        echo '</div>';
+                        echo '<div class="main__children-product--item">';
+                        echo '<a href="" class="product-link >Thêm vào giỏ</a>';
+                        echo '</div>';
+                        echo '<div class="main__product-sale--end">
                                         <p>Hết hàng</p>
                                     </div>';
-                            echo '</div>';
-                            
-                        }
-                    }
+                        echo '</div>';
 
-                    ?>
+                    }
+                }
+
+                ?>
 
 
             </div>
@@ -204,5 +205,44 @@
 
     footer {
         margin-top: -30%;
+    }
+
+
+    .main__product-item {}
+
+    .product-link {
+        position: relative;
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .product-link {}
+
+    .main__product-item--name {
+        color: black;
+    }
+
+    .main__product-item--sale p{
+        color: black;
+    }
+
+    .main__children-product--item a {
+        position: absolute;
+        width: 60%;
+        height: 40px;
+        font-weight: 550;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+    }
+
+    .main__children-product--item a:hover {
+        color: black;
     }
 </style>

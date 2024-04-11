@@ -590,7 +590,7 @@ header {
 
 .main__children-product--item a:hover {
     color: black;
-    background-color: var(--bg-color);
+    /* background-color: var(--bg-color); */
 }
 
 .main__product-item img {
