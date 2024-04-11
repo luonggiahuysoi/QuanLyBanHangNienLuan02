@@ -25,6 +25,11 @@ class DungChung
       $sql = "DELETE FROM $showallName WHERE $showallId=" . $getId;
       $this->dungchung->get_all($sql);
    }
+
+   function login($username, $password) {
+      $sql = "SELECT * FROM khachhang WHERE tendangnhap= '" . $username . "' AND matkhau='" . $password . "'";
+      return $this->dungchung->get_all($sql);
+   }
 }
 
 
@@ -62,6 +67,30 @@ class DanhMuc
       $sql = "INSERT INTO danhmuc (tendanhmuc, hinhanh) VALUES ('" . $tendanhmuc . "', '" . $hinhanh1 . "')";
       $this->danhmuc->get_all($sql);
    }
+
+   function ShowDanhMucGioVangDelSoc(){
+      $sql ="SELECT * FROM hanghoa ORDER BY giasale DESC LIMIT 5";
+      return $this->danhmuc->get_all($sql);
+   }
+
+
+
+   // function ShowDanhMucGioVangDelSoc()
+   // {
+   //    $sql = "SELECT hanghoa.*, mau.mausac
+   //            FROM hanghoa
+   //            INNER JOIN mau ON hanghoa.id_hanghoa = mau.id_hanghoa
+   //            ORDER BY hanghoa.giasale DESC
+   //            LIMIT 5";
+   //    return $this->danhmuc->get_all($sql);
+   // }
+   function ShowMau($idhanghoa)
+   {
+      $sql = "SELECT * FROM mau WHERE id_hanghoa=" . $idhanghoa;
+      return $this->danhmuc->get_all($sql);
+   }
+
+
 }
 
 class HangHoa
@@ -148,6 +177,26 @@ class HangHoa
       $sql = "INSERT INTO chungtumua (tenchungtu, ngaynhap) VALUES ('" . $tenchungtu . "', '" . $ngaythem . "')";
       $this->hanghoa->get_all($sql);
    }
+
+
+   function ShowHangHoaHomNay(){
+      $sql ="SELECT * FROM hanghoa ORDER BY luotxem DESC LIMIT 5";
+      return $this->hanghoa->get_all($sql);
+   }
+
+   function SanPhamBanChay(){
+      $sql ="SELECT * FROM hanghoa ORDER BY luotmua DESC LIMIT 4";
+      return $this->hanghoa->get_all($sql);
+   }
+
+   function ShowImg($idhanghoa)
+   {
+      $sql = "SELECT * FROM hanghoa_img WHERE id_hanghoa=" . $idhanghoa;
+      return $this->hanghoa->get_all($sql);
+   }
+
+
+
 }
 
 

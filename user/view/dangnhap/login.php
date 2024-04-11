@@ -1,18 +1,19 @@
-<div class="testlogin">
+<div class="testlogin" style="height: 80vh; position:relative;">
    <div class="container">
       <div class="left">
-         <form class="form">
+         <form class="index.php?act=dangnhap" method="POST">
             <div class="input-block">
-               <input class="input" type="text" id="email" required="">
-               <label for="email">Username</label>
+               <input class="input" type="text" id="email" required="" name="user">
+               <label for="email">Tài khoản</label>
             </div>
             <div class="input-block">
-               <input class="input" type="password" id="pass" required="">
-               <label for="pass">Password</label>
+               <input class="input" type="password" id="pass" required="" name="pass">
+               <label for="pass">Mật khẩu</label>
             </div>
             <div class="input-block">
                <span class="forgot"><a href="#">Forgot Password?</a></span>
-               <button>Submit</button>
+               <!-- <button name="login">Submit</button> -->
+               <input type="submit" value="Đăng nhập" name="dangnhap" class="dangnhap">
             </div>
          </form>
       </div>

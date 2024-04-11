@@ -60,13 +60,13 @@ var countdown = setInterval(function () {
 
 // chuyen anh  khi hover
 
-function changeImage(img) {
-    img.src = "./public/img/aotheteho.jpg";
-}
+// function changeImage(img) {
+//     img.src = "./public/img/aotheteho.jpg";
+// }
 
-function restoreImage(img) {
-    img.src = "./public/img/giay.jpg"; // Đường dẫn ban đầu của ảnh
-}
+// function restoreImage(img) {
+//     img.src = "./public/img/giay.jpg"; // Đường dẫn ban đầu của ảnh
+// }
 
 
 
