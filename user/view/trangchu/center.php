@@ -59,8 +59,8 @@
                     extract($DanhMucc);
                     echo '
                             <div class="main__category-item main__category-line">
-                                <img class="hvr-pulse" src="data:image/png;base64,' . $hinhanh . '" alt="">
-                                <p><a href="index.php?act=lishsanpham&iddanhmuc='.$id_danhmuc.'">' . $tendanhmuc . '</a></p>
+                                <img class="hvr-pulse" src="data:image/png;base64,' . $hinhanh . '" alt="" loading="__autoload">
+                                <p><a href="index.php?act=lishsanpham&iddanhmuc=' . $id_danhmuc . '">' . $tendanhmuc . '</a></p>
                             </div>
                         ';
                 }
@@ -78,7 +78,7 @@
         <div class="main-product">
             <div class="main__product-title">
                 <div class="main__product-title--left">
-                    <img src="../public/img/flashsale_icon.png" alt="">
+                    <img src="../public/img/flashsale_icon.png" alt="" loading="__autoload">
                     <p>GIỜ VÀNG DEAL SỐC</p>
                 </div>
                 <div class="main__product-title--right">
@@ -97,38 +97,103 @@
                     foreach ($giovangdelsoc as $giovangdelsocc) {
                         extract($giovangdelsocc);
                         $tinhgiasale = $gia * (1 - $giasale / 100);
-                        echo '<div class="main__product-item">';
-                        echo '<img src="data:image/png;base64,' . $hinhanh . '" alt="">';
-                        echo '<p class="main__product-item--name">Giày thể thao nam</p>';
-                        echo '<div class="main__product-item-price">';
-                        echo '<p>' . number_format($tinhgiasale) . ' <span>vnđ</span></p>';
-                        echo '<p>' . number_format($gia) . ' <span>vnđ</span></p>';
-                        echo '</div>';
+                        if ($giovangdelsocc['soluong'] > 0) {
+                            echo '<div class="main__product-item">';
+                            echo '<img src="data:image/png;base64,' . $anhhanghoa . '" alt="" loading="__autoload">';
+                            echo '<p class="main__product-item--name">' . $tenhanghoa . '</p>';
+                            echo '<div class="main__product-item-price">';
+                            echo '<p>' . number_format($tinhgiasale) . ' <span>vnđ</span></p>';
+                            echo '<p>' . number_format($gia) . ' <span>vnđ</span></p>';
+                            echo '</div>';
 
-                        // Hiển thị màu cho sản phẩm
-                        echo '<div class="main__product-item-color">';
-                        $mau = new DanhMuc;
-                        $showmau = $mau->ShowMau($id_hanghoa);
-                        foreach ($showmau as $mauu) {
-                            echo '<p style="background-color: ' . $mauu['mausac'] . ';"></p>';
+                            // Hiển thị màu cho sản phẩm
+                            echo '<div class="main__product-item-color">';
+                            $mau = new DanhMuc;
+                            $showmau = $mau->ShowMau($id_hanghoa);
+                            foreach ($showmau as $mauu) {
+                                echo '<p style="background-color: ' . $mauu['mausac'] . ';"></p>';
+                            }
+                            echo '</div>';
+
+                            echo '<div class="main__product-item-quanity">';
+                            echo '<p>Số lương còn lại:</p>';
+                            echo '<p>x' . $soluong . '</p>';
+                            echo '</div>';
+                            echo '<div class="main__product-item--sale">';
+                            echo '<p>' . $giasale . '%</p>';
+                            echo '</div>';
+                            echo '<div class="main__children-product--item">';
+                            if (isset($_SESSION['nguoidung'])) {
+                                if ($_SESSION['nguoidung']) {
+
+                                    echo '
+                                    <form action="index.php?act=addcart" method="post">
+                                        <input type="hidden" name="idhanghoa" value="' . $id_hanghoa . '">
+                                        <input type="hidden" name="anh" value="' . $anhhanghoa . '">
+                                        <input type="hidden" name="tenhanghoa" value="' . $tenhanghoa . '">
+                                        <input type="hidden" name="soluong" value="1">
+                                        <input type="hidden" name="gia" value="' . $tinhgiasale . '">
+        
+                                        <input type="submit" value="Thêm vào giỏ" name="add_cart">
+                                    </form>';
+                                }
+                            } else {
+                                echo '<a onclick="showLoginAlert();">Thêm vào giỏ</a>';
+                            }
+                            echo '</div>';
+                            echo '</div>';
+                        } else {
+                            echo '<div class="main__product-item">';
+                            echo '<img src="data:image/png;base64,' . $anhhanghoa . '" alt="" loading="__autoload">';
+                            echo '<p class="main__product-item--name">' . $tenhanghoa . '</p>';
+                            echo '<div class="main__product-item-price">';
+                            echo '<p>' . number_format($tinhgiasale) . ' <span>vnđ</span></p>';
+                            echo '<p>' . number_format($gia) . ' <span>vnđ</span></p>';
+                            echo '</div>';
+
+                            // Hiển thị màu cho sản phẩm
+                            echo '<div class="main__product-item-color">';
+                            $mau = new DanhMuc;
+                            $showmau = $mau->ShowMau($id_hanghoa);
+                            foreach ($showmau as $mauu) {
+                                echo '<p style="background-color: ' . $mauu['mausac'] . ';"></p>';
+                            }
+                            echo '</div>';
+
+                            echo '<div class="main__product-item-quanity">';
+                            echo '<p>Số lương còn lại:</p>';
+                            echo '<p>x' . $soluong . '</p>';
+                            echo '</div>';
+                            echo '<div class="main__product-item--sale">';
+                            echo '<p>' . $giasale . '%</p>';
+                            echo '</div>';
+                            echo '<div class="main__children-product--item">';
+                            if (isset($_SESSION['nguoidung'])) {
+                                if ($_SESSION['nguoidung']) {
+
+                                    echo '
+                                    <form action="index.php?act=addcart" method="post">
+                                        <input type="hidden" name="idhanghoa" value="' . $id_hanghoa . '">
+                                        <input type="hidden" name="anh" value="' . $anhhanghoa . '">
+                                        <input type="hidden" name="tenhanghoa" value="' . $tenhanghoa . '">
+                                        <input type="hidden" name="soluong" value="1">
+                                        <input type="hidden" name="gia" value="' . $tinhgiasale . '">
+        
+                                        <input type="submit" value="Thêm vào giỏ" name="add_cart">
+                                    </form>';
+                                }
+                            } else {
+                                echo '<a onclick="showLoginAlert();">Thêm vào giỏ</a>';
+                            }
+                            echo '</div>';
+                            echo '  <div class="main__product-sale--end">
+                                <p>Hết hàng</p>
+                            </div>';
+                            echo '</div>';
                         }
-                        echo '</div>';
-
-                        echo '<div class="main__product-item-quanity">';
-                        echo '<p>Số lương còn lại:</p>';
-                        echo '<p>x' . $soluong . '</p>';
-                        echo '</div>';
-                        echo '<div class="main__product-item--sale">';
-                        echo '<p>' . $giasale . '%</p>';
-                        echo '</div>';
-                        echo '<div class="main__children-product--item">';
-                        echo '<a href="">Thêm vào giỏ</a>';
-                        echo '</div>';
-                        echo '</div>';
                     }
 
                     ?>
-
                     <!-- Những item nhỏ trong giờ vàng deal sốc -->
 
 
@@ -138,6 +203,7 @@
 
 
         </div>
+
 
         <!--=================== todo:  end product ================ -->
 
@@ -240,7 +306,7 @@
 
 
                         echo '<div class="main__product-item">';
-                        echo '<img src="data:image/png;base64,' . $hinhanh . '" alt="" onmouseover="changeImage(this)" onmouseout="restoreImage(this)">';
+                        echo '<img src="data:image/png;base64,' . $hinhanh . '" alt="" onmouseover="changeImage(this)" onmouseout="restoreImage(this)" loading="__autoload">';
                         echo '<p class="main__product-item--name">Giày thể thao nam</p>';
                         echo '<div class="main__product-item-price">';
                         echo '<p>' . number_format($tinhgiasale) . '</p>';
@@ -262,13 +328,29 @@
                         echo '<p>' . $giasale . '%</p>';
                         echo '</div>';
                         echo '<div class="main__children-product--item">';
-                        echo '<a href="">Thêm vào giỏ</a>';
+                        if (isset($_SESSION['nguoidung'])) {
+                            if ($_SESSION['nguoidung']) {
+
+                                echo '
+                                <form action="index.php?act=addcart" method="post">
+                                    <input type="hidden" name="idhanghoa" value="' . $id_hanghoa . '">
+                                    <input type="hidden" name="anh" value="' . $anhhanghoa . '">
+                                    <input type="hidden" name="tenhanghoa" value="' . $tenhanghoa . '">
+                                    <input type="hidden" name="soluong" value="1">
+                                    <input type="hidden" name="gia" value="' . $tinhgiasale . '">
+    
+                                    <input type="submit" value="Thêm vào giỏ" name="add_cart">
+                                </form>';
+                            }
+                        } else {
+                            echo '<a onclick="showLoginAlert();">Thêm vào giỏ</a>';
+                        }
                         echo '</div>';
                         echo '</div>';
                     } else {
 
                         echo '<div class="main__product-item main__suggest-opacity">';
-                        echo '<img src="data:image/png;base64,' . $hinhanh . '" alt="" onmouseover="changeImage(this)" onmouseout="restoreImage(this)">';
+                        echo '<img src="data:image/png;base64,' . $hinhanh . '" alt="" onmouseover="changeImage(this)" onmouseout="restoreImage(this)" loading="__autoload">';
                         echo '<p class="main__product-item--name">Giày thể thao nam</p>';
                         echo '<div class="main__product-item-price">';
                         echo '<p>' . number_format($tinhgiasale) . '</p>';
@@ -298,6 +380,7 @@
                     }
                 }
                 ?>
+
 
                 <!-- <div class="main__product-item main__suggest-opacity">
                     <img src="../public/img/balo.jpg" alt="">
@@ -366,39 +449,55 @@
 
             <div class="main__suggest-product">
                 <?php
-                $tinhgiasale = 0;
-                foreach ($sanphambanchay as $sanphambanchayy) {
-                    extract($sanphambanchayy);
-                    $tinhgiasale = $gia * (1 - $giasale / 100);
-                    echo '<div class="main__product-item">';
-                    echo '<img src="data:image/png;base64,' . $hinhanh . '" alt="">';
-                    echo '<p class="main__product-item--name">Giày thể thao nam</p>';
-                    echo '<div class="main__product-item-price">';
-                    echo '<p>' . number_format($tinhgiasale) . ' <span>vnđ</span></p>';
-                    echo '<p>' . number_format($gia) . ' <span>vnđ</span></p>';
-                    echo '</div>';
+                    $tinhgiasale = 0;
+                    foreach ($sanphambanchay as $sanphambanchayy) {
+                        extract($sanphambanchayy);
+                        $tinhgiasale = $gia * (1 - $giasale / 100);
+                        echo '<div class="main__product-item">';
+                        echo '<img src="data:image/png;base64,' . $hinhanh . '" alt="" loading="__autoload">';
+                        echo '<p class="main__product-item--name">Giày thể thao nam</p>';
+                        echo '<div class="main__product-item-price">';
+                        echo '<p>' . number_format($tinhgiasale) . ' <span>vnđ</span></p>';
+                        echo '<p>' . number_format($gia) . ' <span>vnđ</span></p>';
+                        echo '</div>';
 
-                    // Hiển thị màu cho sản phẩm
-                    echo '<div class="main__product-item-color">';
-                    $mau = new DanhMuc;
-                    $showmau = $mau->ShowMau($id_hanghoa);
-                    foreach ($showmau as $mauu) {
-                        echo '<p style="background-color: ' . $mauu['mausac'] . ';"></p>';
+                        // Hiển thị màu cho sản phẩm
+                        echo '<div class="main__product-item-color">';
+                        $mau = new DanhMuc;
+                        $showmau = $mau->ShowMau($id_hanghoa);
+                        foreach ($showmau as $mauu) {
+                            echo '<p style="background-color: ' . $mauu['mausac'] . ';"></p>';
+                        }
+                        echo '</div>';
+
+                        echo '<div class="main__product-item-quanity">';
+                        echo '<p>Số lương còn lại:</p>';
+                        echo '<p>x' . $soluong . '</p>';
+                        echo '</div>';
+                        echo '<div class="main__product-item--sale">';
+                        echo '<p>' . $giasale . '%</p>';
+                        echo '</div>';
+                        echo '<div class="main__children-product--item">';
+                        if (isset($_SESSION['nguoidung'])) {
+                            if ($_SESSION['nguoidung']) {
+
+                                echo '
+                                <form action="index.php?act=addcart" method="post">
+                                    <input type="hidden" name="idhanghoa" value="' . $id_hanghoa . '">
+                                    <input type="hidden" name="anh" value="' . $anhhanghoa . '">
+                                    <input type="hidden" name="tenhanghoa" value="' . $tenhanghoa . '">
+                                    <input type="hidden" name="soluong" value="1">
+                                    <input type="hidden" name="gia" value="' . $tinhgiasale . '">
+
+                                    <input type="submit" value="Thêm vào giỏ" name="add_cart">
+                                </form>';
+                            }
+                        } else {
+                            echo '<a onclick="showLoginAlert();">Thêm vào giỏ</a>';
+                        }
+                        echo '</div>';
+                        echo '</div>';
                     }
-                    echo '</div>';
-
-                    echo '<div class="main__product-item-quanity">';
-                    echo '<p>Số lương còn lại:</p>';
-                    echo '<p>x' . $soluong . '</p>';
-                    echo '</div>';
-                    echo '<div class="main__product-item--sale">';
-                    echo '<p>' . $giasale . '%</p>';
-                    echo '</div>';
-                    echo '<div class="main__children-product--item">';
-                    echo '<a href="">Thêm vào giỏ</a>';
-                    echo '</div>';
-                    echo '</div>';
-                }
                 ?>
 
             </div>
@@ -411,7 +510,7 @@
         <div class="main-banner">
             <div class="main__banner-list">
                 <div class="main__banner-item">
-                    <img src="../public/img/bannermain.jpg" alt="">
+                    <img src="../public/img/bannermain.jpg" alt="" loading="__autoload">
                     <div class="main__banner-item-title">
                         <div>
                             <p>Giảm giá sinh viên 50%</p>
@@ -421,7 +520,7 @@
                     </div>
                 </div>
                 <div class="main__banner-item">
-                    <img src="../public/img/bannermain.jpg" alt="">
+                    <img src="../public/img/bannermain.jpg" alt="" loading="__autoload">
                     <div class="main__banner-item-title">
                         <div>
                             <p>Giảm giá sinh viên 50%</p>
@@ -431,7 +530,7 @@
                     </div>
                 </div>
                 <div class="main__banner-item">
-                    <img src="../public/img/bannermain.jpg" alt="">
+                    <img src="../public/img/bannermain.jpg" alt="" loading="__autoload">
                     <div class="main__banner-item-title">
                         <div>
                             <p>Giảm giá sinh viên 50%</p>
@@ -462,7 +561,7 @@
 
 
 
-        
+
 
 
 
@@ -480,7 +579,7 @@
 
             <div class="main__news-main">
                 <div class="main__news-item">
-                    <img src="../public/img/non.jpg" alt="">
+                    <img src="../public/img/non.jpg" alt="" loading="__autoload">
                     <p class="main__news-item-heading"> Google trình làng Google Gemini 1.0: Mô hình ngôn ngữ thông minh
                         hàng đầu, tham vọng vượt mặt GPT-4 Nguyễn Công Minh </p>
                     <p class="main__news-item-title">
@@ -493,7 +592,7 @@
                     </div>
                 </div>
                 <div class="main__news-item">
-                    <img class="main__news-image" src="public/img/non.jpg" alt="">
+                    <img class="main__news-image" src="public/img/non.jpg" alt="" loading="__autoload">
                     <p class="main__news-item-heading"> Google trình làng Google Gemini 1.0: Mô hình ngôn ngữ thông minh
                         hàng đầu, tham vọng vượt mặt GPT-4 Nguyễn Công Minh </p>
                     <p class="main__news-item-title">
@@ -506,7 +605,7 @@
                     </div>
                 </div>
                 <div class="main__news-item">
-                    <img src="public/img/non.jpg" alt="">
+                    <img src="public/img/non.jpg" alt="" loading="__autoload">
                     <p class="main__news-item-heading"> Google trình làng Google Gemini 1.0: Mô hình ngôn ngữ thông minh
                         hàng đầu, tham vọng vượt mặt GPT-4 Nguyễn Công Minh </p>
                     <p class="main__news-item-title">
@@ -519,7 +618,7 @@
                     </div>
                 </div>
                 <div class="main__news-item">
-                    <img src="public/img/non.jpg" alt="">
+                    <img src="public/img/non.jpg" alt="" loading="__autoload">
                     <p class="main__news-item-heading"> Google trình làng Google Gemini 1.0: Mô hình ngôn ngữ thông minh
                         hàng đầu, tham vọng vượt mặt GPT-4 Nguyễn Công Minh </p>
                     <p class="main__news-item-title">
@@ -537,3 +636,22 @@
 
 
     </main>
+
+    <script src="../public/js/script.js"></script>
+
+    <!-- Bao gồm thư viện SweetAlert2 -->
+    <script src="path/to/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="path/to/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Đoạn mã JavaScript -->
+    <script>
+        // Hàm JavaScript để hiển thị thông báo
+        function showLoginAlert() {
+            Swal.fire({
+                title: "Bạn chưa có tài khoản?",
+                text: "Vui lòng đăng ký để mua",
+                icon: "question"
+            });
+        }
+    </script>

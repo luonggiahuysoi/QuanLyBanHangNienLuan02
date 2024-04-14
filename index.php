@@ -6,9 +6,6 @@
     include "app/model/PDO_MVC.php";
 
     
-    
-
-
 
 
 // header("location: ./app/index.php");

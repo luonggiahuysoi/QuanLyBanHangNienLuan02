@@ -26,8 +26,26 @@ class DungChung
       $this->dungchung->get_all($sql);
    }
 
-   function login($username, $password) {
+   function login($username, $password)
+   {
       $sql = "SELECT * FROM khachhang WHERE tendangnhap= '" . $username . "' AND matkhau='" . $password . "'";
+      return $this->dungchung->get_all($sql);
+   }
+   function loginadmin($username, $password)
+   {
+      $sql = "SELECT * FROM nhanvien WHERE taikhoan= '" . $username . "' AND matkhau='" . $password . "'";
+      return $this->dungchung->get_all($sql);
+   }
+
+   function getByIdAllOrderByPriceAsc($showallName, $showallId, $getId)
+   {
+      $sql = "SELECT * FROM $showallName WHERE $showallId = $getId ORDER BY gia ASC";
+      return $this->dungchung->get_all($sql);
+   }
+
+   function getByIdAllOrderByPriceDesc($showallName, $showallId, $getId)
+   {
+      $sql = "SELECT * FROM $showallName WHERE $showallId = $getId ORDER BY gia DESC";
       return $this->dungchung->get_all($sql);
    }
 }
@@ -68,8 +86,9 @@ class DanhMuc
       $this->danhmuc->get_all($sql);
    }
 
-   function ShowDanhMucGioVangDelSoc(){
-      $sql ="SELECT * FROM hanghoa ORDER BY giasale DESC LIMIT 5";
+   function ShowDanhMucGioVangDelSoc()
+   {
+      $sql = "SELECT * FROM hanghoa ORDER BY giasale DESC LIMIT 5";
       return $this->danhmuc->get_all($sql);
    }
 
@@ -89,8 +108,6 @@ class DanhMuc
       $sql = "SELECT * FROM mau WHERE id_hanghoa=" . $idhanghoa;
       return $this->danhmuc->get_all($sql);
    }
-
-
 }
 
 class HangHoa
@@ -179,13 +196,15 @@ class HangHoa
    }
 
 
-   function ShowHangHoaHomNay(){
-      $sql ="SELECT * FROM hanghoa ORDER BY luotxem DESC LIMIT 5";
+   function ShowHangHoaHomNay()
+   {
+      $sql = "SELECT * FROM hanghoa ORDER BY luotxem DESC LIMIT 4";
       return $this->hanghoa->get_all($sql);
    }
 
-   function SanPhamBanChay(){
-      $sql ="SELECT * FROM hanghoa ORDER BY luotmua DESC LIMIT 4";
+   function SanPhamBanChay()
+   {
+      $sql = "SELECT * FROM hanghoa ORDER BY luotmua DESC LIMIT 4";
       return $this->hanghoa->get_all($sql);
    }
 
@@ -195,8 +214,11 @@ class HangHoa
       return $this->hanghoa->get_all($sql);
    }
 
-
-
+   function BinhLuan($idhanghoa)
+   {
+      $sql = "SELECT * FROM binhluan WHERE id_hanghoa=" . $idhanghoa;
+      return $this->hanghoa->get_all($sql);
+   }
 }
 
 
@@ -310,9 +332,22 @@ class DonHang
       $sql = "SELECT * FROM thuongphat WHERE hiden = 0";
       return $this->donhang->get_all($sql);
    }
+
+   function taodonhang($tongdonhang, $tenkhachhang, $madh, $idkhachhang)
+   {
+      $sql = "INSERT INTO giohang (madonhang, tenkhachhang, tongdonhang, id_khachhang) VALUES ('" . $madh . "', '" . $tenkhachhang . "', '" . $tongdonhang . "', '" . $idkhachhang . "')";
+      $this->donhang->get_all($sql);
+   }
+
+   function themhanghoavaocart($madh, $tensanpham, $gia, $soluong, $idkhachhang)
+   {
+      $sql = "INSERT INTO tbl_oder (madonhang, tendonhang, gia, soluong, id_khachhang) VALUES ('" . $madh . "', '" . $tensanpham . "', '" . $gia . "', '" . $soluong . "', '" . $idkhachhang . "')";
+      $this->donhang->get_all($sql);
+   }
 }
 class KhachHang
 {
+
    private $khachhang;
    function __construct()
    {
@@ -325,11 +360,28 @@ class KhachHang
       $sql = "UPDATE khachhang SET email='" . $email . "', sodienthoai='" . $sodienthoai . "', matkhau='" . $matkhau . "' WHERE id_khachhang=" . $idkhachhang;
       $this->khachhang->get_all($sql);
    }
-   
-   function UpdateAbilityKhachHang($abl, $idkhachhang) {
+
+   function UpdateAbilityKhachHang($abl, $idkhachhang)
+   {
       $sql = "UPDATE khachhang SET ability='" . $abl . "' WHERE id_khachhang=" . $idkhachhang;
       $this->khachhang->get_all($sql);
-
-
    }
+}
+
+
+class ChucNang {
+   private $chucnang;
+   function __construct()
+   {
+      $this->chucnang = new DatabaseModel;
+   }
+
+   function TimKiemHangHoa($timkiemhanghoa) { // Thay 'Tên cần tìm' bằng tên bạn muốn tìm kiếm
+
+      // Truy vấn dữ liệu từ CSDL
+      $sql = "SELECT * FROM hanghoa WHERE tenhanghoa LIKE '%$timkiemhanghoa%'";
+  
+      // Lấy kết quả và hiển thị
+      return $this->chucnang->get_all($sql);
+  }
 }

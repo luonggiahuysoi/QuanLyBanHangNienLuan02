@@ -102,3 +102,12 @@ thumbnailImages.forEach(thumbnail => {
         mainImage.src = this.src;
     });
 });
+
+
+
+
+
+// Hàm JavaScript để hiển thị thông báo
+function showLoginAlert() {
+    alert("Vui lòng đăng nhập để đăng ký!");
+}

@@ -36,35 +36,60 @@
                 <p>Sản phẩm</p>
             </div>
 
+            <?php
+                     if (isset($_SESSION['nguoidung'])) {
+                        if ($_SESSION['nguoidung']) {
+
+                            echo '
+                            <form action="index.php?act=addcart" method="post">';
+            ?>
+
             <div class="main-detail">
                 <div class="main__detail-left">
                     <div class="main__detail-left--img">
-                        <img src="public/img/aonu.jpg" alt="">
+                        <img src="<?php echo 'data:image/png;base64,' . $hanghoaa[0]['anhhanghoa'] . ''; ?>" alt="">
                     </div>
                     <div class="main__detail-left--imgs">
-                        <img src="public/img/balo.jpg" alt="">
-                        <img src="public/img/aonam.jpg" alt="">
-                        <img src="public/img/aothethao1.jpg" alt="">
-                        <img src="public/img/taytrang.jpg" alt="">
+                        <?php
+                            $anh = new HangHoa;
+                            $img = $anh->ShowImg($idhanghoa);
+                            foreach($img as $imgg) {
+                                extract($imgg);
+                                echo '
+                                    <img src="data:image/png;base64,' . $hinh . '" alt="">
+                                ';
+                            }
+                        ?>
                     </div>
                 </div>
+            
 
                 <div class="main__detail-right">
-                    <p>Áo nữ thời trang</p>
+                    <p><?=$hanghoaa[0]['tenhanghoa']?></p>
 
-                    <p class="detail-price">1.000.000 <sup>đ</sup></p>
+                    <p class="detail-price"><?php $tong = 0; $tong = $hanghoaa[0]['gia'] * (1 - $hanghoaa[0]['giasale'] / 100); echo ''.number_format($tong).'';?> <sup>vnđ</sup></p>
+                    <p class="detail-price" style=" text-decoration: line-through; color:#999;"><?php  echo ''.number_format($hanghoaa[0]['gia']).'';?> <sup>vnđ</sup></p>
 
                     <div class="detail-color">
                         <p>Màu sắc: </p>
-                        <select class="classic" style="width: 300px;">
+                        <select class="classic" style="width: 300px;" name="mausac">
                             <option selected disabled>Chọn màu cho sản phẩm</option>
-                            <option>Xanh dương</option>
-                            <option>Đỏ dô</option>
-                            <option>Đen</option>
+                            <?php
+                                $mau = new DanhMuc;
+                                $showmau = $mau->ShowMau($idhanghoa);
+                                foreach($showmau as $showmauu) {
+                                    extract($showmauu);
+                                    echo '
+                                        <option value="'.$mausac.'">'.$mausac.'</option>
+                                    ';
+                                }
+
+                            ?>
+                           
 
                         </select>
                     </div>
-                    <div class="detail-size">
+                    <!-- <div class="detail-size">
                         <p>Kích thước: </p>
                         <select class="classic" style="width: 300px;">
                             <option selected disabled>Chọn size cho sản phẩm</option>
@@ -73,17 +98,35 @@
                             <option>Size L</option>
                             <option>Size XL</option>
                         </select>
-                    </div>
+                    </div> -->
 
                     <div class="datail-quanity">
-                        <input class="cart-add" type="button" value="-" onclick="decreaseQuantity(this)">
+                        <!-- <input class="cart-add" type="button" value="-" onclick="decreaseQuantity(this)">
                         <p class="quantity">1</p>
-                        <input class="cart-add" type="button" value="+" onclick="increaseQuantity(this)">
+                        <input class="cart-add" type="button" value="+" onclick="increaseQuantity(this)"> -->
+                        <input type="number" name="soluong" value="1" min="1" max="10">
                     </div>
 
 
                     <div class="detail-buy">
-                        <input type="button" value="Thêm vào giỏ hàng">
+                        <?php
+
+                                echo '
+                              
+                                    <input type="hidden" name="idhanghoa" value="' . $hanghoaa[0]['id_hanghoa'] . '">
+                                    <input type="hidden" name="anh" value="' . $hanghoaa[0]['anhhanghoa'] . '">
+                                    <input type="hidden" name="tenhanghoa" value="' . $hanghoaa[0]['tenhanghoa'] . '">
+                                    <input type="hidden" name="soluong" value="1">
+                                    <input type="hidden" name="gia" value="' . $hanghoaa[0]['gia'] . '">
+    
+                                    <input type="submit" value="Thêm vào giỏ hàng" name="add_cart">
+                                </form>';
+                            }
+                        } else {
+                            echo '<a onclick="showLoginAlert();">Thêm vào giỏ</a>';
+                            echo '<input type="button" value="Thêm vào giỏ hàng">';
+                        }
+                        ?>
                         <input type="button" value="Mua sản phẩm">
                     </div>
 
@@ -92,21 +135,10 @@
                     <div class="detail-describe">
                         <h2>Chi tiết sản phẩm</h2>
                         <div class="materiat">
-                            <p>Chất liệu:</p>
-                            <p>Vải da</p>
+                            <p></p>
+                            <p><?=$hanghoaa[0]['mota']?></p>
                         </div>
-                        <div class="materiat">
-                            <p>Kiểu dáng:</p>
-                            <p>áo khoác thiết kế dáng suông, cổ bẻ, đính khuy kim loại</p>
-                        </div>
-                        <div class="materiat">
-                            <p>Thông tin mẫu:</p>
-                            <p>cao 1m60, số đo 84 - 60 - 90 mặc sản phẩm size S</p>
-                        </div>
-                        <div class="materiat">
-                            <p>Nhà sản xuất:</p>
-                            <p>Việt Nam</p>
-                        </div>
+
                     </div>
 
 
@@ -126,101 +158,28 @@
 
             <div class="review-container">
                 <div class="reviews-mainn">
-                    <div class="review__main-left">
-                        <img src="public/img/giay.jpg" alt="">
-                    </div>
-                    <div class="review__main-right">
-                        <p class="review-name">Hoàng Văn An</p>
-                        <div class="review-star">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star"></i>
-                            <i class="bi bi-star"></i>
-                        </div>
-                        <div class="reviews-day">
-                            <p>02/12/2024</p>
-                            <p>|</p>
-                            <p>Phân loại: Quần áo</p>
-                        </div>
-                        <p class="review-content">
-                            Chất lượng sản phẩm khỏi phải bàn, gõ êm, đằm tay, không quá ồn, rất thích sản phẩm!
-                        </p>
-                    </div>
-                </div>
+                    <?php
+                        $bl = new HangHoa;
+                        $binhluan = $bl->BinhLuan($idhanghoa);
+                        foreach($binhluan as $binhluann) {
+                            extract($binhluann);
+                            echo '
+                                <div class="review__main-right">
+                                    <p class="review-name">'.$tennguoidung.'</p>
+                                    <div class="reviews-day">
+                                        <p>'.$ngaybinhluan.'</p>
+                                        <p>|</p>
+                                        <p>Phân loại: '.$phanloai.'</p>
+                                    </div>
+                                    <p class="review-content">
+                                        '.$noidung.'
+                                    </p>
+                                </div>
+                            ';
+                        }
 
-                <div class="reviews-mainn">
-                    <div class="review__main-left">
-                        <img src="public/img/giay.jpg" alt="">
-                    </div>
-                    <div class="review__main-right">
-                        <p class="review-name">Hoàng Văn An</p>
-                        <div class="review-star">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star"></i>
-                            <i class="bi bi-star"></i>
-                        </div>
-                        <div class="reviews-day">
-                            <p>02/12/2024</p>
-                            <p>|</p>
-                            <p>Phân loại: Quần áo</p>
-                        </div>
-                        <p class="review-content">
-                            Chất lượng sản phẩm khỏi phải bàn, gõ êm, đằm tay, không quá ồn, rất thích sản phẩm!
-                        </p>
-                    </div>
+                    ?>
                 </div>
-
-                <div class="reviews-mainn">
-                    <div class="review__main-left">
-                        <img src="public/img/balo.jpg" alt="">
-                    </div>
-                    <div class="review__main-right">
-                        <p class="review-name">Hoàng Văn An</p>
-                        <div class="review-star">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star"></i>
-                            <i class="bi bi-star"></i>
-                        </div>
-                        <div class="reviews-day">
-                            <p>02/12/2024</p>
-                            <p>|</p>
-                            <p>Phân loại: Quần áo</p>
-                        </div>
-                        <p class="review-content">
-                            Chất lượng sản phẩm khỏi phải bàn, gõ êm, đằm tay, không quá ồn, rất thích sản phẩm!
-                        </p>
-                    </div>
-                </div>
-
-                <div class="reviews-mainn">
-                    <div class="review__main-left">
-                        <img src="public/img/quandai.jpg" alt="">
-                    </div>
-                    <div class="review__main-right">
-                        <p class="review-name">Hoàng Văn An</p>
-                        <div class="review-star">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star"></i>
-                            <i class="bi bi-star"></i>
-                        </div>
-                        <div class="reviews-day">
-                            <p>02/12/2024</p>
-                            <p>|</p>
-                            <p>Phân loại: Quần áo</p>
-                        </div>
-                        <p class="review-content">
-                            Chất lượng sản phẩm khỏi phải bàn, gõ êm, đằm tay, không quá ồn, rất thích sản phẩm!
-                        </p>
-                    </div>
-                </div>
-
 
 
             </div>
@@ -257,151 +216,57 @@
             </div>
 
             <div class="main__suggest-product">
-                <div class="main__product-item">
-                    <img src="./public/img/non1.jpg" alt="" onmouseover="changeImage(this)" onmouseout="restoreImage(this)">
-                    <p class="main__product-item--name">Giày thể thao nam</p>
-                    <div class="main__product-item-price">
-                        <p>1.999.999đ</p>
-                        <p>2.500.000đ</p>
-                    </div>
-                    <div class="main__product-item-color">
-                        <p style="background-color: black;     box-shadow: 0 0 0 2px black, inset 0 0 0 2px rgb(230, 224, 224);
-                        "></p>
-                        <p style="background-color: rgb(41, 147, 240); box-shadow: 0 0 0 2px rgb(41, 147, 240), inset 0 0 0 2px rgb(230, 224, 224)">
-                        </p>
-                    </div>
-                    <div class="main__product-item-quanity">
-                        <p>
-                            Số lương còn lại:
-                        </p>
-                        <p>
-                            x2 Sản phẩm
-                        </p>
-                    </div>
+            <?php
+                    $tinhgiasale = 0;
+                    foreach ($sanphambanchay as $sanphambanchayy) {
+                        extract($sanphambanchayy);
+                        $tinhgiasale = $gia * (1 - $giasale / 100);
+                        echo '<div class="main__product-item">';
+                        echo '<img src="data:image/png;base64,' . $hinhanh . '" alt="" loading="__autoload">';
+                        echo '<p class="main__product-item--name">Giày thể thao nam</p>';
+                        echo '<div class="main__product-item-price">';
+                        echo '<p>' . number_format($tinhgiasale) . ' <span>vnđ</span></p>';
+                        echo '<p>' . number_format($gia) . ' <span>vnđ</span></p>';
+                        echo '</div>';
 
-                    <div class="main__product-item--sale">
-                        <p>10%</p>
-                    </div>
+                        // Hiển thị màu cho sản phẩm
+                        echo '<div class="main__product-item-color">';
+                        $mau = new DanhMuc;
+                        $showmau = $mau->ShowMau($id_hanghoa);
+                        foreach ($showmau as $mauu) {
+                            echo '<p style="background-color: ' . $mauu['mausac'] . ';"></p>';
+                        }
+                        echo '</div>';
 
-                    <div class="main__product-item--sale">
-                        <p>10%</p>
-                    </div>
+                        echo '<div class="main__product-item-quanity">';
+                        echo '<p>Số lương còn lại:</p>';
+                        echo '<p>x' . $soluong . '</p>';
+                        echo '</div>';
+                        echo '<div class="main__product-item--sale">';
+                        echo '<p>' . $giasale . '%</p>';
+                        echo '</div>';
+                        echo '<div class="main__children-product--item">';
+                        if (isset($_SESSION['nguoidung'])) {
+                            if ($_SESSION['nguoidung']) {
 
-                    <div class="main__children-product--item">
-                        <a href="">Thêm vào giỏ</a>
-                    </div>
-                </div>
+                                echo '
+                                <form action="index.php?act=addcart" method="post">
+                                    <input type="hidden" name="idhanghoa" value="' . $id_hanghoa . '">
+                                    <input type="hidden" name="anh" value="' . $anhhanghoa . '">
+                                    <input type="hidden" name="tenhanghoa" value="' . $tenhanghoa . '">
+                                    <input type="hidden" name="soluong" value="1">
+                                    <input type="hidden" name="gia" value="' . $tinhgiasale . '">
 
-
-                <div class="main__product-item">
-                    <img src="./public/img/quandai.jpg" alt="">
-                    <p class="main__product-item--name">Giày thể thao nam</p>
-                    <div class="main__product-item-price">
-                        <p>1.999.999đ</p>
-                        <p>2.500.000đ</p>
-                    </div>
-                    <div class="main__product-item-color">
-                        <p style="background-color: black;     box-shadow: 0 0 0 2px black, inset 0 0 0 2px rgb(230, 224, 224);
-                        "></p>
-                        <p style="background-color: rgb(41, 147, 240); box-shadow: 0 0 0 2px rgb(41, 147, 240), inset 0 0 0 2px rgb(230, 224, 224)">
-                        </p>
-                    </div>
-                    <div class="main__product-item-quanity">
-                        <p>
-                            Số lương còn lại:
-                        </p>
-                        <p>
-                            x2 Sản phẩm
-                        </p>
-                    </div>
-
-                    <div class="main__product-item--sale">
-                        <p>10%</p>
-                    </div>
-
-                    <div class="main__product-item--sale">
-                        <p>10%</p>
-                    </div>
-
-                    <div class="main__children-product--item">
-                        <a href="">Thêm vào giỏ</a>
-                    </div>
-                </div>
-
-                <div class="main__product-item main__suggest-opacity">
-                    <img src="./public/img/giayda.jpg" alt="">
-                    <p class="main__product-item--name">Giày thể thao nam</p>
-                    <div class="main__product-item-price">
-                        <p>1.999.999đ</p>
-                        <p>2.500.000đ</p>
-                    </div>
-                    <div class="main__product-item-color">
-                        <p style="background-color: black;     box-shadow: 0 0 0 2px black, inset 0 0 0 2px rgb(230, 224, 224);
-                        "></p>
-                        <p style="background-color: rgb(41, 147, 240); box-shadow: 0 0 0 2px rgb(41, 147, 240), inset 0 0 0 2px rgb(230, 224, 224)">
-                        </p>
-                    </div>
-                    <div class="main__product-item-quanity">
-                        <p>
-                            Số lương còn lại:
-                        </p>
-                        <p>
-                            x2 Sản phẩm
-                        </p>
-                    </div>
-
-                    <div class="main__product-item--sale">
-                        <p>10%</p>
-                    </div>
-
-                    <div class="main__product-item--sale">
-                        <p>10%</p>
-                    </div>
-
-                    <div class="main__children-product--item">
-                        <a href="">Thêm vào giỏ</a>
-                    </div>
-
-                    <div class="main__product-sale--end">
-                        <p>Hết hàng</p>
-                    </div>
-
-
-                </div>
-
-                <div class="main__product-item">
-                    <img src="./public/img/aotheteho.jpg" alt="">
-                    <p class="main__product-item--name">Giày thể thao nam</p>
-                    <div class="main__product-item-price">
-                        <p>1.999.999đ</p>
-                        <p>2.500.000đ</p>
-                    </div>
-                    <div class="main__product-item-color">
-                        <p style="background-color: black;     box-shadow: 0 0 0 2px black, inset 0 0 0 2px rgb(230, 224, 224);
-                        "></p>
-                        <p style="background-color: rgb(41, 147, 240); box-shadow: 0 0 0 2px rgb(41, 147, 240), inset 0 0 0 2px rgb(230, 224, 224)">
-                        </p>
-                    </div>
-                    <div class="main__product-item-quanity">
-                        <p>
-                            Số lương còn lại:
-                        </p>
-                        <p>
-                            x2 Sản phẩm
-                        </p>
-                    </div>
-
-                    <div class="main__product-item--sale">
-                        <p>10%</p>
-                    </div>
-
-                    <div class="main__product-item--sale">
-                        <p>10%</p>
-                    </div>
-                    <div class="main__children-product--item">
-                        <a href="">Thêm vào giỏ</a>
-                    </div>
-                </div>
+                                    <input type="submit" value="Thêm vào giỏ" name="add_cart">
+                                </form>';
+                            }
+                        } else {
+                            echo '<a onclick="showLoginAlert();">Thêm vào giỏ</a>';
+                        }
+                        echo '</div>';
+                        echo '</div>';
+                    }
+                ?>
             </div>
 
         </div>

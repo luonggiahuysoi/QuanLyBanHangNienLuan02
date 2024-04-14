@@ -768,6 +768,7 @@ header {
     align-items: center;
     gap: 23px;
     margin-top: 20px;
+    flex-wrap: wrap;
 }
 
 /* -------------het hang ------- */

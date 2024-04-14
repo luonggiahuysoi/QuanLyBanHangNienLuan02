@@ -26,8 +26,11 @@
             </div>
             <div class="header-search">
                 <div class="input-container">
-                    <input type="text" placeholder="Tìm kiếm sản phẩm">
-                    <button class="button">Search</button>
+                    <form action="index.php?act=timkiem" method="post">
+
+                        <input type="text" placeholder="Tìm kiếm sản phẩm" name="tentimkiem">
+                        <input type="submit" value="Search" class="button" name="timkiemm">
+                    </form>
                 </div>
             </div>
             <style>
@@ -95,14 +98,14 @@
 
                 ?>
                 <i class="bi bi-bag-plus" style="margin-left: 10px;"></i>
-                <a href="">Giỏ hàng</a>
+                <a href="index.php?act=giohang">Giỏ hàng</a>
             </div>
         </div>
 
         <div class="header__bottom">
             <div class="header__bottom-content">
                 <div class="header__bottom-list">
-                    <a href="">Trang chủ</a>
+                    <a href="index.php?act=trangchu">Trang chủ</a>
                 </div>
                 <div class="header__bottom-list">
                     <a href="">Giới thiệu</a>
@@ -158,7 +161,7 @@
                     <a href="">Tin tức</a>
                 </div>
                 <div class="header__bottom-list">
-                    <a href="">Liên hệ</a>
+                    <a href="https://www.facebook.com/luonggia.huy.180410">Liên hệ</a>
                 </div>
                 <div class="header__bottom-list">
                     <a href="">Hệ thống cửa hàng</a>
