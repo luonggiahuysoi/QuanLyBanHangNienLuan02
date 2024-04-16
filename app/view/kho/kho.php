@@ -64,13 +64,14 @@ foreach ($hienchungtumua as $hienchungtumuaa) {
       <div class="content_top_right_admin">
          <div class="content_top_right_admin_view">
             <div class="content_top_right_admin_view_user">
-               <img src="./public/img/tải xuống.jfif" alt="">
-               <a href=""><i class="bi bi-three-dots-vertical"></i>Sign In</a>
+               <img src="data:image/png;base64,<?php echo $_SESSION['nhanvien'][0]['hinhanh'] ?>" alt="">
+               <p><?= $_SESSION['nhanvien'][0]['tennhanvien'] ?></p>
 
             </div>
             <div class="content_top_right_admin_view_setting">
-               <p class="hvr-glow"><i class="bi bi-bell-fill"></i></p>
-               <p class="hvr-glow"><i class="bi bi-gear-fill"></i></p>
+               <p class="hvr-glow">
+                  <a href="index.php?act=dangxuat">Đăng xuất</a>
+               </p>
             </div>
          </div>
       </div>
@@ -350,7 +351,6 @@ foreach ($hienchungtumua as $hienchungtumuaa) {
                </div>
                   ';
             }
-
          }
 
          ?>
@@ -491,7 +491,7 @@ foreach ($hienchungtumua as $hienchungtumuaa) {
             <input type="text" placeholder="Tên chứng từ" name="tenchungtu">
             <input type="date" value="" name="ngaythem">
          </div>
-   
+
          <div class="updatekho_btn">
             <input class="updatekho_reset" type="reset" value="Hủy">
             <input class="updatekho_add" type="submit" value="Thêm kho" name="addkho">
@@ -594,8 +594,8 @@ foreach ($hienchungtumua as $hienchungtumuaa) {
 
 <!-- Đóng kho  -->
 <script>
-   document.addEventListener("DOMContentLoaded", function () {
-      document.querySelector("#closeButton").addEventListener("click", function () {
+   document.addEventListener("DOMContentLoaded", function() {
+      document.querySelector("#closeButton").addEventListener("click", function() {
          // Lấy phần tử cha và ẩn nó đi
          document.querySelector(".updatekho").style.display = "none";
       });
@@ -606,8 +606,8 @@ foreach ($hienchungtumua as $hienchungtumuaa) {
 <!-- Mở kho  -->
 
 <script>
-   $(document).ready(function () {
-      $(".btn_show_add_danhmuc").click(function (e) {
+   $(document).ready(function() {
+      $(".btn_show_add_danhmuc").click(function(e) {
          $(".updatekho").css("display", "flex");
 
       });
@@ -627,13 +627,13 @@ foreach ($hienchungtumua as $hienchungtumuaa) {
 <!-- -------------------SEARCH---------------------- -->
 
 <script>
-   $(document).ready(function () {
+   $(document).ready(function() {
       // Xử lý sự kiện khi người dùng nhập vào ô tìm kiếm
-      $("#searchInput").on("input", function () {
+      $("#searchInput").on("input", function() {
          var searchText = $(this).val().toLowerCase();
 
          // Hiển thị hoặc ẩn các phần tử phù hợp với từ khóa tìm kiếm
-         $(".list-item").each(function () {
+         $(".list-item").each(function() {
             var itemName = $(this).find(".tendanhmuc p").text().toLowerCase();
             if (itemName.includes(searchText)) {
                $(this).show();

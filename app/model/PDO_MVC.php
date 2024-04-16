@@ -108,6 +108,17 @@ class DanhMuc
       $sql = "SELECT * FROM mau WHERE id_hanghoa=" . $idhanghoa;
       return $this->danhmuc->get_all($sql);
    }
+
+   function LuocXemDanhMuc()
+   {
+      $sql = "SELECT * FROM danhmuc ORDER BY luotxem DESC LIMIT 5";
+      return $this->danhmuc->get_all($sql);
+   }
+
+   function showdanhmuctang() {
+      $sql = "SELECT * FROM danhmuc ORDER BY luotxem DESC";
+      return $this->danhmuc->get_all($sql);
+   }
 }
 
 class HangHoa
@@ -205,6 +216,11 @@ class HangHoa
    function SanPhamBanChay()
    {
       $sql = "SELECT * FROM hanghoa ORDER BY luotmua DESC LIMIT 4";
+      return $this->hanghoa->get_all($sql);
+   }
+
+   function showHangHoatang() {
+      $sql = "SELECT * FROM hanghoa ORDER BY luotxem DESC";
       return $this->hanghoa->get_all($sql);
    }
 
@@ -317,6 +333,11 @@ class NhanVien
       $sql = "INSERT INTO thuongphat (noidungphat, sotienphat, hiden, id_nhanvien) VALUES ('" . $noidungthuong . "', '" . $sotienthuong . "', 1, '" . $nhanvienId . "')";
       $this->nhanvien->get_all($sql);
    }
+
+   function updateability($hienthi, $idnhanvien) {
+      $sql = "UPDATE nhanvien SET ability='" . $hienthi . "' WHERE id_nhanvien=" . $idnhanvien;
+      $this->nhanvien->get_all($sql);
+   }
 }
 
 class DonHang
@@ -344,6 +365,44 @@ class DonHang
       $sql = "INSERT INTO tbl_oder (madonhang, tendonhang, gia, soluong, id_khachhang) VALUES ('" . $madh . "', '" . $tensanpham . "', '" . $gia . "', '" . $soluong . "', '" . $idkhachhang . "')";
       $this->donhang->get_all($sql);
    }
+
+   function getByIdAll($madh)
+   {
+      $sql = "SELECT * FROM tbl_oder WHERE madonhang=" . $madh;
+      return $this->donhang->get_all($sql);
+   }
+
+   function donhangtrangthai()
+   {
+      $sql = "SELECT * FROM giohang WHERE trangthai = 1";
+      return $this->donhang->get_all($sql);
+   }
+
+   function donhangtrangthaii()
+   {
+      $sql = "SELECT * FROM giohang WHERE trangthai = 0";
+      return $this->donhang->get_all($sql);
+   }
+
+   function donhangtinhtrangnew() {
+      $sql = "SELECT * FROM giohang WHERE tinhtrang = 1";
+      return $this->donhang->get_all($sql);
+   }
+
+   function donhangtinhtrangdaxem() {
+      $sql = "SELECT * FROM giohang WHERE tinhtrang = 0";
+      return $this->donhang->get_all($sql);
+   }
+
+   function updategiohangtinhtrang($idgiohang) {
+      $sql = "UPDATE giohang SET tinhtrang=0 WHERE id_giohang=" . $idgiohang;
+      $this->donhang->get_all($sql);
+   }
+
+   function updategiohangtrangthai($idgiohang) {
+      $sql = "UPDATE giohang SET trangthai=0 WHERE id_giohang=" . $idgiohang;
+      $this->donhang->get_all($sql);
+   }
 }
 class KhachHang
 {
@@ -366,22 +425,36 @@ class KhachHang
       $sql = "UPDATE khachhang SET ability='" . $abl . "' WHERE id_khachhang=" . $idkhachhang;
       $this->khachhang->get_all($sql);
    }
+
+
+   function AddKhachHang($tenkhachhang, $gioitinh, $sodienthoai, $diachi, $email, $tendangnhap, $matkhau)
+   {
+      $sql = "INSERT INTO khachhang (tenkhachhang, gioitinh, sodienthoai, diachi, email, tendangnhap, matkhau) VALUES ('" . $tenkhachhang . "', '" . $gioitinh . "', '" . $sodienthoai . "', '" . $diachi . "', '" . $email . "', '" . $tendangnhap . "', '" . $matkhau . "')";
+      $this->khachhang->get_all($sql);
+   }
 }
 
 
-class ChucNang {
+class ChucNang
+{
    private $chucnang;
    function __construct()
    {
       $this->chucnang = new DatabaseModel;
    }
 
-   function TimKiemHangHoa($timkiemhanghoa) { // Thay 'Tên cần tìm' bằng tên bạn muốn tìm kiếm
+   function TimKiemHangHoa($timkiemhanghoa)
+   { // Thay 'Tên cần tìm' bằng tên bạn muốn tìm kiếm
 
       // Truy vấn dữ liệu từ CSDL
       $sql = "SELECT * FROM hanghoa WHERE tenhanghoa LIKE '%$timkiemhanghoa%'";
-  
+
       // Lấy kết quả và hiển thị
       return $this->chucnang->get_all($sql);
-  }
+   }
+
+   function updateluotxem($luotxem, $idhanghoa) {
+      $sql = "UPDATE hanghoa SET luotxem='" . $luotxem . "' WHERE id_hanghoa=" . $idhanghoa;
+      $this->chucnang->get_all($sql);
+   }
 }

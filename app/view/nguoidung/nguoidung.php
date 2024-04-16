@@ -20,13 +20,14 @@
         <div class="content_top_right_admin">
             <div class="content_top_right_admin_view">
                 <div class="content_top_right_admin_view_user">
-                    <img src="./public/img/tải xuống.jfif" alt="">
-                    <a href=""><i class="bi bi-three-dots-vertical"></i>Sign In</a>
+                    <img src="data:image/png;base64,<?php echo $_SESSION['nhanvien'][0]['hinhanh'] ?>" alt="">
+                    <p><?= $_SESSION['nhanvien'][0]['tennhanvien'] ?></p>
 
                 </div>
                 <div class="content_top_right_admin_view_setting">
-                    <p class="hvr-glow"><i class="bi bi-bell-fill"></i></p>
-                    <p class="hvr-glow"><i class="bi bi-gear-fill"></i></p>
+                    <p class="hvr-glow">
+                        <a href="index.php?act=dangxuat">Đăng xuất</a>
+                    </p>
                 </div>
             </div>
         </div>
@@ -107,28 +108,28 @@
                 $abilityy = '';
                 foreach ($HienKhachHang as $HienKhachHangg) {
                     extract($HienKhachHangg);
-                    if($ability == 1) {
-                        $abilityy = '   <p><a href="index.php?act=updateabilitykhachhang&idkhachhang='.$id_khachhang.'"><i class="bi bi-unlock-fill"></i></a></p>';
+                    if ($ability == 1) {
+                        $abilityy = '   <p><a href="index.php?act=updateabilitykhachhang&idkhachhang=' . $id_khachhang . '"><i class="bi bi-unlock-fill"></i></a></p>';
                     } else {
-                        $abilityy = '  <p><a href="index.php?act=updateabilitykhachhang&idkhachhang='.$id_khachhang.'"><i class="bi bi-lock-fill"></i></a></p>';
+                        $abilityy = '  <p><a href="index.php?act=updateabilitykhachhang&idkhachhang=' . $id_khachhang . '"><i class="bi bi-lock-fill"></i></a></p>';
                     }
                     $showkhachhang = '
                     <div class="table_th table_tr list-item producttt" data-price="">
                         <div class="table_name_image table__bottom_center table_name_imagee tendanhmuc">
                             <img src="data:image/png;base64,' . $hinhanh . '" alt="">
-                            <p>'.$tenkhachhang.'</p>
+                            <p>' . $tenkhachhang . '</p>
                         </div>
                         <div class="table_view_category table__bottom_center">
-                            <p>'.$sodienthoai.'</p>
+                            <p>' . $sodienthoai . '</p>
                         </div>
                         <div class="table_view_category table__bottom_center">
-                            '.$abilityy.'
+                            ' . $abilityy . '
                         </div>
                         <div class="table_view_category table__bottom_center email">
-                            <p>'.$email.'</p>
+                            <p>' . $email . '</p>
                         </div>
                         <div class="table_view_category table__bottom_center">
-                            <p>'.$matkhau.'</p>
+                            <p>' . $matkhau . '</p>
                         </div>
                         <div class="table_settin table__bottom_center setting">
                             <div class="table_show_setting">
@@ -156,7 +157,7 @@
 
                 ?>
 
-                <?=$showkhachhang?>
+                <?= $showkhachhang ?>
 
 
 
@@ -209,10 +210,10 @@
         <div class="content_updatekhachhang">
             <form action="index.php?act=updatekhachhang" method="post">
                 <div>
-                    
-                    <input type="email" name="email" id="" placeholder="email" value="<?=$HienKhachHangId[0]['email']?>">
-                    <input type="text" name="sodienthoai" id="" placeholder="Số điện thoại" value="<?=$HienKhachHangId[0]['sodienthoai']?>">
-                    <input type="password" name="matkhau" placeholder="Mật khẩu" value="<?=$HienKhachHangId[0]['matkhau']?>">
+
+                    <input type="email" name="email" id="" placeholder="email" value="<?= $HienKhachHangId[0]['email'] ?>">
+                    <input type="text" name="sodienthoai" id="" placeholder="Số điện thoại" value="<?= $HienKhachHangId[0]['sodienthoai'] ?>">
+                    <input type="password" name="matkhau" placeholder="Mật khẩu" value="<?= $HienKhachHangId[0]['matkhau'] ?>">
                 </div>
                 <div>
                     <input type="submit" value="Cập nhật" name="update_khachhang">
@@ -220,22 +221,22 @@
                 <div>
                     <input type="reset" value="Đóng" class="danhmnuc_close_add">
                 </div>
-                <input type="hidden" name="idkhachhang" value="<?=$HienKhachHangId[0]['id_khachhang']?>">
+                <input type="hidden" name="idkhachhang" value="<?= $HienKhachHangId[0]['id_khachhang'] ?>">
             </form>
         </div>
 
 
 
-    
+
 
     </div>
 </div>
 
 <style>
-
     .show {
         display: flex;
     }
+
     .updatedanhmuc {
         position: absolute;
         display: none;

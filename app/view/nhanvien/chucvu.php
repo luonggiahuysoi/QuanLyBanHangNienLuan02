@@ -80,14 +80,16 @@ foreach ($showphanquyen as $showphanquyenn) {
       <!-- nav menu -->
       <div class="content_top_right_admin">
          <div class="content_top_right_admin_view">
-            <div class="content_top_right_admin_view_user">
-               <img src="./public/img/tải xuống.jfif" alt="">
-               <a href=""><i class="bi bi-three-dots-vertical"></i>Sign In</a>
+                <div class="content_top_right_admin_view_user">
+                    <img src="data:image/png;base64,<?php echo $_SESSION['nhanvien'][0]['hinhanh'] ?>" alt="">
+                    <p><?=$_SESSION['nhanvien'][0]['tennhanvien']?></p>
 
-            </div>
-            <div class="content_top_right_admin_view_setting">
-               <p class="hvr-glow"><i class="bi bi-bell-fill"></i></p>
-               <p class="hvr-glow"><i class="bi bi-gear-fill"></i></p>
+                </div>
+                <div class="content_top_right_admin_view_setting">
+                    <p class="hvr-glow">
+                        <a href="index.php?act=dangxuat">Đăng xuất</a>
+                    </p>
+                </div>
             </div>
          </div>
       </div>
@@ -115,7 +117,7 @@ foreach ($showphanquyen as $showphanquyenn) {
 
       <div class="content__bottom-adddm">
          <input type="button" value="+ Thêm chức vụ" class="btn_show_add_danhmuc hvr-grow-shadow">
-         <a class="hover_all" href="index.php?act=chucvu">Chức vụ</a>
+
       </div>
 
       <!-- view danh muc -->

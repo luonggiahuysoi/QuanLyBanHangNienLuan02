@@ -83,7 +83,7 @@
                             <i class="bi bi-person-circle"></i>
                             <a href="index.php?act=dangnhap">Đăng nhập</a>
                             <p>/</p>
-                            <a href="">Đăng ký</a>
+                            <a href="index.php?act=dangky">Đăng ký</a>
                         ';
                 }
                 ?>

@@ -24,6 +24,10 @@ if (isset($_GET['act'])) {
             $hanghoa = new DungChung;
             $hanghoaa = $hanghoa->getByIdAll('hanghoa', 'id_hanghoa', $idhanghoa);
             
+            $luotxem = $hanghoaa[0]['luotxem'];
+            $luotxem ++;
+            $addluotxem = new ChucNang;
+            $addluotxem->updateluotxem($luotxem, $idhanghoa);
 
             require "./view/sanpham/chitietsanpham.php";
             break;
@@ -48,16 +52,40 @@ if (isset($_GET['act'])) {
 
             require "./view/sanpham/lishhanghoa.php";
             break;
+        case 'dangky':
+            require_once "./view/dangnhap/sigup.php";
+            break;
+        case 'dangkyy':
+            if(isset($_POST['nhandangky']) && $_POST['nhandangky']) {
+                $tenkhachhang = $_POST['tenkhachhang'];
+                $gioitinh = $_POST['gioitinh'];
+                $sodienthoai = $_POST['sodienthoai'];
+                $diachi = $_POST['diachi'];
+                $email = $_POST['email'];
+                $tendangnhap = $_POST['tendangnhap'];
+                $matkhau = $_POST['matkhau'];
 
+
+
+                $dangky = new KhachHang;
+                $dangky->AddKhachHang($tenkhachhang, $gioitinh, $sodienthoai, $diachi, $email, $tendangnhap, $matkhau);
+                header("location: index.php?act=trangchu");
+            }
+            break;
         case 'dangnhap':
             if (isset($_POST['dangnhap']) && $_POST['dangnhap']) {
                 $username = $_POST['user'];
                 $password = $_POST['pass'];
                 $kiemtra = new DungChung;
                 $kiemtraUser = $kiemtra->login($username, $password);
+                if($kiemtraUser[0]['ability'] == 1) {
+                    $_SESSION['nguoidung'] = $kiemtraUser;
 
-                $_SESSION['nguoidung'] = $kiemtraUser;
-
+                } else {
+                    
+                    header("location: index.php?act=trangchu");
+                }
+                
                 header("location: index.php?act=trangchu");
                 // require_once "./view/trangchu/center.php";
             } else {
@@ -200,7 +228,6 @@ if (isset($_GET['act'])) {
                 $timkiem = $_POST['tentimkiem'];
                 $sea = new ChucNang;
                 $lishHangHoa = $sea->TimKiemHangHoa($timkiem);
-                var_dump($search);
 
                 require "./view/sanpham/lishhanghoa.php";
             }

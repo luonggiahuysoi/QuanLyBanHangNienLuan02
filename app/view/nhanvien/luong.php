@@ -17,8 +17,6 @@ foreach ($shownhanvien as $shownhanvienn) {
       if ($shownhanvienn['id_nhanvien'] == $showluongthuongg['id_nhanvien']) {
          $tongtienthuong = $tongtienthuong + $showluongthuongg['sotienthuong'];
       }
-
-
    }
 
 
@@ -36,8 +34,7 @@ foreach ($shownhanvien as $shownhanvienn) {
    $tongtienluong = 0;
    foreach ($showphanquyen as $showphanquyenn) {
       if ($shownhanvienn['id_phanquyen'] == $showphanquyenn['id_phanquyen']) {
-         $tongtienluong = $showphanquyenn['luong'] * $tonggiolamcanhan;
-
+         $tongtienluong = $showphanquyenn['luong'] * $tonggiolamcanhan + $tongtienthuong - $tongluongphat;
       }
    }
 
@@ -63,7 +60,7 @@ foreach ($shownhanvien as $shownhanvienn) {
                     <div class="table_view_category table__bottom_center email">
                         <p>' . number_format($tongtienluong) . ' vnđ</p>
                     </div>
-                    <div class="table_settin table__bottom_center setting">
+                    <div class="table_settin table__bottom_center setting dongphanquyen">
                         <div class="table_show_setting">
                             <p><i class="bi bi-gear-fill"></i></p>
                         </div>
@@ -117,13 +114,14 @@ foreach ($shownhanvien as $shownhanvienn) {
       <div class="content_top_right_admin">
          <div class="content_top_right_admin_view">
             <div class="content_top_right_admin_view_user">
-               <img src="./public/img/tải xuống.jfif" alt="">
-               <a href=""><i class="bi bi-three-dots-vertical"></i>Sign In</a>
+               <img src="data:image/png;base64,<?php echo $_SESSION['nhanvien'][0]['hinhanh'] ?>" alt="">
+               <p><?= $_SESSION['nhanvien'][0]['tennhanvien'] ?></p>
 
             </div>
             <div class="content_top_right_admin_view_setting">
-               <p class="hvr-glow"><i class="bi bi-bell-fill"></i></p>
-               <p class="hvr-glow"><i class="bi bi-gear-fill"></i></p>
+               <p class="hvr-glow">
+                  <a href="index.php?act=dangxuat">Đăng xuất</a>
+               </p>
             </div>
          </div>
       </div>
@@ -195,7 +193,7 @@ foreach ($shownhanvien as $shownhanvienn) {
                <div class="table_hidden table__bottom_center">
                   <p>Tổng lương</p>
                </div>
-               <div class="table_settin table__bottom_center">
+               <div class="table_settin table__bottom_center dongphanquyen">
                   <p>Cài đặt</p>
                   <p></p>
                </div>
@@ -344,13 +342,13 @@ foreach ($shownhanvien as $shownhanvienn) {
       <form action="index.php?act=addluongphat" method="post">
          <div class="icon_show_lichlam">
 
-            <div>
+            <div class="dongphanquyen">
                <select name="nhanvien" id="dropdownnluongphat">
                   <?= $listnhanvienshoww ?>
                </select>
 
                <script>
-                  $(document).ready(function () {
+                  $(document).ready(function() {
                      // Sử dụng Select2 cho dropdown
                      $('#dropdownnluongphat').select2();
                   });
@@ -377,7 +375,7 @@ foreach ($shownhanvien as $shownhanvienn) {
             <div class="lichlam_th__item">
                <p>Số tiền</p>
             </div>
-            <div class="lichlam_th__item">
+            <div class="lichlam_th__item dongphanquyen">
                <p>Cài đặt</p>
             </div>
          </div>
@@ -402,7 +400,7 @@ foreach ($shownhanvien as $shownhanvienn) {
             <div class="lichlam_th__item">
                <p>' . $sotienphat . '</p>
             </div>
-            <div style="display:flex;" class="lichlam_th__item">
+            <div style="display:flex;" class="lichlam_th__item dongphanquyen">
                <p>
                   <a style="color:red" href="index.php?act=deleteluongphat&idluongphat=' . $id_thuongphat . '">
                      <i class="bi bi-trash-fill"></i>
@@ -422,21 +420,18 @@ foreach ($shownhanvien as $shownhanvienn) {
 </div>
 
 <script>
-
-
-   $(document).ready(function () {
-      $(".icon_show_lichlamm").click(function (e) {
+   $(document).ready(function() {
+      $(".icon_show_lichlamm").click(function(e) {
          $(".Them_Lich_Lammmm").hide();
 
       });
    });
-   $(document).ready(function () {
-      $(".btn_show_giolammm").click(function (e) {
+   $(document).ready(function() {
+      $(".btn_show_giolammm").click(function(e) {
          $(".Them_Lich_Lammmm").show();
 
       });
    });
-
 </script>
 
 <style>
@@ -629,13 +624,13 @@ foreach ($shownhanvien as $shownhanvienn) {
          <div class="icon_show_lichlam">
 
 
-            <div>
+            <div class="dongphanquyen">
                <select name="nhanvien" id="dropdownnluongthuong">
                   <?= $listnhanvienshow ?>
                </select>
 
                <script>
-                  $(document).ready(function () {
+                  $(document).ready(function() {
                      // Sử dụng Select2 cho dropdown
                      $('#dropdownnluongthuong').select2();
                   });
@@ -662,7 +657,7 @@ foreach ($shownhanvien as $shownhanvienn) {
             <div class="lichlam_th__item">
                <p>Số tiền</p>
             </div>
-            <div class="lichlam_th__item">
+            <div class="lichlam_th__item dongphanquyen">
                <p>Cài đặt</p>
             </div>
          </div>
@@ -688,7 +683,7 @@ foreach ($shownhanvien as $shownhanvienn) {
             <div class="lichlam_th__item">
                <p>' . $sotienthuong . '</p>
             </div>
-            <div style="display:flex;" class="lichlam_th__item">
+            <div style="display:flex;" class="lichlam_th__item dongphanquyen">
                <p>
                   <a style="color:red" href="index.php?act=deleteluongthuong&idluongthuong=' . $id_thuongphat . '">
                      <i class="bi bi-trash-fill"></i>
@@ -708,14 +703,14 @@ foreach ($shownhanvien as $shownhanvienn) {
 </div>
 
 <script>
-   $(document).ready(function () {
-      $(".icon_show_lichlamm").click(function (e) {
+   $(document).ready(function() {
+      $(".icon_show_lichlamm").click(function(e) {
          $(".Them_Lich_Lammm").hide();
 
       });
    });
-   $(document).ready(function () {
-      $(".btn_show_giolamm").click(function (e) {
+   $(document).ready(function() {
+      $(".btn_show_giolamm").click(function(e) {
          $(".Them_Lich_Lammm").show();
 
       });
@@ -733,13 +728,13 @@ foreach ($shownhanvien as $shownhanvienn) {
 <!-- -------------------SEARCH---------------------- -->
 
 <script>
-   $(document).ready(function () {
+   $(document).ready(function() {
       // Xử lý sự kiện khi người dùng nhập vào ô tìm kiếm
-      $("#searchInput").on("input", function () {
+      $("#searchInput").on("input", function() {
          var searchText = $(this).val().toLowerCase();
 
          // Hiển thị hoặc ẩn các phần tử phù hợp với từ khóa tìm kiếm
-         $(".list-item").each(function () {
+         $(".list-item").each(function() {
             var itemName = $(this).find(".tendanhmuc p").text().toLowerCase();
             if (itemName.includes(searchText)) {
                $(this).show();

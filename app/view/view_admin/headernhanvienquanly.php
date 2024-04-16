@@ -46,9 +46,6 @@
                   <div class="item-con_list" id="">
                      <a href="index.php?act=nhanvien"><i class="bi bi-dot"></i>Thông tin nhân viên</a>
                   </div>
-                  <div class="item-con_list" id="">
-                     <a href="index.php?act=chucvunhanvien"><i class="bi bi-dot"></i>Chức vụ nhân viên</a>
-                  </div>
                   <div class="item-con_list">
                      <a href="index.php?act=luongnhanvien"><i class="bi bi-dot"></i>Lương nhân viên</a>
                   </div>
@@ -61,29 +58,6 @@
 
                </div>
             </div>
-            <!--=========================== NOTE: Người dùng ===================== -->
-
-            <div class="nav_view_center magintop_nav">
-               <div class="item_cha" id="item_cha1">
-                  <a><i style="margin-right: 5px;" class="bi bi-people-fill "></i>Quản lý người dùng</a>
-                  <p class="plus_r"><i class="bi bi-chevron-down"></i></p>
-               </div>
-               <div class="item-con" id="item-con1">
-                  <div class="item-con_list" id="">
-                     <a href="index.php?act=nguoidung"><i class="bi bi-dot"></i>Người dùng</a>
-                  </div>
-                  <!-- <div class="item-con_list">
-                     <a href=""><i class="bi bi-dot"></i>Lương nhân viên</a>
-                  </div> -->
-                  <!-- <div class="item-con_list">
-                     <a href=""><i class="bi bi-dot"></i>Lịch làm</a>
-                  </div> -->
-                  <div class="item-con_list item-con_listout" id="close_nav1">
-                     <a href=""><i class="bi bi-box-arrow-in-left"></i>Trở về</a>
-                  </div>
-               </div>
-            </div>
-
 
             <!--=========================== NOTE: Hàng hóa ===================== -->
 
@@ -140,25 +114,6 @@
             </div>
 
 
-            <!--=========================== NOTE: Thông kê ===================== -->
-
-            <div class="nav_view_center magintop_nav">
-               <div class="item_cha" id="item_cha5">
-                  <a><i style="margin-right: 5px;" class="bi bi-file-ruled"></i> Thống kê</a>
-                  <p class="plus_r"><i class="bi bi-chevron-down"></i></p>
-               </div>
-               <div class="item-con" id="item-con5">
-                  <div class="item-con_list" id="">
-                     <a href="index.php?act=thongkedanhmuc"><i class="bi bi-dot"></i>Thống kê theo danh mục</a>
-                  </div>
-                  <div class="item-con_list">
-                     <a href="index.php?act=thongkehanghoa"><i class="bi bi-dot"></i>Thống kê theo sản phẩm</a>
-                  </div>
-                  <div class="item-con_list item-con_listout" id="close_nav5">
-                     <a href=""><i class="bi bi-box-arrow-in-left"></i>Trở về</a>
-                  </div>
-               </div>
-            </div>
          </div>
       </div>
 
@@ -174,5 +129,9 @@
             cursor: pointer;
             background-color: var(--color-black);
             color: white;
+         }
+
+         .dongphanquyen {
+            display: none !important;
          }
       </style>

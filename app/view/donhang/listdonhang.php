@@ -31,6 +31,40 @@
 <div class="content">
 
 
+    <div class="content_top">
+
+        <!-- close menu -->
+        <div class="Close_nav_menu_content hvr-grow-shadow">
+            <i class="bi bi-justify"></i>
+        </div>
+
+        <!-- search -->
+        <div class="content_top-search">
+            <form action="">
+                <input type="text" id="searchInput" class="search-input" placeholder="Tìm kiếm...">
+                <input type="submit" value="Search" class="btn_search_header_content">
+            </form>
+        </div>
+
+        <!-- nav menu -->
+        <div class="content_top_right_admin">
+            <div class="content_top_right_admin_view">
+                <div class="content_top_right_admin_view_user">
+                    <img src="data:image/png;base64,<?php echo $_SESSION['nhanvien'][0]['hinhanh'] ?>" alt="">
+                    <p><?= $_SESSION['nhanvien'][0]['tennhanvien'] ?></p>
+
+                </div>
+                <div class="content_top_right_admin_view_setting">
+                    <p class="hvr-glow">
+                        <a href="index.php?act=dangxuat">Đăng xuất</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
 
     <!-- bottom -->
 
@@ -64,7 +98,14 @@
                     <div style="display: flex;  align-items: center;">
                         <p style="color: #555;">Tổng số sản phẩm:</p>
                         <p style="margin-left: 1%; color: black;">x
-                            <!-- <?= $i ?> -->
+
+                            <?php
+                            $i = 0;
+                            foreach ($HienDonHang as $HienDonHangg) {
+                                $i++;
+                            }
+                            echo $i;
+                            ?>
                         </p>
                     </div>
                 </div>
@@ -80,11 +121,11 @@
                     <div class="table_name_image table__bottom_center">
                         <p>Thông tin khách hàng</p>
                     </div>
-                    <div class="table_hidden table__bottom_center">
-                        <p>Trạng thái</p>
+                    <div class="table_name_image table__bottom_center">
+                        <p>Mã đơn hàng</p>
                     </div>
                     <div class="table_hidden table__bottom_center">
-                        <p>Ngày tạo</p>
+                        <p>Trạng thái</p>
                     </div>
                     <div class="table_hidden table__bottom_center">
                         <p>Tình trạng</p>
@@ -92,7 +133,7 @@
                     <div class="table_hidden table__bottom_center">
                         <p>Xem chi tiết </p>
                     </div>
-                    <div class="table_settin table__bottom_center">
+                    <div class="table_settin table__bottom_center phanquyen">
                         <p>Cài đặt</p>
                     </div>
                 </div>
@@ -105,7 +146,7 @@
                 foreach ($HienDonHang as $HienDonHangg) {
 
                     extract($HienDonHangg);
-                    if ($trangthai == 0) {
+                    if ($trangthai == 1) {
                         $trangthaii = ' 
                             <div class="table_view_category table__bottom_center ct_donhang">
                                 <p class="ctdonhang__hide">Đang giao</p>
@@ -119,7 +160,7 @@
                             ';
                     }
 
-                    if ($tinhtrang == 0) {
+                    if ($tinhtrang == 1) {
 
                         $tinhtrangg = 'Chưa xem';
                     } else {
@@ -128,26 +169,27 @@
                     }
 
 
-                    $showdonhang = '
+                    $showdonhang .= '
                         <div class="table_th table_tr list-item producttt" data-price="">
                             <div class="table_name_image table__bottom_center  ">
                                 <p>' . $tenkhachhang . '</p>
                             </div>
-                            <div class="table_view_category table__bottom_center">
-                                <p>' . $trangthaii . '</p>
+                            <div class="table_name_image table__bottom_center  ">
+                                <p>' . $madonhang . '</p>
                             </div>
                             <div class="table_view_category table__bottom_center">
-                                <p>' . $ngaytaodon . '</p>
+                                <a href="index.php?act=listdonhangbilltt&madh=' . $madonhang . '&idgiohang=' . $id_giohang . '">' . $trangthaii . '</a>
                             </div>
                             <div class="table_view_category table__bottom_center">
-                                <p>' . $tinhtrangg . '</p>
+                                <p style="color:red;">' . $tinhtrangg . '</p>
                             </div>
                             <div class="table_view_category table__bottom_center ct_donhang">
-                                <p class="ctdonhang__hide"><a href="index.php?act=listdonhangbill&iddonhang='.$id_donhang.'" style="color:aliceblue;">Chi tiết</a></p>
+                                <p class=""><a href="index.php?act=listdonhangbill&madh=' . $madonhang . '&idgiohang=' . $id_giohang . '" style="color:aliceblue;">Chi tiết</a></p>
                             </div>
-                            <div class="table_settin table__bottom_center setting">
+                            <div class="table_settin table__bottom_center setting phanquyen nhanquyenba">
                                 <div class=" ct_donhang">
-                                        <form id="deleteForm" action="delete.php" method="post">
+                                        <form id="deleteForm" action="index.php?act=deletegiohang" method="post">
+                                        <input type="hidden" name="idgiohang" value="' . $id_giohang . '">
                                         <input type="submit" value="Huỷ đơn" onclick="return confirmDelete()" />
                                     </form>
                                 </div>
@@ -158,6 +200,7 @@
                 }
 
                 ?>
+
                 <?= $showdonhang ?>
                 <!-- Đầu tiên, thêm thư viện SweetAlert vào trang của bạn -->
                 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
@@ -228,60 +271,57 @@
         </div>
 
         <?php
-            $hienkhachhang='';
-            $tongtienn = 0;
-            $tien = 0;
-            foreach($showbill as $showbilll) {
-                extract($showbilll);
-                foreach($khachhanghien as $khachhanghienn) {
-                    extract($khachhanghienn);
-                    foreach($HienDonHang as $HienDonHangg) {
-                        extract($HienDonHangg);
-                        $tien = $soluong * $dongia;
-                        $tongtienn = $tongtienn + $tien;
+        $hienkhachhang = '';
+        $tongtienn = 0;
+        $tien = 0;
+        foreach ($showbill as $showbilll) {
+            extract($showbilll);
+            foreach ($khachhanghien as $khachhanghienn) {
+                extract($khachhanghienn);
+                foreach ($HienDonHang as $HienDonHangg) {
+                    extract($HienDonHangg);
+                    $tien = $soluong * $dongia;
+                    $tongtienn = $tongtienn + $tien;
 
-                        
 
-                        if($showbilll['id_khachhang'] == $khachhanghienn['id_khachhang'] && $showbilll['id_khachhang'] == $HienDonHangg['id_khachhang']) {
-                            $hienkhachhang = '
+
+                    if ($showbilll['id_khachhang'] == $khachhanghienn['id_khachhang'] && $showbilll['id_khachhang'] == $HienDonHangg['id_khachhang']) {
+                        $hienkhachhang = '
                                 <div class="ctdonhang__main-list">
                                     <div class="ctdonhang__main-item">
                                         <p>Khách hàng: </p>
-                                        <p>'.$tenkhachhang.'</p>
+                                        <p>' . $tenkhachhang . '</p>
                                     </div>
                                     <div class="ctdonhang__main-item">
                                         <p>Ngày đặt hàng: </p>
-                                        <p>'.$ngaytaodon.'</p>
+                                        <p>' . $ngaytaodon . '</p>
                                     </div>
                                     <div class="ctdonhang__main-item">
                                         <p>Số điện thoại: </p>
-                                        <p>'.$sodienthoai.'</p>
+                                        <p>' . $sodienthoai . '</p>
                                     </div>
                                     <div class="ctdonhang__main-item" style="height: 8vh;">
                                         <p>Địa chỉ: </p>
-                                        <p>'.$diachi.'</p>
+                                        <p>' . $diachi . '</p>
                                     </div>
                                     <div class="ctdonhang__main-item">
                                         <p>Thanh toán: </p>
-                                        <p>'.$hinhthucthanhtoan.'</p>
+                                        <p>' . $hinhthucthanhtoan . '</p>
                                     </div>
                                     <div class="ctdonhang__main-item">
                                         <p>Tổng tiền: </p>
-                                        <p>'.number_format($tongtienn).' vnđ</p>
+                                        <p>' . number_format($tongtienn) . ' vnđ</p>
                                     </div>
                                 </div>
                             ';
-                        }
-
                     }
-
                 }
-                
             }
+        }
         ?>
         <div class="ctdonhang__main">
             <p class="ctdonhang__main-headding"><i>Thông tin khách hàng</i></p>
-            <?=$hienkhachhang?>
+            <?= $hienkhachhang ?>
         </div>
 
         <div class="ctdonhang__table">
@@ -306,40 +346,40 @@
                 </div>
 
                 <?php
-                    $hienbill='';
-                    $stt = 1;
-                    $tongtiensp = 0;
-                    $tongtien = 0;
-                    foreach($showbill as $showbilll) {
-                        extract($showbilll);
-                        $tongtiensp = $soluong * $dongia;
-                        $tongtien = $tongtien + $tongtiensp;
-                        $hienbill.='
+                $hienbill = '';
+                $stt = 1;
+                $tongtiensp = 0;
+                $tongtien = 0;
+                foreach ($showbill as $showbilll) {
+                    extract($showbilll);
+                    $tongtiensp = $soluong * $dongia;
+                    $tongtien = $tongtien + $tongtiensp;
+                    $hienbill .= '
                             <div class="ctdonhang__table-tr">
                                 <div style="width: 10%" class="ctdonhang__table-item">
-                                    <p>'.$stt.'</p>
+                                    <p>' . $stt . '</p>
                                 </div>
                                 <div class="ctdonhang__table-item">
-                                    <p>'.$tensanpham.'</p>
+                                    <p>' . $tensanpham . '</p>
                                 </div>
                                 <div class="ctdonhang__table-item">
-                                    <p>'.$soluong.'</p>
+                                    <p>' . $soluong . '</p>
                                 </div>
                                 <div class="ctdonhang__table-item">
-                                    <p>'.number_format($dongia).' vnđ</p>
+                                    <p>' . number_format($dongia) . ' vnđ</p>
                                 </div>
                                 <div class="ctdonhang__table-item">
-                                    <p>'.number_format($tongtiensp).' vnđ</p>
+                                    <p>' . number_format($tongtiensp) . ' vnđ</p>
                                 </div>
                             </div>
                         ';
-                        $stt++;
-                    }
+                    $stt++;
+                }
 
                 ?>
-                <?=$hienbill?>
+                <?= $hienbill ?>
 
-   
+
                 <div class="ctdonhang__table-tr" style=" border-top: 1px solid black;">
                     <div style="width: 10%" class="ctdonhang__table-item">
                         <p>Tổng tiền</p>
@@ -354,7 +394,7 @@
 
                     </div>
                     <div class="ctdonhang__table-item">
-                        <p><?=number_format($tongtien)?> vnđ</p>
+                        <p><?= number_format($tongtien) ?> vnđ</p>
                     </div>
                 </div>
 

@@ -34,7 +34,7 @@ foreach ($HienHangHoa as $HienHangHoaa) {
                 </div>  <div class="table_view_category table__bottom_center">
                 <p>' . $luotxem . '</p>
             </div>
-                    <div class="table_settin table__bottom_center setting">
+                    <div class="table_settin table__bottom_center setting nhanquyenba">
                         <div class="table_show_setting">
                             <p><i class="bi bi-gear-fill"></i></p>
                         </div>
@@ -112,15 +112,16 @@ foreach ($listdanhmuc as $listdanhmucc) {
       <!-- nav menu -->
       <div class="content_top_right_admin">
          <div class="content_top_right_admin_view">
-            <div class="content_top_right_admin_view_user">
-               <img src="./public/img/tải xuống.jfif" alt="">
-               <a href=""><i class="bi bi-three-dots-vertical"></i>Sign In</a>
+         <div class="content_top_right_admin_view_user">
+                    <img src="data:image/png;base64,<?php echo $_SESSION['nhanvien'][0]['hinhanh'] ?>" alt="">
+                    <p><?=$_SESSION['nhanvien'][0]['tennhanvien']?></p>
 
-            </div>
-            <div class="content_top_right_admin_view_setting">
-               <p class="hvr-glow"><i class="bi bi-bell-fill"></i></p>
-               <p class="hvr-glow"><i class="bi bi-gear-fill"></i></p>
-            </div>
+                </div>
+                <div class="content_top_right_admin_view_setting">
+                    <p class="hvr-glow">
+                        <a href="index.php?act=dangxuat">Đăng xuất</a>
+                    </p>
+                </div>
          </div>
       </div>
 
@@ -192,7 +193,7 @@ foreach ($listdanhmuc as $listdanhmucc) {
                <div class="table_view_category table__bottom_center">
                   <p>Lượt xem</p>
                </div>
-               <div class="table_settin table__bottom_center">
+               <div class="table_settin table__bottom_center nhanquyenba">
                   <p>Cài đặt</p>
                   <p></p>
                </div>

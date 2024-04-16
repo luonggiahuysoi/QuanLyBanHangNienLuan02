@@ -14,20 +14,15 @@ foreach ($checkcashow as $checkcashoww) {
    $listshowgiolam .= '
    <div class="lichlam_tr list-item">
             <div class="lichlam_th__item">
-               <p>'.$tennhanvien.'</p>
+               <p>' . $tennhanvien . '</p>
             </div>
             <div class="lichlam_th__item">
-               <p>'.$giolam.'</p>
+               <p>' . $giolam . '</p>
             </div>
             <div class="lichlam_th__item">
-               <p>'.$ngay.'</p>
+               <p>' . $ngay . '</p>
             </div>
-            <div style="display:flex;" class="lichlam_th__item">
-               <p>
-                  <a href="index.php?act=updatesogiolam&idsogiolam=' . $id_sogiolam . '">
-                     <i class="bi bi-arrow-counterclockwise"></i>
-                  </a>
-               </p>
+            <div style="display:flex;" class="lichlam_th__item nhanquyenba">
                <p>
                   <a style="color:red" href="index.php?act=deletesogiolam&idsogiolam=' . $id_sogiolam . '">
                      <i class="bi bi-trash-fill"></i>
@@ -62,13 +57,14 @@ foreach ($checkcashow as $checkcashoww) {
       <div class="content_top_right_admin">
          <div class="content_top_right_admin_view">
             <div class="content_top_right_admin_view_user">
-               <img src="./public/img/tải xuống.jfif" alt="">
-               <a href=""><i class="bi bi-three-dots-vertical"></i>Sign In</a>
+               <img src="data:image/png;base64,<?php echo $_SESSION['nhanvien'][0]['hinhanh'] ?>" alt="">
+               <p><?= $_SESSION['nhanvien'][0]['tennhanvien'] ?></p>
 
             </div>
             <div class="content_top_right_admin_view_setting">
-               <p class="hvr-glow"><i class="bi bi-bell-fill"></i></p>
-               <p class="hvr-glow"><i class="bi bi-gear-fill"></i></p>
+               <p class="hvr-glow">
+                  <a href="index.php?act=dangxuat">Đăng xuất</a>
+               </p>
             </div>
          </div>
       </div>
@@ -99,10 +95,10 @@ foreach ($checkcashow as $checkcashoww) {
          <div class="content__bottom-adddm">
             <input type="button" value="+ Thêm lịch làm" class="btn_add_lichlam btn_lichlam">
          </div>
-         <div class="content__bottom-adddm" href>
+         <div class="content__bottom-adddm dongphanquyen">
             <input type="button" value="+ Check ca làm" class="btn_calam">
          </div>
-         <div class="content__bottom-adddm" href>
+         <div class="content__bottom-adddm">
             <input type="button" value="Show ca làm" class="btn_show_giolam">
          </div>
       </div>
@@ -125,13 +121,13 @@ foreach ($checkcashow as $checkcashoww) {
             $username = "root"; // Tên đăng nhập cơ sở dữ liệu
             $password = ""; // Mật khẩu cơ sở dữ liệu
             $dbname = "QuanLyBanHang"; // Tên cơ sở dữ liệu
-            
+
             // Tạo kết nối
             $conn = new mysqli($servername, $username, $password, $dbname);
 
             // Kiểm tra kết nối
             if ($conn->connect_error) {
-               die ("Kết nối đến cơ sở dữ liệu thất bại: " . $conn->connect_error);
+               die("Kết nối đến cơ sở dữ liệu thất bại: " . $conn->connect_error);
             }
 
             // Lấy ngày hiện tại
@@ -141,7 +137,7 @@ foreach ($checkcashow as $checkcashoww) {
             $monday = date('Y-m-d', strtotime('last Monday', strtotime($currentDate)));
 
             // Tính toán ngày trong tuần (từ thứ Hai đến Chủ Nhật)
-            for ($i = 0; $i < 7; $i++) {
+            for ($i = 0; $i < 30; $i++) {
                // Tính toán ngày của tuần dựa trên ngày thứ Hai và biến $i
                $dateOfWeek = date("Y-m-d", strtotime($monday . " +$i days"));
 
@@ -356,9 +352,9 @@ foreach ($checkcashow as $checkcashoww) {
 </style>
 
 <script>
-   $(document).ready(function () {
+   $(document).ready(function() {
       // Bắt sự kiện click vào các phần tử h2 có class là 'day_lichlam'
-      $('.day_lichlam').click(function () {
+      $('.day_lichlam').click(function() {
          // Tìm phần tử kế tiếp (div) của h2 đang được click
          var content = $(this).next();
          // Ẩn/hiện nội dung của div đó
@@ -400,7 +396,7 @@ foreach ($checkcashow as $checkcashoww) {
                </select>
 
                <script>
-                  $(document).ready(function () {
+                  $(document).ready(function() {
                      // Sử dụng Select2 cho dropdown
                      $('#dropdownnlichlam').select2();
                   });
@@ -417,13 +413,13 @@ foreach ($checkcashow as $checkcashoww) {
          <button id="btn_close_lichlam">Đóng</button>
          <div>
             <script>
-               $(document).ready(function () {
-                  $("#btn_close_lichlam").click(function (e) {
+               $(document).ready(function() {
+                  $("#btn_close_lichlam").click(function(e) {
                      $(".Them_Lich_Lam").css("display", "none");
 
                   });
 
-                  $(".btn_add_lichlam").click(function (e) {
+                  $(".btn_add_lichlam").click(function(e) {
                      $(".Them_Lich_Lam").css("display", "flex");
 
                   });
@@ -601,7 +597,7 @@ foreach ($checkcashow as $checkcashoww) {
                </select>
 
                <script>
-                  $(document).ready(function () {
+                  $(document).ready(function() {
                      // Sử dụng Select2 cho dropdown
                      $('#dropdownnlichlamcheckca').select2();
                   });
@@ -617,13 +613,13 @@ foreach ($checkcashow as $checkcashoww) {
          <button id="btn_close_calam">Đóng</button>
          <div>
             <script>
-               $(document).ready(function () {
-                  $("#btn_close_calam").click(function (e) {
+               $(document).ready(function() {
+                  $("#btn_close_calam").click(function(e) {
                      $(".Them_Lich_Lamm").css("display", "none");
 
                   });
 
-                  $(".btn_calam").click(function (e) {
+                  $(".btn_calam").click(function(e) {
                      $(".Them_Lich_Lamm").css("display", "flex");
 
                   });
@@ -684,19 +680,19 @@ foreach ($checkcashow as $checkcashoww) {
          <h3 style="color:#fff;">Check ca làm</h3>
       </div>
       <form action="index.php?act=giolamsearch" method="post">
-      <div class="icon_show_lichlam">
-         <div class="search_day"> 
-               <input type="date" name="tungay" id="" class="date" value = "<?php echo $startOfMonth = date("Y-m-01"); ?>">
-               <input type="date" name="denngay" id="" class="date" value = "<?php echo $endOfMonth = date("Y-m-t");?>">
+         <div class="icon_show_lichlam">
+            <div class="search_day">
+               <input type="date" name="tungay" id="" class="date" value="<?php echo $startOfMonth = date("Y-m-01"); ?>">
+               <input type="date" name="denngay" id="" class="date" value="<?php echo $endOfMonth = date("Y-m-t"); ?>">
                <input type="submit" value="Search" class="timdate" name="timdate">
-               
+
             </div>
             <p class="icon_show_lichlamm"><i class="bi bi-x-circle"></i></p>
          </div>
       </form>
-      <div class="show_search_lichlam"> 
-            <input type="text" name="search_giolam" id="searchGioLam" placeholder="Nhập để tìm kiếm nhân viên">
-         </div>
+      <div class="show_search_lichlam">
+         <input type="text" name="search_giolam" id="searchGioLam" placeholder="Nhập để tìm kiếm nhân viên">
+      </div>
       <div class="lichlam_mainover">
          <div class="lichlam_th">
             <div class="lichlam_th__item">
@@ -708,52 +704,49 @@ foreach ($checkcashow as $checkcashoww) {
             <div class="lichlam_th__item">
                <p>Ngày làm</p>
             </div>
-            <div class="lichlam_th__item">
+            <div class="lichlam_th__item nhanquyenba">
                <p>Cài đặt</p>
             </div>
          </div>
 
-        <?=$listshowgiolam?>
+         <?= $listshowgiolam ?>
       </div>
    </div>
 </div>
 
 
 <script>
-   
-
-   $(document).ready(function () {
-      $(".icon_show_lichlamm").click(function (e) { 
+   $(document).ready(function() {
+      $(".icon_show_lichlamm").click(function(e) {
          $(".Them_Lich_Lammm").hide();
-         
-      });
-   });
-   $(document).ready(function () {
-      $(".btn_show_giolam").click(function (e) { 
-         $(".Them_Lich_Lammm").show();
-         
-      });
-   });
 
+      });
+   });
+   $(document).ready(function() {
+      $(".btn_show_giolam").click(function(e) {
+         $(".Them_Lich_Lammm").show();
+
+      });
+   });
 </script>
 
 <script>
-    $(document).ready(function () {
-        // Xử lý sự kiện khi người dùng nhập vào ô tìm kiếm
-        $("#searchGioLam").on("input", function () {
-            var searchText = $(this).val().toLowerCase();
+   $(document).ready(function() {
+      // Xử lý sự kiện khi người dùng nhập vào ô tìm kiếm
+      $("#searchGioLam").on("input", function() {
+         var searchText = $(this).val().toLowerCase();
 
-            // Hiển thị hoặc ẩn các phần tử phù hợp với từ khóa tìm kiếm
-            $(".list-item").each(function () {
-                var itemName = $(this).find(".lichlam_th__item p").text().toLowerCase();
-                if (itemName.includes(searchText)) {
-                    $(this).show();
-                } else {
-                    $(this).hide();
-                }
-            });
-        });
-    });
+         // Hiển thị hoặc ẩn các phần tử phù hợp với từ khóa tìm kiếm
+         $(".list-item").each(function() {
+            var itemName = $(this).find(".lichlam_th__item p").text().toLowerCase();
+            if (itemName.includes(searchText)) {
+               $(this).show();
+            } else {
+               $(this).hide();
+            }
+         });
+      });
+   });
 </script>
 
 
@@ -847,6 +840,7 @@ foreach ($checkcashow as $checkcashoww) {
       width: 100%;
       z-index: 5;
    }
+
    .hover_icon:hover {
       cursor: pointer;
    }
@@ -857,7 +851,7 @@ foreach ($checkcashow as $checkcashoww) {
       color: red;
    }
 
-   .search_day{
+   .search_day {
       position: relative;
       width: 80%;
       height: 100%;
@@ -886,10 +880,11 @@ foreach ($checkcashow as $checkcashoww) {
       background-color: tomato;
       color: white;
    }
+
    .timdate:hover {
       position: relative;
       border: 1px solid while;
-      background-color:#282e3d;
+      background-color: #282e3d;
       color: white;
       cursor: pointer;
 
@@ -912,8 +907,6 @@ foreach ($checkcashow as $checkcashoww) {
       margin-right: 18%;
       z-index: 5;
    }
-
-  
 </style>
 
 
