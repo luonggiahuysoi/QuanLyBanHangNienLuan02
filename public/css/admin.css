@@ -454,14 +454,20 @@
 
 }
 
+.hvr-glow a {
+    color: black;
+    font-weight: 550;
+}
+
 .content_top_right_admin_view_setting p {
     position: relative;
-    width: 25%;
+    width: 40%;
     height: 80%;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
+    color: black;
 }
 
 .content_top_right_admin_view_setting p:hover {

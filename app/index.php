@@ -25,7 +25,11 @@ if (isset($_SESSION['nhanvien'])) {
         if (isset($_GET['act'])) {
             switch ($_GET['act']) {
 
-                    //danh muc
+                //danh muc
+                case 'home':
+
+                    require_once "../app/view/view_admin/home.php";
+                    break;
 
                 case 'danhmuc':
 
@@ -137,7 +141,7 @@ if (isset($_SESSION['nhanvien'])) {
                     }
                     break;
 
-                    // ============================San pham =============================
+                // ============================San pham =============================
 
                 case 'sanpham':
 
@@ -389,7 +393,7 @@ if (isset($_SESSION['nhanvien'])) {
                     }
                     break;
 
-                    // note: Kho hang hoa 
+                // note: Kho hang hoa 
                 case 'kho':
                     $chungtumua = new DungChung;
                     $hienchungtumua = $chungtumua->ShowDungChung('chungtumua');
@@ -439,7 +443,7 @@ if (isset($_SESSION['nhanvien'])) {
                     break;
 
 
-                    // =================== Nhân Viên ================================================
+                // =================== Nhân Viên ================================================
 
                 case 'nhanvien':
                     echo '<script src="../public/js/danhmuc/danhmuc_add.js"></script>';
@@ -625,7 +629,7 @@ if (isset($_SESSION['nhanvien'])) {
 
 
 
-                    //============ Chức vụ nhân viên ================
+                //============ Chức vụ nhân viên ================
                 case 'chucvunhanvien':
                     // ==========load lai trang ===========
 
@@ -679,7 +683,7 @@ if (isset($_SESSION['nhanvien'])) {
 
                     break;
 
-                    // chức vụ nhân viên 
+                // chức vụ nhân viên 
                 case 'chucvu':
 
                     $phanquyen = new DungChung;
@@ -771,7 +775,7 @@ if (isset($_SESSION['nhanvien'])) {
                     }
                     break;
 
-                    //================ Lich Lam =======================
+                //================ Lich Lam =======================
 
                 case 'lichlam':
 
@@ -890,7 +894,7 @@ if (isset($_SESSION['nhanvien'])) {
                     break;
 
 
-                    //=====Luong nhân viên=================
+                //=====Luong nhân viên=================
                 case 'luongnhanvien':
                     $startOfMonth = date("Y-m-01");
                     $endOfMonth = date("Y-m-t");
@@ -1156,7 +1160,7 @@ if (isset($_SESSION['nhanvien'])) {
                         require_once "./view/nhanvien/luong.php";
                     }
                     break;
-                    // note: Quan ly don hang 
+                // note: Quan ly don hang 
 
                 case 'listdonhang':
                     $donhang = new DonHang;
@@ -1242,7 +1246,7 @@ if (isset($_SESSION['nhanvien'])) {
                     $delete->DeleteAll('giohang', 'id_giohang', $idgiohang);
                     header("location: index.php?act=listdonhang");
                     break;
-                    // todo:  Nguoi dung ====================================================================
+                // todo:  Nguoi dung ====================================================================
 
                 case 'nguoidung':
                     $khachhang = new DungChung;
@@ -1358,7 +1362,7 @@ if (isset($_SESSION['nhanvien'])) {
 
 
         // Quyền nhân viên thứ 2
-    } else  if ($_SESSION['nhanvien'][0]['id_phanquyen'] == 2 && $_SESSION['nhanvien'][0]['ability'] == 1) {
+    } else if ($_SESSION['nhanvien'][0]['id_phanquyen'] == 2 && $_SESSION['nhanvien'][0]['ability'] == 1) {
         include "../app/view/view_admin/headernhanvienquanly.php";
         if (isset($_GET['act'])) {
             switch ($_GET['act']) {
@@ -1473,7 +1477,7 @@ if (isset($_SESSION['nhanvien'])) {
                     }
                     break;
 
-                    // ============================San pham =============================
+                // ============================San pham =============================
 
                 case 'sanpham':
 
@@ -1725,7 +1729,7 @@ if (isset($_SESSION['nhanvien'])) {
                     }
                     break;
 
-                    // note: Kho hang hoa 
+                // note: Kho hang hoa 
                 case 'kho':
                     $chungtumua = new DungChung;
                     $hienchungtumua = $chungtumua->ShowDungChung('chungtumua');
@@ -1775,7 +1779,7 @@ if (isset($_SESSION['nhanvien'])) {
                     break;
 
 
-                    // =================== Nhân Viên ================================================
+                // =================== Nhân Viên ================================================
 
                 case 'nhanvien':
                     echo '<script src="../public/js/danhmuc/danhmuc_add.js"></script>';
@@ -1961,7 +1965,7 @@ if (isset($_SESSION['nhanvien'])) {
 
 
 
-                    //============ Chức vụ nhân viên ================
+                //============ Chức vụ nhân viên ================
                 case 'chucvunhanvien':
                     // ==========load lai trang ===========
 
@@ -2015,7 +2019,7 @@ if (isset($_SESSION['nhanvien'])) {
 
                     break;
 
-                    // chức vụ nhân viên 
+                // chức vụ nhân viên 
                 case 'chucvu':
 
                     $phanquyen = new DungChung;
@@ -2107,7 +2111,7 @@ if (isset($_SESSION['nhanvien'])) {
                     }
                     break;
 
-                    //================ Lich Lam =======================
+                //================ Lich Lam =======================
 
                 case 'lichlam':
 
@@ -2226,7 +2230,7 @@ if (isset($_SESSION['nhanvien'])) {
                     break;
 
 
-                    //=====Luong nhân viên=================
+                //=====Luong nhân viên=================
                 case 'luongnhanvien':
                     $startOfMonth = date("Y-m-01");
                     $endOfMonth = date("Y-m-t");
@@ -2492,7 +2496,7 @@ if (isset($_SESSION['nhanvien'])) {
                         require_once "./view/nhanvien/luong.php";
                     }
                     break;
-                    // note: Quan ly don hang 
+                // note: Quan ly don hang 
 
                 case 'listdonhang':
                     $donhang = new DonHang;
@@ -2586,7 +2590,7 @@ if (isset($_SESSION['nhanvien'])) {
                     $delete->DeleteAll('giohang', 'id_giohang', $idgiohang);
                     header("location: index.php?act=listdonhang");
                     break;
-                    // todo:  Nguoi dung ====================================================================
+                // todo:  Nguoi dung ====================================================================
 
                 case 'nguoidung':
                     $khachhang = new DungChung;
@@ -2698,12 +2702,12 @@ if (isset($_SESSION['nhanvien'])) {
             //    include "../app/view/view_admin/center.php";
 
         }
-    } else  if ($_SESSION['nhanvien'][0]['id_phanquyen'] == 3 && $_SESSION['nhanvien'][0]['ability'] == 1) {
+    } else if ($_SESSION['nhanvien'][0]['id_phanquyen'] == 3 && $_SESSION['nhanvien'][0]['ability'] == 1) {
         include "../app/view/view_admin/headernhanvien.php";
         if (isset($_GET['act'])) {
             switch ($_GET['act']) {
 
-                    //danh muc
+                //danh muc
 
                 case 'danhmuc':
 
@@ -2815,7 +2819,7 @@ if (isset($_SESSION['nhanvien'])) {
                     }
                     break;
 
-                    // ============================San pham =============================
+                // ============================San pham =============================
 
                 case 'sanpham':
 
@@ -3067,7 +3071,7 @@ if (isset($_SESSION['nhanvien'])) {
                     }
                     break;
 
-                    // note: Kho hang hoa 
+                // note: Kho hang hoa 
                 case 'kho':
                     $chungtumua = new DungChung;
                     $hienchungtumua = $chungtumua->ShowDungChung('chungtumua');
@@ -3117,7 +3121,7 @@ if (isset($_SESSION['nhanvien'])) {
                     break;
 
 
-                    // =================== Nhân Viên ================================================
+                // =================== Nhân Viên ================================================
 
                 case 'nhanvien':
                     echo '<script src="../public/js/danhmuc/danhmuc_add.js"></script>';
@@ -3303,7 +3307,7 @@ if (isset($_SESSION['nhanvien'])) {
 
 
 
-                    //============ Chức vụ nhân viên ================
+                //============ Chức vụ nhân viên ================
                 case 'chucvunhanvien':
                     // ==========load lai trang ===========
 
@@ -3357,7 +3361,7 @@ if (isset($_SESSION['nhanvien'])) {
 
                     break;
 
-                    // chức vụ nhân viên 
+                // chức vụ nhân viên 
                 case 'chucvu':
 
                     $phanquyen = new DungChung;
@@ -3449,7 +3453,7 @@ if (isset($_SESSION['nhanvien'])) {
                     }
                     break;
 
-                    //================ Lich Lam =======================
+                //================ Lich Lam =======================
 
                 case 'lichlam':
 
@@ -3568,7 +3572,7 @@ if (isset($_SESSION['nhanvien'])) {
                     break;
 
 
-                    //=====Luong nhân viên=================
+                //=====Luong nhân viên=================
                 case 'luongnhanvien':
                     $startOfMonth = date("Y-m-01");
                     $endOfMonth = date("Y-m-t");
@@ -3834,7 +3838,7 @@ if (isset($_SESSION['nhanvien'])) {
                         require_once "./view/nhanvien/luong.php";
                     }
                     break;
-                    // note: Quan ly don hang 
+                // note: Quan ly don hang 
 
                 case 'listdonhang':
                     $donhang = new DonHang;
@@ -3920,7 +3924,7 @@ if (isset($_SESSION['nhanvien'])) {
                     $delete->DeleteAll('giohang', 'id_giohang', $idgiohang);
                     header("location: index.php?act=listdonhang");
                     break;
-                    // todo:  Nguoi dung ====================================================================
+                // todo:  Nguoi dung ====================================================================
 
                 case 'nguoidung':
                     $khachhang = new DungChung;

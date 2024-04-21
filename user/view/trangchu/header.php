@@ -13,9 +13,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
     <link rel="stylesheet" href="../public/lib/fontawesome-free-6.5.1-web/fontawesome-free-6.5.1-web/css/all.min.css">
 
+
+
+
+
     <!-- hover-master  -->
     <link rel="stylesheet" href="../public/lib/Hover-master/css/hover-min.css">
-    <title>Document</title>
+    <link rel="shortcut icon" href="../public/img/onepiece.jfif" type="image/x-icon">
+    <title>IloveShop</title>
 </head>
 
 <body>
@@ -27,7 +32,6 @@
             <div class="header-search">
                 <div class="input-container">
                     <form action="index.php?act=timkiem" method="post">
-
                         <input type="text" placeholder="Tìm kiếm sản phẩm" name="tentimkiem">
                         <input type="submit" value="Search" class="button" name="timkiemm">
                     </form>
@@ -38,12 +42,13 @@
                     position: absolute;
                     width: 20%;
                     height: 60px;
-                    transform: translate(-40%,-50%);
+                    transform: translate(-40%, -50%);
                     display: flex;
                     justify-content: flex-start;
                     align-items: center;
                 }
-                .img_header img{
+
+                .img_header img {
                     position: relative;
                     width: 65px;
                     height: 65px;
@@ -51,33 +56,37 @@
                     border-radius: 100%;
                 }
 
-            
-                .img_header p{
+
+                .img_header p {
                     position: relative;
                     margin-left: 10px;
+                }
+
+                .header__bottom-children {
+                    width: 200%;
                 }
             </style>
             <div class="header-accout">
 
-            <!-- img header đăng nhập  -->
+                <!-- img header đăng nhập  -->
                 <?php
                 if (isset($_SESSION['nguoidung'])) {
                     echo '<div class="img_header">';
-                    if(isset($_SESSION['nguoidung'][0]['hinhanh']) ) {
+                    if (isset($_SESSION['nguoidung'][0]['hinhanh'])) {
                         echo '<img src="data:image/png;base64,' . $_SESSION['nguoidung'][0]['hinhanh'] . '" alt="">';
 
                     } else {
 
-                        if($_SESSION['nguoidung'][0]['gioitinh']==1) {
-                            echo '<img src="../public/img/userboy.jpg" alt="">';  
+                        if ($_SESSION['nguoidung'][0]['gioitinh'] == 1) {
+                            echo '<img src="../public/img/userboy.jpg" alt="">';
                         } else {
-                            echo '<img src="../public/img/usergirl.jpg" alt="">';  
+                            echo '<img src="../public/img/usergirl.jpg" alt="">';
 
                         }
 
                     }
-                    echo' <p>' . $_SESSION['nguoidung'][0]['tenkhachhang'] . '</p>';
-                    echo'    </div>';
+                    echo ' <p>' . $_SESSION['nguoidung'][0]['tenkhachhang'] . '</p>';
+                    echo '    </div>';
                 } else {
                     echo '
                             <i class="bi bi-person-circle"></i>
@@ -90,14 +99,14 @@
             </div>
             <div class="header-cart">
                 <?php
-                    if(isset($_SESSION['nguoidung'])) {
-                        echo '
-                            <a href="index.php?act=dangxuat" style="margin-left: 20px;" class = "dangxuat">Đăng xuất</a>
+                if (isset($_SESSION['nguoidung'])) {
+                    echo '
+                            <a href="index.php?act=dangxuat" style="margin-left: 30px;" class = "dangxuat">Đăng xuất</a>
                         ';
-                    }
+                }
 
                 ?>
-                <i class="bi bi-bag-plus" style="margin-left: 10px;"></i>
+                <i class="bi bi-bag-plus" style="margin-left: 20px;"></i>
                 <a href="index.php?act=giohang">Giỏ hàng</a>
             </div>
         </div>
@@ -108,18 +117,17 @@
                     <a href="index.php?act=trangchu">Trang chủ</a>
                 </div>
                 <div class="header__bottom-list">
-                    <a href="">Giới thiệu</a>
+                    <a href="../giothieu.html">Giới thiệu</a>
                 </div>
                 <div class="header__bottom-list">
                     <a href="">Sản phẩm <i class="bi bi-chevron-down"></i>
 
                         <!-- ================================== Danh mục ============================================== -->
                         <div class="header__bottom-children">
-
                             <?php
                             foreach ($headerDanhMuc as $headerDanhMucc) {
                                 extract($headerDanhMucc);
-                            ?>
+                                ?>
 
                                 <?php
                                 echo '
@@ -144,13 +152,13 @@
 
                                 <?php
                                 echo '
-                                 </div>
-                                 </div>
-                                 ';
+                                </div>
+                                </div>
+                                ';
 
                                 ?>
 
-                            <?php
+                                <?php
                             }
                             ?>
 
@@ -158,13 +166,10 @@
                     </a>
                 </div>
                 <div class="header__bottom-list">
-                    <a href="">Tin tức</a>
+                    <a href="../tintuc.html">Tin tức</a>
                 </div>
                 <div class="header__bottom-list">
-                    <a href="https://www.facebook.com/luonggia.huy.180410">Liên hệ</a>
-                </div>
-                <div class="header__bottom-list">
-                    <a href="">Hệ thống cửa hàng</a>
+                    <a href="../lienhe.html">Liên hệ</a>
                 </div>
             </div>
 
@@ -177,6 +182,3 @@
             </div>
         </div>
     </header>
-
-
-

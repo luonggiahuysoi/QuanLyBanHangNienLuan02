@@ -17,7 +17,7 @@
    <script src="../public/js/admin_main.js"></script>
 
    <script src="../public/js/danhmuc.js"></script>
-   <title>Document</title>
+   <title>Quản lý - Nhân viên</title>
 </head>
 
 <body>
@@ -30,7 +30,7 @@
             </div>
             <div class="nav_view_center">
                <div class="item_cha">
-                  <a class="admin_home" href="index.php"><i class="bi bi-house-fill"></i> Trang
+                  <a class="admin_home" href="index.php?act=home"><i class="bi bi-house-fill"></i> Trang
                      chủ</a>
                </div>
             </div>

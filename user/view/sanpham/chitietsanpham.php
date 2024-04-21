@@ -37,59 +37,67 @@
             </div>
 
             <?php
-                     if (isset($_SESSION['nguoidung'])) {
-                        if ($_SESSION['nguoidung']) {
+            if (isset($_SESSION['nguoidung'])) {
+                if ($_SESSION['nguoidung']) {
 
-                            echo '
+                    echo '
                             <form action="index.php?act=addcart" method="post">';
-            ?>
+                    ?>
 
-            <div class="main-detail">
-                <div class="main__detail-left">
-                    <div class="main__detail-left--img">
-                        <img src="<?php echo 'data:image/png;base64,' . $hanghoaa[0]['anhhanghoa'] . ''; ?>" alt="">
-                    </div>
-                    <div class="main__detail-left--imgs">
-                        <?php
-                            $anh = new HangHoa;
-                            $img = $anh->ShowImg($idhanghoa);
-                            foreach($img as $imgg) {
-                                extract($imgg);
-                                echo '
+                    <div class="main-detail">
+                        <div class="main__detail-left">
+                            <div class="main__detail-left--img">
+                                <img src="<?php echo 'data:image/png;base64,' . $hanghoaa[0]['anhhanghoa'] . ''; ?>" alt="">
+                            </div>
+                            <div class="main__detail-left--imgs">
+                                <?php
+                                $anh = new HangHoa;
+                                $img = $anh->ShowImg($idhanghoa);
+                                foreach ($img as $imgg) {
+                                    extract($imgg);
+                                    echo '
                                     <img src="data:image/png;base64,' . $hinh . '" alt="">
                                 ';
-                            }
-                        ?>
-                    </div>
-                </div>
-            
-
-                <div class="main__detail-right">
-                    <p><?=$hanghoaa[0]['tenhanghoa']?></p>
-
-                    <p class="detail-price"><?php $tong = 0; $tong = $hanghoaa[0]['gia'] * (1 - $hanghoaa[0]['giasale'] / 100); echo ''.number_format($tong).'';?> <sup>vnđ</sup></p>
-                    <p class="detail-price" style=" text-decoration: line-through; color:#999;"><?php  echo ''.number_format($hanghoaa[0]['gia']).'';?> <sup>vnđ</sup></p>
-
-                    <div class="detail-color">
-                        <p>Màu sắc: </p>
-                        <select class="classic" style="width: 300px;" name="mausac">
-                            <option selected disabled>Chọn màu cho sản phẩm</option>
-                            <?php
-                                $mau = new DanhMuc;
-                                $showmau = $mau->ShowMau($idhanghoa);
-                                foreach($showmau as $showmauu) {
-                                    extract($showmauu);
-                                    echo '
-                                        <option value="'.$mausac.'">'.$mausac.'</option>
-                                    ';
                                 }
+                                ?>
+                            </div>
+                        </div>
 
-                            ?>
-                           
+                        <div class="main__detail-right">
+                            <p><?= $hanghoaa[0]['tenhanghoa'] ?></p>
 
-                        </select>
-                    </div>
-                    <!-- <div class="detail-size">
+                            <p class="detail-price">
+
+
+                                <?php $tong = 0;
+                                $tong = $hanghoaa[0]['gia'] * (1 - $hanghoaa[0]['giasale'] / 100);
+                                echo '' . number_format($tong) . ''; ?>
+                                <sup>vnđ</sup>
+                            </p>
+                            <p class="detail-price" style=" text-decoration: line-through; color:#999;">
+                                <?php echo '' . number_format($hanghoaa[0]['gia']) . ''; ?> <sup>vnđ</sup>
+                            </p>
+
+                            <div class="detail-color">
+                                <p>Màu sắc: </p>
+                                <select class="classic" style="width: 300px;" name="mausac">
+                                    <option selected disabled>Chọn màu cho sản phẩm</option>
+                                    <?php
+                                    $mau = new DanhMuc;
+                                    $showmau = $mau->ShowMau($idhanghoa);
+                                    foreach ($showmau as $showmauu) {
+                                        extract($showmauu);
+                                        echo '
+                                        <option value="' . $mausac . '">' . $mausac . '</option>
+                                    ';
+                                    }
+
+                                    ?>
+
+
+                                </select>
+                            </div>
+                            <!-- <div class="detail-size">
                         <p>Kích thước: </p>
                         <select class="classic" style="width: 300px;">
                             <option selected disabled>Chọn size cho sản phẩm</option>
@@ -100,19 +108,19 @@
                         </select>
                     </div> -->
 
-                    <div class="datail-quanity">
-                        <!-- <input class="cart-add" type="button" value="-" onclick="decreaseQuantity(this)">
+                            <div class="datail-quanity">
+                                <!-- <input class="cart-add" type="button" value="-" onclick="decreaseQuantity(this)">
                         <p class="quantity">1</p>
                         <input class="cart-add" type="button" value="+" onclick="increaseQuantity(this)"> -->
-                        <input type="number" name="soluong" value="1" min="1" max="10">
-                    </div>
+                                <input type="number" name="soluong" value="1" min="1" max="10">
+                            </div>
 
 
-                    <div class="detail-buy">
-                        <?php
+                            <div class="detail-buy">
+                                <?php
 
                                 echo '
-                              
+                        
                                     <input type="hidden" name="idhanghoa" value="' . $hanghoaa[0]['id_hanghoa'] . '">
                                     <input type="hidden" name="anh" value="' . $hanghoaa[0]['anhhanghoa'] . '">
                                     <input type="hidden" name="tenhanghoa" value="' . $hanghoaa[0]['tenhanghoa'] . '">
@@ -121,12 +129,12 @@
     
                                     <input type="submit" value="Thêm vào giỏ hàng" name="add_cart">
                                 </form>';
-                            }
-                        } else {
-                            echo '<a onclick="showLoginAlert();">Thêm vào giỏ</a>';
-                            echo '<input type="button" value="Thêm vào giỏ hàng">';
-                        }
-                        ?>
+                }
+            } else {
+                echo '<a onclick="showLoginAlert();">Thêm vào giỏ</a>';
+                echo '<input type="button" value="Thêm vào giỏ hàng">';
+            }
+            ?>
                         <input type="button" value="Mua sản phẩm">
                     </div>
 
@@ -136,7 +144,7 @@
                         <h2>Chi tiết sản phẩm</h2>
                         <div class="materiat">
                             <p></p>
-                            <p><?=$hanghoaa[0]['mota']?></p>
+                            <p><?= $hanghoaa[0]['mota'] ?></p>
                         </div>
 
                     </div>
@@ -159,55 +167,38 @@
             <div class="review-container">
                 <div class="reviews-mainn">
                     <?php
-                        $bl = new HangHoa;
-                        $binhluan = $bl->BinhLuan($idhanghoa);
-                        foreach($binhluan as $binhluann) {
-                            extract($binhluann);
-                            echo '
+                    $bl = new HangHoa;
+                    $binhluan = $bl->BinhLuan($idhanghoa);
+                    foreach ($binhluan as $binhluann) {
+                        extract($binhluann);
+                        echo '
                                 <div class="review__main-right">
-                                    <p class="review-name">'.$tennguoidung.'</p>
+                                    <p class="review-name">' . $tennguoidung . '</p>
                                     <div class="reviews-day">
-                                        <p>'.$ngaybinhluan.'</p>
+                                        <p>' . $ngaybinhluan . '</p>
                                         <p>|</p>
-                                        <p>Phân loại: '.$phanloai.'</p>
+                                        <p>Phân loại: ' . $phanloai . '</p>
                                     </div>
                                     <p class="review-content">
-                                        '.$noidung.'
+                                        ' . $noidung . '
                                     </p>
                                 </div>
                             ';
-                        }
-
+                    }
                     ?>
                 </div>
 
 
             </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <div class=" main-suggest main-suggest-hot">
             <div class="main__suggest-list">
                 <div class="main__suggest-item">
                     <p>Sản phẩm dành cho bạn</p>
                     <div class="main__suggest-item--title">
-                        <p>Ghế công thái học</p>
-                        <p><i class="bi bi-circle-fill"></i></p>
-                        <p>Bàn nâng hạ</p>
+                        <!-- <p>Ghế công thái học</p> -->
+                        <!-- <p><i class="bi bi-circle-fill"></i></p> -->
+                        <!-- <p>Bàn nâng hạ</p> -->
                     </div>
                 </div>
                 <div class="main__suggest-right">
@@ -216,40 +207,40 @@
             </div>
 
             <div class="main__suggest-product">
-            <?php
-                    $tinhgiasale = 0;
-                    foreach ($sanphambanchay as $sanphambanchayy) {
-                        extract($sanphambanchayy);
-                        $tinhgiasale = $gia * (1 - $giasale / 100);
-                        echo '<div class="main__product-item">';
-                        echo '<img src="data:image/png;base64,' . $hinhanh . '" alt="" loading="__autoload">';
-                        echo '<p class="main__product-item--name">Giày thể thao nam</p>';
-                        echo '<div class="main__product-item-price">';
-                        echo '<p>' . number_format($tinhgiasale) . ' <span>vnđ</span></p>';
-                        echo '<p>' . number_format($gia) . ' <span>vnđ</span></p>';
-                        echo '</div>';
+                <?php
+                $tinhgiasale = 0;
+                foreach ($sanphambanchay as $sanphambanchayy) {
+                    extract($sanphambanchayy);
+                    $tinhgiasale = $gia * (1 - $giasale / 100);
+                    echo '<div class="main__product-item">';
+                    echo '<img src="data:image/png;base64,' . $anhhanghoa . '" alt="" loading="__autoload">';
+                    echo '<p class="main__product-item--name">Giày thể thao nam</p>';
+                    echo '<div class="main__product-item-price">';
+                    echo '<p>' . number_format($tinhgiasale) . ' <span>vnđ</span></p>';
+                    echo '<p>' . number_format($gia) . ' <span>vnđ</span></p>';
+                    echo '</div>';
 
-                        // Hiển thị màu cho sản phẩm
-                        echo '<div class="main__product-item-color">';
-                        $mau = new DanhMuc;
-                        $showmau = $mau->ShowMau($id_hanghoa);
-                        foreach ($showmau as $mauu) {
-                            echo '<p style="background-color: ' . $mauu['mausac'] . ';"></p>';
-                        }
-                        echo '</div>';
+                    // Hiển thị màu cho sản phẩm
+                    echo '<div class="main__product-item-color">';
+                    $mau = new DanhMuc;
+                    $showmau = $mau->ShowMau($id_hanghoa);
+                    foreach ($showmau as $mauu) {
+                        echo '<p style="background-color: ' . $mauu['mausac'] . ';"></p>';
+                    }
+                    echo '</div>';
 
-                        echo '<div class="main__product-item-quanity">';
-                        echo '<p>Số lương còn lại:</p>';
-                        echo '<p>x' . $soluong . '</p>';
-                        echo '</div>';
-                        echo '<div class="main__product-item--sale">';
-                        echo '<p>' . $giasale . '%</p>';
-                        echo '</div>';
-                        echo '<div class="main__children-product--item">';
-                        if (isset($_SESSION['nguoidung'])) {
-                            if ($_SESSION['nguoidung']) {
+                    echo '<div class="main__product-item-quanity">';
+                    echo '<p>Số lương còn lại:</p>';
+                    echo '<p>x' . $soluong . '</p>';
+                    echo '</div>';
+                    echo '<div class="main__product-item--sale">';
+                    echo '<p>' . $giasale . '%</p>';
+                    echo '</div>';
+                    echo '<div class="main__children-product--item">';
+                    if (isset($_SESSION['nguoidung'])) {
+                        if ($_SESSION['nguoidung']) {
 
-                                echo '
+                            echo '
                                 <form action="index.php?act=addcart" method="post">
                                     <input type="hidden" name="idhanghoa" value="' . $id_hanghoa . '">
                                     <input type="hidden" name="anh" value="' . $anhhanghoa . '">
@@ -259,13 +250,13 @@
 
                                     <input type="submit" value="Thêm vào giỏ" name="add_cart">
                                 </form>';
-                            }
-                        } else {
-                            echo '<a onclick="showLoginAlert();">Thêm vào giỏ</a>';
                         }
-                        echo '</div>';
-                        echo '</div>';
+                    } else {
+                        echo '<a onclick="showLoginAlert();">Thêm vào giỏ</a>';
                     }
+                    echo '</div>';
+                    echo '</div>';
+                }
                 ?>
             </div>
 

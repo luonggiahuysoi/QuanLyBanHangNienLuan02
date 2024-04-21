@@ -7,13 +7,13 @@
             </div>
             <div class="main__suggest-right main__product-btn">
                 <form action="index.php?act=lishsanpham" method="post">
-                    <input type="hidden" name="iddanhmuc" value="<?=$iddanhmuc?>">
+                    <input type="hidden" name="iddanhmuc" value="<?= $iddanhmuc ?>">
                     <input type="hidden" name="tanggiam" value="1">
                     <input type="submit" value="Tăng dần">
 
                 </form>
                 <form action="index.php?act=lishsanpham" method="post">
-                    <input type="hidden" name="iddanhmuc" value="<?=$iddanhmuc?>">
+                    <input type="hidden" name="iddanhmuc" value="<?= $iddanhmuc ?>">
                     <input type="hidden" name="tanggiam" value="0">
                     <input type="submit" value="Giảm dần">
 
@@ -32,7 +32,7 @@
                         echo '<div class="main__product-item">';
                         echo '<a href = "index.php?act=chitietsanpham&idhanghoa=' . $id_hanghoa . '" class="product-link" >';
 
-                        echo '<img src="data:image/png;base64,' . $hinhanh . '" alt="" loading="__autoload">';
+                        echo '<img src="data:image/png;base64,' . $anhhanghoa . '" alt="" loading="__autoload">';
                         echo '<p class="main__product-item--name">' . $tenhanghoa . '</p>';
                         echo '<div class="main__product-item-price">';
                         echo '<p>' . number_format($tinhgiasale) . ' <span>vnđ</span></p>';
@@ -67,11 +67,11 @@
                                     <input type="hidden" name="soluong" value="1">
                                     <input type="hidden" name="gia" value="' . $tinhgiasale . '">
     
-                                    <input type="submit" value="Thêm vào giỏ" name="add_cart">
+                                    <input type="submit" value="Thêm vào giỏ" class="add_cart" name="add_cart">  
                                 </form>';
                             }
                         } else {
-                            echo '<a onclick="showLoginAlert();">Thêm vào giỏ</a>';
+                            echo '<a style="" onclick="showLoginAlert();">Thêm vào giỏ</a>';
                         }
                         echo '</div>';
                         echo '</a>';
@@ -185,7 +185,7 @@
 
 
     footer {
-        margin-top: -30%;
+        margin-top: -20%;
     }
 
 

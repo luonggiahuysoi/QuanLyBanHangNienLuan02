@@ -23,9 +23,12 @@ if (isset($_GET['act'])) {
             $idhanghoa = $_GET['idhanghoa'];
             $hanghoa = new DungChung;
             $hanghoaa = $hanghoa->getByIdAll('hanghoa', 'id_hanghoa', $idhanghoa);
-            
+
+            $sanphamban = new HangHoa;
+            $sanphambanchay = $sanphamban->SanPhamBanChay();
+
             $luotxem = $hanghoaa[0]['luotxem'];
-            $luotxem ++;
+            $luotxem++;
             $addluotxem = new ChucNang;
             $addluotxem->updateluotxem($luotxem, $idhanghoa);
 
@@ -39,12 +42,12 @@ if (isset($_GET['act'])) {
                 $iddanhmuc = $_POST['iddanhmuc'];
                 if ($tanggiam == 1) {
                     $lishHangHoa = $lish->getByIdAllOrderByPriceAsc('hanghoa', 'id_danhmuc', $iddanhmuc);
-                } else 
-                
-                if ($tanggiam == 0) {
+                } else
 
-                    $lishHangHoa = $lish->getByIdAllOrderByPriceDesc('hanghoa', 'id_danhmuc', $iddanhmuc);
-                }
+                    if ($tanggiam == 0) {
+
+                        $lishHangHoa = $lish->getByIdAllOrderByPriceDesc('hanghoa', 'id_danhmuc', $iddanhmuc);
+                    }
             } else {
                 $iddanhmuc = $_GET['iddanhmuc'];
                 $lishHangHoa = $lish->getByIdAll('hanghoa', 'id_danhmuc', $iddanhmuc);
@@ -56,7 +59,7 @@ if (isset($_GET['act'])) {
             require_once "./view/dangnhap/sigup.php";
             break;
         case 'dangkyy':
-            if(isset($_POST['nhandangky']) && $_POST['nhandangky']) {
+            if (isset($_POST['nhandangky']) && $_POST['nhandangky']) {
                 $tenkhachhang = $_POST['tenkhachhang'];
                 $gioitinh = $_POST['gioitinh'];
                 $sodienthoai = $_POST['sodienthoai'];
@@ -78,14 +81,14 @@ if (isset($_GET['act'])) {
                 $password = $_POST['pass'];
                 $kiemtra = new DungChung;
                 $kiemtraUser = $kiemtra->login($username, $password);
-                if($kiemtraUser[0]['ability'] == 1) {
+                if ($kiemtraUser[0]['ability'] == 1) {
                     $_SESSION['nguoidung'] = $kiemtraUser;
 
                 } else {
-                    
+
                     header("location: index.php?act=trangchu");
                 }
-                
+
                 header("location: index.php?act=trangchu");
                 // require_once "./view/trangchu/center.php";
             } else {
@@ -167,7 +170,7 @@ if (isset($_GET['act'])) {
 
         case 'deletecart':
             if (isset($_GET['id'])) {
-                if (isset($_SESSION['giohang'])  && count($_SESSION['giohang']) > 0) {
+                if (isset($_SESSION['giohang']) && count($_SESSION['giohang']) > 0) {
                     array_splice($_SESSION['giohang'], $_GET['id'], 1);
                 }
             } else {
@@ -207,7 +210,7 @@ if (isset($_GET['act'])) {
 
 
 
-                if (isset($_SESSION['giohang'])  && count($_SESSION['giohang']) > 0) {
+                if (isset($_SESSION['giohang']) && count($_SESSION['giohang']) > 0) {
                     foreach ($_SESSION['giohang'] as $item) {
                         $addspcart = new DonHang;
 
@@ -223,7 +226,7 @@ if (isset($_GET['act'])) {
             break;
 
         case 'timkiem':
-            if(isset($_POST['timkiemm']) && $_POST['timkiemm']) {
+            if (isset($_POST['timkiemm']) && $_POST['timkiemm']) {
 
                 $timkiem = $_POST['tentimkiem'];
                 $sea = new ChucNang;

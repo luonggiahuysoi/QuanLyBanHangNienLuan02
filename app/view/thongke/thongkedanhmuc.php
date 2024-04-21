@@ -1,8 +1,8 @@
 <script>
-    $(document).ready(function() {
-        $("#myInput").on("keyup", function() {
+    $(document).ready(function () {
+        $("#myInput").on("keyup", function () {
             var timKiem = $(this).val().toLowerCase();
-            $("#myTable tr:not(.header_tb)").filter(function() {
+            $("#myTable tr:not(.header_tb)").filter(function () {
                 var content = $(this).find("td:nth-child(2)").text().toLowerCase(); // Tìm kiếm theo cột Họ tên
                 var hoipjwContent = $(this).find("td:last-child").text().toLowerCase();
                 $(this).toggle(content.includes(timKiem) || hoipjwContent.includes(timKiem));

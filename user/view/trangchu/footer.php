@@ -41,7 +41,7 @@
 
             <div class="footer__main-sale--email">
                 <input type="email" placeholder="Nhập email nhận ưu đãi">
-                <p>Đăng ký</p>
+                <input type="submit" value="Đăng ký ">
             </div>
         </div>
     </div>

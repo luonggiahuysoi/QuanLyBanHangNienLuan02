@@ -274,6 +274,7 @@ footer {
     margin-left: 25%;
     margin-top: 3%;
     align-items: center;
+    gap: 30px;
 }
 
 .cartpay-btn input {

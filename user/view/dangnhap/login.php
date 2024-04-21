@@ -1,7 +1,8 @@
-<div class="testlogin" style="height: 80vh; position:relative;">
+<div class="testlogin">
    <div class="container">
       <div class="left">
          <form class="index.php?act=dangnhap" method="POST">
+            <h3>Đăng nhập</h3>
             <div class="input-block">
                <input class="input" type="text" id="email" required="" name="user">
                <label for="email">Tài khoản</label>
@@ -11,7 +12,7 @@
                <label for="pass">Mật khẩu</label>
             </div>
             <div class="input-block">
-               <span class="forgot"><a href="#">Forgot Password?</a></span>
+               <span class="forgot"></span>
                <!-- <button name="login">Submit</button> -->
                <input type="submit" value="Đăng nhập" name="dangnhap" class="dangnhap">
             </div>
@@ -132,26 +133,40 @@
       position: relative;
       width: 100%;
       height: 100vh;
-      background: #1f4037;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #99f2c8, #1f4037);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #99f2c8, #1f4037); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      background: #1f4037;
+      /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, #99f2c8, #1f4037);
+      /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, #99f2c8, #1f4037);
+      /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
+   }
+
+   h3 {
+      font-size: 3rem;
+      font-weight: 550;
+      font-family: 'Times New Roman', Times, serif;
+      text-transform: uppercase;
+
+      text-align: center;
+      margin-bottom: 4%
    }
 
    .container {
       display: flex;
       width: 520px;
-      height: 500px;
-      max-width: 99%;
+      height: 400px;
+      max-width: 100%;
       align-items: center;
       justify-content: center;
+      padding: 10px 20px;
       position: relative;
       overflow: hidden;
       background-color: #ffffff25;
       border-radius: 15px;
       box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.03);
       border: 0.1px solid rgba(128, 128, 128, 0.178);
-      top:50%;
+      top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
    }
@@ -222,13 +237,17 @@ background: linear-gradient(to right, #99f2c8, #1f4037); /* W3C, IE 10+/ Edge, F
       margin: 10px auto;
       width: 80%;
       display: block;
-      color: #425981;
+      color: black;
       font-weight: 500;
-      font-size: 1.1em;
+      font-size: 1.5em;
    }
 
    .input-block {
       position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
    }
 
    label {
@@ -267,5 +286,20 @@ background: linear-gradient(to right, #99f2c8, #1f4037); /* W3C, IE 10+/ Edge, F
    .input {
       box-shadow: inset 4px 4px 4px rgba(165, 163, 163, 0.315),
          4px 4px 4px rgba(218, 218, 218, 0.13);
+   }
+
+   .dangnhap {
+      font-size: 1.4rem;
+      font-weight: 500;
+      padding: 6px 12px;
+      color: #fff;
+      background-color: #3eb078;
+      border-radius: 5px;
+   }
+
+   .dangnhap:hover {
+      background-color: black;
+      color: #fff;
+      cursor: pointer;
    }
 </style>

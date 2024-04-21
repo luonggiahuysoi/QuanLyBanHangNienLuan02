@@ -58,26 +58,26 @@
 
 
                     <div class="cartpay-btn">
-                    <?php
-                    if (isset($_SESSION['giohang']) && $_SESSION['giohang'] > 0) {
-                        $tongsp = 0;
-                        $tongsl = 0;
-                        $tongtien = 0;
-                        foreach ($_SESSION['giohang'] as $item) {
-                            extract($item);
-                            $tongsp = $item[3] * $item[4];
-                            $tongsl = $tongsl + $item[3];
-                            $tongtien += $tongsp;
-                            echo '
+                        <?php
+                        if (isset($_SESSION['giohang']) && $_SESSION['giohang'] > 0) {
+                            $tongsp = 0;
+                            $tongsl = 0;
+                            $tongtien = 0;
+                            foreach ($_SESSION['giohang'] as $item) {
+                                extract($item);
+                                $tongsp = $item[3] * $item[4];
+                                $tongsl = $tongsl + $item[3];
+                                $tongtien += $tongsp;
+                                echo '
                                     <form action="index.php?act=order" method="post">
-                                        <input type="hidden" name="tongdonhang" value="'.$tongtien.'">
+                                        <input style="margin-left:10px" type="hidden" name="tongdonhang" value="' . $tongtien . '">
                                         <input type="submit" value="THANH TOÁN VÀ GIAO HÀNG" name="thanhtoan">
                                     </form>
                                 ';
+                            }
                         }
-                    }
 
-                    ?>
+                        ?>
                     </div>
                 </div>
             </div>
@@ -107,16 +107,19 @@
                             $tongsp = $item[3] * $item[4];
                             $tongsl = $tongsl + $item[3];
                             $tongtien += $tongsp;
+
                             echo '
-                                    <div class="cart__pay-table--name">
-                                        <p>' . $item[2] . '</p>
-                                    </div>
-                                    <div class="cart__pay-table--quanity">
-                                        <p>' . $item[3] . '</p>
-                                    </div>
-                                    <div class="cart__pay-table--total">
-                                        <p>' . number_format($tongtien) . '<sup>vnđ</sup></p>
-                                    </div>
+                     <div class="cart__pay-tr">
+                                <div class="cart__pay-table--name">
+                                    <p>' . $item[2] . '</p>
+                                </div>
+                                <div class="cart__pay-table--quanity">
+                                    <p>' . $item[3] . '</p>
+                                </div>
+                                <div class="cart__pay-table--total">
+                                    <p>' . number_format($tongtien) . '<sup>vnđ</sup></p>
+                                </div>
+                            </div>
                                 ';
                             $i++;
                         }
@@ -152,3 +155,20 @@
 </body>
 
 </html>
+
+<style>
+    .cartpay-btn {
+        gap: 30px;
+    }
+
+    .cart__pay-table--tr {
+        flex-direction: column;
+    }
+
+    .cart__pay-tr {
+        display: flex;
+        gap: 200px;
+        justify-content: space-between;
+        align-items: center;
+    }
+</style>

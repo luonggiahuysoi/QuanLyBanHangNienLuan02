@@ -30,7 +30,7 @@
             </div>
             <div class="nav_view_center">
                <div class="item_cha">
-                  <a class="admin_home" href="index.php"><i class="bi bi-house-fill"></i> Trang
+                  <a class="admin_home" href="index.php?act=home"><i class="bi bi-house-fill"></i> Trang
                      chủ</a>
                </div>
             </div>

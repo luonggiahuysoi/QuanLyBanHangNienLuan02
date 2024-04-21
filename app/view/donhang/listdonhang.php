@@ -149,19 +149,19 @@
                     if ($trangthai == 1) {
                         $trangthaii = ' 
                             <div class="table_view_category table__bottom_center ct_donhang">
-                                <p class="ctdonhang__hide">Đang giao</p>
+                                <p  class="ctdonhang__hide">Đang giao</p>
                             </div>
                             ';
                     } else {
                         $trangthaii = ' 
                             <div class="table_view_category table__bottom_center ct_donhang">
-                                <p class="ctdonhang__hide">Đã giao</p>
+                                <p  class="ctdonhang__hide">Đã giao</p>
                             </div>
                             ';
                     }
 
                     if ($tinhtrang == 1) {
-
+ 
                         $tinhtrangg = 'Chưa xem';
                     } else {
 
@@ -174,14 +174,14 @@
                             <div class="table_name_image table__bottom_center  ">
                                 <p>' . $tenkhachhang . '</p>
                             </div>
-                            <div class="table_name_image table__bottom_center  ">
-                                <p>' . $madonhang . '</p>
+                            <div style="width:18%" class="table_name_image table__bottom_center  ">
+                                <p >' . $madonhang . '</p>
+                            </div>
+                            <div style="width:30%" class="table_view_category table__bottom_center">
+                                <a  style="" href="index.php?act=listdonhangbilltt&madh=' . $madonhang . '&idgiohang=' . $id_giohang . '">' . $trangthaii . '</a>
                             </div>
                             <div class="table_view_category table__bottom_center">
-                                <a href="index.php?act=listdonhangbilltt&madh=' . $madonhang . '&idgiohang=' . $id_giohang . '">' . $trangthaii . '</a>
-                            </div>
-                            <div class="table_view_category table__bottom_center">
-                                <p style="color:red;">' . $tinhtrangg . '</p>
+                                <p style="color:red; margin-left:-15%">' . $tinhtrangg . '</p>
                             </div>
                             <div class="table_view_category table__bottom_center ct_donhang">
                                 <p class=""><a href="index.php?act=listdonhangbill&madh=' . $madonhang . '&idgiohang=' . $id_giohang . '" style="color:aliceblue;">Chi tiết</a></p>
@@ -418,17 +418,17 @@
         }
     </style>
     <script>
-        document.addEventListener('keydown', function(event) {
+        document.addEventListener('keydown', function (event) {
             if (event.key === 'Enter') {
                 window.print(); // In đơn hàng khi người dùng bấm phím "Enter"
             }
         });
-        document.addEventListener('keydown', function(event) {
+        document.addEventListener('keydown', function (event) {
             if (event.key === 'F2') {
                 window.print(); // ĐÓNG HOÁ ĐƠN
             }
         });
-        document.addEventListener('keydown', function(event) {
+        document.addEventListener('keydown', function (event) {
             if (event.key === 'F1') {
                 window.history.back();
             }
@@ -547,6 +547,20 @@
         justify-content: center;
         align-items: center;
     }
+
+    .table_name_image {
+        width: 26%;
+    }
+
+    .table_view_category {
+        width: 16%;
+    }
+
+    .table_tr {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 </style>
 
 
@@ -565,8 +579,8 @@
 
 
 <script>
-    $(document).ready(function() {
-        $(".icon_show_ctkho").click(function(e) {
+    $(document).ready(function () {
+        $(".icon_show_ctkho").click(function (e) {
             $(".ctdonhang").css("display", "none");
 
         });
@@ -575,8 +589,8 @@
 
 <!-- mở hóa đơn  -->
 <script>
-    $(document).ready(function() {
-        $(".ctdonhang__hide").click(function(e) {
+    $(document).ready(function () {
+        $(".ctdonhang__hide").click(function (e) {
             $(".ctdonhang").css("display", "flex");
 
         });
@@ -586,13 +600,13 @@
 
 <!-- -------------------SEARCH---------------------- -->
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         // Xử lý sự kiện khi người dùng nhập vào ô tìm kiếm
-        $("#searchInput").on("input", function() {
+        $("#searchInput").on("input", function () {
             var searchText = $(this).val().toLowerCase();
 
             // Hiển thị hoặc ẩn các phần tử phù hợp với từ khóa tìm kiếm
-            $(".list-item").each(function() {
+            $(".list-item").each(function () {
                 var itemName = $(this).find(".tendanhmuc p").text().toLowerCase();
                 if (itemName.includes(searchText)) {
                     $(this).show();
