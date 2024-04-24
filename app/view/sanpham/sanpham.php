@@ -402,6 +402,10 @@ foreach ($listdanhmuc as $listdanhmucc) {
                     <textarea name="mota" id="" placeholder="Mô tả sản phẩm"></textarea>
                 </div>
 
+                <div class="update_mota">
+                        <input type="text" name="kho" id="" placeholder="Nhập số lượng">
+                </div>
+
 
                 <div class="updatedm_img">
                     <label class="custum-file-upload" for="filesanpham">

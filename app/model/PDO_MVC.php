@@ -146,9 +146,9 @@ class HangHoa
       return $productCode;
    }
 
-   function AddHangHoa($tenhanghoa, $masanpham, $gia, $giasale, $hinhanh, $mota, $tendanhmuc, $iddanhmuc)
+   function AddHangHoa($tenhanghoa, $masanpham, $gia, $giasale, $hinhanh, $mota, $kho, $tendanhmuc, $iddanhmuc)
    {
-      $sql = "INSERT INTO hanghoa (tenhanghoa,id_mahanghoa, gia, giasale, anhhanghoa, mota, tendanhmuc, id_danhmuc) VALUES ('" . $tenhanghoa . "', '" . $masanpham . "' , '" . $gia . "', '" . $giasale . "', '" . $hinhanh . "', '" . $mota . "', '" . $tendanhmuc . "', '" . $iddanhmuc . "')";
+      $sql = "INSERT INTO hanghoa (tenhanghoa,id_mahanghoa, gia, giasale, anhhanghoa, mota, soluong, tendanhmuc, id_danhmuc) VALUES ('" . $tenhanghoa . "', '" . $masanpham . "' , '" . $gia . "', '" . $giasale . "', '" . $hinhanh . "', '" . $mota . "', '" . $kho . "', '" . $tendanhmuc . "', '" . $iddanhmuc . "')";
       $this->hanghoa->get_all($sql);
       $sql = "INSERT INTO hanghoa_img (id_mahanghoa) VALUES ('" . $masanpham . "')";
       $this->hanghoa->get_all($sql);

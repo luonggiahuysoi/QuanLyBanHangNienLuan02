@@ -162,6 +162,7 @@ if (isset($_SESSION['nhanvien'])) {
                         $gia = $_POST['gia'];
                         $giasale = $_POST['giasale'];
                         $mota = $_POST['mota'];
+                        $kho = $_POST['kho'];
                         if (isset($_FILES['fileimage']['tmp_name']) && is_uploaded_file($_FILES['fileimage']['tmp_name'])) {
                             $hinhanh = $_FILES['fileimage']['tmp_name'];
                             $hinhanh = base64_encode(file_get_contents($hinhanh));
@@ -187,7 +188,7 @@ if (isset($_SESSION['nhanvien'])) {
 
 
                         $themhanghoa = new HangHoa;
-                        $themhanghoa->AddHangHoa($tenhanghoa, $masanpham, $gia, $giasale, $hinhanh, $mota, $tendanhmuc, $iddanhmuc);
+                        $themhanghoa->AddHangHoa($tenhanghoa, $masanpham, $gia, $giasale, $hinhanh, $mota, $kho, $tendanhmuc, $iddanhmuc);
 
 
                         // ================ load lại trang =================
@@ -1498,6 +1499,7 @@ if (isset($_SESSION['nhanvien'])) {
                         $gia = $_POST['gia'];
                         $giasale = $_POST['giasale'];
                         $mota = $_POST['mota'];
+                        $kho = $_POST['kho'];
                         if (isset($_FILES['fileimage']['tmp_name']) && is_uploaded_file($_FILES['fileimage']['tmp_name'])) {
                             $hinhanh = $_FILES['fileimage']['tmp_name'];
                             $hinhanh = base64_encode(file_get_contents($hinhanh));
@@ -1523,7 +1525,7 @@ if (isset($_SESSION['nhanvien'])) {
 
 
                         $themhanghoa = new HangHoa;
-                        $themhanghoa->AddHangHoa($tenhanghoa, $masanpham, $gia, $giasale, $hinhanh, $mota, $tendanhmuc, $iddanhmuc);
+                        $themhanghoa->AddHangHoa($tenhanghoa, $masanpham, $gia, $giasale, $hinhanh, $mota, $kho, $tendanhmuc, $iddanhmuc);
 
 
                         // ================ load lại trang =================
@@ -2840,6 +2842,7 @@ if (isset($_SESSION['nhanvien'])) {
                         $gia = $_POST['gia'];
                         $giasale = $_POST['giasale'];
                         $mota = $_POST['mota'];
+                        $kho = $_POST['kho'];
                         if (isset($_FILES['fileimage']['tmp_name']) && is_uploaded_file($_FILES['fileimage']['tmp_name'])) {
                             $hinhanh = $_FILES['fileimage']['tmp_name'];
                             $hinhanh = base64_encode(file_get_contents($hinhanh));
@@ -2865,7 +2868,7 @@ if (isset($_SESSION['nhanvien'])) {
 
 
                         $themhanghoa = new HangHoa;
-                        $themhanghoa->AddHangHoa($tenhanghoa, $masanpham, $gia, $giasale, $hinhanh, $mota, $tendanhmuc, $iddanhmuc);
+                        $themhanghoa->AddHangHoa($tenhanghoa, $masanpham, $gia, $giasale, $hinhanh, $mota, $kho, $tendanhmuc, $iddanhmuc);
 
 
                         // ================ load lại trang =================
