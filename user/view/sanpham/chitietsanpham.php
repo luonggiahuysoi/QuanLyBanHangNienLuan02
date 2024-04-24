@@ -56,7 +56,7 @@
                                 foreach ($img as $imgg) {
                                     extract($imgg);
                                     echo '
-                                    <img src="data:image/png;base64,' . $hinh . '" alt="">
+                                    <img class="main__detail-left--imgs img" src="data:image/png;base64,' . $hinh . '" alt="">
                                 ';
                                 }
                                 ?>
@@ -214,7 +214,7 @@
                     $tinhgiasale = $gia * (1 - $giasale / 100);
                     echo '<div class="main__product-item">';
                     echo '<img src="data:image/png;base64,' . $anhhanghoa . '" alt="" loading="__autoload">';
-                    echo '<p class="main__product-item--name">Giày thể thao nam</p>';
+                    echo '<p class="main__product-item--name">' . $tenhanghoa . '</p>';
                     echo '<div class="main__product-item-price">';
                     echo '<p>' . number_format($tinhgiasale) . ' <span>vnđ</span></p>';
                     echo '<p>' . number_format($gia) . ' <span>vnđ</span></p>';
@@ -274,6 +274,21 @@
 
 </html>
 
+<script>
+    const thumbnailImages = document.querySelectorAll('.main__detail-left--imgs img');
+
+    // Get the main image container
+    const mainImage = document.querySelector('.main__detail-left--img img');
+
+    // Loop through each thumbnail image and add a click event listener
+    thumbnailImages.forEach(thumbnail => {
+        thumbnail.addEventListener('click', function () {
+            // Change the source of the main image to the clicked thumbnail's source
+            mainImage.src = this.src;
+        });
+    });
+
+</script>
 
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');

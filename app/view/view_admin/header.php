@@ -131,7 +131,7 @@
                      <a href="index.php?act=listdonhangdaxem"><i class="bi bi-dot"></i>Đơn đã xem</a>
                   </div>
                   <div class="item-con_list" id="">
-                     <a href="index.php?act=listdonhangdaxong"><i class="bi bi-dot"></i>Đơn đã hoàng thành</a>
+                     <a href="index.php?act=listdonhangdaxong"><i class="bi bi-dot"></i>Đơn đã hoàn thành</a>
                   </div>
                   <div class="item-con_list item-con_listout" id="close_nav3">
                      <a href=""><i class="bi bi-box-arrow-in-left"></i>Trở về</a>

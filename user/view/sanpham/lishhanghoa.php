@@ -80,7 +80,7 @@
 
                         echo '<div class="main__product-item main__suggest-opacity">';
                         echo '<img src="data:image/png;base64,' . $hinhanh . '" alt="" onmouseover="changeImage(this)" onmouseout="restoreImage(this)" loading="__autoload">';
-                        echo '<p class="main__product-item--name">Giày thể thao nam</p>';
+                        echo '<p class="main__product-item--name">' . $tenhanghoa . '</p>';
                         echo '<div class="main__product-item-price">';
                         echo '<p>' . number_format($tinhgiasale) . '</p>';
                         echo '<p>' . number_format($gia) . '</p>';
