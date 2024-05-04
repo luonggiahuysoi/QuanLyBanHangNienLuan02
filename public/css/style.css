@@ -152,7 +152,7 @@ header {
     height: 65px;
     display: flex;
     justify-content: space-around;
-    /* align-items: center; */
+    align-items: center;
     background-color: #272829;
     font-family: "Poppins", sans-serif;
 }

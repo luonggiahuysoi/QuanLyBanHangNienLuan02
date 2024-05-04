@@ -100,6 +100,14 @@
                     $tinhgiasale = $gia * (1 - $giasale / 100);
                     if ($giovangdelsocc['soluong'] > 0) {
                         echo '<div class="main__product-item">';
+                        if (isset($_SESSION['nguoidung'])) {
+                            if ($_SESSION['nguoidung']) {
+                                echo '<a href = "index.php?act=chitietsanpham&idhanghoa=' . $id_hanghoa . '" class="product-link" >';
+
+                            }
+                        } else {
+                            echo '<a onclick="showLoginAlert();">';
+                        }
                         echo '<img src="data:image/png;base64,' . $anhhanghoa . '" alt="" loading="__autoload">';
                         echo '<p class="main__product-item--name">' . $tenhanghoa . '</p>';
                         echo '<div class="main__product-item-price">';
@@ -190,6 +198,8 @@
                         echo '  <div class="main__product-sale--end">
                                 <p>Hết hàng</p>
                             </div>';
+
+                            echo '</a>';
                         echo '</div>';
                     }
                 }

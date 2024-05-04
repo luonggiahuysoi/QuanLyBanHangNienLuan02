@@ -213,6 +213,14 @@
                     extract($sanphambanchayy);
                     $tinhgiasale = $gia * (1 - $giasale / 100);
                     echo '<div class="main__product-item">';
+                    if (isset($_SESSION['nguoidung'])) {
+                        if ($_SESSION['nguoidung']) {
+                            echo '<a href = "index.php?act=chitietsanpham&idhanghoa=' . $id_hanghoa . '" class="product-link" >';
+
+                        }
+                    } else {
+                        echo '<a onclick="showLoginAlert();">';
+                    }
                     echo '<img src="data:image/png;base64,' . $anhhanghoa . '" alt="" loading="__autoload">';
                     echo '<p class="main__product-item--name">' . $tenhanghoa . '</p>';
                     echo '<div class="main__product-item-price">';
@@ -255,6 +263,7 @@
                         echo '<a onclick="showLoginAlert();">Thêm vào giỏ</a>';
                     }
                     echo '</div>';
+                    echo '</a>';
                     echo '</div>';
                 }
                 ?>
@@ -753,6 +762,14 @@
         box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
+    }
+
+    .main__product-item a {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
     .main__product-item--name {
